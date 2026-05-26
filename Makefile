@@ -81,6 +81,10 @@ catalog-circular-dependencies:
 generate-domain-registry:
 	@PYTHONPATH=src python utils/generate_domain_registry.py
 
+# Domain sub-registry tests (WO-010).
+test-domain-registries:
+	@python -m pytest tests/repo_utils/test_domain_registries.py tests/repo_utils/test_domain_registry.py -q --noconftest
+
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:
 	@python utils/checkers.py $(ALL_CHECKERS) --keep-going

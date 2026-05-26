@@ -54,7 +54,7 @@ from .utils import is_torchaudio_available as is_torchaudio_available
 from .utils import is_torchvision_available as is_torchvision_available
 from .utils import is_vision_available as is_vision_available
 from .utils import logging as logging
-from .utils.import_utils import define_import_structure
+from ._registries import build_composed_root_models_structure, merge_import_structures
 
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
@@ -790,8 +790,10 @@ if TYPE_CHECKING:
 else:
     _import_structure = {k: set(v) for k, v in _import_structure.items()}
 
-    import_structure = define_import_structure(Path(__file__).parent / "models", prefix="models")
-    import_structure[frozenset({})].update(_import_structure)
+    import_structure = merge_import_structures(
+        {frozenset({}): {key: set(names) for key, names in _import_structure.items()}},
+        build_composed_root_models_structure(),
+    )
 
     sys.modules[__name__] = _LazyModule(
         __name__,

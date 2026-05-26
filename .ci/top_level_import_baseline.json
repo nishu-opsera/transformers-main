@@ -1,6 +1,14 @@
 {
   "edges": [
     {
+      "source": "transformers._registries",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers._registries",
+      "destination": "transformers.utils"
+    },
+    {
       "source": "transformers._typing",
       "destination": "transformers.cache_utils"
     },
