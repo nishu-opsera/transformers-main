@@ -159,6 +159,20 @@ def test_auto_image_processor_class_exposes_from_pretrained():
     assert hasattr(AutoImageProcessor, "from_pretrained")
 
 
+@pytest.mark.parametrize(
+    "domain,symbol",
+    [
+        ("nlp", "AutoModelForCausalLM"),
+        ("vision", "AutoModel"),
+        ("audio", "AutoModel"),
+        ("multimodal", "AutoModel"),
+    ],
+)
+def test_domain_registry_opt_in_import(domain, symbol):
+    module = importlib.import_module(f"transformers.domains.{domain}")
+    assert hasattr(module, symbol)
+
+
 def test_import_structure_symbols_listed_in_all(transformers_module):
     expected = CORE_PUBLIC_SYMBOLS + TORCH_PUBLIC_SYMBOLS
     missing = [name for name in expected if name not in transformers_module.__all__]

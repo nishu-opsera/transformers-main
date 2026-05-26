@@ -222,6 +222,8 @@ jobs:
             - checkout
             - run: uv pip install -e ".[quality]"
             - run: make check-layer-violations
+            - run: make test-domain-registries
+            - run: PYTHONPATH=src python utils/generate_domain_registry.py --check
 
     check_modular_conversion:
         working_directory: ~/transformers

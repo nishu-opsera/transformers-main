@@ -825,6 +825,10 @@ else:
     _create_module_alias(f"{__name__}.tokenization_utils_fast", ".tokenization_utils_tokenizers")
     _create_module_alias(f"{__name__}.tokenization_utils", ".tokenization_utils_sentencepiece")
     _create_module_alias(f"{__name__}.image_processing_utils_fast", ".image_processing_backends")
+    _create_module_alias(f"{__name__}.domains.nlp", "._registries.nlp")
+    _create_module_alias(f"{__name__}.domains.vision", "._registries.vision")
+    _create_module_alias(f"{__name__}.domains.audio", "._registries.audio")
+    _create_module_alias(f"{__name__}.domains.multimodal", "._registries.multimodal")
 
     for _proc_file in sorted((Path(__file__).parent / "models").rglob("image_processing_*.py")):
         _model = _proc_file.parent.name
