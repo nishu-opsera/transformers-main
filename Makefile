@@ -77,6 +77,10 @@ check-downstream-compat:
 catalog-circular-dependencies:
 	@PYTHONPATH=src python utils/catalog_circular_dependencies.py
 
+# Regenerate domain_registry.json for __init__ decomposition (WO-009).
+generate-domain-registry:
+	@PYTHONPATH=src python utils/generate_domain_registry.py
+
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:
 	@python utils/checkers.py $(ALL_CHECKERS) --keep-going

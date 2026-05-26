@@ -1,0 +1,4161 @@
+{
+  "version": 1,
+  "source": "CONFIG_MAPPING_NAMES",
+  "model_count": 629,
+  "domain_counts": {
+    "nlp": 473,
+    "multimodal": 121,
+    "audio": 31,
+    "vision": 4
+  },
+  "models": {
+    "afmoe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AfmoeConfig",
+      "module": "transformers.models.afmoe"
+    },
+    "aimv2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Aimv2Config",
+      "module": "transformers.models.aimv2"
+    },
+    "aimv2_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Aimv2TextConfig",
+      "module": "transformers.models.aimv2_text_model"
+    },
+    "aimv2_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Aimv2VisionConfig",
+      "module": "transformers.models.aimv2_vision_model"
+    },
+    "albert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AlbertConfig",
+      "module": "transformers.models.albert"
+    },
+    "align": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AlignConfig",
+      "module": "transformers.models.align"
+    },
+    "align_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AlignTextConfig",
+      "module": "transformers.models.align_text_model"
+    },
+    "align_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AlignVisionConfig",
+      "module": "transformers.models.align_vision_model"
+    },
+    "altclip": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AltCLIPConfig",
+      "module": "transformers.models.altclip"
+    },
+    "altclip_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AltCLIPTextConfig",
+      "module": "transformers.models.altclip_text_model"
+    },
+    "altclip_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AltCLIPVisionConfig",
+      "module": "transformers.models.altclip_vision_model"
+    },
+    "apertus": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ApertusConfig",
+      "module": "transformers.models.apertus"
+    },
+    "arcee": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ArceeConfig",
+      "module": "transformers.models.arcee"
+    },
+    "aria": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "AriaConfig",
+      "module": "transformers.models.aria"
+    },
+    "aria_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AriaTextConfig",
+      "module": "transformers.models.aria_text"
+    },
+    "audio-spectrogram-transformer": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "ASTConfig",
+      "module": "transformers.models.audio_spectrogram_transformer"
+    },
+    "audioflamingo3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AudioFlamingo3Config",
+      "module": "transformers.models.audioflamingo3"
+    },
+    "audioflamingo3_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AudioFlamingo3EncoderConfig",
+      "module": "transformers.models.audioflamingo3_encoder"
+    },
+    "autoformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AutoformerConfig",
+      "module": "transformers.models.autoformer"
+    },
+    "aya_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "AyaVisionConfig",
+      "module": "transformers.models.aya_vision"
+    },
+    "bamba": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BambaConfig",
+      "module": "transformers.models.bamba"
+    },
+    "bark": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "BarkConfig",
+      "module": "transformers.models.bark"
+    },
+    "bart": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BartConfig",
+      "module": "transformers.models.bart"
+    },
+    "beit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "BeitConfig",
+      "module": "transformers.models.beit"
+    },
+    "bert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BertConfig",
+      "module": "transformers.models.bert"
+    },
+    "bert-generation": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BertGenerationConfig",
+      "module": "transformers.models.bert_generation"
+    },
+    "big_bird": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BigBirdConfig",
+      "module": "transformers.models.big_bird"
+    },
+    "bigbird_pegasus": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BigBirdPegasusConfig",
+      "module": "transformers.models.bigbird_pegasus"
+    },
+    "biogpt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BioGptConfig",
+      "module": "transformers.models.biogpt"
+    },
+    "bit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "BitConfig",
+      "module": "transformers.models.bit"
+    },
+    "bitnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BitNetConfig",
+      "module": "transformers.models.bitnet"
+    },
+    "blenderbot": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BlenderbotConfig",
+      "module": "transformers.models.blenderbot"
+    },
+    "blenderbot-small": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BlenderbotSmallConfig",
+      "module": "transformers.models.blenderbot_small"
+    },
+    "blip": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "BlipConfig",
+      "module": "transformers.models.blip"
+    },
+    "blip-2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Blip2Config",
+      "module": "transformers.models.blip_2"
+    },
+    "blip_2_qformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Blip2QFormerConfig",
+      "module": "transformers.models.blip_2_qformer"
+    },
+    "blip_2_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Blip2VisionConfig",
+      "module": "transformers.models.blip_2_vision_model"
+    },
+    "blip_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BlipTextConfig",
+      "module": "transformers.models.blip_text_model"
+    },
+    "blip_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BlipVisionConfig",
+      "module": "transformers.models.blip_vision_model"
+    },
+    "bloom": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BloomConfig",
+      "module": "transformers.models.bloom"
+    },
+    "blt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BltConfig",
+      "module": "transformers.models.blt"
+    },
+    "blt_global_transformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BltGlobalTransformerConfig",
+      "module": "transformers.models.blt_global_transformer"
+    },
+    "blt_local_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BltLocalDecoderConfig",
+      "module": "transformers.models.blt_local_decoder"
+    },
+    "blt_local_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BltLocalEncoderConfig",
+      "module": "transformers.models.blt_local_encoder"
+    },
+    "blt_patcher": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BltPatcherConfig",
+      "module": "transformers.models.blt_patcher"
+    },
+    "bridgetower": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "BridgeTowerConfig",
+      "module": "transformers.models.bridgetower"
+    },
+    "bridgetower_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BridgeTowerTextConfig",
+      "module": "transformers.models.bridgetower_text_model"
+    },
+    "bridgetower_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BridgeTowerVisionConfig",
+      "module": "transformers.models.bridgetower_vision_model"
+    },
+    "bros": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "BrosConfig",
+      "module": "transformers.models.bros"
+    },
+    "camembert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CamembertConfig",
+      "module": "transformers.models.camembert"
+    },
+    "canine": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CanineConfig",
+      "module": "transformers.models.canine"
+    },
+    "chameleon": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ChameleonConfig",
+      "module": "transformers.models.chameleon"
+    },
+    "chameleon_vqgan": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ChameleonVQVAEConfig",
+      "module": "transformers.models.chameleon_vqgan"
+    },
+    "chinese_clip": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ChineseCLIPConfig",
+      "module": "transformers.models.chinese_clip"
+    },
+    "chinese_clip_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ChineseCLIPTextConfig",
+      "module": "transformers.models.chinese_clip_text_model"
+    },
+    "chinese_clip_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ChineseCLIPVisionConfig",
+      "module": "transformers.models.chinese_clip_vision_model"
+    },
+    "chmv2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "CHMv2Config",
+      "module": "transformers.models.chmv2"
+    },
+    "clap": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "ClapConfig",
+      "module": "transformers.models.clap"
+    },
+    "clap_audio_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ClapAudioConfig",
+      "module": "transformers.models.clap_audio_model"
+    },
+    "clap_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ClapTextConfig",
+      "module": "transformers.models.clap_text_model"
+    },
+    "clip": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "CLIPConfig",
+      "module": "transformers.models.clip"
+    },
+    "clip_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CLIPTextConfig",
+      "module": "transformers.models.clip_text_model"
+    },
+    "clip_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CLIPVisionConfig",
+      "module": "transformers.models.clip_vision_model"
+    },
+    "clipseg": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CLIPSegConfig",
+      "module": "transformers.models.clipseg"
+    },
+    "clipseg_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CLIPSegTextConfig",
+      "module": "transformers.models.clipseg_text_model"
+    },
+    "clipseg_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CLIPSegVisionConfig",
+      "module": "transformers.models.clipseg_vision_model"
+    },
+    "clvp": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "ClvpConfig",
+      "module": "transformers.models.clvp"
+    },
+    "clvp_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ClvpDecoderConfig",
+      "module": "transformers.models.clvp_decoder"
+    },
+    "clvp_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ClvpEncoderConfig",
+      "module": "transformers.models.clvp_encoder"
+    },
+    "codegen": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CodeGenConfig",
+      "module": "transformers.models.codegen"
+    },
+    "cohere": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CohereConfig",
+      "module": "transformers.models.cohere"
+    },
+    "cohere2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Cohere2Config",
+      "module": "transformers.models.cohere2"
+    },
+    "cohere2_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Cohere2MoeConfig",
+      "module": "transformers.models.cohere2_moe"
+    },
+    "cohere2_vision": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Cohere2VisionConfig",
+      "module": "transformers.models.cohere2_vision"
+    },
+    "cohere_asr": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "CohereAsrConfig",
+      "module": "transformers.models.cohere_asr"
+    },
+    "colmodernvbert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ColModernVBertConfig",
+      "module": "transformers.models.colmodernvbert"
+    },
+    "colpali": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ColPaliConfig",
+      "module": "transformers.models.colpali"
+    },
+    "colqwen2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ColQwen2Config",
+      "module": "transformers.models.colqwen2"
+    },
+    "conditional_detr": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ConditionalDetrConfig",
+      "module": "transformers.models.conditional_detr"
+    },
+    "convbert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ConvBertConfig",
+      "module": "transformers.models.convbert"
+    },
+    "convnext": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ConvNextConfig",
+      "module": "transformers.models.convnext"
+    },
+    "convnextv2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ConvNextV2Config",
+      "module": "transformers.models.convnextv2"
+    },
+    "cpmant": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CpmAntConfig",
+      "module": "transformers.models.cpmant"
+    },
+    "csm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CsmConfig",
+      "module": "transformers.models.csm"
+    },
+    "csm_depth_decoder_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CsmDepthDecoderConfig",
+      "module": "transformers.models.csm_depth_decoder_model"
+    },
+    "ctrl": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CTRLConfig",
+      "module": "transformers.models.ctrl"
+    },
+    "cvt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CvtConfig",
+      "module": "transformers.models.cvt"
+    },
+    "cwm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "CwmConfig",
+      "module": "transformers.models.cwm"
+    },
+    "d_fine": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DFineConfig",
+      "module": "transformers.models.d_fine"
+    },
+    "dab-detr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DabDetrConfig",
+      "module": "transformers.models.dab_detr"
+    },
+    "dac": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "DacConfig",
+      "module": "transformers.models.dac"
+    },
+    "data2vec-audio": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Data2VecAudioConfig",
+      "module": "transformers.models.data2vec_audio"
+    },
+    "data2vec-text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Data2VecTextConfig",
+      "module": "transformers.models.data2vec_text"
+    },
+    "data2vec-vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Data2VecVisionConfig",
+      "module": "transformers.models.data2vec_vision"
+    },
+    "dbrx": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DbrxConfig",
+      "module": "transformers.models.dbrx"
+    },
+    "deberta": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DebertaConfig",
+      "module": "transformers.models.deberta"
+    },
+    "deberta-v2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DebertaV2Config",
+      "module": "transformers.models.deberta_v2"
+    },
+    "decision_transformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DecisionTransformerConfig",
+      "module": "transformers.models.decision_transformer"
+    },
+    "deepseek_v2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DeepseekV2Config",
+      "module": "transformers.models.deepseek_v2"
+    },
+    "deepseek_v3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DeepseekV3Config",
+      "module": "transformers.models.deepseek_v3"
+    },
+    "deepseek_v4": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DeepseekV4Config",
+      "module": "transformers.models.deepseek_v4"
+    },
+    "deepseek_vl": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DeepseekVLConfig",
+      "module": "transformers.models.deepseek_vl"
+    },
+    "deepseek_vl_hybrid": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DeepseekVLHybridConfig",
+      "module": "transformers.models.deepseek_vl_hybrid"
+    },
+    "deformable_detr": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DeformableDetrConfig",
+      "module": "transformers.models.deformable_detr"
+    },
+    "deimv2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Deimv2Config",
+      "module": "transformers.models.deimv2"
+    },
+    "deit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DeiTConfig",
+      "module": "transformers.models.deit"
+    },
+    "depth_anything": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DepthAnythingConfig",
+      "module": "transformers.models.depth_anything"
+    },
+    "depth_pro": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DepthProConfig",
+      "module": "transformers.models.depth_pro"
+    },
+    "detr": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DetrConfig",
+      "module": "transformers.models.detr"
+    },
+    "dia": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "DiaConfig",
+      "module": "transformers.models.dia"
+    },
+    "dia_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DiaDecoderConfig",
+      "module": "transformers.models.dia_decoder"
+    },
+    "dia_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DiaEncoderConfig",
+      "module": "transformers.models.dia_encoder"
+    },
+    "diffllama": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DiffLlamaConfig",
+      "module": "transformers.models.diffllama"
+    },
+    "dinat": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DinatConfig",
+      "module": "transformers.models.dinat"
+    },
+    "dinov2": {
+      "primary_domain": "vision",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "Dinov2Config",
+      "module": "transformers.models.dinov2"
+    },
+    "dinov2_with_registers": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Dinov2WithRegistersConfig",
+      "module": "transformers.models.dinov2_with_registers"
+    },
+    "dinov3_convnext": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DINOv3ConvNextConfig",
+      "module": "transformers.models.dinov3_convnext"
+    },
+    "dinov3_vit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DINOv3ViTConfig",
+      "module": "transformers.models.dinov3_vit"
+    },
+    "distilbert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DistilBertConfig",
+      "module": "transformers.models.distilbert"
+    },
+    "doge": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DogeConfig",
+      "module": "transformers.models.doge"
+    },
+    "donut-swin": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DonutSwinConfig",
+      "module": "transformers.models.donut_swin"
+    },
+    "dots1": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Dots1Config",
+      "module": "transformers.models.dots1"
+    },
+    "dpr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "DPRConfig",
+      "module": "transformers.models.dpr"
+    },
+    "dpt": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "DPTConfig",
+      "module": "transformers.models.dpt"
+    },
+    "edgetam": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EdgeTamConfig",
+      "module": "transformers.models.edgetam"
+    },
+    "edgetam_video": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EdgeTamVideoConfig",
+      "module": "transformers.models.edgetam_video"
+    },
+    "edgetam_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EdgeTamVisionConfig",
+      "module": "transformers.models.edgetam_vision_model"
+    },
+    "efficientloftr": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "EfficientLoFTRConfig",
+      "module": "transformers.models.efficientloftr"
+    },
+    "efficientnet": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "EfficientNetConfig",
+      "module": "transformers.models.efficientnet"
+    },
+    "electra": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ElectraConfig",
+      "module": "transformers.models.electra"
+    },
+    "emu3": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Emu3Config",
+      "module": "transformers.models.emu3"
+    },
+    "emu3_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Emu3TextConfig",
+      "module": "transformers.models.emu3_text_model"
+    },
+    "emu3_vqgan": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Emu3VQVAEConfig",
+      "module": "transformers.models.emu3_vqgan"
+    },
+    "encodec": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "EncodecConfig",
+      "module": "transformers.models.encodec"
+    },
+    "encoder-decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EncoderDecoderConfig",
+      "module": "transformers.models.encoder_decoder"
+    },
+    "eomt": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "EomtConfig",
+      "module": "transformers.models.eomt"
+    },
+    "eomt_dinov3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EomtDinov3Config",
+      "module": "transformers.models.eomt_dinov3"
+    },
+    "ernie": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ErnieConfig",
+      "module": "transformers.models.ernie"
+    },
+    "ernie4_5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Ernie4_5Config",
+      "module": "transformers.models.ernie4_5"
+    },
+    "ernie4_5_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Ernie4_5_MoeConfig",
+      "module": "transformers.models.ernie4_5_moe"
+    },
+    "ernie4_5_vl_moe": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Ernie4_5_VLMoeConfig",
+      "module": "transformers.models.ernie4_5_vl_moe"
+    },
+    "ernie4_5_vl_moe_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Ernie4_5_VLMoeTextConfig",
+      "module": "transformers.models.ernie4_5_vl_moe_text"
+    },
+    "ernie4_5_vl_moe_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Ernie4_5_VLMoeVisionConfig",
+      "module": "transformers.models.ernie4_5_vl_moe_vision"
+    },
+    "esm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EsmConfig",
+      "module": "transformers.models.esm"
+    },
+    "eurobert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EuroBertConfig",
+      "module": "transformers.models.eurobert"
+    },
+    "evolla": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "EvollaConfig",
+      "module": "transformers.models.evolla"
+    },
+    "exaone4": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Exaone4Config",
+      "module": "transformers.models.exaone4"
+    },
+    "exaone4_5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Exaone4_5_Config",
+      "module": "transformers.models.exaone4_5"
+    },
+    "exaone4_5_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Exaone4_5_VisionConfig",
+      "module": "transformers.models.exaone4_5_vision"
+    },
+    "exaone_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ExaoneMoeConfig",
+      "module": "transformers.models.exaone_moe"
+    },
+    "falcon": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FalconConfig",
+      "module": "transformers.models.falcon"
+    },
+    "falcon_h1": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FalconH1Config",
+      "module": "transformers.models.falcon_h1"
+    },
+    "falcon_mamba": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FalconMambaConfig",
+      "module": "transformers.models.falcon_mamba"
+    },
+    "fast_vlm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FastVlmConfig",
+      "module": "transformers.models.fast_vlm"
+    },
+    "fastspeech2_conformer": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "FastSpeech2ConformerConfig",
+      "module": "transformers.models.fastspeech2_conformer"
+    },
+    "fastspeech2_conformer_hifigan": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FastSpeech2ConformerHifiGanConfig",
+      "module": "transformers.models.fastspeech2_conformer_hifigan"
+    },
+    "fastspeech2_conformer_with_hifigan": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FastSpeech2ConformerWithHifiGanConfig",
+      "module": "transformers.models.fastspeech2_conformer_with_hifigan"
+    },
+    "flaubert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FlaubertConfig",
+      "module": "transformers.models.flaubert"
+    },
+    "flava": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "FlavaConfig",
+      "module": "transformers.models.flava"
+    },
+    "flava_image_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FlavaImageConfig",
+      "module": "transformers.models.flava_image_model"
+    },
+    "flava_multimodal_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FlavaMultimodalConfig",
+      "module": "transformers.models.flava_multimodal_model"
+    },
+    "flava_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FlavaTextConfig",
+      "module": "transformers.models.flava_text_model"
+    },
+    "flex_olmo": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FlexOlmoConfig",
+      "module": "transformers.models.flex_olmo"
+    },
+    "florence2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Florence2Config",
+      "module": "transformers.models.florence2"
+    },
+    "florence_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Florence2VisionConfig",
+      "module": "transformers.models.florence_vision"
+    },
+    "fnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FNetConfig",
+      "module": "transformers.models.fnet"
+    },
+    "focalnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FocalNetConfig",
+      "module": "transformers.models.focalnet"
+    },
+    "fsmt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FSMTConfig",
+      "module": "transformers.models.fsmt"
+    },
+    "funnel": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "FunnelConfig",
+      "module": "transformers.models.funnel"
+    },
+    "fuyu": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "FuyuConfig",
+      "module": "transformers.models.fuyu"
+    },
+    "gemma": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GemmaConfig",
+      "module": "transformers.models.gemma"
+    },
+    "gemma2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma2Config",
+      "module": "transformers.models.gemma2"
+    },
+    "gemma3": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Gemma3Config",
+      "module": "transformers.models.gemma3"
+    },
+    "gemma3_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma3TextConfig",
+      "module": "transformers.models.gemma3_text"
+    },
+    "gemma3n": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "Gemma3nConfig",
+      "module": "transformers.models.gemma3n"
+    },
+    "gemma3n_audio": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma3nAudioConfig",
+      "module": "transformers.models.gemma3n_audio"
+    },
+    "gemma3n_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma3nTextConfig",
+      "module": "transformers.models.gemma3n_text"
+    },
+    "gemma3n_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma3nVisionConfig",
+      "module": "transformers.models.gemma3n_vision"
+    },
+    "gemma4": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Gemma4Config",
+      "module": "transformers.models.gemma4"
+    },
+    "gemma4_assistant": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma4AssistantConfig",
+      "module": "transformers.models.gemma4_assistant"
+    },
+    "gemma4_audio": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma4AudioConfig",
+      "module": "transformers.models.gemma4_audio"
+    },
+    "gemma4_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma4TextConfig",
+      "module": "transformers.models.gemma4_text"
+    },
+    "gemma4_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Gemma4VisionConfig",
+      "module": "transformers.models.gemma4_vision"
+    },
+    "git": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "GitConfig",
+      "module": "transformers.models.git"
+    },
+    "git_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GitVisionConfig",
+      "module": "transformers.models.git_vision_model"
+    },
+    "glm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmConfig",
+      "module": "transformers.models.glm"
+    },
+    "glm4": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4Config",
+      "module": "transformers.models.glm4"
+    },
+    "glm46v": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Glm46VConfig",
+      "module": "transformers.models.glm46v"
+    },
+    "glm4_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4MoeConfig",
+      "module": "transformers.models.glm4_moe"
+    },
+    "glm4_moe_lite": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4MoeLiteConfig",
+      "module": "transformers.models.glm4_moe_lite"
+    },
+    "glm4v": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Glm4vConfig",
+      "module": "transformers.models.glm4v"
+    },
+    "glm4v_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4vMoeConfig",
+      "module": "transformers.models.glm4v_moe"
+    },
+    "glm4v_moe_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4vMoeTextConfig",
+      "module": "transformers.models.glm4v_moe_text"
+    },
+    "glm4v_moe_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4vMoeVisionConfig",
+      "module": "transformers.models.glm4v_moe_vision"
+    },
+    "glm4v_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4vTextConfig",
+      "module": "transformers.models.glm4v_text"
+    },
+    "glm4v_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Glm4vVisionConfig",
+      "module": "transformers.models.glm4v_vision"
+    },
+    "glm_image": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "GlmImageConfig",
+      "module": "transformers.models.glm_image"
+    },
+    "glm_image_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmImageTextConfig",
+      "module": "transformers.models.glm_image_text"
+    },
+    "glm_image_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmImageVisionConfig",
+      "module": "transformers.models.glm_image_vision"
+    },
+    "glm_image_vqmodel": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmImageVQVAEConfig",
+      "module": "transformers.models.glm_image_vqmodel"
+    },
+    "glm_moe_dsa": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmMoeDsaConfig",
+      "module": "transformers.models.glm_moe_dsa"
+    },
+    "glm_ocr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmOcrConfig",
+      "module": "transformers.models.glm_ocr"
+    },
+    "glm_ocr_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmOcrTextConfig",
+      "module": "transformers.models.glm_ocr_text"
+    },
+    "glm_ocr_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmOcrVisionConfig",
+      "module": "transformers.models.glm_ocr_vision"
+    },
+    "glmasr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmAsrConfig",
+      "module": "transformers.models.glmasr"
+    },
+    "glmasr_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GlmAsrEncoderConfig",
+      "module": "transformers.models.glmasr_encoder"
+    },
+    "glpn": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "GLPNConfig",
+      "module": "transformers.models.glpn"
+    },
+    "got_ocr2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "GotOcr2Config",
+      "module": "transformers.models.got_ocr2"
+    },
+    "gpt2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GPT2Config",
+      "module": "transformers.models.gpt2"
+    },
+    "gpt_bigcode": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GPTBigCodeConfig",
+      "module": "transformers.models.gpt_bigcode"
+    },
+    "gpt_neo": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GPTNeoConfig",
+      "module": "transformers.models.gpt_neo"
+    },
+    "gpt_neox": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GPTNeoXConfig",
+      "module": "transformers.models.gpt_neox"
+    },
+    "gpt_neox_japanese": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GPTNeoXJapaneseConfig",
+      "module": "transformers.models.gpt_neox_japanese"
+    },
+    "gpt_oss": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GptOssConfig",
+      "module": "transformers.models.gpt_oss"
+    },
+    "gptj": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GPTJConfig",
+      "module": "transformers.models.gptj"
+    },
+    "granite": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GraniteConfig",
+      "module": "transformers.models.granite"
+    },
+    "granite4_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Granite4VisionConfig",
+      "module": "transformers.models.granite4_vision"
+    },
+    "granite4_vision_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Granite4VisionTextConfig",
+      "module": "transformers.models.granite4_vision_text"
+    },
+    "granite_speech": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "GraniteSpeechConfig",
+      "module": "transformers.models.granite_speech"
+    },
+    "granite_speech_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GraniteSpeechEncoderConfig",
+      "module": "transformers.models.granite_speech_encoder"
+    },
+    "granite_speech_plus": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "GraniteSpeechPlusConfig",
+      "module": "transformers.models.granite_speech_plus"
+    },
+    "granite_speech_plus_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GraniteSpeechPlusEncoderConfig",
+      "module": "transformers.models.granite_speech_plus_encoder"
+    },
+    "granitemoe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GraniteMoeConfig",
+      "module": "transformers.models.granitemoe"
+    },
+    "granitemoehybrid": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GraniteMoeHybridConfig",
+      "module": "transformers.models.granitemoehybrid"
+    },
+    "granitemoeshared": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GraniteMoeSharedConfig",
+      "module": "transformers.models.granitemoeshared"
+    },
+    "grounding-dino": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "GroundingDinoConfig",
+      "module": "transformers.models.grounding_dino"
+    },
+    "groupvit": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GroupViTConfig",
+      "module": "transformers.models.groupvit"
+    },
+    "groupvit_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GroupViTTextConfig",
+      "module": "transformers.models.groupvit_text_model"
+    },
+    "groupvit_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "GroupViTVisionConfig",
+      "module": "transformers.models.groupvit_vision_model"
+    },
+    "helium": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HeliumConfig",
+      "module": "transformers.models.helium"
+    },
+    "hgnet_v2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HGNetV2Config",
+      "module": "transformers.models.hgnet_v2"
+    },
+    "hiera": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HieraConfig",
+      "module": "transformers.models.hiera"
+    },
+    "higgs_audio_v2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HiggsAudioV2Config",
+      "module": "transformers.models.higgs_audio_v2"
+    },
+    "higgs_audio_v2_tokenizer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HiggsAudioV2TokenizerConfig",
+      "module": "transformers.models.higgs_audio_v2_tokenizer"
+    },
+    "hrm_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HrmTextConfig",
+      "module": "transformers.models.hrm_text"
+    },
+    "hubert": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "HubertConfig",
+      "module": "transformers.models.hubert"
+    },
+    "hunyuan_v1_dense": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HunYuanDenseV1Config",
+      "module": "transformers.models.hunyuan_v1_dense"
+    },
+    "hunyuan_v1_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HunYuanMoEV1Config",
+      "module": "transformers.models.hunyuan_v1_moe"
+    },
+    "hy_v3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HYV3Config",
+      "module": "transformers.models.hy_v3"
+    },
+    "hyperclovax": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "HyperCLOVAXConfig",
+      "module": "transformers.models.hyperclovax"
+    },
+    "ibert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "IBertConfig",
+      "module": "transformers.models.ibert"
+    },
+    "idefics": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "IdeficsConfig",
+      "module": "transformers.models.idefics"
+    },
+    "idefics2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Idefics2Config",
+      "module": "transformers.models.idefics2"
+    },
+    "idefics2_perceiver": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Idefics2PerceiverConfig",
+      "module": "transformers.models.idefics2_perceiver"
+    },
+    "idefics2_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Idefics2VisionConfig",
+      "module": "transformers.models.idefics2_vision"
+    },
+    "idefics3": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Idefics3Config",
+      "module": "transformers.models.idefics3"
+    },
+    "idefics3_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Idefics3VisionConfig",
+      "module": "transformers.models.idefics3_vision"
+    },
+    "idefics_perciever": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "IdeficsPerceiverConfig",
+      "module": "transformers.models.idefics_perciever"
+    },
+    "idefics_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "IdeficsVisionConfig",
+      "module": "transformers.models.idefics_vision"
+    },
+    "ijepa": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "IJepaConfig",
+      "module": "transformers.models.ijepa"
+    },
+    "imagegpt": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ImageGPTConfig",
+      "module": "transformers.models.imagegpt"
+    },
+    "informer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "InformerConfig",
+      "module": "transformers.models.informer"
+    },
+    "instructblip": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "InstructBlipConfig",
+      "module": "transformers.models.instructblip"
+    },
+    "instructblip_qformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "InstructBlipQFormerConfig",
+      "module": "transformers.models.instructblip_qformer"
+    },
+    "instructblip_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "InstructBlipVisionConfig",
+      "module": "transformers.models.instructblip_vision_model"
+    },
+    "instructblipvideo": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "InstructBlipVideoConfig",
+      "module": "transformers.models.instructblipvideo"
+    },
+    "instructblipvideo_qformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "InstructBlipVideoQFormerConfig",
+      "module": "transformers.models.instructblipvideo_qformer"
+    },
+    "instructblipvideo_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "InstructBlipVideoVisionConfig",
+      "module": "transformers.models.instructblipvideo_vision_model"
+    },
+    "internvl": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "InternVLConfig",
+      "module": "transformers.models.internvl"
+    },
+    "internvl_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "InternVLVisionConfig",
+      "module": "transformers.models.internvl_vision"
+    },
+    "jais2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Jais2Config",
+      "module": "transformers.models.jais2"
+    },
+    "jamba": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "JambaConfig",
+      "module": "transformers.models.jamba"
+    },
+    "janus": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "JanusConfig",
+      "module": "transformers.models.janus"
+    },
+    "janus_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "JanusVisionConfig",
+      "module": "transformers.models.janus_vision_model"
+    },
+    "janus_vqgan": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "JanusVQVAEConfig",
+      "module": "transformers.models.janus_vqgan"
+    },
+    "jetmoe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "JetMoeConfig",
+      "module": "transformers.models.jetmoe"
+    },
+    "jina_embeddings_v3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "JinaEmbeddingsV3Config",
+      "module": "transformers.models.jina_embeddings_v3"
+    },
+    "kosmos-2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Kosmos2Config",
+      "module": "transformers.models.kosmos_2"
+    },
+    "kosmos-2.5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Kosmos2_5Config",
+      "module": "transformers.models.kosmos_2.5"
+    },
+    "kosmos_2_5_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Kosmos2_5TextConfig",
+      "module": "transformers.models.kosmos_2_5_text_model"
+    },
+    "kosmos_2_5_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Kosmos2_5VisionConfig",
+      "module": "transformers.models.kosmos_2_5_vision_model"
+    },
+    "kosmos_2_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Kosmos2TextConfig",
+      "module": "transformers.models.kosmos_2_text_model"
+    },
+    "kosmos_2_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Kosmos2VisionConfig",
+      "module": "transformers.models.kosmos_2_vision_model"
+    },
+    "kyutai_speech_to_text": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "KyutaiSpeechToTextConfig",
+      "module": "transformers.models.kyutai_speech_to_text"
+    },
+    "laguna": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LagunaConfig",
+      "module": "transformers.models.laguna"
+    },
+    "lasr_ctc": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LasrCTCConfig",
+      "module": "transformers.models.lasr_ctc"
+    },
+    "lasr_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LasrEncoderConfig",
+      "module": "transformers.models.lasr_encoder"
+    },
+    "layoutlm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LayoutLMConfig",
+      "module": "transformers.models.layoutlm"
+    },
+    "layoutlmv2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "LayoutLMv2Config",
+      "module": "transformers.models.layoutlmv2"
+    },
+    "layoutlmv3": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "LayoutLMv3Config",
+      "module": "transformers.models.layoutlmv3"
+    },
+    "layoutxlm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LayoutXLMConfig",
+      "module": "transformers.models.layoutxlm"
+    },
+    "led": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LEDConfig",
+      "module": "transformers.models.led"
+    },
+    "levit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "LevitConfig",
+      "module": "transformers.models.levit"
+    },
+    "lfm2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Lfm2Config",
+      "module": "transformers.models.lfm2"
+    },
+    "lfm2_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Lfm2MoeConfig",
+      "module": "transformers.models.lfm2_moe"
+    },
+    "lfm2_vl": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Lfm2VlConfig",
+      "module": "transformers.models.lfm2_vl"
+    },
+    "lightglue": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "LightGlueConfig",
+      "module": "transformers.models.lightglue"
+    },
+    "lighton_ocr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LightOnOcrConfig",
+      "module": "transformers.models.lighton_ocr"
+    },
+    "lilt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LiltConfig",
+      "module": "transformers.models.lilt"
+    },
+    "llama": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LlamaConfig",
+      "module": "transformers.models.llama"
+    },
+    "llama4": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Llama4Config",
+      "module": "transformers.models.llama4"
+    },
+    "llama4_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Llama4TextConfig",
+      "module": "transformers.models.llama4_text"
+    },
+    "llama4_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Llama4VisionConfig",
+      "module": "transformers.models.llama4_vision_model"
+    },
+    "llava": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "LlavaConfig",
+      "module": "transformers.models.llava"
+    },
+    "llava_next": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "LlavaNextConfig",
+      "module": "transformers.models.llava_next"
+    },
+    "llava_next_video": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "LlavaNextVideoConfig",
+      "module": "transformers.models.llava_next_video"
+    },
+    "llava_onevision": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "LlavaOnevisionConfig",
+      "module": "transformers.models.llava_onevision"
+    },
+    "longcat_flash": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LongcatFlashConfig",
+      "module": "transformers.models.longcat_flash"
+    },
+    "longformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LongformerConfig",
+      "module": "transformers.models.longformer"
+    },
+    "longt5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LongT5Config",
+      "module": "transformers.models.longt5"
+    },
+    "luke": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LukeConfig",
+      "module": "transformers.models.luke"
+    },
+    "lw_detr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LwDetrConfig",
+      "module": "transformers.models.lw_detr"
+    },
+    "lw_detr_vit": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LwDetrViTConfig",
+      "module": "transformers.models.lw_detr_vit"
+    },
+    "lxmert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "LxmertConfig",
+      "module": "transformers.models.lxmert"
+    },
+    "m2m_100": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "M2M100Config",
+      "module": "transformers.models.m2m_100"
+    },
+    "mamba": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MambaConfig",
+      "module": "transformers.models.mamba"
+    },
+    "mamba2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Mamba2Config",
+      "module": "transformers.models.mamba2"
+    },
+    "marian": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MarianConfig",
+      "module": "transformers.models.marian"
+    },
+    "markuplm": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "MarkupLMConfig",
+      "module": "transformers.models.markuplm"
+    },
+    "mask2former": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Mask2FormerConfig",
+      "module": "transformers.models.mask2former"
+    },
+    "maskformer": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "MaskFormerConfig",
+      "module": "transformers.models.maskformer"
+    },
+    "maskformer-swin": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MaskFormerSwinConfig",
+      "module": "transformers.models.maskformer_swin"
+    },
+    "mbart": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MBartConfig",
+      "module": "transformers.models.mbart"
+    },
+    "megatron-bert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MegatronBertConfig",
+      "module": "transformers.models.megatron_bert"
+    },
+    "metaclip_2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MetaClip2Config",
+      "module": "transformers.models.metaclip_2"
+    },
+    "metaclip_2_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MetaClip2TextConfig",
+      "module": "transformers.models.metaclip_2_text_model"
+    },
+    "metaclip_2_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MetaClip2VisionConfig",
+      "module": "transformers.models.metaclip_2_vision_model"
+    },
+    "mgp-str": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MgpstrConfig",
+      "module": "transformers.models.mgp_str"
+    },
+    "mimi": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MimiConfig",
+      "module": "transformers.models.mimi"
+    },
+    "minicpmv4_6": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "MiniCPMV4_6Config",
+      "module": "transformers.models.minicpmv4_6"
+    },
+    "minicpmv4_6_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MiniCPMV4_6VisionConfig",
+      "module": "transformers.models.minicpmv4_6_vision"
+    },
+    "minimax": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MiniMaxConfig",
+      "module": "transformers.models.minimax"
+    },
+    "minimax_m2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MiniMaxM2Config",
+      "module": "transformers.models.minimax_m2"
+    },
+    "ministral": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MinistralConfig",
+      "module": "transformers.models.ministral"
+    },
+    "ministral3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Ministral3Config",
+      "module": "transformers.models.ministral3"
+    },
+    "mistral": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MistralConfig",
+      "module": "transformers.models.mistral"
+    },
+    "mistral3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Mistral3Config",
+      "module": "transformers.models.mistral3"
+    },
+    "mistral4": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Mistral4Config",
+      "module": "transformers.models.mistral4"
+    },
+    "mixtral": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MixtralConfig",
+      "module": "transformers.models.mixtral"
+    },
+    "mlcd_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MLCDVisionConfig",
+      "module": "transformers.models.mlcd_vision_model"
+    },
+    "mllama": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "MllamaConfig",
+      "module": "transformers.models.mllama"
+    },
+    "mllama_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MllamaTextConfig",
+      "module": "transformers.models.mllama_text_model"
+    },
+    "mllama_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MllamaVisionConfig",
+      "module": "transformers.models.mllama_vision_model"
+    },
+    "mm-grounding-dino": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MMGroundingDinoConfig",
+      "module": "transformers.models.mm_grounding_dino"
+    },
+    "mobilebert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MobileBertConfig",
+      "module": "transformers.models.mobilebert"
+    },
+    "mobilenet_v1": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "MobileNetV1Config",
+      "module": "transformers.models.mobilenet_v1"
+    },
+    "mobilenet_v2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "MobileNetV2Config",
+      "module": "transformers.models.mobilenet_v2"
+    },
+    "mobilevit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "MobileViTConfig",
+      "module": "transformers.models.mobilevit"
+    },
+    "mobilevitv2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MobileViTV2Config",
+      "module": "transformers.models.mobilevitv2"
+    },
+    "modernbert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ModernBertConfig",
+      "module": "transformers.models.modernbert"
+    },
+    "modernbert-decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ModernBertDecoderConfig",
+      "module": "transformers.models.modernbert_decoder"
+    },
+    "modernvbert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ModernVBertConfig",
+      "module": "transformers.models.modernvbert"
+    },
+    "moonshine": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MoonshineConfig",
+      "module": "transformers.models.moonshine"
+    },
+    "moonshine_streaming": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MoonshineStreamingConfig",
+      "module": "transformers.models.moonshine_streaming"
+    },
+    "moonshine_streaming_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MoonshineStreamingEncoderConfig",
+      "module": "transformers.models.moonshine_streaming_encoder"
+    },
+    "moshi": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MoshiConfig",
+      "module": "transformers.models.moshi"
+    },
+    "moshi_depth": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MoshiDepthConfig",
+      "module": "transformers.models.moshi_depth"
+    },
+    "mpnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MPNetConfig",
+      "module": "transformers.models.mpnet"
+    },
+    "mpt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MptConfig",
+      "module": "transformers.models.mpt"
+    },
+    "mra": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MraConfig",
+      "module": "transformers.models.mra"
+    },
+    "mt5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MT5Config",
+      "module": "transformers.models.mt5"
+    },
+    "musicflamingo": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MusicFlamingoConfig",
+      "module": "transformers.models.musicflamingo"
+    },
+    "musicgen": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "MusicgenConfig",
+      "module": "transformers.models.musicgen"
+    },
+    "musicgen_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MusicgenDecoderConfig",
+      "module": "transformers.models.musicgen_decoder"
+    },
+    "musicgen_melody": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "MusicgenMelodyConfig",
+      "module": "transformers.models.musicgen_melody"
+    },
+    "musicgen_melody_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MusicgenMelodyDecoderConfig",
+      "module": "transformers.models.musicgen_melody_decoder"
+    },
+    "mvp": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "MvpConfig",
+      "module": "transformers.models.mvp"
+    },
+    "nanochat": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "NanoChatConfig",
+      "module": "transformers.models.nanochat"
+    },
+    "nemotron": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "NemotronConfig",
+      "module": "transformers.models.nemotron"
+    },
+    "nemotron_h": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "NemotronHConfig",
+      "module": "transformers.models.nemotron_h"
+    },
+    "nllb-moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "NllbMoeConfig",
+      "module": "transformers.models.nllb_moe"
+    },
+    "nomic_bert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "NomicBertConfig",
+      "module": "transformers.models.nomic_bert"
+    },
+    "nougat": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "NougatConfig",
+      "module": "transformers.models.nougat"
+    },
+    "nystromformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "NystromformerConfig",
+      "module": "transformers.models.nystromformer"
+    },
+    "olmo": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OlmoConfig",
+      "module": "transformers.models.olmo"
+    },
+    "olmo2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Olmo2Config",
+      "module": "transformers.models.olmo2"
+    },
+    "olmo3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Olmo3Config",
+      "module": "transformers.models.olmo3"
+    },
+    "olmo_hybrid": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OlmoHybridConfig",
+      "module": "transformers.models.olmo_hybrid"
+    },
+    "olmoe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OlmoeConfig",
+      "module": "transformers.models.olmoe"
+    },
+    "omdet-turbo": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OmDetTurboConfig",
+      "module": "transformers.models.omdet_turbo"
+    },
+    "oneformer": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "OneFormerConfig",
+      "module": "transformers.models.oneformer"
+    },
+    "openai-gpt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OpenAIGPTConfig",
+      "module": "transformers.models.openai_gpt"
+    },
+    "openai_privacy_filter": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OpenAIPrivacyFilterConfig",
+      "module": "transformers.models.openai_privacy_filter"
+    },
+    "opt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OPTConfig",
+      "module": "transformers.models.opt"
+    },
+    "ovis2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Ovis2Config",
+      "module": "transformers.models.ovis2"
+    },
+    "owlv2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Owlv2Config",
+      "module": "transformers.models.owlv2"
+    },
+    "owlv2_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Owlv2TextConfig",
+      "module": "transformers.models.owlv2_text_model"
+    },
+    "owlv2_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Owlv2VisionConfig",
+      "module": "transformers.models.owlv2_vision_model"
+    },
+    "owlvit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "OwlViTConfig",
+      "module": "transformers.models.owlvit"
+    },
+    "owlvit_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OwlViTTextConfig",
+      "module": "transformers.models.owlvit_text_model"
+    },
+    "owlvit_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "OwlViTVisionConfig",
+      "module": "transformers.models.owlvit_vision_model"
+    },
+    "paddleocr_vl": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PaddleOCRVLConfig",
+      "module": "transformers.models.paddleocr_vl"
+    },
+    "paddleocr_vl_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PaddleOCRTextConfig",
+      "module": "transformers.models.paddleocr_vl_text"
+    },
+    "paddleocr_vl_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PaddleOCRVisionConfig",
+      "module": "transformers.models.paddleocr_vl_vision"
+    },
+    "paligemma": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "PaliGemmaConfig",
+      "module": "transformers.models.paligemma"
+    },
+    "parakeet_ctc": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ParakeetCTCConfig",
+      "module": "transformers.models.parakeet_ctc"
+    },
+    "parakeet_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ParakeetEncoderConfig",
+      "module": "transformers.models.parakeet_encoder"
+    },
+    "parakeet_tdt": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ParakeetTDTConfig",
+      "module": "transformers.models.parakeet_tdt"
+    },
+    "patchtsmixer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PatchTSMixerConfig",
+      "module": "transformers.models.patchtsmixer"
+    },
+    "patchtst": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PatchTSTConfig",
+      "module": "transformers.models.patchtst"
+    },
+    "pe_audio": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "PeAudioConfig",
+      "module": "transformers.models.pe_audio"
+    },
+    "pe_audio_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PeAudioEncoderConfig",
+      "module": "transformers.models.pe_audio_encoder"
+    },
+    "pe_audio_video": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PeAudioVideoConfig",
+      "module": "transformers.models.pe_audio_video"
+    },
+    "pe_audio_video_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PeAudioVideoEncoderConfig",
+      "module": "transformers.models.pe_audio_video_encoder"
+    },
+    "pe_video": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "PeVideoConfig",
+      "module": "transformers.models.pe_video"
+    },
+    "pe_video_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PeVideoEncoderConfig",
+      "module": "transformers.models.pe_video_encoder"
+    },
+    "pegasus": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PegasusConfig",
+      "module": "transformers.models.pegasus"
+    },
+    "pegasus_x": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PegasusXConfig",
+      "module": "transformers.models.pegasus_x"
+    },
+    "perceiver": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PerceiverConfig",
+      "module": "transformers.models.perceiver"
+    },
+    "perception_lm": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PerceptionLMConfig",
+      "module": "transformers.models.perception_lm"
+    },
+    "persimmon": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PersimmonConfig",
+      "module": "transformers.models.persimmon"
+    },
+    "phi": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PhiConfig",
+      "module": "transformers.models.phi"
+    },
+    "phi3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Phi3Config",
+      "module": "transformers.models.phi3"
+    },
+    "phi4_multimodal": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Phi4MultimodalConfig",
+      "module": "transformers.models.phi4_multimodal"
+    },
+    "phi4_multimodal_audio": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Phi4MultimodalAudioConfig",
+      "module": "transformers.models.phi4_multimodal_audio"
+    },
+    "phi4_multimodal_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Phi4MultimodalVisionConfig",
+      "module": "transformers.models.phi4_multimodal_vision"
+    },
+    "phimoe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PhimoeConfig",
+      "module": "transformers.models.phimoe"
+    },
+    "pi0": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PI0Config",
+      "module": "transformers.models.pi0"
+    },
+    "pix2struct": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Pix2StructConfig",
+      "module": "transformers.models.pix2struct"
+    },
+    "pix2struct_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Pix2StructTextConfig",
+      "module": "transformers.models.pix2struct_text_model"
+    },
+    "pix2struct_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Pix2StructVisionConfig",
+      "module": "transformers.models.pix2struct_vision_model"
+    },
+    "pixio": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PixioConfig",
+      "module": "transformers.models.pixio"
+    },
+    "pixtral": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PixtralVisionConfig",
+      "module": "transformers.models.pixtral"
+    },
+    "plbart": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PLBartConfig",
+      "module": "transformers.models.plbart"
+    },
+    "poolformer": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PoolFormerConfig",
+      "module": "transformers.models.poolformer"
+    },
+    "pop2piano": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "Pop2PianoConfig",
+      "module": "transformers.models.pop2piano"
+    },
+    "pp_chart2table": {
+      "primary_domain": "vision",
+      "secondary_domains": [],
+      "config_class": "PPChart2TableConfig",
+      "module": "transformers.models.pp_chart2table"
+    },
+    "pp_doclayout_v2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PPDocLayoutV2Config",
+      "module": "transformers.models.pp_doclayout_v2"
+    },
+    "pp_doclayout_v3": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PPDocLayoutV3Config",
+      "module": "transformers.models.pp_doclayout_v3"
+    },
+    "pp_formulanet": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PPFormulaNetConfig",
+      "module": "transformers.models.pp_formulanet"
+    },
+    "pp_lcnet": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PPLCNetConfig",
+      "module": "transformers.models.pp_lcnet"
+    },
+    "pp_lcnet_v3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PPLCNetV3Config",
+      "module": "transformers.models.pp_lcnet_v3"
+    },
+    "pp_lcnet_v4": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PPLCNetV4Config",
+      "module": "transformers.models.pp_lcnet_v4"
+    },
+    "pp_ocrv5_mobile_det": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PPOCRV5MobileDetConfig",
+      "module": "transformers.models.pp_ocrv5_mobile_det"
+    },
+    "pp_ocrv5_mobile_rec": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PPOCRV5MobileRecConfig",
+      "module": "transformers.models.pp_ocrv5_mobile_rec"
+    },
+    "pp_ocrv5_server_det": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PPOCRV5ServerDetConfig",
+      "module": "transformers.models.pp_ocrv5_server_det"
+    },
+    "pp_ocrv5_server_rec": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PPOCRV5ServerRecConfig",
+      "module": "transformers.models.pp_ocrv5_server_rec"
+    },
+    "pp_ocrv6_medium_det": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PPOCRV6MediumDetConfig",
+      "module": "transformers.models.pp_ocrv6_medium_det"
+    },
+    "pp_ocrv6_small_det": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PPOCRV6SmallDetConfig",
+      "module": "transformers.models.pp_ocrv6_small_det"
+    },
+    "pp_ocrv6_small_rec": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PPOCRV6SmallRecConfig",
+      "module": "transformers.models.pp_ocrv6_small_rec"
+    },
+    "pp_ocrv6_tiny_rec": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PPOCRV6TinyRecConfig",
+      "module": "transformers.models.pp_ocrv6_tiny_rec"
+    },
+    "prompt_depth_anything": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PromptDepthAnythingConfig",
+      "module": "transformers.models.prompt_depth_anything"
+    },
+    "prophetnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ProphetNetConfig",
+      "module": "transformers.models.prophetnet"
+    },
+    "pvt": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "PvtConfig",
+      "module": "transformers.models.pvt"
+    },
+    "pvt_v2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "PvtV2Config",
+      "module": "transformers.models.pvt_v2"
+    },
+    "qianfan_ocr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "QianfanOCRConfig",
+      "module": "transformers.models.qianfan_ocr"
+    },
+    "qianfan_ocr_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "QianfanOCRVisionConfig",
+      "module": "transformers.models.qianfan_ocr_vision"
+    },
+    "qwen2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2Config",
+      "module": "transformers.models.qwen2"
+    },
+    "qwen2_5_omni": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniConfig",
+      "module": "transformers.models.qwen2_5_omni"
+    },
+    "qwen2_5_omni_audio_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniAudioEncoderConfig",
+      "module": "transformers.models.qwen2_5_omni_audio_encoder"
+    },
+    "qwen2_5_omni_bigvgan": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniBigVGANConfig",
+      "module": "transformers.models.qwen2_5_omni_bigvgan"
+    },
+    "qwen2_5_omni_dit": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniDiTConfig",
+      "module": "transformers.models.qwen2_5_omni_dit"
+    },
+    "qwen2_5_omni_talker": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniTalkerConfig",
+      "module": "transformers.models.qwen2_5_omni_talker"
+    },
+    "qwen2_5_omni_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniTextConfig",
+      "module": "transformers.models.qwen2_5_omni_text"
+    },
+    "qwen2_5_omni_thinker": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniThinkerConfig",
+      "module": "transformers.models.qwen2_5_omni_thinker"
+    },
+    "qwen2_5_omni_token2wav": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniToken2WavConfig",
+      "module": "transformers.models.qwen2_5_omni_token2wav"
+    },
+    "qwen2_5_omni_vision_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5OmniVisionEncoderConfig",
+      "module": "transformers.models.qwen2_5_omni_vision_encoder"
+    },
+    "qwen2_5_vl": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "Qwen2_5_VLConfig",
+      "module": "transformers.models.qwen2_5_vl"
+    },
+    "qwen2_5_vl_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5_VLTextConfig",
+      "module": "transformers.models.qwen2_5_vl_text"
+    },
+    "qwen2_5_vl_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2_5_VLVisionConfig",
+      "module": "transformers.models.qwen2_5_vl_vision"
+    },
+    "qwen2_audio": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2AudioConfig",
+      "module": "transformers.models.qwen2_audio"
+    },
+    "qwen2_audio_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2AudioEncoderConfig",
+      "module": "transformers.models.qwen2_audio_encoder"
+    },
+    "qwen2_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2MoeConfig",
+      "module": "transformers.models.qwen2_moe"
+    },
+    "qwen2_vl": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Qwen2VLConfig",
+      "module": "transformers.models.qwen2_vl"
+    },
+    "qwen2_vl_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2VLTextConfig",
+      "module": "transformers.models.qwen2_vl_text"
+    },
+    "qwen2_vl_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen2VLVisionConfig",
+      "module": "transformers.models.qwen2_vl_vision"
+    },
+    "qwen3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3Config",
+      "module": "transformers.models.qwen3"
+    },
+    "qwen3_5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3_5Config",
+      "module": "transformers.models.qwen3_5"
+    },
+    "qwen3_5_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3_5MoeConfig",
+      "module": "transformers.models.qwen3_5_moe"
+    },
+    "qwen3_5_moe_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3_5MoeTextConfig",
+      "module": "transformers.models.qwen3_5_moe_text"
+    },
+    "qwen3_5_moe_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3_5MoeVisionConfig",
+      "module": "transformers.models.qwen3_5_moe_vision"
+    },
+    "qwen3_5_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3_5TextConfig",
+      "module": "transformers.models.qwen3_5_text"
+    },
+    "qwen3_5_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3_5VisionConfig",
+      "module": "transformers.models.qwen3_5_vision"
+    },
+    "qwen3_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3MoeConfig",
+      "module": "transformers.models.qwen3_moe"
+    },
+    "qwen3_next": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3NextConfig",
+      "module": "transformers.models.qwen3_next"
+    },
+    "qwen3_omni_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3OmniMoeConfig",
+      "module": "transformers.models.qwen3_omni_moe"
+    },
+    "qwen3_omni_moe_audio_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3OmniMoeAudioEncoderConfig",
+      "module": "transformers.models.qwen3_omni_moe_audio_encoder"
+    },
+    "qwen3_omni_moe_talker_code_predictor": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3OmniMoeTalkerCodePredictorConfig",
+      "module": "transformers.models.qwen3_omni_moe_talker_code_predictor"
+    },
+    "qwen3_omni_moe_talker_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3OmniMoeTalkerTextConfig",
+      "module": "transformers.models.qwen3_omni_moe_talker_text"
+    },
+    "qwen3_omni_moe_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3OmniMoeTextConfig",
+      "module": "transformers.models.qwen3_omni_moe_text"
+    },
+    "qwen3_omni_moe_thinker": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3OmniMoeThinkerConfig",
+      "module": "transformers.models.qwen3_omni_moe_thinker"
+    },
+    "qwen3_omni_moe_vision_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3OmniMoeVisionEncoderConfig",
+      "module": "transformers.models.qwen3_omni_moe_vision_encoder"
+    },
+    "qwen3_vl": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "Qwen3VLConfig",
+      "module": "transformers.models.qwen3_vl"
+    },
+    "qwen3_vl_moe": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3VLMoeConfig",
+      "module": "transformers.models.qwen3_vl_moe"
+    },
+    "qwen3_vl_moe_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3VLMoeTextConfig",
+      "module": "transformers.models.qwen3_vl_moe_text"
+    },
+    "qwen3_vl_moe_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3VLMoeVisionConfig",
+      "module": "transformers.models.qwen3_vl_moe_vision"
+    },
+    "qwen3_vl_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3VLTextConfig",
+      "module": "transformers.models.qwen3_vl_text"
+    },
+    "qwen3_vl_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Qwen3VLVisionConfig",
+      "module": "transformers.models.qwen3_vl_vision"
+    },
+    "rag": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RagConfig",
+      "module": "transformers.models.rag"
+    },
+    "recurrent_gemma": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RecurrentGemmaConfig",
+      "module": "transformers.models.recurrent_gemma"
+    },
+    "reformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ReformerConfig",
+      "module": "transformers.models.reformer"
+    },
+    "regnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RegNetConfig",
+      "module": "transformers.models.regnet"
+    },
+    "rembert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RemBertConfig",
+      "module": "transformers.models.rembert"
+    },
+    "resnet": {
+      "primary_domain": "vision",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "ResNetConfig",
+      "module": "transformers.models.resnet"
+    },
+    "rf_detr": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "RfDetrConfig",
+      "module": "transformers.models.rf_detr"
+    },
+    "rf_detr_dinov2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RfDetrDinov2Config",
+      "module": "transformers.models.rf_detr_dinov2"
+    },
+    "roberta": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RobertaConfig",
+      "module": "transformers.models.roberta"
+    },
+    "roberta-prelayernorm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RobertaPreLayerNormConfig",
+      "module": "transformers.models.roberta_prelayernorm"
+    },
+    "roc_bert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RoCBertConfig",
+      "module": "transformers.models.roc_bert"
+    },
+    "roformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RoFormerConfig",
+      "module": "transformers.models.roformer"
+    },
+    "rt_detr": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "RTDetrConfig",
+      "module": "transformers.models.rt_detr"
+    },
+    "rt_detr_resnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RTDetrResNetConfig",
+      "module": "transformers.models.rt_detr_resnet"
+    },
+    "rt_detr_v2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RTDetrV2Config",
+      "module": "transformers.models.rt_detr_v2"
+    },
+    "rwkv": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "RwkvConfig",
+      "module": "transformers.models.rwkv"
+    },
+    "sam": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SamConfig",
+      "module": "transformers.models.sam"
+    },
+    "sam2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Sam2Config",
+      "module": "transformers.models.sam2"
+    },
+    "sam2_hiera_det_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam2HieraDetConfig",
+      "module": "transformers.models.sam2_hiera_det_model"
+    },
+    "sam2_video": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "Sam2VideoConfig",
+      "module": "transformers.models.sam2_video"
+    },
+    "sam2_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam2VisionConfig",
+      "module": "transformers.models.sam2_vision_model"
+    },
+    "sam3": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Sam3Config",
+      "module": "transformers.models.sam3"
+    },
+    "sam3_detr_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3DETRDecoderConfig",
+      "module": "transformers.models.sam3_detr_decoder"
+    },
+    "sam3_detr_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3DETREncoderConfig",
+      "module": "transformers.models.sam3_detr_encoder"
+    },
+    "sam3_geometry_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3GeometryEncoderConfig",
+      "module": "transformers.models.sam3_geometry_encoder"
+    },
+    "sam3_lite_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3LiteTextConfig",
+      "module": "transformers.models.sam3_lite_text"
+    },
+    "sam3_lite_text_detr_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3LiteTextDETRDecoderConfig",
+      "module": "transformers.models.sam3_lite_text_detr_decoder"
+    },
+    "sam3_lite_text_detr_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3LiteTextDETREncoderConfig",
+      "module": "transformers.models.sam3_lite_text_detr_encoder"
+    },
+    "sam3_lite_text_geometry_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3LiteTextGeometryEncoderConfig",
+      "module": "transformers.models.sam3_lite_text_geometry_encoder"
+    },
+    "sam3_lite_text_mask_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3LiteTextMaskDecoderConfig",
+      "module": "transformers.models.sam3_lite_text_mask_decoder"
+    },
+    "sam3_lite_text_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3LiteTextTextConfig",
+      "module": "transformers.models.sam3_lite_text_text_model"
+    },
+    "sam3_mask_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3MaskDecoderConfig",
+      "module": "transformers.models.sam3_mask_decoder"
+    },
+    "sam3_tracker": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3TrackerConfig",
+      "module": "transformers.models.sam3_tracker"
+    },
+    "sam3_tracker_video": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3TrackerVideoConfig",
+      "module": "transformers.models.sam3_tracker_video"
+    },
+    "sam3_video": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3VideoConfig",
+      "module": "transformers.models.sam3_video"
+    },
+    "sam3_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3VisionConfig",
+      "module": "transformers.models.sam3_vision_model"
+    },
+    "sam3_vit_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Sam3ViTConfig",
+      "module": "transformers.models.sam3_vit_model"
+    },
+    "sam_hq": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SamHQConfig",
+      "module": "transformers.models.sam_hq"
+    },
+    "sam_hq_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SamHQVisionConfig",
+      "module": "transformers.models.sam_hq_vision_model"
+    },
+    "sam_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SamVisionConfig",
+      "module": "transformers.models.sam_vision_model"
+    },
+    "seamless_m4t": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "SeamlessM4TConfig",
+      "module": "transformers.models.seamless_m4t"
+    },
+    "seamless_m4t_v2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SeamlessM4Tv2Config",
+      "module": "transformers.models.seamless_m4t_v2"
+    },
+    "seed_oss": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SeedOssConfig",
+      "module": "transformers.models.seed_oss"
+    },
+    "segformer": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SegformerConfig",
+      "module": "transformers.models.segformer"
+    },
+    "seggpt": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SegGptConfig",
+      "module": "transformers.models.seggpt"
+    },
+    "sew": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SEWConfig",
+      "module": "transformers.models.sew"
+    },
+    "sew-d": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SEWDConfig",
+      "module": "transformers.models.sew_d"
+    },
+    "shieldgemma2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ShieldGemma2Config",
+      "module": "transformers.models.shieldgemma2"
+    },
+    "siglip": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SiglipConfig",
+      "module": "transformers.models.siglip"
+    },
+    "siglip2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Siglip2Config",
+      "module": "transformers.models.siglip2"
+    },
+    "siglip2_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Siglip2TextConfig",
+      "module": "transformers.models.siglip2_text_model"
+    },
+    "siglip2_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Siglip2VisionConfig",
+      "module": "transformers.models.siglip2_vision_model"
+    },
+    "siglip_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SiglipTextConfig",
+      "module": "transformers.models.siglip_text_model"
+    },
+    "siglip_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SiglipVisionConfig",
+      "module": "transformers.models.siglip_vision_model"
+    },
+    "slanet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SLANetConfig",
+      "module": "transformers.models.slanet"
+    },
+    "slanext": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SLANeXtConfig",
+      "module": "transformers.models.slanext"
+    },
+    "smollm3": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SmolLM3Config",
+      "module": "transformers.models.smollm3"
+    },
+    "smolvlm": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SmolVLMConfig",
+      "module": "transformers.models.smolvlm"
+    },
+    "smolvlm_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SmolVLMVisionConfig",
+      "module": "transformers.models.smolvlm_vision"
+    },
+    "solar_open": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SolarOpenConfig",
+      "module": "transformers.models.solar_open"
+    },
+    "speech-encoder-decoder": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "SpeechEncoderDecoderConfig",
+      "module": "transformers.models.speech_encoder_decoder"
+    },
+    "speech_to_text": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "Speech2TextConfig",
+      "module": "transformers.models.speech_to_text"
+    },
+    "speecht5": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "SpeechT5Config",
+      "module": "transformers.models.speecht5"
+    },
+    "speecht5_hifigan": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SpeechT5HifiGanConfig",
+      "module": "transformers.models.speecht5_hifigan"
+    },
+    "splinter": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SplinterConfig",
+      "module": "transformers.models.splinter"
+    },
+    "squeezebert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SqueezeBertConfig",
+      "module": "transformers.models.squeezebert"
+    },
+    "stablelm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "StableLmConfig",
+      "module": "transformers.models.stablelm"
+    },
+    "starcoder2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Starcoder2Config",
+      "module": "transformers.models.starcoder2"
+    },
+    "superglue": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SuperGlueConfig",
+      "module": "transformers.models.superglue"
+    },
+    "superpoint": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "SuperPointConfig",
+      "module": "transformers.models.superpoint"
+    },
+    "swiftformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SwiftFormerConfig",
+      "module": "transformers.models.swiftformer"
+    },
+    "swin": {
+      "primary_domain": "vision",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "SwinConfig",
+      "module": "transformers.models.swin"
+    },
+    "swin2sr": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "Swin2SRConfig",
+      "module": "transformers.models.swin2sr"
+    },
+    "swinv2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Swinv2Config",
+      "module": "transformers.models.swinv2"
+    },
+    "switch_transformers": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "SwitchTransformersConfig",
+      "module": "transformers.models.switch_transformers"
+    },
+    "t5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "T5Config",
+      "module": "transformers.models.t5"
+    },
+    "t5_gemma_module": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "T5GemmaModuleConfig",
+      "module": "transformers.models.t5_gemma_module"
+    },
+    "t5gemma": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "T5GemmaConfig",
+      "module": "transformers.models.t5gemma"
+    },
+    "t5gemma2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "T5Gemma2Config",
+      "module": "transformers.models.t5gemma2"
+    },
+    "t5gemma2_decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "T5Gemma2DecoderConfig",
+      "module": "transformers.models.t5gemma2_decoder"
+    },
+    "t5gemma2_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "T5Gemma2EncoderConfig",
+      "module": "transformers.models.t5gemma2_encoder"
+    },
+    "t5gemma2_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "T5Gemma2TextConfig",
+      "module": "transformers.models.t5gemma2_text"
+    },
+    "table-transformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TableTransformerConfig",
+      "module": "transformers.models.table_transformer"
+    },
+    "tapas": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TapasConfig",
+      "module": "transformers.models.tapas"
+    },
+    "textnet": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "TextNetConfig",
+      "module": "transformers.models.textnet"
+    },
+    "time_series_transformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TimeSeriesTransformerConfig",
+      "module": "transformers.models.time_series_transformer"
+    },
+    "timesfm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TimesFmConfig",
+      "module": "transformers.models.timesfm"
+    },
+    "timesfm2_5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TimesFm2_5Config",
+      "module": "transformers.models.timesfm2_5"
+    },
+    "timesformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TimesformerConfig",
+      "module": "transformers.models.timesformer"
+    },
+    "timm_backbone": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TimmBackboneConfig",
+      "module": "transformers.models.timm_backbone"
+    },
+    "timm_wrapper": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "TimmWrapperConfig",
+      "module": "transformers.models.timm_wrapper"
+    },
+    "trocr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "TrOCRConfig",
+      "module": "transformers.models.trocr"
+    },
+    "tvp": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "TvpConfig",
+      "module": "transformers.models.tvp"
+    },
+    "udop": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "UdopConfig",
+      "module": "transformers.models.udop"
+    },
+    "umt5": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "UMT5Config",
+      "module": "transformers.models.umt5"
+    },
+    "unispeech": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "UniSpeechConfig",
+      "module": "transformers.models.unispeech"
+    },
+    "unispeech-sat": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "UniSpeechSatConfig",
+      "module": "transformers.models.unispeech_sat"
+    },
+    "univnet": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "UnivNetConfig",
+      "module": "transformers.models.univnet"
+    },
+    "upernet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "UperNetConfig",
+      "module": "transformers.models.upernet"
+    },
+    "uvdoc": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "UVDocConfig",
+      "module": "transformers.models.uvdoc"
+    },
+    "uvdoc_backbone": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "UVDocBackboneConfig",
+      "module": "transformers.models.uvdoc_backbone"
+    },
+    "vaultgemma": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VaultGemmaConfig",
+      "module": "transformers.models.vaultgemma"
+    },
+    "vibevoice_acoustic_tokenizer": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "VibeVoiceAcousticTokenizerConfig",
+      "module": "transformers.models.vibevoice_acoustic_tokenizer"
+    },
+    "vibevoice_asr": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VibeVoiceAsrConfig",
+      "module": "transformers.models.vibevoice_asr"
+    },
+    "video_llama_3": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "VideoLlama3Config",
+      "module": "transformers.models.video_llama_3"
+    },
+    "video_llama_3_vision": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VideoLlama3VisionConfig",
+      "module": "transformers.models.video_llama_3_vision"
+    },
+    "video_llava": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "VideoLlavaConfig",
+      "module": "transformers.models.video_llava"
+    },
+    "videomae": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp",
+        "vision"
+      ],
+      "config_class": "VideoMAEConfig",
+      "module": "transformers.models.videomae"
+    },
+    "videomt": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "VideomtConfig",
+      "module": "transformers.models.videomt"
+    },
+    "vilt": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ViltConfig",
+      "module": "transformers.models.vilt"
+    },
+    "vipllava": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp"
+      ],
+      "config_class": "VipLlavaConfig",
+      "module": "transformers.models.vipllava"
+    },
+    "vision-encoder-decoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VisionEncoderDecoderConfig",
+      "module": "transformers.models.vision_encoder_decoder"
+    },
+    "vision-text-dual-encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VisionTextDualEncoderConfig",
+      "module": "transformers.models.vision_text_dual_encoder"
+    },
+    "visual_bert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VisualBertConfig",
+      "module": "transformers.models.visual_bert"
+    },
+    "vit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ViTConfig",
+      "module": "transformers.models.vit"
+    },
+    "vit_mae": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ViTMAEConfig",
+      "module": "transformers.models.vit_mae"
+    },
+    "vit_msn": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ViTMSNConfig",
+      "module": "transformers.models.vit_msn"
+    },
+    "vitdet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VitDetConfig",
+      "module": "transformers.models.vitdet"
+    },
+    "vitmatte": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "VitMatteConfig",
+      "module": "transformers.models.vitmatte"
+    },
+    "vitpose": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "VitPoseConfig",
+      "module": "transformers.models.vitpose"
+    },
+    "vitpose_backbone": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VitPoseBackboneConfig",
+      "module": "transformers.models.vitpose_backbone"
+    },
+    "vits": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VitsConfig",
+      "module": "transformers.models.vits"
+    },
+    "vivit": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "VivitConfig",
+      "module": "transformers.models.vivit"
+    },
+    "vjepa2": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "audio",
+        "nlp"
+      ],
+      "config_class": "VJEPA2Config",
+      "module": "transformers.models.vjepa2"
+    },
+    "voxtral": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VoxtralConfig",
+      "module": "transformers.models.voxtral"
+    },
+    "voxtral_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VoxtralEncoderConfig",
+      "module": "transformers.models.voxtral_encoder"
+    },
+    "voxtral_realtime": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "VoxtralRealtimeConfig",
+      "module": "transformers.models.voxtral_realtime"
+    },
+    "voxtral_realtime_encoder": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VoxtralRealtimeEncoderConfig",
+      "module": "transformers.models.voxtral_realtime_encoder"
+    },
+    "voxtral_realtime_text": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "VoxtralRealtimeTextConfig",
+      "module": "transformers.models.voxtral_realtime_text"
+    },
+    "wav2vec2": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "Wav2Vec2Config",
+      "module": "transformers.models.wav2vec2"
+    },
+    "wav2vec2-bert": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Wav2Vec2BertConfig",
+      "module": "transformers.models.wav2vec2_bert"
+    },
+    "wav2vec2-conformer": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Wav2Vec2ConformerConfig",
+      "module": "transformers.models.wav2vec2_conformer"
+    },
+    "wavlm": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "WavLMConfig",
+      "module": "transformers.models.wavlm"
+    },
+    "whisper": {
+      "primary_domain": "audio",
+      "secondary_domains": [],
+      "config_class": "WhisperConfig",
+      "module": "transformers.models.whisper"
+    },
+    "xclip": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [],
+      "config_class": "XCLIPConfig",
+      "module": "transformers.models.xclip"
+    },
+    "xclip_text_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XCLIPTextConfig",
+      "module": "transformers.models.xclip_text_model"
+    },
+    "xclip_vision_model": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XCLIPVisionConfig",
+      "module": "transformers.models.xclip_vision_model"
+    },
+    "xcodec": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XcodecConfig",
+      "module": "transformers.models.xcodec"
+    },
+    "xglm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XGLMConfig",
+      "module": "transformers.models.xglm"
+    },
+    "xlm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XLMConfig",
+      "module": "transformers.models.xlm"
+    },
+    "xlm-roberta": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XLMRobertaConfig",
+      "module": "transformers.models.xlm_roberta"
+    },
+    "xlm-roberta-xl": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XLMRobertaXLConfig",
+      "module": "transformers.models.xlm_roberta_xl"
+    },
+    "xlnet": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XLNetConfig",
+      "module": "transformers.models.xlnet"
+    },
+    "xlstm": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "xLSTMConfig",
+      "module": "transformers.models.xlstm"
+    },
+    "xmod": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "XmodConfig",
+      "module": "transformers.models.xmod"
+    },
+    "yolos": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "YolosConfig",
+      "module": "transformers.models.yolos"
+    },
+    "yoso": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "YosoConfig",
+      "module": "transformers.models.yoso"
+    },
+    "youtu": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "YoutuConfig",
+      "module": "transformers.models.youtu"
+    },
+    "zamba": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "ZambaConfig",
+      "module": "transformers.models.zamba"
+    },
+    "zamba2": {
+      "primary_domain": "nlp",
+      "secondary_domains": [],
+      "config_class": "Zamba2Config",
+      "module": "transformers.models.zamba2"
+    },
+    "zoedepth": {
+      "primary_domain": "multimodal",
+      "secondary_domains": [
+        "nlp",
+        "vision"
+      ],
+      "config_class": "ZoeDepthConfig",
+      "module": "transformers.models.zoedepth"
+    }
+  }
+}
