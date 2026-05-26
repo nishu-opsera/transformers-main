@@ -110,6 +110,10 @@ def _training_args_module():
     return importlib.import_module("transformers.training_args")
 
 
+if TYPE_CHECKING:
+    from ..trainer_utils import BestRun
+
+
 from ..utils import ENV_VARS_TRUE_VALUES, is_torch_xla_available  # noqa: E402
 
 

@@ -21,12 +21,19 @@ PYTHONPATH=src python utils/generate_importlinter_config.py
 |------|---------|
 | `layer_violation_baseline.json` | Baseline count and fingerprints for config→modeling boundary crossings. CI fails on **new** fingerprints or a count above baseline. |
 
-Scans `configuration_*.py`, `configuration_utils.py`, and `modular_*.py` under `src/transformers/` for uses of symbols imported from modeling modules (ForgeScore reference ~3958; current AST baseline ~3840).
+**CI-enforced scope:** `configuration_*.py` and `configuration_utils.py` only (runtime config boundary).
+`modular_*.py` files are codegen sources and are **tracked** but not CI-gated (see WO-013/014).
 
-Regenerate after an intentional, reviewed change:
+| File | Purpose |
+|------|---------|
+| `layer_violation_tracking.json` | Full backlog: runtime + modular counts and priority tiers (WO-014). |
+
+ForgeScore reference ~3958 (historical combined); runtime configuration baseline is **0**.
 
 ```bash
-PYTHONPATH=src python utils/check_layer_violations.py --write-baseline
+make check-layer-violations
+make report-layer-violations   # refresh tracking JSON
+python utils/check_layer_violations.py --write-baseline  # after reviewed ratchet
 ```
 
 ## Modular conversion (WO-003)

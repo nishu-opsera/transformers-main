@@ -26,9 +26,12 @@ if str(UTILS) not in sys.path:
     sys.path.insert(0, str(UTILS))
 
 from check_layer_violations import (  # noqa: E402
+    PRD_INTERIM_TARGET,
+    build_tracking_report,
     collect_violations,
     is_configuration_layer_file,
     is_modeling_module,
+    scan_configuration_layer,
 )
 
 FIXTURES = REPO_ROOT / "tests" / "fixtures" / "layer_violations"
@@ -79,3 +82,15 @@ def test_baseline_within_forgescore_tolerance():
     assert count <= target * (1 + tolerance), (
         f"Baseline {count} exceeds 5% above ForgeScore reference {target}"
     )
+
+
+def test_runtime_configuration_meets_prd_interim_target():
+    """WO-014: enforced config-layer violations must stay below 1,000."""
+    violations = scan_configuration_layer()
+    assert len(violations) < PRD_INTERIM_TARGET
+
+
+def test_tracking_report_runtime_scope_meets_target():
+    report = build_tracking_report()
+    assert report["runtime_configuration"]["meets_prd_interim_target"]
+    assert report["runtime_configuration"]["total_count"] < PRD_INTERIM_TARGET

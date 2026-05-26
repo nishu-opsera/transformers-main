@@ -35,6 +35,8 @@ import cycles.
 
 ## Remediation (WO-013+)
 
+See [layer_violation_remediation.md](./layer_violation_remediation.md) for PRD status and modular backlog.
+
 `modular_*.py` files are modular/codegen sources (not runtime configuration boundaries) and are
 excluded from the layer linter scope. Violations in `configuration_*.py` and `configuration_utils.py`
 are enforced.

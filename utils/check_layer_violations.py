@@ -31,7 +31,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src" / "transformers"
 BASELINE_PATH = REPO_ROOT / ".ci" / "layer_violation_baseline.json"
+TRACKING_PATH = REPO_ROOT / ".ci" / "layer_violation_tracking.json"
 BASELINE_TOLERANCE = 0.05  # 5% per WO-002 acceptance criteria
+PRD_INTERIM_TARGET = 1000  # WO-014: config-layer violations below this count
 
 
 @dataclass(frozen=True)
@@ -48,6 +50,16 @@ class LayerViolation:
     def dedupe_key(self) -> tuple[str, int, str]:
         """One violation per config file line and symbol (import + use are not double-counted)."""
         return (self.file, self.line, self.symbol)
+
+
+def is_modular_codegen_file(path: Path) -> bool:
+    if path.suffix != ".py":
+        return False
+    try:
+        rel = path.relative_to(SRC_ROOT)
+    except ValueError:
+        return False
+    return rel.name.startswith("modular_")
 
 
 def is_configuration_layer_file(path: Path) -> bool:
@@ -151,12 +163,25 @@ def dedupe_violations(violations: list[LayerViolation]) -> list[LayerViolation]:
     return unique
 
 
-def scan_repository() -> list[LayerViolation]:
+def scan_configuration_layer() -> list[LayerViolation]:
     violations: list[LayerViolation] = []
     for file_path in sorted(SRC_ROOT.rglob("*.py")):
         if is_configuration_layer_file(file_path):
             violations.extend(collect_violations(file_path))
     return dedupe_violations(violations)
+
+
+def scan_modular_codegen() -> list[LayerViolation]:
+    violations: list[LayerViolation] = []
+    for file_path in sorted(SRC_ROOT.rglob("*.py")):
+        if is_modular_codegen_file(file_path):
+            violations.extend(collect_violations(file_path))
+    return dedupe_violations(violations)
+
+
+def scan_repository() -> list[LayerViolation]:
+    """CI-enforced scope: runtime configuration boundaries only (WO-013)."""
+    return scan_configuration_layer()
 
 
 def build_report(violations: list[LayerViolation]) -> dict:
@@ -176,13 +201,75 @@ def violation_fingerprint(violation: LayerViolation) -> str:
 
 def write_baseline(report: dict, violations: list[LayerViolation]) -> None:
     BASELINE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    modular_violations = scan_modular_codegen()
     payload = {
         "total_count": report["total_count"],
         "per_file": report["per_file"],
         "forgescore_reference_count": 3958,
         "fingerprints": sorted(violation_fingerprint(v) for v in violations),
+        "scopes": {
+            "runtime_configuration": {
+                "description": "configuration_*.py and configuration_utils.py (CI-enforced)",
+                "total_count": report["total_count"],
+                "prd_interim_target": PRD_INTERIM_TARGET,
+            },
+            "modular_codegen": {
+                "description": "modular_*.py sources (tracked, not CI-enforced; WO-017 migration)",
+                "total_count": len(modular_violations),
+                "prd_interim_target": PRD_INTERIM_TARGET,
+            },
+        },
     }
     BASELINE_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def build_tracking_report() -> dict:
+    """Full scan for WO-014 remediation backlog (configuration + modular)."""
+    runtime = scan_configuration_layer()
+    modular = scan_modular_codegen()
+
+    def per_file_counts(violations: list[LayerViolation]) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for violation in violations:
+            counts[violation.file] = counts.get(violation.file, 0) + 1
+        return dict(sorted(counts.items(), key=lambda item: (-item[1], item[0])))
+
+    modular_per_file = per_file_counts(modular)
+    priority_tiers: dict[str, list[str]] = {"P0_high_churn": [], "P1_medium": [], "P2_low": []}
+    for file_path, count in modular_per_file.items():
+        if count >= 30:
+            priority_tiers["P0_high_churn"].append(file_path)
+        elif count >= 20:
+            priority_tiers["P1_medium"].append(file_path)
+        else:
+            priority_tiers["P2_low"].append(file_path)
+
+    return {
+        "runtime_configuration": {
+            "total_count": len(runtime),
+            "per_file": per_file_counts(runtime),
+            "meets_prd_interim_target": len(runtime) < PRD_INTERIM_TARGET,
+        },
+        "modular_codegen": {
+            "total_count": len(modular),
+            "files_with_violations": len(modular_per_file),
+            "per_file": modular_per_file,
+            "meets_prd_interim_target": len(modular) < PRD_INTERIM_TARGET,
+            "priority_tiers": priority_tiers,
+        },
+        "combined_ast_count": len(dedupe_violations(runtime + modular)),
+        "forgescore_reference_count": 3958,
+        "notes": (
+            "CI enforces runtime_configuration only. modular_codegen violations are "
+            "addressed via modular-file migration (WO-017) rather than cross-layer refactors."
+        ),
+    }
+
+
+def write_tracking_report() -> None:
+    TRACKING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    report = build_tracking_report()
+    TRACKING_PATH.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
 
 def check_against_baseline(report: dict, violations: list[LayerViolation]) -> int:
@@ -249,6 +336,11 @@ def main(argv: list[str] | None = None) -> int:
         type=Path,
         help="Optional path to write the full JSON report.",
     )
+    parser.add_argument(
+        "--write-tracking",
+        action="store_true",
+        help="Write .ci/layer_violation_tracking.json (runtime + modular backlog, WO-014).",
+    )
     args = parser.parse_args(argv)
 
     violations = scan_repository()
@@ -257,6 +349,19 @@ def main(argv: list[str] | None = None) -> int:
     if args.report:
         args.report.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(f"Wrote report to {args.report}")
+
+    if args.write_tracking:
+        write_tracking_report()
+        tracking = json.loads(TRACKING_PATH.read_text(encoding="utf-8"))
+        runtime = tracking["runtime_configuration"]["total_count"]
+        modular = tracking["modular_codegen"]["total_count"]
+        print(
+            f"Wrote tracking to {TRACKING_PATH} "
+            f"(runtime={runtime}, modular={modular}, combined={tracking['combined_ast_count']})"
+        )
+        if args.write_baseline:
+            return 0
+        return 0
 
     if args.write_baseline:
         write_baseline(report, violations)

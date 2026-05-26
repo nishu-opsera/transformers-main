@@ -2,5 +2,17 @@
   "total_count": 0,
   "per_file": {},
   "forgescore_reference_count": 3958,
-  "fingerprints": []
+  "fingerprints": [],
+  "scopes": {
+    "runtime_configuration": {
+      "description": "configuration_*.py and configuration_utils.py (CI-enforced)",
+      "total_count": 0,
+      "prd_interim_target": 1000
+    },
+    "modular_codegen": {
+      "description": "modular_*.py sources (tracked, not CI-enforced; WO-017 migration)",
+      "total_count": 3704,
+      "prd_interim_target": 1000
+    }
+  }
 }
