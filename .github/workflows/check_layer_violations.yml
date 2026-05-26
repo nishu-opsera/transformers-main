@@ -1,0 +1,24 @@
+name: check_layer_violations
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check_layer_violations:
+    name: check_layer_violations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package with quality extras
+        run: pip install -e ".[quality]"
+      - name: Run AST layer violation guardrail
+        run: make check-layer-violations

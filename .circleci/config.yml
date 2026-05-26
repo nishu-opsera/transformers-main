@@ -210,6 +210,19 @@ jobs:
             - run: uv pip install -e ".[quality]"
             - run: make check-import-linter
 
+    check_layer_violations:
+        working_directory: ~/transformers
+        docker:
+            - image: huggingface/transformers-quality
+        resource_class: medium
+        environment:
+            TRANSFORMERS_IS_CI: yes
+        parallelism: 1
+        steps:
+            - checkout
+            - run: uv pip install -e ".[quality]"
+            - run: make check-layer-violations
+
 
 workflows:
     version: 2
@@ -223,6 +236,7 @@ workflows:
             - check_code_quality
             - check_repository_consistency
             - check_import_linter
+            - check_layer_violations
             - fetch_tests
 
     setup_and_quality_2:
@@ -234,6 +248,7 @@ workflows:
             - check_code_quality
             - check_repository_consistency
             - check_import_linter
+            - check_layer_violations
             - fetch_tests:
                 # [reference] https://circleci.com/docs/contexts/
                 context:

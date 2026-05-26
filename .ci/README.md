@@ -14,3 +14,17 @@ PYTHONPATH=src python utils/generate_importlinter_config.py
 ```
 
 `importlinter` contracts live in `pyproject.toml` (see markers `BEGIN import-linter`).
+
+## Layer violations (WO-002)
+
+| File | Purpose |
+|------|---------|
+| `layer_violation_baseline.json` | Baseline count and fingerprints for config→modeling boundary crossings. CI fails on **new** fingerprints or a count above baseline. |
+
+Scans `configuration_*.py`, `configuration_utils.py`, and `modular_*.py` under `src/transformers/` for uses of symbols imported from modeling modules (ForgeScore reference ~3958; current AST baseline ~3840).
+
+Regenerate after an intentional, reviewed change:
+
+```bash
+PYTHONPATH=src python utils/check_layer_violations.py --write-baseline
+```
