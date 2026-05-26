@@ -70,5 +70,13 @@ class ConverterChangedInDiffTest(unittest.TestCase):
             )
 
 
+class DiscoverModularFilesTest(unittest.TestCase):
+    def test_includes_models_and_examples(self):
+        files = check_modular_conversion.discover_modular_files()
+        self.assertTrue(files)
+        self.assertTrue(any("src/transformers/models/" in path for path in files))
+        self.assertTrue(any("examples/modular-transformers/" in path for path in files))
+
+
 if __name__ == "__main__":
     unittest.main()

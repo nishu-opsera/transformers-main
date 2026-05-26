@@ -1,7 +1,7 @@
 # make sure to test the local checkout in scripts and not the pre-installed one (don't use quotes!)
 export PYTHONPATH = src
 
-.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations check-repo fix-repo test test-examples benchmark codex claude clean-ai
+.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations check-modular-conversion check-repo fix-repo test test-examples benchmark codex claude clean-ai
 
 
 # Checker lists. The two CI jobs (CircleCI runs `make check-code-quality` and
@@ -60,6 +60,10 @@ check-import-linter:
 # AST config→modeling layer guardrail (WO-002): blocks new layer boundary violations.
 check-layer-violations:
 	@PYTHONPATH=src python utils/check_layer_violations.py
+
+# Modular source vs generated file consistency (WO-003).
+check-modular-conversion:
+	@python utils/check_modular_conversion.py --check
 
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:

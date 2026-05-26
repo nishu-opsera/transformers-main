@@ -28,3 +28,16 @@ Regenerate after an intentional, reviewed change:
 ```bash
 PYTHONPATH=src python utils/check_layer_violations.py --write-baseline
 ```
+
+## Modular conversion (WO-003)
+
+CI job `check_modular_conversion` verifies every `modular_*.py` under `src/transformers/models/` and `examples/modular-transformers/` matches committed generated files.
+
+```bash
+make check-modular-conversion
+# equivalent:
+python utils/check_modular_conversion.py --check
+python utils/modular_model_converter.py --check
+```
+
+On drift, CI prints the modular source path, generated file path, and a unified diff.

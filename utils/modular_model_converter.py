@@ -19,6 +19,7 @@ import os
 import re
 import subprocess
 from abc import ABC, abstractmethod
+from pathlib import Path
 from collections import Counter, defaultdict, deque
 from functools import partial
 
@@ -2084,7 +2085,19 @@ if __name__ == "__main__":
         default="transformers",
         help="The top-level package name (default: 'transformers')",
     )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Verify all committed generated files match modular sources (same as check_modular_conversion.py --check).",
+    )
     args = parser.parse_args()
+    if args.check:
+        repo_root = Path(__file__).resolve().parents[1]
+        result = subprocess.run(
+            [sys.executable, str(Path(__file__).parent / "check_modular_conversion.py"), "--check"],
+            cwd=repo_root,
+        )
+        raise SystemExit(result.returncode)
     # Both arg represent the same data, but as positional and optional
     files_to_parse = args.files if len(args.files) > 0 else args.files_to_parse
     num_workers = mp.cpu_count() if args.num_workers == -1 else args.num_workers

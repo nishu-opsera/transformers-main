@@ -6,7 +6,10 @@ import multiprocessing
 import os
 import shutil
 import subprocess
+import sys
+from dataclasses import dataclass
 from functools import partial
+from pathlib import Path
 
 from create_dependency_mapping import find_priority_list
 
@@ -15,15 +18,42 @@ from modular_model_converter import convert_modular_file, run_ruff
 from rich.console import Console
 from rich.syntax import Syntax
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+MODULAR_FILE_GLOBS = (
+    "src/transformers/models/**/modular_*.py",
+    "examples/modular-transformers/modular_*.py",
+)
+
 
 CHECKER_CONFIG = {
     "name": "modular_conversion",
     "label": "Modular file conversions",
     # Globs the modular sources; also reads generated modeling_*.py at runtime for diffing.
-    "cache_globs": ["src/transformers/models/**/modular_*.py", "src/transformers/models/**/modeling_*.py"],
+    "cache_globs": [
+        "src/transformers/models/**/modular_*.py",
+        "src/transformers/models/**/modeling_*.py",
+        "examples/modular-transformers/modular_*.py",
+        "examples/modular-transformers/modeling_*.py",
+    ],
     "check_args": [],
     "fix_args": ["--fix_and_overwrite"],
 }
+
+
+@dataclass(frozen=True)
+class ModularDrift:
+    modular_source: str
+    generated_file: str
+    diff_lines: list[str]
+
+
+def discover_modular_files() -> list[str]:
+    """All modular_*.py sources under models/ and examples/modular-transformers/."""
+    files: list[str] = []
+    for pattern in MODULAR_FILE_GLOBS:
+        files.extend(glob.glob(pattern, recursive=True))
+    return sorted(set(files))
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.ERROR)
@@ -37,6 +67,7 @@ def process_file(
     generated_modeling_content,
     file_type="modeling_",
     show_diff=True,
+    drift_reports: list[ModularDrift] | None = None,
 ):
     file_name_prefix = file_type.split(".*")[0]
     file_name_suffix = file_type.split(".*")[-1] if ".*" in file_type else ""
@@ -54,6 +85,14 @@ def process_file(
     diff_list = list(diff)
     # Check for differences
     if diff_list:
+        if drift_reports is not None:
+            drift_reports.append(
+                ModularDrift(
+                    modular_source=modular_file_path,
+                    generated_file=file_path,
+                    diff_lines=diff_list,
+                )
+            )
         # first save the copy of the original file, to be able to restore it later
         shutil.copy(file_path, file_path + BACKUP_EXT)
         # we always save the generated content, to be able to update dependant files
@@ -62,7 +101,11 @@ def process_file(
         if not show_diff:
             console.print(f"[bold blue]Overwritten {file_path} with the generated content.[/bold blue]")
         if show_diff:
-            console.print(f"\n[bold red]Differences found between the generated code and {file_path}:[/bold red]\n")
+            console.print(
+                f"\n[bold red]Modular drift detected[/bold red]\n"
+                f"  [bold]modular source:[/bold] {modular_file_path}\n"
+                f"  [bold]generated file:[/bold] {file_path}\n"
+            )
             diff_text = "\n".join(diff_list)
             syntax = Syntax(diff_text, "diff", theme="ansi_dark", line_numbers=True)
             console.print(syntax)
@@ -97,13 +140,37 @@ def convert_and_run_ruff(modular_file_path: str) -> dict[str, str]:
     return generated_modeling_content
 
 
-def compare_files(modular_file_path, show_diff=True):
+def compare_files(modular_file_path, show_diff=True, collect_drift=False):
     # Generate the expected modeling content
     generated_modeling_content = convert_and_run_ruff(modular_file_path)
     diff = 0
+    drifts: list[ModularDrift] = []
+    drift_sink = drifts if collect_drift else None
     for file_type in generated_modeling_content:
-        diff += process_file(modular_file_path, generated_modeling_content, file_type, show_diff)
-    return diff
+        diff += process_file(
+            modular_file_path,
+            generated_modeling_content,
+            file_type,
+            show_diff,
+            drift_sink,
+        )
+    return diff, drifts
+
+
+def print_drift_summary(drift_reports: list[ModularDrift]) -> None:
+    console.print("\n[bold red]Modular conversion check failed.[/bold red]")
+    console.print(
+        "Regenerate committed files from modular sources:\n"
+        "  python utils/modular_model_converter.py <model_name>\n"
+        "  python utils/check_modular_conversion.py --fix_and_overwrite --check_all\n"
+    )
+    for report in drift_reports:
+        console.print(
+            f"\n[bold yellow]modular source:[/bold yellow] {report.modular_source}\n"
+            f"[bold yellow]generated file:[/bold yellow] {report.generated_file}"
+        )
+        syntax = Syntax("\n".join(report.diff_lines), "diff", theme="ansi_dark", line_numbers=True)
+        console.print(syntax)
 
 
 # Changes to any of these files can alter the generated output for every modular model,
@@ -173,7 +240,7 @@ def guaranteed_no_diff(modular_file_path, dependencies, models_in_diff):
     return True
 
 
-if __name__ == "__main__":
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Compare modular_xxx.py files with modeling_xxx.py files.")
     parser.add_argument(
         "--files", default=["all"], type=str, nargs="+", help="List of modular_xxx.py files to compare."
@@ -183,14 +250,21 @@ if __name__ == "__main__":
     )
     parser.add_argument("--check_all", action="store_true", help="Check all files, not just the ones in the diff.")
     parser.add_argument(
+        "--check",
+        action="store_true",
+        help="CI mode: check every modular_*.py under models/ and examples/modular-transformers/.",
+    )
+    parser.add_argument(
         "--num_workers",
         default=-1,
         type=int,
         help="The number of workers to run. Default is -1, which means the number of CPU cores.",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+    if args.check:
+        args.check_all = True
     if args.files == ["all"]:
-        args.files = glob.glob("src/transformers/models/**/modular_*.py", recursive=True)
+        args.files = discover_modular_files()
 
     if args.num_workers == -1:
         args.num_workers = multiprocessing.cpu_count()
@@ -213,9 +287,10 @@ if __name__ == "__main__":
     else:
         models_in_diff = get_models_in_diff()
         if not models_in_diff and not args.check_all:
-            exit(0)
+            return 0
 
     non_matching_files = []
+    drift_reports: list[ModularDrift] = []
     ordered_files, dependencies = find_priority_list(args.files)
     flat_ordered_files = [item for sublist in ordered_files for item in sublist]
 
@@ -241,10 +316,17 @@ if __name__ == "__main__":
             num_workers = min(args.num_workers, len(files_to_check))
             with multiprocessing.Pool(num_workers) as p:
                 try:
-                    is_changed_flags = p.map(
-                        partial(compare_files, show_diff=not args.fix_and_overwrite),
+                    results = p.map(
+                        partial(
+                            compare_files,
+                            show_diff=not args.fix_and_overwrite,
+                            collect_drift=not args.fix_and_overwrite,
+                        ),
                         files_to_check,
                     )
+                    is_changed_flags = [flag for flag, _ in results]
+                    for _, batch_drifts in results:
+                        drift_reports.extend(batch_drifts)
                 except Exception as e:
                     console.print(
                         f"[bold red]Failed to convert one or more files in batch: {files_to_check}[/bold red]"
@@ -254,8 +336,13 @@ if __name__ == "__main__":
                     is_changed_flags = []
                     for file_path in files_to_check:
                         try:
-                            result = compare_files(file_path, show_diff=not args.fix_and_overwrite)
+                            result, batch_drifts = compare_files(
+                                file_path,
+                                show_diff=not args.fix_and_overwrite,
+                                collect_drift=not args.fix_and_overwrite,
+                            )
                             is_changed_flags.append(result)
+                            drift_reports.extend(batch_drifts)
                         except Exception as individual_error:
                             console.print(f"[bold red]Failed to convert {file_path}: {individual_error}[/bold red]")
                             is_changed_flags.append(0)  # Mark as no change to continue processing
@@ -279,6 +366,16 @@ if __name__ == "__main__":
             os.remove(backup_file_path)
 
     if non_matching_files and not args.fix_and_overwrite:
+        if drift_reports:
+            print_drift_summary(drift_reports)
         diff_models = set(file_path.split("/")[-2] for file_path in non_matching_files)  # noqa
         models_str = "\n - " + "\n - ".join(sorted(diff_models))
-        raise ValueError(f"Some diff and their modeling code did not match. Models in diff:{models_str}")
+        console.print(f"[bold red]Models with drift:[/bold red]{models_str}", file=sys.stderr)
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    os.chdir(REPO_ROOT)
+    sys.exit(main())
