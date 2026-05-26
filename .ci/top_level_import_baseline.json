@@ -66,10 +66,6 @@
     },
     {
       "source": "transformers.configuration_utils",
-      "destination": "transformers.generation"
-    },
-    {
-      "source": "transformers.configuration_utils",
       "destination": "transformers.modeling_gguf_pytorch_utils"
     },
     {
@@ -95,10 +91,6 @@
     {
       "source": "transformers.conversion_mapping",
       "destination": "transformers.quantizers"
-    },
-    {
-      "source": "transformers.convert_slow_tokenizer",
-      "destination": "transformers.models"
     },
     {
       "source": "transformers.convert_slow_tokenizer",
@@ -198,19 +190,11 @@
     },
     {
       "source": "transformers.fusion_mapping",
-      "destination": "transformers.configuration_utils"
-    },
-    {
-      "source": "transformers.fusion_mapping",
       "destination": "transformers.conversion_mapping"
     },
     {
       "source": "transformers.fusion_mapping",
       "destination": "transformers.core_model_loading"
-    },
-    {
-      "source": "transformers.fusion_mapping",
-      "destination": "transformers.modeling_utils"
     },
     {
       "source": "transformers.fusion_mapping",
@@ -239,10 +223,6 @@
     {
       "source": "transformers.generation",
       "destination": "transformers.dynamic_module_utils"
-    },
-    {
-      "source": "transformers.generation",
-      "destination": "transformers.initialization"
     },
     {
       "source": "transformers.generation",
@@ -363,10 +343,6 @@
     {
       "source": "transformers.image_utils",
       "destination": "transformers.utils"
-    },
-    {
-      "source": "transformers.initialization",
-      "destination": "transformers.modeling_utils"
     },
     {
       "source": "transformers.integrations",
@@ -550,10 +526,6 @@
     },
     {
       "source": "transformers.modeling_rope_utils",
-      "destination": "transformers.configuration_utils"
-    },
-    {
-      "source": "transformers.modeling_rope_utils",
       "destination": "transformers.utils"
     },
     {
@@ -563,10 +535,6 @@
     {
       "source": "transformers.modeling_utils",
       "destination": "transformers.configuration_utils"
-    },
-    {
-      "source": "transformers.modeling_utils",
-      "destination": "transformers.conversion_mapping"
     },
     {
       "source": "transformers.modeling_utils",
@@ -1291,18 +1259,6 @@
     {
       "source": "transformers.utils",
       "destination": "transformers._typing"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.backbone_utils"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.convert_slow_tokenizer"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.masking_utils"
     },
     {
       "source": "transformers.utils",

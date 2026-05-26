@@ -15,10 +15,12 @@
 """Configuration base class and utilities."""
 
 import copy
+import importlib
 import json
 import math
 import os
 from collections.abc import Sequence
+from functools import lru_cache
 from dataclasses import MISSING, dataclass, fields
 from functools import wraps
 from typing import TYPE_CHECKING, Any, ClassVar, Literal, TypeVar, Union
@@ -30,7 +32,6 @@ from typing_extensions import dataclass_transform
 
 from . import __version__
 from .dynamic_module_utils import custom_object_save
-from .generation.configuration_utils import GenerationConfig
 from .modeling_gguf_pytorch_utils import load_gguf_checkpoint
 from .modeling_rope_utils import RotaryEmbeddingConfigMixin
 from .utils import (
@@ -50,6 +51,11 @@ if TYPE_CHECKING:
 
 
 logger = logging.get_logger(__name__)
+
+
+@lru_cache
+def _generation_config_cls():
+    return importlib.import_module("transformers.generation.configuration_utils").GenerationConfig
 
 
 # type hinting: specifying the type of config class that inherits from PreTrainedConfig
@@ -294,7 +300,7 @@ class PreTrainedConfig(PushToHubMixin, RotaryEmbeddingConfigMixin):
             kwargs = self.convert_rope_params_to_dict(**kwargs)
 
         # Parameters for sequence generation saved in the config are popped instead of loading them.
-        for parameter_name in GenerationConfig._get_default_generation_params().keys():
+        for parameter_name in _generation_config_cls()._get_default_generation_params().keys():
             kwargs.pop(parameter_name, None)
 
         # Name or path to the pretrained checkpoint
@@ -1217,7 +1223,7 @@ class PreTrainedConfig(PushToHubMixin, RotaryEmbeddingConfigMixin):
         """
         generation_params = {}
         default_config = self.__class__().to_dict() if not self.has_no_defaults_at_init else {}
-        for key in GenerationConfig._get_default_generation_params().keys():
+        for key in _generation_config_cls()._get_default_generation_params().keys():
             if key == "use_cache":
                 continue  # common key for most models
             if hasattr(self, key) and getattr(self, key) is not None and key not in default_config:

@@ -1091,8 +1091,7 @@ def get_model_conversion_mapping(
     """
     import importlib
 
-    from .modeling_utils import PreTrainedModel
-
+    PreTrainedModel = importlib.import_module("transformers.modeling_utils").PreTrainedModel
     WeightRenaming = importlib.import_module("transformers.core_model_loading").WeightRenaming
 
     # note: this function is used in PEFT, so changing the API requires coordination

@@ -2272,7 +2272,11 @@ class _LazyModule(ModuleType):
                         if value is None and name.endswith("TokenizerFast"):
                             lookup_name = name[:-4]
                             try:
-                                from ..convert_slow_tokenizer import SLOW_TO_FAST_CONVERTERS
+                                import importlib
+
+                                SLOW_TO_FAST_CONVERTERS = importlib.import_module(
+                                    "transformers.convert_slow_tokenizer"
+                                ).SLOW_TO_FAST_CONVERTERS
 
                                 if lookup_name in SLOW_TO_FAST_CONVERTERS:
                                     converter_class = SLOW_TO_FAST_CONVERTERS[lookup_name]
@@ -2407,8 +2411,11 @@ class _LazyModule(ModuleType):
                 lookup_name = name[:-4] if name.endswith("TokenizerFast") else name
 
                 try:
-                    # Lazy import to avoid circular dependencies
-                    from ..convert_slow_tokenizer import SLOW_TO_FAST_CONVERTERS
+                    import importlib
+
+                    SLOW_TO_FAST_CONVERTERS = importlib.import_module(
+                        "transformers.convert_slow_tokenizer"
+                    ).SLOW_TO_FAST_CONVERTERS
 
                     # Check if this tokenizer has a converter mapping
                     if lookup_name in SLOW_TO_FAST_CONVERTERS:

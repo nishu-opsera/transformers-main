@@ -22,9 +22,8 @@ import torch
 from torch import nn
 from torch.nn import BCELoss
 
-from .. import initialization as init
-from ..configuration_utils import PreTrainedConfig
-from ..modeling_utils import PreTrainedModel
+import importlib
+
 from ..utils import ModelOutput, logging
 from .logits_process import SynthIDTextWatermarkLogitsProcessor, WatermarkLogitsProcessor
 
@@ -33,6 +32,18 @@ if TYPE_CHECKING:
     from .configuration_utils import WatermarkingConfig
 
 logger = logging.get_logger(__name__)
+
+
+def _pretrained_config_cls():
+    return importlib.import_module("transformers.configuration_utils").PreTrainedConfig
+
+
+def _pretrained_model_cls():
+    return importlib.import_module("transformers.modeling_utils").PreTrainedModel
+
+
+def _initialization_module():
+    return importlib.import_module("transformers.initialization")
 
 
 @dataclass
@@ -240,7 +251,7 @@ class WatermarkDetector:
         return prediction
 
 
-class BayesianDetectorConfig(PreTrainedConfig):
+class BayesianDetectorConfig(_pretrained_config_cls()):
     """
     This is the configuration class to store the configuration of a [`BayesianDetectorModel`]. It is used to
     instantiate a Bayesian Detector model according to the specified arguments.
@@ -347,7 +358,7 @@ class BayesianDetectorWatermarkedLikelihood(nn.Module):
         return 0.5 * ((g_values + 0.5) * p_two_unique_tokens + p_one_unique_token)
 
 
-class BayesianDetectorModel(PreTrainedModel):
+class BayesianDetectorModel(_pretrained_model_cls()):
     r"""
     Bayesian classifier for watermark detection.
 
@@ -390,7 +401,7 @@ class BayesianDetectorModel(PreTrainedModel):
     def _init_weights(self, module):
         """Initialize the weights."""
         if isinstance(module, nn.Parameter):
-            init.normal_(module.weight, mean=0.0, std=0.02)
+            _initialization_module().normal_(module.weight, mean=0.0, std=0.02)
 
     def _compute_posterior(
         self,

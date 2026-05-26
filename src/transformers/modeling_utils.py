@@ -15,6 +15,7 @@
 import collections
 import copy
 import functools
+import importlib
 import inspect
 import json
 import os
@@ -45,7 +46,6 @@ from torch.utils.checkpoint import checkpoint
 
 from . import initialization as init
 from .configuration_utils import PreTrainedConfig
-from .conversion_mapping import get_model_conversion_mapping
 from .core_model_loading import (
     WeightConverter,
     WeightRenaming,
@@ -4344,6 +4344,9 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
         dtype_plan = model._get_dtype_plan(dtype)
 
         # Obtain the weight conversion mapping for this model if any are registered
+        get_model_conversion_mapping = importlib.import_module(
+            "transformers.conversion_mapping"
+        ).get_model_conversion_mapping
         weight_conversions = get_model_conversion_mapping(model, key_mapping, hf_quantizer)
 
         if distributed_config is not None:

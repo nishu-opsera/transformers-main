@@ -250,7 +250,9 @@ def no_init_weights():
     This is used to speed-up initializing an empty model with deepspeed, as we do not initialize the model on meta device
     with deepspeed, but we still don't need to run expensive weight initializations as we are loading params afterwards.
     """
-    from .modeling_utils import PreTrainedModel
+    import importlib
+
+    PreTrainedModel = importlib.import_module("transformers.modeling_utils").PreTrainedModel
 
     def empty_func(*args, **kwargs):
         pass
@@ -287,7 +289,9 @@ def no_tie_weights():
     weights in the state_dict during `from_pretrained`, and otherwise tying them would remove them from it, as it's
     called in `post_init` when instantiating.
     """
-    from .modeling_utils import PreTrainedModel
+    import importlib
+
+    PreTrainedModel = importlib.import_module("transformers.modeling_utils").PreTrainedModel
 
     def empty_func(*args, **kwargs):
         pass

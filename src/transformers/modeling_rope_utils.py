@@ -16,7 +16,7 @@ import math
 import warnings
 from collections.abc import Callable
 from functools import wraps
-from typing import TYPE_CHECKING, Optional, TypedDict
+from typing import Optional, TypedDict
 
 from .utils import is_torch_available, logging
 
@@ -26,9 +26,6 @@ logger = logging.get_logger(__name__)
 
 if is_torch_available():
     import torch
-
-if TYPE_CHECKING:
-    from .configuration_utils import PreTrainedConfig
 
 
 def dynamic_rope_update(rope_forward):

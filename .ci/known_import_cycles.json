@@ -8,44 +8,8 @@
     },
     {
       "modules": [
-        "transformers.backbone_utils",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.configuration_utils",
-        "transformers.generation"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.configuration_utils",
-        "transformers.modeling_rope_utils"
-      ]
-    },
-    {
-      "modules": [
         "transformers.configuration_utils",
         "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.conversion_mapping",
-        "transformers.modeling_utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.convert_slow_tokenizer",
-        "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.convert_slow_tokenizer",
-        "transformers.utils"
       ]
     },
     {
@@ -68,12 +32,6 @@
     },
     {
       "modules": [
-        "transformers.fusion_mapping",
-        "transformers.modeling_utils"
-      ]
-    },
-    {
-      "modules": [
         "transformers.generation",
         "transformers.integrations"
       ]
@@ -88,12 +46,6 @@
       "modules": [
         "transformers.image_processing_base",
         "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.initialization",
-        "transformers.modeling_utils"
       ]
     },
     {
@@ -158,12 +110,6 @@
     },
     {
       "modules": [
-        "transformers.masking_utils",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
         "transformers.modeling_layers",
         "transformers.models"
       ]
@@ -217,5 +163,5 @@
       ]
     }
   ],
-  "count": 36
+  "count": 27
 }

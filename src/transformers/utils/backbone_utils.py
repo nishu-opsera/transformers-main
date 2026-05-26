@@ -1,19 +1,14 @@
+import importlib
 import warnings
 
-from ..backbone_utils import BackboneConfigMixin, BackboneMixin
+_DEPRECATED_BACKBONE_PATH = (
+    "Importing `{name}` from `utils/backbone_utils.py` is deprecated and will be removed in "
+    "Transformers v5.10. Import as `from transformers.backbone_utils import {name}` instead."
+)
 
 
-class BackboneConfigMixin(BackboneConfigMixin):
-    warnings.warn(
-        "Importing `BackboneConfigMixin` from `utils/backbone_utils.py` is deprecated and will be removed in "
-        "Transformers v5.10. Import as `from transformers.backbone_utils import BackboneConfigMixin` instead.",
-        FutureWarning,
-    )
-
-
-class BackboneMixin(BackboneMixin):
-    warnings.warn(
-        "Importing `BackboneMixin` from `utils/backbone_utils.py` is deprecated and will be removed in "
-        "Transformers v5.10. Import as `from transformers.backbone_utils import BackboneMixin` instead.",
-        FutureWarning,
-    )
+def __getattr__(name: str):
+    if name not in ("BackboneConfigMixin", "BackboneMixin"):
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    warnings.warn(_DEPRECATED_BACKBONE_PATH.format(name=name), FutureWarning, stacklevel=2)
+    return getattr(importlib.import_module("transformers.backbone_utils"), name)

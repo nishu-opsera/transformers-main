@@ -20,7 +20,7 @@ See `docs/source/en/fusion_mapping.md` for the design overview and extension gui
 import math
 import re
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 import torch
 from torch import nn
@@ -29,11 +29,6 @@ from .conversion_mapping import get_checkpoint_conversion_mapping, register_chec
 from .core_model_loading import Conv3dToLinear, WeightConverter, WeightRenaming, WeightTransform
 from .monkey_patching import register_patch_mapping
 from .utils import logging
-
-
-if TYPE_CHECKING:
-    from .configuration_utils import PretrainedConfig
-    from .modeling_utils import PreTrainedModel
 
 
 logger = logging.get_logger(__name__)

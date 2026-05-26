@@ -213,8 +213,9 @@ class AttentionMaskVisualizer:
         batch_size, seq_length = attention_mask.shape
         inputs_embeds = torch.zeros((batch_size, seq_length, model.config.hidden_size), dtype=self.model.dtype)
 
-        from ..masking_utils import create_causal_mask
+        import importlib
 
+        create_causal_mask = importlib.import_module("transformers.masking_utils").create_causal_mask
         causal_mask = create_causal_mask(
             config=model.config,
             inputs_embeds=inputs_embeds,
