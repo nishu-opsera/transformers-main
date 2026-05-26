@@ -15,7 +15,7 @@ import re
 from typing import TYPE_CHECKING
 
 from .base import HfQuantizer
-from .quantizers_utils import get_module_from_name, should_convert_module
+from .quantizers_utils import get_module_from_name, get_weight_converter_class, should_convert_module
 
 
 if TYPE_CHECKING:
@@ -31,7 +31,7 @@ MIN_TORCH_VERSION = "2.5.0"
 
 
 if is_torch_available():
-    from ..core_model_loading import WeightConverter
+    WeightConverter = get_weight_converter_class()
 
 
 if is_torch_available():

@@ -43,7 +43,6 @@ if _torch_distributed_available:
 
 if TYPE_CHECKING:
     from .modeling_utils import LoadStateDictConfig, PreTrainedModel
-    from .quantizers import HfQuantizer
 
 logger = get_logger(__name__)
 
@@ -1096,7 +1095,7 @@ def set_param_for_module(
     target_name: str,
     param_value: torch.Tensor,
     loading_info: LoadStateDictInfo,
-    hf_quantizer: HfQuantizer,
+    hf_quantizer: "HfQuantizer",
 ):
     module_path, _, param_name = target_name.rpartition(".")
     module_obj = model.get_submodule(module_path) if module_path else model
@@ -1487,7 +1486,11 @@ def revert_weight_conversion(model: PreTrainedModel, state_dict: dict[str, torch
     # In this case, the model was not created with `from_pretrained` -> let's check if it's in the hardcoded
     # mappings, and recreate the mapping from there if it is
     if weight_conversions is None:
-        from .conversion_mapping import get_model_conversion_mapping
+        import importlib
+
+        get_model_conversion_mapping = importlib.import_module(
+            "transformers.conversion_mapping"
+        ).get_model_conversion_mapping
 
         # Do not resave with the legacy renaming, if present
         weight_conversions = get_model_conversion_mapping(model, add_legacy=False)

@@ -18,7 +18,7 @@ from typing import TYPE_CHECKING
 from ..utils import is_torch_available, logging
 from ..utils.quantization_config import SinqConfig
 from .base import HfQuantizer
-from .quantizers_utils import get_module_from_name
+from .quantizers_utils import get_module_from_name, get_weight_converter_class
 
 
 if is_torch_available():
@@ -179,7 +179,7 @@ class SinqHfQuantizer(HfQuantizer):
         via a WeightConverter + SinqDeserialize so that we reconstruct a SINQLinear
         module instead of a plain nn.Linear.
         """
-        from ..core_model_loading import WeightConverter
+        WeightConverter = get_weight_converter_class()
 
         if self.pre_quantized:
             from ..integrations.sinq import SinqDeserialize

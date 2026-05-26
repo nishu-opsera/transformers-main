@@ -25,9 +25,11 @@ from typing import Any, Literal
 
 from .debug_utils import DebugOption
 from .trainer_utils import (
+    AcceleratorConfig,
     FSDPOption,
     HubStrategy,
     IntervalStrategy,
+    ParallelMode,
     SaveStrategy,
     SchedulerType,
 )
@@ -69,8 +71,6 @@ if is_torch_available():
 if is_accelerate_available():
     from accelerate.state import AcceleratorState, PartialState
     from accelerate.utils import DistributedType
-
-    from .trainer_pt_utils import AcceleratorConfig
 
 if is_accelerate_available("1.10.1"):
     from accelerate.parallelism_config import ParallelismConfig
@@ -2846,15 +2846,6 @@ class TrainingArguments:
                 pass
             else:
                 raise ValueError(f"Unknown `fsdp` option: {item}")
-
-
-class ParallelMode(Enum):
-    NOT_PARALLEL = "not_parallel"
-    NOT_DISTRIBUTED = "not_distributed"
-    DISTRIBUTED = "distributed"
-    SAGEMAKER_MODEL_PARALLEL = "sagemaker_model_parallel"
-    SAGEMAKER_DATA_PARALLEL = "sagemaker_data_parallel"
-    TPU = "tpu"
 
 
 def str_to_bool(value, to_bool: bool = True) -> int | bool:

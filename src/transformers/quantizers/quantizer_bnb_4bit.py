@@ -14,7 +14,7 @@
 from typing import TYPE_CHECKING
 
 from .base import HfQuantizer
-from .quantizers_utils import get_module_from_name
+from .quantizers_utils import get_module_from_name, get_weight_converter_class
 
 
 if TYPE_CHECKING:
@@ -37,7 +37,7 @@ from ..utils import (
 if is_torch_available():
     import torch
 
-    from ..core_model_loading import WeightConverter
+    WeightConverter = get_weight_converter_class()
 
 logger = logging.get_logger(__name__)
 

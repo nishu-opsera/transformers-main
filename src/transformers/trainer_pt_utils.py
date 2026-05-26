@@ -42,6 +42,7 @@ from torch.utils.data.distributed import DistributedSampler
 
 from .integrations.deepspeed import is_deepspeed_zero3_enabled
 from .tokenization_utils_base import BatchEncoding
+from .trainer_utils import AcceleratorConfig  # noqa: F401 — re-export for backward compatibility
 from .utils import (
     is_sagemaker_mp_enabled,
     is_torch_available,
@@ -221,7 +222,7 @@ def nested_gather(tensors, parallel_mode, name=None):
     """
     Gather value of `tensors` (tensor or list/tuple of nested tensors) across processes.
     """
-    from .training_args import ParallelMode
+    from .trainer_utils import ParallelMode
 
     if tensors is None:
         return
@@ -1111,137 +1112,6 @@ if is_sagemaker_mp_enabled():
         # It doesn't seem possible to check here if `tensor` is a StepOutput because StepOutput lives in `smp.step`
         # which is also the name of the decorator so Python is confused.
         return tensor.detach().concat().cpu()
-
-
-@dataclass
-class AcceleratorConfig:
-    """
-    A subset of arguments relating to the underlying [`accelerate.Accelerator`]
-    implementation utilized in the `Trainer` that can be customized.
-    Mostly relating to data.
-
-    Parameters:
-        split_batches (`bool`, *optional*, defaults to `False`):
-            Whether or not the accelerator should split the batches yielded by the dataloaders across the devices. If
-            `True` the actual batch size used will be the same on any kind of distributed processes, but it must be a
-            round multiple of the `num_processes` you are using. If `False`, actual batch size used will be the one set
-            in your script multiplied by the number of processes.
-        dispatch_batches (`bool`, *optional*):
-            If set to `True`, the dataloader prepared by the Accelerator is only iterated through on the main process
-            and then the batches are split and broadcast to each process. Will default to `True` for `DataLoader` whose
-            underlying dataset is an `IterableDataset`, `False` otherwise.
-        even_batches (`bool`, *optional*, defaults to `True`):
-            If set to `True`, in cases where the total batch size across all processes does not exactly divide the
-            dataset, samples at the start of the dataset will be duplicated so the batch can be divided equally among
-            all workers.
-        use_seedable_sampler (`bool`, *optional*, defaults to `True`):
-            Whether or not use a fully seedable random sampler ([`accelerate.data_loader.SeedableRandomSampler`]). Ensures
-            training results are fully reproducible using a different sampling technique. While seed-to-seed results
-            may differ, on average the differences are negligible when using multiple different seeds to compare. Should
-            also be ran with [`~utils.set_seed`] for the best results.
-        gradient_accumulation_kwargs (`dict`, *optional*):
-            Additional kwargs to configure gradient accumulation, see [`accelerate.utils.GradientAccumulationPlugin`].
-            Any of the following (optional) keys are acceptable:
-              num_steps (`int`): Will take precedence over [`~.TrainingArguments.gradient_accumulation_steps`] if
-                the latter is set to 1, otherwise an exception will be raised.
-              sync_each_batch (`bool`): Whether to synchronize the gradients at each data batch.
-                The [`accelerate.utils.GradientAccumulationPlugin`] default is `False`.
-        non_blocking (`bool`, *optional*, defaults to `False`):
-            Whether to use non-blocking CUDA calls to help minimize synchronization during
-            distributed training with prepared `DataLoader` inputs being moved to device.
-            Best if used with `pin_memory=True` in the `TrainingArguments`.
-        use_configured_state (`bool*, *optional*, defaults to `False`):
-            Whether or not to use a pre-configured `AcceleratorState` or `PartialState` defined
-            before calling `TrainingArguments`. If `True`, an `Accelerator` or `PartialState`
-            must be initialized. May lead to issues using sweeps or hyperparameter tuning.
-
-    """
-
-    # Data related arguments
-    split_batches: bool = field(
-        default=False,
-        metadata={
-            "help": "Whether or not the accelerator should split the batches yielded by the dataloaders across the devices. If"
-            " `True` the actual batch size used will be the same on any kind of distributed processes, but it must be a"
-            " round multiple of the `num_processes` you are using. If `False`, actual batch size used will be the one set"
-            " in your script multiplied by the number of processes."
-        },
-    )
-    dispatch_batches: bool | None = field(
-        default=None,
-        metadata={
-            "help": "If set to `True`, the dataloader prepared by the Accelerator is only iterated through on the main process"
-            " and then the batches are split and broadcast to each process. Will default to `True` for `DataLoader` whose"
-            " underlying dataset is an `IterableDataslet`, `False` otherwise."
-        },
-    )
-    even_batches: bool = field(
-        default=True,
-        metadata={
-            "help": "If set to `True`, in cases where the total batch size across all processes does not exactly divide the"
-            " dataset, samples at the start of the dataset will be duplicated so the batch can be divided equally among"
-            " all workers."
-        },
-    )
-    use_seedable_sampler: bool = field(
-        default=True,
-        metadata={
-            "help": "Whether or not use a fully seedable random sampler ([`accelerate.data_loader.SeedableRandomSampler`])."
-            "Ensures training results are fully reproducible using a different sampling technique. "
-            "While seed-to-seed results may differ, on average the differences are negligible when using"
-            "multiple different seeds to compare. Should also be ran with [`~utils.set_seed`] for the best results."
-        },
-    )
-
-    non_blocking: bool = field(
-        default=False,
-        metadata={
-            "help": "Whether to use non-blocking CUDA calls to help minimize synchronization during "
-            "distributed training with prepared `DataLoader` inputs being moved to device. "
-            "Best if used with `pin_memory=True` in the `TrainingArguments`. Requires accelerate "
-            "v0.30.0."
-        },
-    )
-
-    gradient_accumulation_kwargs: dict | None = field(
-        default=None,
-        metadata={
-            "help": "Additional kwargs to configure gradient accumulation, see [`accelerate.utils.GradientAccumulationPlugin`]. "
-            "Any of the following (optional) keys are acceptable: "
-            "  num_steps (`int`): Will take precedence over [`~.TrainingArguments.gradient_accumulation_steps`] if "
-            "    the latter is set to 1, otherwise an exception will be raised. "
-            "  sync_each_batch (`bool`): Whether to synchronize the gradients at each data batch. "
-            "    The [`accelerate.utils.GradientAccumulationPlugin`] default is `False`."
-        },
-    )
-    use_configured_state: bool = field(
-        default=False,
-        metadata={
-            "help": "Whether or not to use a pre-configured `AcceleratorState` or `PartialState` defined before calling `TrainingArguments`."
-            "If `True`, an `Accelerator` or `PartialState` must be initialized. May lead to issues using sweeps or hyperparameter tuning."
-        },
-    )
-
-    @classmethod
-    def from_json_file(cls, json_file):
-        # Check if exists
-        open_file = io.open if os.path.exists(json_file) else open
-        with open_file(json_file, "r", encoding="utf-8") as f:
-            config_dict = json.load(f)
-        # Check for keys and load sensible defaults
-        extra_keys = sorted(key for key in config_dict if key not in cls.__dataclass_fields__)
-        if len(extra_keys) > 0:
-            raise ValueError(
-                f"The config file at {json_file} had unknown keys ({extra_keys}), please try upgrading your `transformers`"
-                " version or fix (and potentially remove these keys) from your config file."
-            )
-        return cls(**config_dict)
-
-    def to_dict(self):
-        return copy.deepcopy(self.__dict__)
-
-    def pop(self, key, default=None):
-        return self.__dict__.pop(key, default)
 
 
 class LayerWiseDummyOptimizer(torch.optim.Optimizer):

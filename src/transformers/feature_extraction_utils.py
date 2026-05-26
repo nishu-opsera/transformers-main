@@ -43,10 +43,6 @@ from .utils import (
 from .utils.hub import cached_file
 
 
-if TYPE_CHECKING:
-    from .feature_extraction_sequence_utils import SequenceFeatureExtractor
-
-
 logger = logging.get_logger(__name__)
 
 PreTrainedFeatureExtractor = Union["SequenceFeatureExtractor"]

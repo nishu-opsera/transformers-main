@@ -14,7 +14,7 @@
 from typing import TYPE_CHECKING, Optional
 
 from .base import HfQuantizer
-from .quantizers_utils import get_module_from_name
+from .quantizers_utils import get_module_from_name, get_weight_converter_class
 
 
 if TYPE_CHECKING:
@@ -141,7 +141,7 @@ class FPQuantHfQuantizer(HfQuantizer):
         return FpQuantQuantize(self)
 
     def get_weight_conversions(self):
-        from ..core_model_loading import WeightConverter
+        WeightConverter = get_weight_converter_class()
         from ..integrations.fp_quant import FpQuantDeserialize
 
         if self.pre_quantized:

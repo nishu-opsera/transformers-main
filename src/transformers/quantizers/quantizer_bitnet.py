@@ -107,7 +107,9 @@ class BitNetHfQuantizer(HfQuantizer):
         )
 
     def get_weight_conversions(self):
-        from ..core_model_loading import WeightConverter
+        from .quantizers_utils import get_weight_converter_class
+
+        WeightConverter = get_weight_converter_class()
         from ..integrations.bitnet import BitNetDeserialize
 
         if (

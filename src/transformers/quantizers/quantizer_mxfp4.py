@@ -27,13 +27,13 @@ from ..utils import (
     is_triton_available,
     logging,
 )
-from .quantizers_utils import get_module_from_name
+from .quantizers_utils import get_module_from_name, get_weight_converter_class
 
 
 if is_torch_available():
     import torch
 
-    from ..core_model_loading import WeightConverter
+    WeightConverter = get_weight_converter_class()
 
 logger = logging.get_logger(__name__)
 triton_kernels_hub = None

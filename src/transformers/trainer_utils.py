@@ -20,6 +20,7 @@ import copy
 import functools
 import gc
 import inspect
+import io
 import json
 import os
 import random
@@ -28,6 +29,8 @@ import shutil
 import threading
 import time
 from collections.abc import Callable, Sized
+from dataclasses import dataclass, field
+from enum import Enum
 from functools import partial
 from pathlib import Path
 from typing import Any, NamedTuple, TypeGuard
@@ -1240,6 +1243,105 @@ def align_special_tokens(model, processing_class):
             "The model config and generation config were aligned accordingly, being updated with the tokenizer's "
             f"values. Updated tokens: {updated_tokens}."
         )
+
+
+class ParallelMode(Enum):
+    NOT_PARALLEL = "not_parallel"
+    NOT_DISTRIBUTED = "not_distributed"
+    DISTRIBUTED = "distributed"
+    SAGEMAKER_MODEL_PARALLEL = "sagemaker_model_parallel"
+    SAGEMAKER_DATA_PARALLEL = "sagemaker_data_parallel"
+    TPU = "tpu"
+
+
+@dataclass
+class AcceleratorConfig:
+    """
+    A subset of arguments relating to the underlying [`accelerate.Accelerator`]
+    implementation utilized in the `Trainer` that can be customized.
+    Mostly relating to data.
+    """
+
+    split_batches: bool = field(
+        default=False,
+        metadata={
+            "help": "Whether or not the accelerator should split the batches yielded by the dataloaders across the devices. If"
+            " `True` the actual batch size used will be the same on any kind of distributed processes, but it must be a"
+            " round multiple of the `num_processes` you are using. If `False`, actual batch size used will be the one set"
+            " in your script multiplied by the number of processes."
+        },
+    )
+    dispatch_batches: bool | None = field(
+        default=None,
+        metadata={
+            "help": "If set to `True`, the dataloader prepared by the Accelerator is only iterated through on the main process"
+            " and then the batches are split and broadcast to each process. Will default to `True` for `DataLoader` whose"
+            " underlying dataset is an `IterableDataslet`, `False` otherwise."
+        },
+    )
+    even_batches: bool = field(
+        default=True,
+        metadata={
+            "help": "If set to `True`, in cases where the total batch size across all processes does not exactly divide the"
+            " dataset, samples at the start of the dataset will be duplicated so the batch can be divided equally among"
+            " all workers."
+        },
+    )
+    use_seedable_sampler: bool = field(
+        default=True,
+        metadata={
+            "help": "Whether or not use a fully seedable random sampler ([`accelerate.data_loader.SeedableRandomSampler`])."
+            "Ensures training results are fully reproducible using a different sampling technique. "
+            "While seed-to-seed results may differ, on average the differences are negligible when using"
+            "multiple different seeds to compare. Should also be ran with [`~utils.set_seed`] for the best results."
+        },
+    )
+    non_blocking: bool = field(
+        default=False,
+        metadata={
+            "help": "Whether to use non-blocking CUDA calls to help minimize synchronization during "
+            "distributed training with prepared `DataLoader` inputs being moved to device. "
+            "Best if used with `pin_memory=True` in the `TrainingArguments`. Requires accelerate "
+            "v0.30.0."
+        },
+    )
+    gradient_accumulation_kwargs: dict | None = field(
+        default=None,
+        metadata={
+            "help": "Additional kwargs to configure gradient accumulation, see [`accelerate.utils.GradientAccumulationPlugin`]. "
+            "Any of the following (optional) keys are acceptable: "
+            "  num_steps (`int`): Will take precedence over [`~.TrainingArguments.gradient_accumulation_steps`] if "
+            "    the latter is set to 1, otherwise an exception will be raised. "
+            "  sync_each_batch (`bool`): Whether to synchronize the gradients at each data batch. "
+            "    The [`accelerate.utils.GradientAccumulationPlugin`] default is `False`."
+        },
+    )
+    use_configured_state: bool = field(
+        default=False,
+        metadata={
+            "help": "Whether or not to use a pre-configured `AcceleratorState` or `PartialState` defined before calling `TrainingArguments`."
+            "If `True`, an `Accelerator` or `PartialState` must be initialized. May lead to issues using sweeps or hyperparameter tuning."
+        },
+    )
+
+    @classmethod
+    def from_json_file(cls, json_file):
+        open_file = io.open if os.path.exists(json_file) else open
+        with open_file(json_file, "r", encoding="utf-8") as f:
+            config_dict = json.load(f)
+        extra_keys = sorted(key for key in config_dict if key not in cls.__dataclass_fields__)
+        if len(extra_keys) > 0:
+            raise ValueError(
+                f"The config file at {json_file} had unknown keys ({extra_keys}), please try upgrading your `transformers`"
+                " version or fix (and potentially remove these keys) from your config file."
+            )
+        return cls(**config_dict)
+
+    def to_dict(self):
+        return copy.deepcopy(self.__dict__)
+
+    def pop(self, key, default=None):
+        return self.__dict__.pop(key, default)
 
 
 @contextlib.contextmanager

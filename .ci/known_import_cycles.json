@@ -45,12 +45,6 @@
     {
       "modules": [
         "transformers.conversion_mapping",
-        "transformers.core_model_loading"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.conversion_mapping",
         "transformers.modeling_utils"
       ]
     },
@@ -76,18 +70,6 @@
       "modules": [
         "transformers.core_model_loading",
         "transformers.modeling_utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.core_model_loading",
-        "transformers.quantizers"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.feature_extraction_sequence_utils",
-        "transformers.feature_extraction_utils"
       ]
     },
     {
@@ -278,16 +260,10 @@
     },
     {
       "modules": [
-        "transformers.trainer_pt_utils",
-        "transformers.training_args"
-      ]
-    },
-    {
-      "modules": [
         "transformers.trainer_utils",
         "transformers.utils"
       ]
     }
   ],
-  "count": 48
+  "count": 44
 }

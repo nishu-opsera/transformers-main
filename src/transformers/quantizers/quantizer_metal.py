@@ -15,7 +15,7 @@ from typing import TYPE_CHECKING, Any
 
 from ..utils import is_kernels_available, is_torch_available, logging
 from .base import HfQuantizer
-from .quantizers_utils import get_module_from_name
+from .quantizers_utils import get_module_from_name, get_weight_converter_class
 
 
 if is_torch_available():
@@ -116,7 +116,7 @@ class MetalHfQuantizer(HfQuantizer):
         return MetalQuantize(self)
 
     def get_weight_conversions(self):
-        from ..core_model_loading import WeightConverter
+        WeightConverter = get_weight_converter_class()
         from ..integrations.metal_quantization import MetalDequantize
 
         if self.pre_quantized and self.quantization_config.dequantize:

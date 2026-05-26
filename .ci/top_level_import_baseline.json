@@ -114,10 +114,6 @@
     },
     {
       "source": "transformers.core_model_loading",
-      "destination": "transformers.conversion_mapping"
-    },
-    {
-      "source": "transformers.core_model_loading",
       "destination": "transformers.distributed"
     },
     {
@@ -127,10 +123,6 @@
     {
       "source": "transformers.core_model_loading",
       "destination": "transformers.modeling_utils"
-    },
-    {
-      "source": "transformers.core_model_loading",
-      "destination": "transformers.quantizers"
     },
     {
       "source": "transformers.core_model_loading",
@@ -187,10 +179,6 @@
     {
       "source": "transformers.feature_extraction_utils",
       "destination": "transformers.dynamic_module_utils"
-    },
-    {
-      "source": "transformers.feature_extraction_utils",
-      "destination": "transformers.feature_extraction_sequence_utils"
     },
     {
       "source": "transformers.feature_extraction_utils",
@@ -934,10 +922,6 @@
     },
     {
       "source": "transformers.quantizers",
-      "destination": "transformers.core_model_loading"
-    },
-    {
-      "source": "transformers.quantizers",
       "destination": "transformers.integrations"
     },
     {
@@ -1194,7 +1178,7 @@
     },
     {
       "source": "transformers.trainer_pt_utils",
-      "destination": "transformers.training_args"
+      "destination": "transformers.trainer_utils"
     },
     {
       "source": "transformers.trainer_pt_utils",
@@ -1283,10 +1267,6 @@
     {
       "source": "transformers.training_args",
       "destination": "transformers.pytorch_utils"
-    },
-    {
-      "source": "transformers.training_args",
-      "destination": "transformers.trainer_pt_utils"
     },
     {
       "source": "transformers.training_args",

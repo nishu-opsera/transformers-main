@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from ..utils import is_accelerate_available, is_torch_available, is_torch_xpu_available, logging
 from .base import HfQuantizer
-from .quantizers_utils import get_module_from_name
+from .quantizers_utils import get_module_from_name, get_weight_converter_class, get_weight_renaming_class
 
 
 if is_torch_available():
@@ -152,7 +152,7 @@ class FineGrainedFP8HfQuantizer(HfQuantizer):
         return Fp8Quantize(self)
 
     def get_weight_conversions(self):
-        from ..core_model_loading import WeightConverter
+        WeightConverter = get_weight_converter_class()
         from ..integrations.finegrained_fp8 import Fp8Dequantize
 
         if self.pre_quantized and self.quantization_config.dequantize:
@@ -189,7 +189,8 @@ class FineGrainedFP8HfQuantizer(HfQuantizer):
         if not (self.pre_quantized and self.quantization_config.dequantize):
             return weight_conversions + self.get_weight_conversions()
 
-        from ..core_model_loading import WeightConverter, WeightRenaming
+        WeightConverter = get_weight_converter_class()
+        WeightRenaming = get_weight_renaming_class()
         from ..integrations.finegrained_fp8 import Fp8Dequantize
 
         # Some upstream FP8 checkpoints (e.g. DeepSeek-V4-Flash) ship per-block scales

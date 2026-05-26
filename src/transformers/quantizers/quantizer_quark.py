@@ -81,7 +81,9 @@ class QuarkHfQuantizer(HfQuantizer):
         return False
 
     def get_weight_conversions(self):
-        from ..core_model_loading import WeightConverter
+        from .quantizers_utils import get_weight_converter_class
+
+        WeightConverter = get_weight_converter_class()
         from ..integrations.quark import QuarkDeserialize
 
         # In Quark, quantization is managed through a QParamsLinear module, which holds

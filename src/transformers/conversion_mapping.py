@@ -18,20 +18,18 @@ from collections import defaultdict
 from copy import deepcopy
 from typing import TYPE_CHECKING
 
-from .core_model_loading import (
-    Chunk,
-    Concatenate,
-    ErnieFuseAndSplitTextVisionExperts,
-    MergeModulelist,
-    PrefixChange,
-    Transpose,
-    WeightConverter,
-    WeightRenaming,
-    WeightTransform,
-)
-
-
 if TYPE_CHECKING:
+    from .core_model_loading import (
+        Chunk,
+        Concatenate,
+        ErnieFuseAndSplitTextVisionExperts,
+        MergeModulelist,
+        PrefixChange,
+        Transpose,
+        WeightConverter,
+        WeightRenaming,
+        WeightTransform,
+    )
     from .modeling_utils import PreTrainedModel
     from .quantizers import HfQuantizer
 
@@ -117,6 +115,18 @@ _MODEL_TO_CONVERSION_PATTERN = {
 
 
 def _build_checkpoint_conversion_mapping():
+    import importlib
+
+    cml = importlib.import_module("transformers.core_model_loading")
+    Chunk = cml.Chunk
+    Concatenate = cml.Concatenate
+    ErnieFuseAndSplitTextVisionExperts = cml.ErnieFuseAndSplitTextVisionExperts
+    MergeModulelist = cml.MergeModulelist
+    PrefixChange = cml.PrefixChange
+    Transpose = cml.Transpose
+    WeightConverter = cml.WeightConverter
+    WeightRenaming = cml.WeightRenaming
+
     mapping = {
         "hrm_text": [
             WeightConverter(
@@ -1079,7 +1089,11 @@ def get_model_conversion_mapping(
     seen to prevent `XForY` / `XModel` pairs from applying the same mapping
     twice via different lookup paths.
     """
+    import importlib
+
     from .modeling_utils import PreTrainedModel
+
+    WeightRenaming = importlib.import_module("transformers.core_model_loading").WeightRenaming
 
     # note: this function is used in PEFT, so changing the API requires coordination
     weight_conversions = []

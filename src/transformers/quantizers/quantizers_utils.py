@@ -11,8 +11,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import importlib
 import re
+from functools import lru_cache
 from typing import Any
+
+
+@lru_cache
+def _core_model_loading_module():
+    """Lazy import to avoid a quantizers <-> core_model_loading cycle (WO-008)."""
+    return importlib.import_module("transformers.core_model_loading")
+
+
+def get_weight_converter_class():
+    return _core_model_loading_module().WeightConverter
+
+
+def get_weight_renaming_class():
+    return _core_model_loading_module().WeightRenaming
 
 
 def get_module_from_name(module, tensor_name: str) -> tuple[Any, str]:
