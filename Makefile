@@ -93,6 +93,10 @@ test-protocols:
 test-init-imports:
 	@PYTHONPATH=src python -m pytest tests/test_init_imports.py -q --noconftest
 
+# Config serialization characterization tests (WO-027).
+test-config-serialization:
+	@PYTHONPATH=src python -m pytest tests/test_config_serialization.py -q --noconftest
+
 # Deprecation framework tests (WO-023).
 test-deprecation-utils:
 	@PYTHONPATH=src python -m pytest tests/repo_utils/test_deprecation_utils.py -q --noconftest
