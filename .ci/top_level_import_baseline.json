@@ -1,0 +1,1408 @@
+{
+  "edges": [
+    {
+      "source": "transformers._typing",
+      "destination": "transformers.cache_utils"
+    },
+    {
+      "source": "transformers.activations",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.activations",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.audio_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.backbone_utils",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.backbone_utils",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.backbone_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.cache_utils",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.cache_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.cli",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.cli",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.cli",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.cli",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.configuration_utils",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.configuration_utils",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.configuration_utils",
+      "destination": "transformers.modeling_gguf_pytorch_utils"
+    },
+    {
+      "source": "transformers.configuration_utils",
+      "destination": "transformers.modeling_rope_utils"
+    },
+    {
+      "source": "transformers.configuration_utils",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.configuration_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.conversion_mapping",
+      "destination": "transformers.core_model_loading"
+    },
+    {
+      "source": "transformers.conversion_mapping",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.conversion_mapping",
+      "destination": "transformers.quantizers"
+    },
+    {
+      "source": "transformers.convert_slow_tokenizer",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.convert_slow_tokenizer",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.convert_slow_tokenizer",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.convert_slow_tokenizers_checkpoints_to_fast",
+      "destination": "transformers.convert_slow_tokenizer"
+    },
+    {
+      "source": "transformers.convert_slow_tokenizers_checkpoints_to_fast",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.core_model_loading",
+      "destination": "transformers.conversion_mapping"
+    },
+    {
+      "source": "transformers.core_model_loading",
+      "destination": "transformers.distributed"
+    },
+    {
+      "source": "transformers.core_model_loading",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.core_model_loading",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.core_model_loading",
+      "destination": "transformers.quantizers"
+    },
+    {
+      "source": "transformers.core_model_loading",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.data",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.data",
+      "destination": "transformers.tokenization_python"
+    },
+    {
+      "source": "transformers.data",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.data",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.debug_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.dependency_versions_check",
+      "destination": "transformers.dependency_versions_table"
+    },
+    {
+      "source": "transformers.dependency_versions_check",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.distributed",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.dynamic_module_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.feature_extraction_sequence_utils",
+      "destination": "transformers.audio_utils"
+    },
+    {
+      "source": "transformers.feature_extraction_sequence_utils",
+      "destination": "transformers.feature_extraction_utils"
+    },
+    {
+      "source": "transformers.feature_extraction_sequence_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.feature_extraction_utils",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.feature_extraction_utils",
+      "destination": "transformers.feature_extraction_sequence_utils"
+    },
+    {
+      "source": "transformers.feature_extraction_utils",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.feature_extraction_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.file_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.fusion_mapping",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.fusion_mapping",
+      "destination": "transformers.conversion_mapping"
+    },
+    {
+      "source": "transformers.fusion_mapping",
+      "destination": "transformers.core_model_loading"
+    },
+    {
+      "source": "transformers.fusion_mapping",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.fusion_mapping",
+      "destination": "transformers.monkey_patching"
+    },
+    {
+      "source": "transformers.fusion_mapping",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers._typing"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.cache_utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.distributed"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.initialization"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.masking_utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.modeling_flash_attention_utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.pytorch_utils"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.tokenization_python"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.generation",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.hyperparameter_search",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.hyperparameter_search",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.hyperparameter_search",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.image_processing_backends",
+      "destination": "transformers.image_processing_base"
+    },
+    {
+      "source": "transformers.image_processing_backends",
+      "destination": "transformers.image_processing_utils"
+    },
+    {
+      "source": "transformers.image_processing_backends",
+      "destination": "transformers.image_transforms"
+    },
+    {
+      "source": "transformers.image_processing_backends",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.image_processing_backends",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.image_processing_backends",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.image_processing_base",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.image_processing_base",
+      "destination": "transformers.feature_extraction_utils"
+    },
+    {
+      "source": "transformers.image_processing_base",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.image_processing_base",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.image_processing_base",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.image_processing_utils",
+      "destination": "transformers.image_processing_base"
+    },
+    {
+      "source": "transformers.image_processing_utils",
+      "destination": "transformers.image_transforms"
+    },
+    {
+      "source": "transformers.image_processing_utils",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.image_processing_utils",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.image_processing_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.image_transforms",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.image_transforms",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.image_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.initialization",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers._typing"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.activations"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.cache_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.conversion_mapping"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.convert_slow_tokenizer"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.core_model_loading"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.dependency_versions_check"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.distributed"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.initialization"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.masking_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.modelcard"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.modeling_flash_attention_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.modeling_outputs"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.pytorch_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.quantizers"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.tokenization_utils_tokenizers"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.trainer"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.trainer_callback"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.trainer_pt_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.integrations",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.loss",
+      "destination": "transformers.image_transforms"
+    },
+    {
+      "source": "transformers.loss",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.masking_utils",
+      "destination": "transformers.cache_utils"
+    },
+    {
+      "source": "transformers.masking_utils",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.masking_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.model_debugging_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modelcard",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.modelcard",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.modelcard",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modeling_attn_mask_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modeling_flash_attention_utils",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.modeling_flash_attention_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modeling_gguf_pytorch_utils",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.modeling_gguf_pytorch_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modeling_layers",
+      "destination": "transformers.cache_utils"
+    },
+    {
+      "source": "transformers.modeling_layers",
+      "destination": "transformers.modeling_outputs"
+    },
+    {
+      "source": "transformers.modeling_layers",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.modeling_layers",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.modeling_layers",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modeling_outputs",
+      "destination": "transformers.cache_utils"
+    },
+    {
+      "source": "transformers.modeling_outputs",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modeling_rope_utils",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.modeling_rope_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers._typing"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.conversion_mapping"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.core_model_loading"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.distributed"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.fusion_mapping"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.initialization"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.loss"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.modeling_flash_attention_utils"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.modeling_gguf_pytorch_utils"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.modeling_rope_utils"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.monkey_patching"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.pytorch_utils"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.quantizers"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.safetensors_conversion"
+    },
+    {
+      "source": "transformers.modeling_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.activations"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.audio_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.backbone_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.cache_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.convert_slow_tokenizer"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.core_model_loading"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.distributed"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.feature_extraction_sequence_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.feature_extraction_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.file_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.image_processing_backends"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.image_processing_base"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.image_processing_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.image_transforms"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.initialization"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.masking_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.modeling_flash_attention_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.modeling_gguf_pytorch_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.modeling_layers"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.modeling_outputs"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.modeling_rope_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.pytorch_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.quantizers"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.time_series_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.tokenization_mistral_common"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.tokenization_python"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.tokenization_utils_sentencepiece"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.tokenization_utils_tokenizers"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.video_processing_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.video_utils"
+    },
+    {
+      "source": "transformers.models",
+      "destination": "transformers.vision_utils"
+    },
+    {
+      "source": "transformers.monkey_patching",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.optimization",
+      "destination": "transformers.trainer_pt_utils"
+    },
+    {
+      "source": "transformers.optimization",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.optimization",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.audio_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.feature_extraction_sequence_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.feature_extraction_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.image_processing_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.modeling_outputs"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.tokenization_python"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.tokenization_utils_tokenizers"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.pipelines",
+      "destination": "transformers.video_utils"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.audio_utils"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.feature_extraction_utils"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.tokenization_utils_tokenizers"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.processing_utils",
+      "destination": "transformers.video_utils"
+    },
+    {
+      "source": "transformers.pytorch_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.quantizers",
+      "destination": "transformers.core_model_loading"
+    },
+    {
+      "source": "transformers.quantizers",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.quantizers",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.quantizers",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.quantizers",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.safetensors_conversion",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.testing_utils",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.testing_utils",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.testing_utils",
+      "destination": "transformers.trainer"
+    },
+    {
+      "source": "transformers.testing_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.tokenization_mistral_common",
+      "destination": "transformers.audio_utils"
+    },
+    {
+      "source": "transformers.tokenization_mistral_common",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.tokenization_mistral_common",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.tokenization_mistral_common",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.tokenization_python",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.tokenization_python",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.tokenization_utils_base",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.tokenization_utils_base",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.tokenization_utils_base",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.tokenization_utils_sentencepiece",
+      "destination": "transformers.convert_slow_tokenizer"
+    },
+    {
+      "source": "transformers.tokenization_utils_sentencepiece",
+      "destination": "transformers.tokenization_python"
+    },
+    {
+      "source": "transformers.tokenization_utils_sentencepiece",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.tokenization_utils_sentencepiece",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.tokenization_utils_tokenizers",
+      "destination": "transformers.convert_slow_tokenizer"
+    },
+    {
+      "source": "transformers.tokenization_utils_tokenizers",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.tokenization_utils_tokenizers",
+      "destination": "transformers.modeling_gguf_pytorch_utils"
+    },
+    {
+      "source": "transformers.tokenization_utils_tokenizers",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.tokenization_utils_tokenizers",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.data"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.debug_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.distributed"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.feature_extraction_sequence_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.feature_extraction_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.hyperparameter_search"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.image_processing_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.modelcard"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.optimization"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.trainer_callback"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.trainer_jit_checkpoint"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.trainer_optimizer"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.trainer_pt_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.trainer",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.trainer_callback",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.trainer_callback",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.trainer_callback",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.trainer_callback",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.trainer_jit_checkpoint",
+      "destination": "transformers.trainer_callback"
+    },
+    {
+      "source": "transformers.trainer_jit_checkpoint",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.trainer_jit_checkpoint",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.trainer_optimizer",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.trainer_optimizer",
+      "destination": "transformers.optimization"
+    },
+    {
+      "source": "transformers.trainer_optimizer",
+      "destination": "transformers.trainer_pt_utils"
+    },
+    {
+      "source": "transformers.trainer_optimizer",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.trainer_optimizer",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.trainer_optimizer",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.trainer_pt_utils",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.trainer_pt_utils",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.trainer_pt_utils",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.trainer_pt_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.data"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.distributed"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.feature_extraction_utils"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.image_processing_utils"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.trainer"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.trainer_callback"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.trainer_seq2seq",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.trainer_utils",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.trainer_utils",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.trainer_utils",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.trainer_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.training_args",
+      "destination": "transformers.debug_utils"
+    },
+    {
+      "source": "transformers.training_args",
+      "destination": "transformers.integrations"
+    },
+    {
+      "source": "transformers.training_args",
+      "destination": "transformers.pytorch_utils"
+    },
+    {
+      "source": "transformers.training_args",
+      "destination": "transformers.trainer_pt_utils"
+    },
+    {
+      "source": "transformers.training_args",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.training_args",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.training_args_seq2seq",
+      "destination": "transformers.generation"
+    },
+    {
+      "source": "transformers.training_args_seq2seq",
+      "destination": "transformers.training_args"
+    },
+    {
+      "source": "transformers.training_args_seq2seq",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers._typing"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.activations"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.backbone_utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.convert_slow_tokenizer"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.masking_utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.model_debugging_utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.modeling_utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.tokenization_utils_base"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.trainer_callback"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.utils",
+      "destination": "transformers.video_utils"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.dynamic_module_utils"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.image_processing_backends"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.image_processing_utils"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.models"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.processing_utils"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.video_processing_utils",
+      "destination": "transformers.video_utils"
+    },
+    {
+      "source": "transformers.video_utils",
+      "destination": "transformers.image_transforms"
+    },
+    {
+      "source": "transformers.video_utils",
+      "destination": "transformers.image_utils"
+    },
+    {
+      "source": "transformers.video_utils",
+      "destination": "transformers.utils"
+    }
+  ]
+}

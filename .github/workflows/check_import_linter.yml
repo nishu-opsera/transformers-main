@@ -1,0 +1,24 @@
+name: check_import_linter
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check_import_linter:
+    name: check_import_linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package with quality extras
+        run: pip install -e ".[quality]"
+      - name: Run import-linter guardrail
+        run: make check-import-linter

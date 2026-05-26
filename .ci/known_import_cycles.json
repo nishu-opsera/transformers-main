@@ -1,0 +1,299 @@
+{
+  "two_module_cycles": [
+    {
+      "modules": [
+        "transformers.activations",
+        "transformers.integrations"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.activations",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.backbone_utils",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.backbone_utils",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.configuration_utils",
+        "transformers.generation"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.configuration_utils",
+        "transformers.modeling_rope_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.configuration_utils",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.conversion_mapping",
+        "transformers.core_model_loading"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.conversion_mapping",
+        "transformers.modeling_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.convert_slow_tokenizer",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.convert_slow_tokenizer",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.core_model_loading",
+        "transformers.integrations"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.core_model_loading",
+        "transformers.modeling_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.core_model_loading",
+        "transformers.quantizers"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.feature_extraction_sequence_utils",
+        "transformers.feature_extraction_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.feature_extraction_utils",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.fusion_mapping",
+        "transformers.modeling_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.generation",
+        "transformers.integrations"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.generation",
+        "transformers.modeling_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.image_processing_base",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.image_utils",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.initialization",
+        "transformers.modeling_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.modeling_flash_attention_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.modeling_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.quantizers"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.tokenization_utils_tokenizers"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer_callback"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer_pt_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.training_args"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.masking_utils",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.model_debugging_utils",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.modeling_layers",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.modeling_utils",
+        "transformers.models"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.modeling_utils",
+        "transformers.quantizers"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.modeling_utils",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.processing_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.quantizers"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.tokenization_utils_base"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.video_processing_utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.processing_utils",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.tokenization_utils_base",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.trainer_callback",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.trainer_pt_utils",
+        "transformers.training_args"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.trainer_utils",
+        "transformers.utils"
+      ]
+    },
+    {
+      "modules": [
+        "transformers.utils",
+        "transformers.video_utils"
+      ]
+    }
+  ],
+  "count": 49
+}
