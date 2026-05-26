@@ -11,18 +11,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Domain-scoped lazy import registries for ``transformers`` (WO-010, WO-011)."""
+"""Audio domain lazy import registry (WO-011).
 
-from .structure import (
-    build_composed_root_models_structure,
-    build_registry_import_structure,
-    load_domain_registry,
-    merge_import_structures,
-)
+Opt-in imports, e.g. ``from transformers._registries.audio import WhisperModel``.
+"""
 
-__all__ = [
-    "build_composed_root_models_structure",
-    "build_registry_import_structure",
-    "load_domain_registry",
-    "merge_import_structures",
-]
+import sys
+from typing import TYPE_CHECKING
+
+from ..utils import _LazyModule
+from .structure import build_registry_import_structure
+
+if TYPE_CHECKING:
+    from ..models.whisper.modeling_whisper import WhisperForConditionalGeneration
+else:
+    sys.modules[__name__] = _LazyModule(
+        __name__,
+        globals()["__file__"],
+        build_registry_import_structure("audio"),
+        module_spec=__spec__,
+    )

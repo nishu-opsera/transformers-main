@@ -75,11 +75,46 @@ def test_composed_root_covers_all_model_packages():
     assert composed_folders == full_folders
 
 
+def test_audio_registry_includes_whisper():
+    audio = build_registry_import_structure("audio")
+    paths = _all_model_paths(audio)
+    assert any(path.startswith("models.whisper.") for path in paths)
+    assert any(path.startswith("models.auto.") for path in paths)
+
+
+def test_multimodal_registry_includes_clip():
+    multimodal = build_registry_import_structure("multimodal")
+    paths = _all_model_paths(multimodal)
+    assert any(path.startswith("models.clip.") for path in paths)
+
+
+def test_all_four_domain_registries_are_non_empty():
+    for domain in ("nlp", "vision", "audio", "multimodal"):
+        paths = _all_model_paths(build_registry_import_structure(domain))
+        assert paths
+        assert any(path.startswith("models.auto.") for path in paths)
+
+
+def test_audio_and_multimodal_primary_folders_are_disjoint():
+    full = full_models_import_structure()
+    audio_folders = {
+        model_folder_from_import_path(path)
+        for path in _all_model_paths(filter_models_import_structure(full, domains={"audio"}))
+    } - {None, "auto", "deprecated"}
+    multimodal_folders = {
+        model_folder_from_import_path(path)
+        for path in _all_model_paths(filter_models_import_structure(full, domains={"multimodal"}))
+    } - {None, "auto", "deprecated"}
+    assert audio_folders.isdisjoint(multimodal_folders)
+
+
 @pytest.mark.parametrize(
     "domain,model_type",
     [
         ("nlp", "bert"),
         ("nlp", "gpt2"),
+        ("audio", "whisper"),
+        ("multimodal", "clip"),
     ],
 )
 def test_domain_filter_keeps_primary_domain_models(domain, model_type):

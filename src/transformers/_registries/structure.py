@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Import-structure helpers for domain sub-registries (WO-010)."""
+"""Import-structure helpers for domain sub-registries (WO-010, WO-011)."""
 
 from __future__ import annotations
 
@@ -124,14 +124,17 @@ def _unmapped_models_import_structure(
     return unmapped
 
 
+_ALL_DOMAINS = frozenset({"nlp", "vision", "audio", "multimodal"})
+
+
 @lru_cache
 def build_composed_root_models_structure() -> IMPORT_STRUCTURE_T:
-    """Models tree split across NLP, Vision, and remaining domains (WO-010)."""
+    """Models tree split across all four domain registries (WO-010, WO-011)."""
     full = full_models_import_structure()
-    nlp = filter_models_import_structure(full, domains={"nlp"})
-    vision = filter_models_import_structure(full, domains={"vision"})
-    remainder = filter_models_import_structure(full, domains={"audio", "multimodal"})
+    domain_fragments = [
+        filter_models_import_structure(full, domains={domain}) for domain in sorted(_ALL_DOMAINS)
+    ]
     auto_slice = filter_models_import_structure(full, domains=set(), include_shared_packages=True)
-    partial = merge_import_structures(nlp, vision, remainder, auto_slice)
+    partial = merge_import_structures(*domain_fragments, auto_slice)
     unmapped = _unmapped_models_import_structure(full, partial)
     return merge_import_structures(partial, unmapped)
