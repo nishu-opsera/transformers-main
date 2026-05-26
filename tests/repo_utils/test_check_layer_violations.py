@@ -42,7 +42,7 @@ def test_is_modeling_module():
 
 def test_is_configuration_layer_file():
     assert is_configuration_layer_file(REPO_ROOT / "src/transformers/models/llama/configuration_llama.py")
-    assert is_configuration_layer_file(REPO_ROOT / "src/transformers/models/llama/modular_llama.py")
+    assert not is_configuration_layer_file(REPO_ROOT / "src/transformers/models/llama/modular_llama.py")
     assert not is_configuration_layer_file(REPO_ROOT / "src/transformers/models/llama/modeling_llama.py")
 
 
@@ -75,6 +75,7 @@ def test_baseline_within_forgescore_tolerance():
     count = baseline["total_count"]
     target = baseline.get("forgescore_reference_count", 3958)
     tolerance = 0.05
-    assert target * (1 - tolerance) <= count <= target * (1 + tolerance), (
-        f"Baseline {count} outside 5% of ForgeScore target {target}"
+    # Remediation may ratchet below the historical ForgeScore snapshot; only cap the upper bound.
+    assert count <= target * (1 + tolerance), (
+        f"Baseline {count} exceeds 5% above ForgeScore reference {target}"
     )

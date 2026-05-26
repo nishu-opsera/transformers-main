@@ -35,6 +35,10 @@ import cycles.
 
 ## Remediation (WO-013+)
 
+`modular_*.py` files are modular/codegen sources (not runtime configuration boundaries) and are
+excluded from the layer linter scope. Violations in `configuration_*.py` and `configuration_utils.py`
+are enforced.
+
 Layer violations detected by `utils/check_layer_violations.py` should be fixed by:
 
 1. Moving execution logic from config classes into modeling modules.

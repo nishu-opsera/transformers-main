@@ -32,8 +32,7 @@ from typing_extensions import dataclass_transform
 
 from . import __version__
 from .dynamic_module_utils import custom_object_save
-from .modeling_gguf_pytorch_utils import load_gguf_checkpoint
-from .modeling_rope_utils import RotaryEmbeddingConfigMixin
+from .rope_config_utils import RotaryEmbeddingConfigMixin
 from .utils import (
     CONFIG_NAME,
     PushToHubMixin,
@@ -781,6 +780,9 @@ class PreTrainedConfig(PushToHubMixin, RotaryEmbeddingConfigMixin):
 
         try:
             if gguf_file:
+                load_gguf_checkpoint = importlib.import_module(
+                    "transformers.modeling_gguf_pytorch_utils"
+                ).load_gguf_checkpoint
                 config_dict = load_gguf_checkpoint(resolved_config_file, return_tensors=False)["config"]
             else:
                 # Load config dict

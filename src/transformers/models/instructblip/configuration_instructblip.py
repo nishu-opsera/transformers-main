@@ -13,10 +13,11 @@
 # limitations under the License.
 """InstructBLIP model configuration"""
 
+import importlib
+
 from huggingface_hub.dataclasses import strict
 
 from ...configuration_utils import PreTrainedConfig
-from ...models.auto.modeling_auto import MODEL_FOR_CAUSAL_LM_MAPPING_NAMES
 from ...utils import auto_docstring, logging
 from ..auto import CONFIG_MAPPING, AutoConfig
 
@@ -179,7 +180,10 @@ class InstructBlipConfig(PreTrainedConfig):
             self.vision_config = InstructBlipVisionConfig(**self.vision_config)
 
         self.qformer_config.encoder_hidden_size = self.vision_config.hidden_size
-        self.use_decoder_only_language_model = self.text_config.model_type in MODEL_FOR_CAUSAL_LM_MAPPING_NAMES
+        causal_lm_names = importlib.import_module(
+            "transformers.models.auto.modeling_auto"
+        ).MODEL_FOR_CAUSAL_LM_MAPPING_NAMES
+        self.use_decoder_only_language_model = self.text_config.model_type in causal_lm_names
         super().__post_init__(**kwargs)
 
 

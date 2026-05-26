@@ -16,7 +16,7 @@
 
 Configuration-layer modules must not depend on modeling-layer code. This script
 flags imports from modeling modules and uses of symbols imported from modeling
-in configuration_*.py, configuration_utils.py, and modular_*.py files.
+in configuration_*.py and configuration_utils.py (not modular_*.py codegen sources).
 """
 
 from __future__ import annotations
@@ -62,8 +62,7 @@ def is_configuration_layer_file(path: Path) -> bool:
         return True
     if name.startswith("configuration_"):
         return True
-    if name.startswith("modular_"):
-        return True
+    # modular_*.py are codegen/model sources, not runtime configuration boundaries (WO-013).
     return False
 
 
