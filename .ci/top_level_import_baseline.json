@@ -62,11 +62,7 @@
     },
     {
       "source": "transformers.configuration_utils",
-      "destination": "transformers.modeling_gguf_pytorch_utils"
-    },
-    {
-      "source": "transformers.configuration_utils",
-      "destination": "transformers.modeling_rope_utils"
+      "destination": "transformers.rope_config_utils"
     },
     {
       "source": "transformers.configuration_utils",
@@ -139,6 +135,10 @@
     {
       "source": "transformers.distributed",
       "destination": "transformers.utils"
+    },
+    {
+      "source": "transformers.domains",
+      "destination": "transformers._registries"
     },
     {
       "source": "transformers.dynamic_module_utils",
@@ -490,6 +490,10 @@
     },
     {
       "source": "transformers.modeling_rope_utils",
+      "destination": "transformers.rope_config_utils"
+    },
+    {
+      "source": "transformers.modeling_rope_utils",
       "destination": "transformers.utils"
     },
     {
@@ -682,6 +686,10 @@
     },
     {
       "source": "transformers.models",
+      "destination": "transformers.rope_config_utils"
+    },
+    {
+      "source": "transformers.models",
       "destination": "transformers.time_series_utils"
     },
     {
@@ -853,6 +861,14 @@
       "destination": "transformers.utils"
     },
     {
+      "source": "transformers.rope_config_utils",
+      "destination": "transformers.configuration_utils"
+    },
+    {
+      "source": "transformers.rope_config_utils",
+      "destination": "transformers.utils"
+    },
+    {
       "source": "transformers.safetensors_conversion",
       "destination": "transformers.utils"
     },
@@ -923,10 +939,6 @@
     {
       "source": "transformers.tokenization_utils_tokenizers",
       "destination": "transformers.convert_slow_tokenizer"
-    },
-    {
-      "source": "transformers.tokenization_utils_tokenizers",
-      "destination": "transformers.integrations"
     },
     {
       "source": "transformers.tokenization_utils_tokenizers",

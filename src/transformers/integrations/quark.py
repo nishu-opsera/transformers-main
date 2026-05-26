@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2025 The HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +14,9 @@
 # limitations under the License.
 
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
 from ..utils import is_torch_available
 
 
@@ -21,7 +24,7 @@ if is_torch_available():
     import torch
 
 
-class QuarkDeserialize(ConversionOps):
+class QuarkDeserialize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 

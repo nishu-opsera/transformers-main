@@ -13,12 +13,15 @@
 # limitations under the License.
 
 from __future__ import annotations
+import importlib
 
 from typing import Any
 
 from transformers.utils import is_torch_available, logging
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
 from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 
 
@@ -80,7 +83,7 @@ def replace_with_sinq_linear(
     return model
 
 
-class SinqQuantize(ConversionOps):
+class SinqQuantize(_ConversionOps()):
     """
     Param-level ConversionOp for SINQ (from FP weights).
 
@@ -115,7 +118,7 @@ class SinqQuantize(ConversionOps):
         return {}
 
 
-class SinqDeserialize(ConversionOps):
+class SinqDeserialize(_ConversionOps()):
     """
     ConversionOp for loading *pre-quantized* SINQ checkpoints.
 

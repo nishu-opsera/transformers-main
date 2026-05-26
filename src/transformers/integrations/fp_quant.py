@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2025 The HuggingFace Team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,11 +27,13 @@ if is_fp_quant_available():
 
 from transformers.utils.quantization_config import FPQuantConfig
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
 from ..quantizers.quantizers_utils import get_module_from_name
 
 
-class FpQuantQuantize(ConversionOps):
+class FpQuantQuantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -68,7 +71,7 @@ class FpQuantQuantize(ConversionOps):
         return {}
 
 
-class FpQuantDeserialize(ConversionOps):
+class FpQuantDeserialize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 

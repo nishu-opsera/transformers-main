@@ -12,15 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import importlib
+from contextlib import contextmanager
+
 from ..utils import is_torch_available, logging
 
 
 if is_torch_available():
     import torch
     from torch import nn
-from contextlib import contextmanager
 
-from ..core_model_loading import ConversionOps, _IdentityOp
+
+def _core_model_loading():
+    return importlib.import_module("transformers.core_model_loading")
+
+
+def _ConversionOps():
+    return _core_model_loading().ConversionOps
+
+
+def _IdentityOp():
+    return _core_model_loading()._IdentityOp
+
+
 from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 
 
@@ -68,7 +82,7 @@ def on_device(dev):
     yield
 
 
-class Mxfp4Quantize(ConversionOps):
+class Mxfp4Quantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -116,7 +130,7 @@ class Mxfp4Quantize(ConversionOps):
                 return {}
 
 
-class Mxfp4Dequantize(ConversionOps):
+class Mxfp4Dequantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -147,10 +161,10 @@ class Mxfp4Dequantize(ConversionOps):
 
     @property
     def reverse_op(self) -> "ConversionOps":
-        return _IdentityOp()
+        return _IdentityOp()()
 
 
-class Mxfp4Deserialize(ConversionOps):
+class Mxfp4Deserialize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -194,11 +208,11 @@ class Mxfp4Deserialize(ConversionOps):
         return {}
 
     @property
-    def reverse_op(self) -> ConversionOps:
+    def reverse_op(self):
         return Mxfp4ReverseDeserialize(self.hf_quantizer)
 
 
-class Mxfp4ReverseDeserialize(ConversionOps):
+class Mxfp4ReverseDeserialize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 

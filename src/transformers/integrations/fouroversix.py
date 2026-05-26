@@ -1,3 +1,4 @@
+import importlib
 import torch
 
 from ..quantizers.quantizers_utils import get_module_from_name
@@ -9,10 +10,12 @@ if is_fouroversix_available():
 
 from transformers.utils.quantization_config import FourOverSixConfig
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
 
 
-class FourOverSixQuantize(ConversionOps):
+
+class FourOverSixQuantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 

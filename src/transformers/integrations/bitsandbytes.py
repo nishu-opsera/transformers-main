@@ -1,6 +1,9 @@
+import importlib
 import inspect
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
 from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 from ..utils import (
     get_available_devices,
@@ -27,7 +30,7 @@ if is_accelerate_available():
 logger = logging.get_logger(__name__)
 
 
-class Bnb4bitQuantize(ConversionOps):
+class Bnb4bitQuantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -58,7 +61,7 @@ class Bnb4bitQuantize(ConversionOps):
         return {full_layer_name: new_value}
 
 
-class Bnb4bitDeserialize(ConversionOps):
+class Bnb4bitDeserialize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -93,7 +96,7 @@ class Bnb4bitDeserialize(ConversionOps):
         return {key_weight: new_value}
 
 
-class Bnb8bitQuantize(ConversionOps):
+class Bnb8bitQuantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -120,7 +123,7 @@ class Bnb8bitQuantize(ConversionOps):
         return {full_layer_name: new_value}
 
 
-class Bnb8bitDeserialize(ConversionOps):
+class Bnb8bitDeserialize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 

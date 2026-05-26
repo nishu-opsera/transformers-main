@@ -15,7 +15,9 @@
 import importlib
 from functools import lru_cache
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
 from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 from ..utils import (
     is_accelerate_available,
@@ -46,7 +48,7 @@ def _get_act2fn():
 logger = logging.get_logger(__name__)
 
 
-class FbgemmFp8Quantize(ConversionOps):
+class FbgemmFp8Quantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 

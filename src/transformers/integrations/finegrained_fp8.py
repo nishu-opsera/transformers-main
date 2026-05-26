@@ -24,7 +24,9 @@ from torch.nn import functional as F
 import importlib
 from functools import lru_cache
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
 from ..quantizers.quantizers_utils import should_convert_module
 from ..utils import logging
 from ..utils.import_utils import get_cuda_runtime_version, is_kernels_available, resolve_internal_import
@@ -869,7 +871,7 @@ def replace_with_fp8_linear(
     return model
 
 
-class Fp8Quantize(ConversionOps):
+class Fp8Quantize(_ConversionOps()):
     """
     A quantization operation that creates two tensors, weight and scale out of a weight.
     """
@@ -937,7 +939,7 @@ class Fp8Quantize(ConversionOps):
         return Fp8Dequantize(self.hf_quantizer)
 
 
-class Fp8Dequantize(ConversionOps):
+class Fp8Dequantize(_ConversionOps()):
     """Dequantize FP8 weights using their per-block ``weight_scale_inv``.
 
     Designed to run as the *first* op in any :class:`WeightConverter` chain when

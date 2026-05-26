@@ -2,6 +2,12 @@
   "two_module_cycles": [
     {
       "modules": [
+        "transformers.configuration_utils",
+        "transformers.rope_config_utils"
+      ]
+    },
+    {
+      "modules": [
         "transformers.integrations",
         "transformers.modeling_flash_attention_utils"
       ]
@@ -22,12 +28,6 @@
       "modules": [
         "transformers.integrations",
         "transformers.quantizers"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.integrations",
-        "transformers.tokenization_utils_tokenizers"
       ]
     },
     {

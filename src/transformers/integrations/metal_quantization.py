@@ -33,9 +33,22 @@ The kernel call is ``affine_qmm_t(x, weight, scales, qbiases, group_size, bits)`
 which computes ``y = x @ dequant(weight).T``, identical to ``nn.Linear``.
 """
 
-from ..core_model_loading import ConversionOps, _IdentityOp
+import importlib
+
 from ..quantizers.quantizers_utils import should_convert_module
 from ..utils import is_torch_available, logging
+
+
+def _core_model_loading():
+    return importlib.import_module("transformers.core_model_loading")
+
+
+def _ConversionOps():
+    return _core_model_loading().ConversionOps
+
+
+def _IdentityOp():
+    return _core_model_loading()._IdentityOp
 
 
 if is_torch_available():
@@ -238,7 +251,7 @@ def _affine_dequantize_tensor(
     return w_deq.reshape(N, K)
 
 
-class MetalQuantize(ConversionOps):
+class MetalQuantize(_ConversionOps()):
     """
     Quantize a full-precision weight tensor into (weight, scales, qbiases).
 
@@ -270,7 +283,7 @@ class MetalQuantize(ConversionOps):
         }
 
 
-class MetalDequantize(ConversionOps):
+class MetalDequantize(_ConversionOps()):
     """
     Dequantize (weight, scales, qbiases) back to a full-precision tensor.
 
@@ -297,4 +310,4 @@ class MetalDequantize(ConversionOps):
 
     @property
     def reverse_op(self) -> "ConversionOps":
-        return _IdentityOp()
+        return _IdentityOp()()

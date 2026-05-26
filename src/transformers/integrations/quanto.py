@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2024 The HuggingFace Team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
 from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 from ..utils import is_torch_available, logging
 
@@ -24,7 +27,7 @@ if is_torch_available():
 logger = logging.get_logger(__name__)
 
 
-class QuantoQuantize(ConversionOps):
+class QuantoQuantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 

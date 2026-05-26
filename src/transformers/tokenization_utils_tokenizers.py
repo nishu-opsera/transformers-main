@@ -17,6 +17,7 @@ see tokenization_utils.py
 """
 
 import copy
+import importlib
 import json
 import os
 from collections import defaultdict
@@ -36,7 +37,6 @@ from tokenizers.trainers import BpeTrainer, UnigramTrainer, WordLevelTrainer, Wo
 from transformers.utils.hub import cached_file
 
 from .convert_slow_tokenizer import SpmConverter
-from .integrations.ggml import convert_gguf_tokenizer
 from .modeling_gguf_pytorch_utils import load_gguf_checkpoint
 from .tokenization_utils_base import (
     INIT_TOKENIZER_DOCSTRING,
@@ -359,6 +359,9 @@ class TokenizersBackend(PreTrainedTokenizerBase):
             architecture = gguf_param["config"]["model_type"]
             tokenizer_dict = gguf_param["tokenizer"]
             tokenizer_config = gguf_param["tokenizer_config"]
+            convert_gguf_tokenizer = importlib.import_module(
+                "transformers.integrations.ggml"
+            ).convert_gguf_tokenizer
             fast_tokenizer, additional_kwargs = convert_gguf_tokenizer(architecture, tokenizer_dict)
             kwargs.update(tokenizer_config)
             if len(additional_kwargs) > 0:

@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2025 The HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +22,10 @@ from transformers.utils import logging
 from transformers.utils.import_utils import is_torch_accelerator_available, is_torch_available, is_torchao_available
 
 
-if is_torch_available():
-    from ..core_model_loading import ConversionOps
+def _ConversionOps():
+    return importlib.import_module("transformers.core_model_loading").ConversionOps
+
+
 from ..quantizers.quantizers_utils import get_module_from_name
 
 
@@ -54,7 +57,7 @@ def _linear_extra_repr(self):
         return f"in_features={self.weight.shape[1]}, out_features={self.weight.shape[0]}, weight={weight}"
 
 
-class TorchAoQuantize(ConversionOps):
+class TorchAoQuantize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
@@ -171,7 +174,7 @@ class TorchAoQuantize(ConversionOps):
         return {"lm_head.weight": lm_head} if is_embedding_param and untie_embedding_weights else {}
 
 
-class TorchAoDeserialize(ConversionOps):
+class TorchAoDeserialize(_ConversionOps()):
     def __init__(self, hf_quantizer):
         self.hf_quantizer = hf_quantizer
 
