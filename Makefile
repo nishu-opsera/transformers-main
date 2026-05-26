@@ -97,6 +97,13 @@ test-init-imports:
 test-config-serialization:
 	@PYTHONPATH=src python -m pytest tests/test_config_serialization.py -q --noconftest
 
+# Dependency balance score (WO-025): fan-in Gini metric vs baseline.
+measure-dependency-balance:
+	@PYTHONPATH=src python utils/measure_dependency_balance.py --check
+
+test-dependency-balance:
+	@PYTHONPATH=src python -m pytest tests/repo_utils/test_dependency_balance.py -q --noconftest
+
 # Deprecation framework tests (WO-023).
 test-deprecation-utils:
 	@PYTHONPATH=src python -m pytest tests/repo_utils/test_deprecation_utils.py -q --noconftest

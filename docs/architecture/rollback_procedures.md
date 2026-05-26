@@ -29,6 +29,7 @@ make test-config-serialization
 make check-downstream-compat
 make check-import-linter
 make benchmark-import-time
+make measure-dependency-balance
 ```
 
 These targets were verified on the modernization branch (`feature/forge-modernization`) during WO-028.

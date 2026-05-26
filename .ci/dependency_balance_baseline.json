@@ -1,0 +1,112 @@
+{
+  "balance_score": 0.1881,
+  "target_score": 0.35,
+  "module_count_with_fan_in": 62,
+  "total_top_level_import_edges": 13513,
+  "fan_in_by_module": {
+    "transformers.utils": 5613,
+    "transformers.processing_utils": 856,
+    "transformers.modeling_utils": 661,
+    "transformers.modeling_outputs": 621,
+    "transformers.configuration_utils": 578,
+    "transformers.initialization": 494,
+    "transformers.activations": 477,
+    "transformers.modeling_layers": 404,
+    "transformers.cache_utils": 390,
+    "transformers.masking_utils": 377,
+    "transformers.image_utils": 350,
+    "transformers.generation": 326,
+    "transformers.modeling_rope_utils": 300,
+    "transformers.integrations": 265,
+    "transformers.image_processing_utils": 223,
+    "transformers.image_processing_backends": 207,
+    "transformers.image_transforms": 181,
+    "transformers.backbone_utils": 159,
+    "transformers.modeling_flash_attention_utils": 159,
+    "transformers.tokenization_utils_base": 143,
+    "transformers.feature_extraction_utils": 110,
+    "transformers.pytorch_utils": 88,
+    "transformers.models": 63,
+    "transformers.tokenization_python": 60,
+    "transformers.tokenization_utils_tokenizers": 57,
+    "transformers.audio_utils": 41,
+    "transformers.video_utils": 35,
+    "transformers.distributed": 29,
+    "transformers.feature_extraction_sequence_utils": 26,
+    "transformers.vision_utils": 26,
+    "transformers.quantizers": 24,
+    "transformers.video_processing_utils": 22,
+    "transformers.core_model_loading": 19,
+    "transformers.convert_slow_tokenizer": 17,
+    "transformers.dynamic_module_utils": 17,
+    "transformers.tokenization_utils_sentencepiece": 12,
+    "transformers.trainer_utils": 12,
+    "transformers.file_utils": 11,
+    "transformers.training_args": 7,
+    "transformers.time_series_utils": 6,
+    "transformers._typing": 5,
+    "transformers.image_processing_base": 5,
+    "transformers.modeling_gguf_pytorch_utils": 4,
+    "transformers.trainer_callback": 4,
+    "transformers.trainer_pt_utils": 4,
+    "transformers.trainer": 3,
+    "transformers.conversion_mapping": 2,
+    "transformers.data": 2,
+    "transformers.debug_utils": 2,
+    "transformers.modelcard": 2,
+    "transformers.monkey_patching": 2,
+    "transformers.optimization": 2,
+    "transformers.dependency_versions_check": 1,
+    "transformers.dependency_versions_table": 1,
+    "transformers.fusion_mapping": 1,
+    "transformers.hyperparameter_search": 1,
+    "transformers.loss": 1,
+    "transformers.protocols": 1,
+    "transformers.safetensors_conversion": 1,
+    "transformers.tokenization_mistral_common": 1,
+    "transformers.trainer_jit_checkpoint": 1,
+    "transformers.trainer_optimizer": 1
+  },
+  "top_10_fan_in": [
+    {
+      "module": "transformers.utils",
+      "fan_in": 5613
+    },
+    {
+      "module": "transformers.processing_utils",
+      "fan_in": 856
+    },
+    {
+      "module": "transformers.modeling_utils",
+      "fan_in": 661
+    },
+    {
+      "module": "transformers.modeling_outputs",
+      "fan_in": 621
+    },
+    {
+      "module": "transformers.configuration_utils",
+      "fan_in": 578
+    },
+    {
+      "module": "transformers.initialization",
+      "fan_in": 494
+    },
+    {
+      "module": "transformers.activations",
+      "fan_in": 477
+    },
+    {
+      "module": "transformers.modeling_layers",
+      "fan_in": 404
+    },
+    {
+      "module": "transformers.cache_utils",
+      "fan_in": 390
+    },
+    {
+      "module": "transformers.masking_utils",
+      "fan_in": 377
+    }
+  ]
+}

@@ -279,6 +279,22 @@ jobs:
             - run: uv pip install -r tests/downstream_compat/requirements.txt
             - run: make check-downstream-compat
 
+    measure_dependency_balance:
+        working_directory: ~/transformers
+        docker:
+            - image: huggingface/transformers-quality
+        resource_class: medium
+        environment:
+            TRANSFORMERS_IS_CI: yes
+        parallelism: 1
+        steps:
+            - checkout
+            - run: uv pip install -e ".[quality]"
+            - run: make measure-dependency-balance
+            - store_artifacts:
+                path: .ci/dependency_balance_report.json
+                destination: dependency-balance-report
+
 
 workflows:
     version: 2
@@ -295,6 +311,7 @@ workflows:
             - check_layer_violations
             - check_modular_conversion
             - benchmark_import_time
+            - measure_dependency_balance
             - check_downstream_compat
             - fetch_tests
 
@@ -310,6 +327,7 @@ workflows:
             - check_layer_violations
             - check_modular_conversion
             - benchmark_import_time
+            - measure_dependency_balance
             - check_downstream_compat
             - fetch_tests:
                 # [reference] https://circleci.com/docs/contexts/

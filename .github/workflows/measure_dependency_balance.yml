@@ -1,0 +1,38 @@
+name: measure_dependency_balance
+
+on:
+  schedule:
+    # Quarterly: 1st day of Jan, Apr, Jul, Oct at 06:00 UTC
+    - cron: "0 6 1 1,4,7,10 *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "src/transformers/**"
+      - "utils/measure_dependency_balance.py"
+      - ".ci/dependency_balance_baseline.json"
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  measure_dependency_balance:
+    name: measure_dependency_balance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package with quality extras
+        run: pip install -e ".[quality]"
+      - name: Measure dependency balance score
+        run: make measure-dependency-balance
+      - name: Upload dependency balance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-balance-report
+          path: .ci/dependency_balance_report.json
+          if-no-files-found: error
