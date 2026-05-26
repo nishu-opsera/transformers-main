@@ -1,7 +1,7 @@
 # make sure to test the local checkout in scripts and not the pre-installed one (don't use quotes!)
 export PYTHONPATH = src
 
-.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations check-modular-conversion benchmark-import-time check-downstream-compat check-repo fix-repo test test-examples benchmark codex claude clean-ai
+.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations check-modular-conversion benchmark-import-time check-downstream-compat catalog-circular-dependencies check-repo fix-repo test test-examples benchmark codex claude clean-ai
 
 
 # Checker lists. The two CI jobs (CircleCI runs `make check-code-quality` and
@@ -72,6 +72,10 @@ benchmark-import-time:
 # Downstream import/API smoke tests (WO-005).
 check-downstream-compat:
 	@PYTHONPATH=src python -m pytest tests/downstream_compat/ -q --tb=short --noconftest
+
+# Regenerate circular dependency catalog (WO-006).
+catalog-circular-dependencies:
+	@PYTHONPATH=src python utils/catalog_circular_dependencies.py
 
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:

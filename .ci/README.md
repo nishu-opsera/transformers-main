@@ -65,3 +65,14 @@ make check-downstream-compat
 ```
 
 GitHub Actions workflow `downstream_compat.yml` runs weekly (Mondays) and on `workflow_dispatch`.
+
+## Circular dependency catalog (WO-006)
+
+| File | Purpose |
+|------|---------|
+| `circular_dependency_catalog.json` | Machine-readable cycle catalog (severity, chains, strategies). |
+| `../docs/architecture/circular_dependencies.md` | Human-readable catalog cross-referenced with `known_import_cycles.json`. |
+
+```bash
+make catalog-circular-dependencies
+```

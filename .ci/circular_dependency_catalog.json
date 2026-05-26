@@ -1,0 +1,1610 @@
+{
+  "generated_at": "2026-05-26T20:38:20.480355+00:00",
+  "tools": {
+    "grimp": "3.14",
+    "commands": [
+      "PYTHONPATH=src python utils/generate_importlinter_config.py",
+      "PYTHONPATH=src python utils/catalog_circular_dependencies.py"
+    ]
+  },
+  "cross_reference": {
+    "known_import_cycles_json": ".ci/known_import_cycles.json",
+    "two_module_cycle_count": 49,
+    "catalogued_cycles": 49
+  },
+  "strongly_connected_components": [
+    {
+      "size": 59,
+      "modules": [
+        "transformers._typing",
+        "transformers.activations",
+        "transformers.audio_utils",
+        "transformers.backbone_utils",
+        "transformers.cache_utils",
+        "transformers.configuration_utils",
+        "transformers.conversion_mapping",
+        "transformers.convert_slow_tokenizer",
+        "transformers.core_model_loading",
+        "transformers.data",
+        "transformers.debug_utils",
+        "transformers.dependency_versions_check",
+        "transformers.distributed",
+        "transformers.dynamic_module_utils",
+        "transformers.feature_extraction_sequence_utils",
+        "transformers.feature_extraction_utils",
+        "transformers.file_utils",
+        "transformers.fusion_mapping",
+        "transformers.generation",
+        "transformers.hyperparameter_search",
+        "transformers.image_processing_backends",
+        "transformers.image_processing_base",
+        "transformers.image_processing_utils",
+        "transformers.image_transforms",
+        "transformers.image_utils",
+        "transformers.initialization",
+        "transformers.integrations",
+        "transformers.loss",
+        "transformers.masking_utils",
+        "transformers.model_debugging_utils",
+        "transformers.modelcard",
+        "transformers.modeling_flash_attention_utils",
+        "transformers.modeling_gguf_pytorch_utils",
+        "transformers.modeling_layers",
+        "transformers.modeling_outputs",
+        "transformers.modeling_rope_utils",
+        "transformers.modeling_utils",
+        "transformers.models",
+        "transformers.monkey_patching",
+        "transformers.optimization",
+        "transformers.processing_utils",
+        "transformers.pytorch_utils",
+        "transformers.quantizers",
+        "transformers.safetensors_conversion",
+        "transformers.tokenization_mistral_common",
+        "transformers.tokenization_python",
+        "transformers.tokenization_utils_base",
+        "transformers.tokenization_utils_sentencepiece",
+        "transformers.tokenization_utils_tokenizers",
+        "transformers.trainer",
+        "transformers.trainer_callback",
+        "transformers.trainer_jit_checkpoint",
+        "transformers.trainer_optimizer",
+        "transformers.trainer_pt_utils",
+        "transformers.trainer_utils",
+        "transformers.training_args",
+        "transformers.utils",
+        "transformers.video_processing_utils",
+        "transformers.video_utils"
+      ]
+    }
+  ],
+  "severity_summary": {
+    "critical": 13,
+    "high": 33,
+    "medium": 3
+  },
+  "cycles": [
+    {
+      "modules": [
+        "transformers.modeling_utils",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.modeling_utils",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.modeling_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.modeling_utils",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.modeling_utils"
+        ]
+      ],
+      "affected_top_level_importers": 65,
+      "severity": "critical",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.activations",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.activations",
+          "transformers.integrations.hub_kernels",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.integrations",
+          "transformers.integrations.fbgemm_fp8",
+          "transformers.activations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.activations",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.activations"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.backbone_utils",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.backbone_utils",
+          "transformers",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.backbone_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.backbone_utils",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.backbone_utils"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.convert_slow_tokenizer",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.convert_slow_tokenizer",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers.utils.import_utils",
+          "transformers.convert_slow_tokenizer"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.convert_slow_tokenizer",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.convert_slow_tokenizer"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.image_utils",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.image_utils",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.image_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.image_utils",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.image_utils"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.masking_utils",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.masking_utils",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.masking_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.masking_utils",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.masking_utils"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.model_debugging_utils",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.model_debugging_utils",
+          "transformers.utils.import_utils",
+          "transformers.convert_slow_tokenizer",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers.utils.generic",
+          "transformers.model_debugging_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.model_debugging_utils",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.model_debugging_utils"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.models",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.models",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.models"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.processing_utils",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.processing_utils",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.processing_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.processing_utils",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.processing_utils"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.tokenization_utils_base",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.tokenization_utils_base",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.tokenization_utils_base"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.tokenization_utils_base",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.tokenization_utils_base"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.trainer_callback",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.trainer_callback",
+          "transformers.trainer_utils",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.trainer_callback"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.trainer_callback",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.trainer_callback"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.trainer_utils",
+        "transformers.utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.trainer_utils",
+          "transformers.utils"
+        ],
+        "reverse": [
+          "transformers.utils",
+          "transformers",
+          "transformers.trainer_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.trainer_utils",
+          "transformers.utils"
+        ],
+        [
+          "transformers.utils",
+          "transformers.trainer_utils"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.utils",
+        "transformers.video_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.utils",
+          "transformers",
+          "transformers.video_processing_utils",
+          "transformers.video_utils"
+        ],
+        "reverse": [
+          "transformers.video_utils",
+          "transformers.utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.utils",
+          "transformers.video_utils"
+        ],
+        [
+          "transformers.video_utils",
+          "transformers.utils"
+        ]
+      ],
+      "affected_top_level_importers": 63,
+      "severity": "critical",
+      "resolution_strategy": "interface_or_lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.integration_utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.models.timesfm",
+          "transformers.models.timesfm.modeling_timesfm",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 32,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.modeling_utils",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.modeling_utils",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.models.mobilevitv2",
+          "transformers.models.mobilevitv2.modeling_mobilevitv2",
+          "transformers.modeling_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.modeling_utils",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.modeling_utils"
+        ]
+      ],
+      "affected_top_level_importers": 27,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.tokenization_utils_base"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.models",
+          "transformers.models.sam3_video",
+          "transformers.models.sam3_video.processing_sam3_video",
+          "transformers.tokenization_utils_base"
+        ],
+        "reverse": [
+          "transformers.tokenization_utils_base",
+          "transformers",
+          "transformers.models"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.models",
+          "transformers.tokenization_utils_base"
+        ],
+        [
+          "transformers.tokenization_utils_base",
+          "transformers.models"
+        ]
+      ],
+      "affected_top_level_importers": 27,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.modeling_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.deepspeed",
+          "transformers.modeling_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_utils",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.modeling_utils"
+        ],
+        [
+          "transformers.modeling_utils",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 26,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.configuration_utils",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.configuration_utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.models.mobilevitv2",
+          "transformers.models.mobilevitv2.configuration_mobilevitv2",
+          "transformers.configuration_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.configuration_utils",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.configuration_utils"
+        ]
+      ],
+      "affected_top_level_importers": 24,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.integration_utils",
+          "transformers.trainer_utils"
+        ],
+        "reverse": [
+          "transformers.trainer_utils",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.trainer_utils"
+        ],
+        [
+          "transformers.trainer_utils",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 23,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.processing_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.models",
+          "transformers.models.timesfm",
+          "transformers.models.timesfm.modeling_timesfm",
+          "transformers.processing_utils"
+        ],
+        "reverse": [
+          "transformers.processing_utils",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.models",
+          "transformers.processing_utils"
+        ],
+        [
+          "transformers.processing_utils",
+          "transformers.models"
+        ]
+      ],
+      "affected_top_level_importers": 23,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.convert_slow_tokenizer",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.convert_slow_tokenizer",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.utils.import_utils",
+          "transformers.convert_slow_tokenizer"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.convert_slow_tokenizer",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.convert_slow_tokenizer"
+        ]
+      ],
+      "affected_top_level_importers": 22,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.generation",
+        "transformers.integrations"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.generation",
+          "transformers.generation.candidate_generator",
+          "transformers.modeling_utils",
+          "transformers.integrations"
+        ],
+        "reverse": [
+          "transformers.integrations",
+          "transformers.integrations.peft",
+          "transformers.modeling_utils",
+          "transformers.generation"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.generation",
+          "transformers.integrations"
+        ],
+        [
+          "transformers.integrations",
+          "transformers.generation"
+        ]
+      ],
+      "affected_top_level_importers": 22,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.training_args"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.integration_utils",
+          "transformers.training_args"
+        ],
+        "reverse": [
+          "transformers.training_args",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.training_args"
+        ],
+        [
+          "transformers.training_args",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 22,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.core_model_loading",
+        "transformers.integrations"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.core_model_loading",
+          "transformers.modeling_utils",
+          "transformers.integrations"
+        ],
+        "reverse": [
+          "transformers.integrations",
+          "transformers.integrations.metal_quantization",
+          "transformers.core_model_loading"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.core_model_loading",
+          "transformers.integrations"
+        ],
+        [
+          "transformers.integrations",
+          "transformers.core_model_loading"
+        ]
+      ],
+      "affected_top_level_importers": 21,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.feature_extraction_utils",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.feature_extraction_utils",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.models.pp_ocrv5_server_det",
+          "transformers.models.pp_ocrv5_server_det.image_processing_pp_ocrv5_server_det",
+          "transformers.feature_extraction_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.feature_extraction_utils",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.feature_extraction_utils"
+        ]
+      ],
+      "affected_top_level_importers": 21,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.image_processing_base",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.image_processing_base",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.models.dpt",
+          "transformers.models.dpt.image_processing_dpt",
+          "transformers.image_processing_base"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.image_processing_base",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.image_processing_base"
+        ]
+      ],
+      "affected_top_level_importers": 21,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.tokenization_utils_tokenizers"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.integration_utils",
+          "transformers",
+          "transformers.tokenization_utils_tokenizers"
+        ],
+        "reverse": [
+          "transformers.tokenization_utils_tokenizers",
+          "transformers.modeling_gguf_pytorch_utils",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.tokenization_utils_tokenizers"
+        ],
+        [
+          "transformers.tokenization_utils_tokenizers",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 21,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer_callback"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.integration_utils",
+          "transformers.trainer_callback"
+        ],
+        "reverse": [
+          "transformers.trainer_callback",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.trainer_callback"
+        ],
+        [
+          "transformers.trainer_callback",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 21,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer_pt_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.integration_utils",
+          "transformers",
+          "transformers.trainer_pt_utils"
+        ],
+        "reverse": [
+          "transformers.trainer_pt_utils",
+          "transformers.training_args",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.trainer_pt_utils"
+        ],
+        [
+          "transformers.trainer_pt_utils",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 21,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.quantizers"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.models",
+          "transformers.models.git",
+          "transformers.models.git.modeling_git",
+          "transformers.modeling_utils",
+          "transformers.quantizers"
+        ],
+        "reverse": [
+          "transformers.quantizers",
+          "transformers.quantizers.base",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.models",
+          "transformers.quantizers"
+        ],
+        [
+          "transformers.quantizers",
+          "transformers.models"
+        ]
+      ],
+      "affected_top_level_importers": 21,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.activations",
+        "transformers.integrations"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.activations",
+          "transformers.integrations.hub_kernels",
+          "transformers",
+          "transformers.integrations"
+        ],
+        "reverse": [
+          "transformers.integrations",
+          "transformers.integrations.fbgemm_fp8",
+          "transformers.activations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.activations",
+          "transformers.integrations"
+        ],
+        [
+          "transformers.integrations",
+          "transformers.activations"
+        ]
+      ],
+      "affected_top_level_importers": 20,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.quantizers"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.peft",
+          "transformers.conversion_mapping",
+          "transformers.quantizers"
+        ],
+        "reverse": [
+          "transformers.quantizers",
+          "transformers.quantizers.base",
+          "transformers.modeling_utils",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.quantizers"
+        ],
+        [
+          "transformers.quantizers",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 20,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.backbone_utils",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.backbone_utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.models.dinov2_with_registers",
+          "transformers.models.dinov2_with_registers.configuration_dinov2_with_registers",
+          "transformers.backbone_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.backbone_utils",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.backbone_utils"
+        ]
+      ],
+      "affected_top_level_importers": 19,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.generation",
+        "transformers.modeling_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.generation",
+          "transformers.generation.utils",
+          "transformers.modeling_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_utils",
+          "transformers.generation"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.generation",
+          "transformers.modeling_utils"
+        ],
+        [
+          "transformers.modeling_utils",
+          "transformers.generation"
+        ]
+      ],
+      "affected_top_level_importers": 19,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.modeling_flash_attention_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.peft",
+          "transformers.modeling_utils",
+          "transformers.modeling_flash_attention_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_flash_attention_utils",
+          "transformers.integrations.hub_kernels",
+          "transformers",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.modeling_flash_attention_utils"
+        ],
+        [
+          "transformers.modeling_flash_attention_utils",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 19,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.integrations",
+        "transformers.trainer"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.integrations",
+          "transformers.integrations.integration_utils",
+          "transformers.trainer"
+        ],
+        "reverse": [
+          "transformers.trainer",
+          "transformers.integrations"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.integrations",
+          "transformers.trainer"
+        ],
+        [
+          "transformers.trainer",
+          "transformers.integrations"
+        ]
+      ],
+      "affected_top_level_importers": 19,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.modeling_layers",
+        "transformers.models"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.modeling_layers",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ],
+        "reverse": [
+          "transformers.models",
+          "transformers.models.mobilevitv2",
+          "transformers.models.mobilevitv2.modeling_mobilevitv2",
+          "transformers.modeling_layers"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.modeling_layers",
+          "transformers.models"
+        ],
+        [
+          "transformers.models",
+          "transformers.modeling_layers"
+        ]
+      ],
+      "affected_top_level_importers": 19,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.models",
+        "transformers.video_processing_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.models",
+          "transformers.models.qwen3_vl",
+          "transformers.models.qwen3_vl.video_processing_qwen3_vl",
+          "transformers.video_processing_utils"
+        ],
+        "reverse": [
+          "transformers.video_processing_utils",
+          "transformers.utils",
+          "transformers",
+          "transformers.models"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.models",
+          "transformers.video_processing_utils"
+        ],
+        [
+          "transformers.video_processing_utils",
+          "transformers.models"
+        ]
+      ],
+      "affected_top_level_importers": 19,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.conversion_mapping",
+        "transformers.modeling_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.conversion_mapping",
+          "transformers.modeling_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_utils",
+          "transformers.conversion_mapping"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.conversion_mapping",
+          "transformers.modeling_utils"
+        ],
+        [
+          "transformers.modeling_utils",
+          "transformers.conversion_mapping"
+        ]
+      ],
+      "affected_top_level_importers": 16,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.core_model_loading",
+        "transformers.modeling_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.core_model_loading",
+          "transformers.modeling_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_utils",
+          "transformers.core_model_loading"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.core_model_loading",
+          "transformers.modeling_utils"
+        ],
+        [
+          "transformers.modeling_utils",
+          "transformers.core_model_loading"
+        ]
+      ],
+      "affected_top_level_importers": 16,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.fusion_mapping",
+        "transformers.modeling_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.fusion_mapping",
+          "transformers.modeling_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_utils",
+          "transformers.fusion_mapping"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.fusion_mapping",
+          "transformers.modeling_utils"
+        ],
+        [
+          "transformers.modeling_utils",
+          "transformers.fusion_mapping"
+        ]
+      ],
+      "affected_top_level_importers": 16,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.initialization",
+        "transformers.modeling_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.initialization",
+          "transformers.modeling_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_utils",
+          "transformers.initialization"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.initialization",
+          "transformers.modeling_utils"
+        ],
+        [
+          "transformers.modeling_utils",
+          "transformers.initialization"
+        ]
+      ],
+      "affected_top_level_importers": 16,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.modeling_utils",
+        "transformers.quantizers"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.modeling_utils",
+          "transformers.quantizers"
+        ],
+        "reverse": [
+          "transformers.quantizers",
+          "transformers.quantizers.base",
+          "transformers.modeling_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.modeling_utils",
+          "transformers.quantizers"
+        ],
+        [
+          "transformers.quantizers",
+          "transformers.modeling_utils"
+        ]
+      ],
+      "affected_top_level_importers": 16,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.configuration_utils",
+        "transformers.generation"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.configuration_utils",
+          "transformers",
+          "transformers.generation"
+        ],
+        "reverse": [
+          "transformers.generation",
+          "transformers.generation.configuration_utils",
+          "transformers.configuration_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.configuration_utils",
+          "transformers.generation"
+        ],
+        [
+          "transformers.generation",
+          "transformers.configuration_utils"
+        ]
+      ],
+      "affected_top_level_importers": 15,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.configuration_utils",
+        "transformers.modeling_rope_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.configuration_utils",
+          "transformers.modeling_rope_utils"
+        ],
+        "reverse": [
+          "transformers.modeling_rope_utils",
+          "transformers.configuration_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.configuration_utils",
+          "transformers.modeling_rope_utils"
+        ],
+        [
+          "transformers.modeling_rope_utils",
+          "transformers.configuration_utils"
+        ]
+      ],
+      "affected_top_level_importers": 11,
+      "severity": "high",
+      "resolution_strategy": "shared_abstraction"
+    },
+    {
+      "modules": [
+        "transformers.trainer_pt_utils",
+        "transformers.training_args"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.trainer_pt_utils",
+          "transformers.training_args"
+        ],
+        "reverse": [
+          "transformers.training_args",
+          "transformers.trainer_pt_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.trainer_pt_utils",
+          "transformers.training_args"
+        ],
+        [
+          "transformers.training_args",
+          "transformers.trainer_pt_utils"
+        ]
+      ],
+      "affected_top_level_importers": 10,
+      "severity": "high",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.feature_extraction_sequence_utils",
+        "transformers.feature_extraction_utils"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.feature_extraction_sequence_utils",
+          "transformers.feature_extraction_utils"
+        ],
+        "reverse": [
+          "transformers.feature_extraction_utils",
+          "transformers.feature_extraction_sequence_utils"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.feature_extraction_sequence_utils",
+          "transformers.feature_extraction_utils"
+        ],
+        [
+          "transformers.feature_extraction_utils",
+          "transformers.feature_extraction_sequence_utils"
+        ]
+      ],
+      "affected_top_level_importers": 8,
+      "severity": "medium",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.conversion_mapping",
+        "transformers.core_model_loading"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.conversion_mapping",
+          "transformers.core_model_loading"
+        ],
+        "reverse": [
+          "transformers.core_model_loading",
+          "transformers.conversion_mapping"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.conversion_mapping",
+          "transformers.core_model_loading"
+        ],
+        [
+          "transformers.core_model_loading",
+          "transformers.conversion_mapping"
+        ]
+      ],
+      "affected_top_level_importers": 7,
+      "severity": "medium",
+      "resolution_strategy": "lazy_import"
+    },
+    {
+      "modules": [
+        "transformers.core_model_loading",
+        "transformers.quantizers"
+      ],
+      "import_chains": {
+        "forward": [
+          "transformers.core_model_loading",
+          "transformers.quantizers"
+        ],
+        "reverse": [
+          "transformers.quantizers",
+          "transformers.quantizers.base",
+          "transformers.modeling_utils",
+          "transformers.core_model_loading"
+        ]
+      },
+      "top_level_edges": [
+        [
+          "transformers.core_model_loading",
+          "transformers.quantizers"
+        ],
+        [
+          "transformers.quantizers",
+          "transformers.core_model_loading"
+        ]
+      ],
+      "affected_top_level_importers": 7,
+      "severity": "medium",
+      "resolution_strategy": "lazy_import"
+    }
+  ]
+}
