@@ -89,6 +89,17 @@ test-protocols:
 	@PYTHONPATH=src python -m pytest tests/repo_utils/test_protocols.py -q --noconftest
 	@PYTHONPATH=src python utils/check_protocol_typing.py
 
+# __init__ import characterization tests (WO-026).
+test-init-imports:
+	@PYTHONPATH=src python -m pytest tests/test_init_imports.py -q --noconftest
+
+# Deprecation framework tests (WO-023).
+test-deprecation-utils:
+	@PYTHONPATH=src python -m pytest tests/repo_utils/test_deprecation_utils.py -q --noconftest
+
+catalog-deprecations:
+	@PYTHONPATH=src python utils/catalog_deprecations.py
+
 catalog-copied-from:
 	@python utils/catalog_copied_from.py
 
