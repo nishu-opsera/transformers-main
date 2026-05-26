@@ -43,9 +43,9 @@ def flash_attn_supports_top_left_mask():
     if is_flash_attn_2_available() or is_flash_attn_3_available() or is_flash_attn_4_available():
         return False
 
-    from .integrations.npu_flash_attention import is_npu_fa2_top_left_aligned_causal_mask
-
-    return is_npu_fa2_top_left_aligned_causal_mask()
+    return importlib.import_module(
+        "transformers.integrations.npu_flash_attention"
+    ).is_npu_fa2_top_left_aligned_causal_mask()
 
 
 # TODO Deprecate when all models have the attention interface
@@ -158,9 +158,10 @@ def _lazy_imports(
     elif is_torch_npu_available():
         # Package `flash-attn` is unavailable on Ascend NPU, which will cause ImportError
         # Flash-Attention2 related apis for Ascend NPU must be imported from `.integrations.npu_flash_attention` module
-        from .integrations.npu_flash_attention import npu_flash_attn_func as flash_attn_func
-        from .integrations.npu_flash_attention import npu_flash_attn_varlen_func as flash_attn_varlen_func
-        from .integrations.npu_flash_attention import npu_flash_attn_with_kvcache as flash_attn_with_kvcache
+        _npu_fa = importlib.import_module("transformers.integrations.npu_flash_attention")
+        flash_attn_func = _npu_fa.npu_flash_attn_func
+        flash_attn_varlen_func = _npu_fa.npu_flash_attn_varlen_func
+        flash_attn_with_kvcache = _npu_fa.npu_flash_attn_with_kvcache
     else:
         if implementation == "flash_attention_3" or (implementation is None and is_fa3 and not is_fa4):
             from flash_attn_interface import flash_attn_func, flash_attn_varlen_func, flash_attn_with_kvcache
@@ -170,7 +171,9 @@ def _lazy_imports(
             flash_attn_with_kvcache = None  # not supported yet
         # Kernels fallback
         else:
-            from .integrations.hub_kernels import load_and_register_attn_kernel
+            load_and_register_attn_kernel = importlib.import_module(
+                "transformers.integrations.hub_kernels"
+            ).load_and_register_attn_kernel
 
             # Map standard attention names to hub kernel repos
             kernel_repo = FLASH_ATTN_KERNEL_FALLBACK.get(implementation, implementation)
@@ -257,7 +260,9 @@ def lazy_import_paged_flash_attention(implementation: str | None, allow_all_kern
     """
     Same as `lazy_import_flash_attention` but explicitly wrapping it with the paged implementation.
     """
-    from .integrations.flash_paged import paged_attention_forward
+    paged_attention_forward = importlib.import_module(
+        "transformers.integrations.flash_paged"
+    ).paged_attention_forward
 
     (_, flash_attn_varlen_func, flash_attn_with_kvcache_fn, _, _), _ = lazy_import_flash_attention(
         implementation, attention_wrapper=paged_attention_forward, allow_all_kernels=allow_all_kernels

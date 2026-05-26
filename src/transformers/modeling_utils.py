@@ -67,27 +67,6 @@ from .distributed.utils import (
     save_model_checkpoint_distributed,
 )
 from .dynamic_module_utils import custom_object_save
-from .integrations import PeftAdapterMixin, deepspeed_config, hub_kernels, is_deepspeed_zero3_enabled
-from .integrations.accelerate import (
-    _get_device_map,
-    accelerate_disk_offload,
-    accelerate_dispatch,
-    check_and_set_device_map,
-    expand_device_map,
-    get_device,
-    load_offloaded_parameter,
-)
-from .integrations.deepspeed import _load_state_dict_into_zero3_model
-from .integrations.eager_paged import eager_paged_attention_forward
-from .integrations.finegrained_fp8 import ALL_FP8_EXPERTS_FUNCTIONS
-from .integrations.flash_attention import flash_attention_forward
-from .integrations.flash_paged import paged_attention_forward
-from .integrations.flex_attention import flex_attention_forward
-from .integrations.hub_kernels import allow_all_hub_kernels, is_kernel
-from .integrations.moe import ALL_EXPERTS_FUNCTIONS
-from .integrations.peft import maybe_load_adapters
-from .integrations.sdpa_attention import sdpa_attention_forward
-from .integrations.sdpa_paged import sdpa_attention_paged_forward
 from .loss.loss_utils import LOSS_MAPPING
 from .modeling_flash_attention_utils import (
     FLASH_ATTENTION_COMPATIBILITY_MATRIX,
@@ -167,6 +146,36 @@ def _generation_config_cls():
 @functools.lru_cache
 def _compile_config_cls():
     return importlib.import_module("transformers.generation.configuration_utils").CompileConfig
+
+
+@functools.lru_cache
+def _integrations():
+    return importlib.import_module("transformers.integrations")
+
+
+@functools.lru_cache
+def _integrations_accelerate():
+    return importlib.import_module("transformers.integrations.accelerate")
+
+
+def _PeftAdapterMixin():
+    return _integrations().PeftAdapterMixin
+
+
+def deepspeed_config(*args, **kwargs):
+    return _integrations().deepspeed_config(*args, **kwargs)
+
+
+def is_deepspeed_zero3_enabled(*args, **kwargs):
+    return _integrations().is_deepspeed_zero3_enabled(*args, **kwargs)
+
+
+class _HubKernelsProxy:
+    def __getattr__(self, name):
+        return getattr(_integrations().hub_kernels, name)
+
+
+hub_kernels = _HubKernelsProxy()
 
 
 XLA_USE_BF16 = os.environ.get("XLA_USE_BF16", "0").upper()
@@ -1193,7 +1202,7 @@ class EmbeddingAccessMixin:
             self.lm_head = new_embeddings
 
 
-class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToHubMixin, PeftAdapterMixin):
+class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToHubMixin, _PeftAdapterMixin()):
     r"""
     Base class for all models.
 
@@ -1615,7 +1624,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
         if dtype is not None:
             init_contexts.append(local_torch_dtype(dtype, cls.__name__))
         if allow_all_kernels:
-            init_contexts.append(allow_all_hub_kernels())
+            init_contexts.append(importlib.import_module("transformers.integrations.hub_kernels").allow_all_hub_kernels())
 
         needs_zero3_init = is_deepspeed_zero3_enabled() and not _is_quantized and not _is_ds_init_called
         if needs_zero3_init:
@@ -1977,7 +1986,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
             if is_paged:
                 applicable_attn_implementation = f"paged|{applicable_attn_implementation}"
 
-        if is_kernel(applicable_attn_implementation):
+        if importlib.import_module("transformers.integrations.hub_kernels").is_kernel(applicable_attn_implementation):
             try:
                 # preload flash attention here to allow compile with fullgraph
                 if is_paged:
@@ -2065,7 +2074,11 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
 
     def get_correct_experts_implementation(self, requested_experts: str | None) -> str:
         applicable_experts = "grouped_mm" if requested_experts is None else requested_experts
-        base_experts_fns = ["eager"] + list(set(ALL_EXPERTS_FUNCTIONS.keys()) | set(ALL_FP8_EXPERTS_FUNCTIONS.keys()))
+        _moe = importlib.import_module("transformers.integrations.moe")
+        _fp8 = importlib.import_module("transformers.integrations.finegrained_fp8")
+        base_experts_fns = ["eager"] + list(
+            set(_moe.ALL_EXPERTS_FUNCTIONS.keys()) | set(_fp8.ALL_FP8_EXPERTS_FUNCTIONS.keys())
+        )
         valid_experts_str_list = [f'`experts_implementation="{fn}"`' for fn in base_experts_fns]
         valid_experts_str_list[-1] = "and " + valid_experts_str_list[-1]
         valid_experts_str = ", ".join(valid_experts_str_list)
@@ -3594,7 +3607,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
                     # but it would otherwise not be contained in the saved shard if we were to simply move the file
                     # or something
                     if is_offloaded and tensor.device.type == "meta":
-                        tensor = load_offloaded_parameter(model_to_save, tensor_name)
+                        tensor = _integrations_accelerate().load_offloaded_parameter(model_to_save, tensor_name)
 
                     # only do contiguous after it's permuted correctly in case of TP
                     shard_state_dict[tensor_name] = tensor.contiguous()
@@ -3794,7 +3807,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
         init_contexts = [local_torch_dtype(dtype, cls.__name__), init.no_tie_weights(), apply_patches()]
         # Needed as we cannot forward the `allow_all_kernels` arg in the model's __init__
         if allow_all_kernels:
-            init_contexts.append(allow_all_hub_kernels())
+            init_contexts.append(importlib.import_module("transformers.integrations.hub_kernels").allow_all_hub_kernels())
         if is_deepspeed_zero3_enabled():
             import deepspeed
 
@@ -4213,7 +4226,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
                     ": PartialState().process_index} where PartialState comes from accelerate library"
                 )
 
-            device_map = check_and_set_device_map(device_map)  # validate & normalize (requires accelerate)
+            device_map = _integrations_accelerate().check_and_set_device_map(device_map)  # validate & normalize (requires accelerate)
 
         if gguf_file is not None and not is_accelerate_available():
             raise ValueError("accelerate is required when loading a GGUF file `pip install accelerate`.")
@@ -4221,7 +4234,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
         if adapter_kwargs is None:
             adapter_kwargs = {}
 
-        _adapter_model_path, pretrained_model_name_or_path, adapter_kwargs = maybe_load_adapters(
+        _adapter_model_path, pretrained_model_name_or_path, adapter_kwargs = importlib.import_module("transformers.integrations.peft").maybe_load_adapters(
             pretrained_model_name_or_path,
             download_kwargs_with_commit,
             **adapter_kwargs,
@@ -4363,7 +4376,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
             model = distribute_model(model, distributed_config, device_mesh)
         elif device_map is not None:
             # Expand device_map if it was passed as a `str`, i.e. `device_map="auto"`
-            device_map = _get_device_map(model, device_map, max_memory, hf_quantizer)
+            device_map = _integrations_accelerate()._get_device_map(model, device_map, max_memory, hf_quantizer)
 
         # Finalize model weight initialization
         active_tp_plan = (
@@ -4407,7 +4420,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
 
         # If the device_map has more than 1 device: dispatch model with hooks on all devices
         if device_map is not None and len(set(device_map.values())) > 1:
-            accelerate_dispatch(model, hf_quantizer, device_map, offload_folder, disk_offload_index, offload_buffers)
+            _integrations_accelerate().accelerate_dispatch(model, hf_quantizer, device_map, offload_folder, disk_offload_index, offload_buffers)
 
         if hf_quantizer is not None:
             model.hf_quantizer = hf_quantizer
@@ -4455,7 +4468,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
         disk_offload_index = None
         # Prepare parameters offloading if needed
         if load_config.device_map is not None and "disk" in load_config.device_map.values():
-            disk_offload_index = accelerate_disk_offload(
+            disk_offload_index = _integrations_accelerate().accelerate_disk_offload(
                 model,
                 load_config.disk_offload_folder,
                 checkpoint_files,
@@ -4467,7 +4480,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
 
         # Warmup cuda to load the weights much faster on devices
         if load_config.device_map is not None and not is_hqq_or_quark:
-            expanded_device_map = expand_device_map(load_config.device_map, expected_keys)
+            expanded_device_map = _integrations_accelerate().expand_device_map(load_config.device_map, expected_keys)
             caching_allocator_warmup(model, expanded_device_map, load_config.hf_quantizer)
 
         error_msgs = []
@@ -4485,7 +4498,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
                         )
                     )
                 state_dict = merged_state_dict
-            error_msgs, missing_keys = _load_state_dict_into_zero3_model(model, state_dict, load_config)
+            error_msgs, missing_keys = importlib.import_module("transformers.integrations.deepspeed")._load_state_dict_into_zero3_model(model, state_dict, load_config)
             # This is not true but for now we assume only best-case scenario with deepspeed, i.e. perfectly matching checkpoints
             loading_info = LoadStateDictInfo(
                 missing_keys=missing_keys,
@@ -4841,12 +4854,12 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
                     new_param = torch.nn.Parameter(new_dtensor, requires_grad=param.requires_grad)
                     torch.utils.swap_tensors(param, new_param)
             else:
-                param_device = get_device(device_map, key, valid_torch_device=True)
+                param_device = _integrations_accelerate().get_device(device_map, key, valid_torch_device=True)
                 value = torch.empty_like(param, device=param_device)
                 _load_parameter_into_model(self, key, value)
         # We need to move back non-persistent buffers as well, as they are not part of loaded weights anyway
         for key, buffer in self.named_non_persistent_buffers():
-            buffer_device = get_device(device_map, key, valid_torch_device=True)
+            buffer_device = _integrations_accelerate().get_device(device_map, key, valid_torch_device=True)
             value = torch.empty_like(buffer, device=buffer_device)
             _load_parameter_into_model(self, key, value)
 
@@ -5159,18 +5172,44 @@ class AttentionInterface(GeneralInterface):
 
     # Class instance object, so that a call to `register` can be reflected into all other files correctly, even if
     # a new instance is created (in order to locally override a given function)
-    _global_mapping = {
-        "flash_attention_4": flash_attention_forward,
-        "flash_attention_3": flash_attention_forward,
-        "flash_attention_2": flash_attention_forward,
-        "flex_attention": flex_attention_forward,
-        "sdpa": sdpa_attention_forward,
-        "paged|flash_attention_4": paged_attention_forward,
-        "paged|flash_attention_3": paged_attention_forward,
-        "paged|flash_attention_2": paged_attention_forward,
-        "paged|sdpa": sdpa_attention_paged_forward,
-        "paged|eager": eager_paged_attention_forward,
-    }
+    _global_mapping: dict[str, Callable] = {}
+    _global_mapping_initialized = False
+
+    @classmethod
+    def _ensure_global_mapping(cls) -> None:
+        if cls._global_mapping_initialized:
+            return
+        flash_attention = importlib.import_module("transformers.integrations.flash_attention")
+        flash_paged = importlib.import_module("transformers.integrations.flash_paged")
+        flex_attention = importlib.import_module("transformers.integrations.flex_attention")
+        sdpa_attention = importlib.import_module("transformers.integrations.sdpa_attention")
+        sdpa_paged = importlib.import_module("transformers.integrations.sdpa_paged")
+        eager_paged = importlib.import_module("transformers.integrations.eager_paged")
+        cls._global_mapping = {
+            "flash_attention_4": flash_attention.flash_attention_forward,
+            "flash_attention_3": flash_attention.flash_attention_forward,
+            "flash_attention_2": flash_attention.flash_attention_forward,
+            "flex_attention": flex_attention.flex_attention_forward,
+            "sdpa": sdpa_attention.sdpa_attention_forward,
+            "paged|flash_attention_4": flash_paged.paged_attention_forward,
+            "paged|flash_attention_3": flash_paged.paged_attention_forward,
+            "paged|flash_attention_2": flash_paged.paged_attention_forward,
+            "paged|sdpa": sdpa_paged.sdpa_attention_paged_forward,
+            "paged|eager": eager_paged.eager_paged_attention_forward,
+        }
+        cls._global_mapping_initialized = True
+
+    def __getitem__(self, key):
+        self._ensure_global_mapping()
+        return super().__getitem__(key)
+
+    def __iter__(self):
+        self._ensure_global_mapping()
+        return super().__iter__()
+
+    def __len__(self):
+        self._ensure_global_mapping()
+        return super().__len__()
 
     def get_interface(self, attn_implementation: str, default: Callable) -> Callable:
         """Return the requested `attn_implementation`. Also strictly check its validity, and raise if invalid."""

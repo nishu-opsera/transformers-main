@@ -116,7 +116,7 @@ class HiggsHfQuantizer(HfQuantizer):
         model: "PreTrainedModel",
         **kwargs,
     ):
-        from ..integrations import replace_with_higgs_linear
+        replace_with_higgs_linear = importlib.import_module("transformers.integrations").replace_with_higgs_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules
@@ -132,7 +132,7 @@ class HiggsHfQuantizer(HfQuantizer):
         from flute.tune import TuneMetaData, maybe_tune_and_repack
         from flute.utils import make_workspace_streamk
 
-        from ..integrations import HiggsLinear
+        HiggsLinear = importlib.import_module("transformers.integrations").HiggsLinear
 
         flute_workspaces = {}
         flute_modules = {name: module for name, module in model.named_modules() if isinstance(module, HiggsLinear)}
@@ -161,7 +161,7 @@ class HiggsHfQuantizer(HfQuantizer):
         return True
 
     def param_needs_quantization(self, model: "PreTrainedModel", param_name: str, **kwargs) -> bool:
-        from ..integrations import HiggsLinear
+        HiggsLinear = importlib.import_module("transformers.integrations").HiggsLinear
 
         module, tensor_name = get_module_from_name(model, param_name)
         if isinstance(module, HiggsLinear) and tensor_name == "weight":
@@ -171,7 +171,7 @@ class HiggsHfQuantizer(HfQuantizer):
             return False
 
     def _dequantize(self, model):
-        from ..integrations import dequantize_higgs
+        dequantize_higgs = importlib.import_module("transformers.integrations").dequantize_higgs
 
         model = dequantize_higgs(model)
         return model

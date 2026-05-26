@@ -167,12 +167,12 @@ class TorchAoHfQuantizer(HfQuantizer):
             self.metadata = metadata
 
     def get_quantize_ops(self):
-        from ..integrations.torchao import TorchAoQuantize
+        TorchAoQuantize = importlib.import_module("transformers.integrations.torchao").TorchAoQuantize
 
         return TorchAoQuantize(self)
 
     def get_weight_conversions(self):
-        from ..integrations.torchao import TorchAoDeserialize
+        TorchAoDeserialize = importlib.import_module("transformers.integrations.torchao").TorchAoDeserialize
 
         if self.pre_quantized:
             return [

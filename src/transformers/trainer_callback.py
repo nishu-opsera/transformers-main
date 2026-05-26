@@ -16,6 +16,7 @@ Callbacks to use with the Trainer class and customize the training loop.
 """
 
 import dataclasses
+import importlib
 import json
 import math
 from dataclasses import dataclass
@@ -176,7 +177,7 @@ class TrainerState:
             self.trial_name = trainer.hp_name(trainer._trial)
         self.trial_params = None
         if trial is not None:
-            from transformers.integrations import hp_params
+            hp_params = importlib.import_module("transformers.integrations").hp_params
 
             self.trial_params = hp_params(trial)
 

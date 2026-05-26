@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2025 Mistral AI and The HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +32,7 @@ from transformers import (
 )
 from transformers.integrations.finegrained_fp8 import replace_with_fp8_linear
 from transformers.integrations.mistral import convert_tekken_tokenizer
-from transformers.quantizers.auto import AutoQuantizationConfig
+# lazy import below
 
 
 # fmt: off
@@ -191,7 +192,7 @@ def convert_config(original_config: dict, max_position_embeddings: int = 262144,
                 "quant_method": "fp8",
                 "weight_block_size": None,
             }
-            kwargs["quantization_config"] = AutoQuantizationConfig.from_dict(quantization_config)
+            kwargs["quantization_config"] = importlib.import_module("transformers.quantizers.auto").AutoQuantizationConfig.from_dict(quantization_config)
         return kwargs
 
     # No vision

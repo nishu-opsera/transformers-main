@@ -13,10 +13,14 @@ import importlib
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 def _ConversionOps():
     return importlib.import_module("transformers.core_model_loading").ConversionOps
 
-from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 from ..utils import is_torch_available, logging
 
 
@@ -42,10 +46,12 @@ class QuantoQuantize(_ConversionOps()):
         _, value = tuple(input_dict.items())[0]
         value = value[0]
 
-        from ..modeling_utils import _load_parameter_into_model
+        _load_parameter_into_model = importlib.import_module(
+            "transformers.modeling_utils"
+        )._load_parameter_into_model
 
         _load_parameter_into_model(model, full_layer_name, value)
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
         # Need to set those to a specific value, otherwise they will remain on meta device ...
         module.input_scale = torch.ones(module.input_scale.shape)
         module.output_scale = torch.ones(module.output_scale.shape)
@@ -87,7 +93,7 @@ def replace_with_quanto_layers(
 
     has_been_replaced = False
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
         with torch.device("meta"):
             new_module = None

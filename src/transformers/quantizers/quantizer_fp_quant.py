@@ -115,7 +115,7 @@ class FPQuantHfQuantizer(HfQuantizer):
     ):
         from fp_quant import replace_with_fp_quant_linear
 
-        from ..integrations.fp_quant import adapt_fp_quant_config
+        adapt_fp_quant_config = importlib.import_module("transformers.integrations.fp_quant").adapt_fp_quant_config
 
         replace_with_fp_quant_linear(
             model,
@@ -135,13 +135,13 @@ class FPQuantHfQuantizer(HfQuantizer):
         return True
 
     def get_quantize_ops(self):
-        from ..integrations.fp_quant import FpQuantQuantize
+        FpQuantQuantize = importlib.import_module("transformers.integrations.fp_quant").FpQuantQuantize
 
         return FpQuantQuantize(self)
 
     def get_weight_conversions(self):
         WeightConverter = get_weight_converter_class()
-        from ..integrations.fp_quant import FpQuantDeserialize
+        FpQuantDeserialize = importlib.import_module("transformers.integrations.fp_quant").FpQuantDeserialize
 
         if self.pre_quantized:
             if self.quantization_config.pseudoquantization:

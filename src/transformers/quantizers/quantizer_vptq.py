@@ -55,7 +55,7 @@ class VptqHfQuantizer(HfQuantizer):
         model: "PreTrainedModel",
         **kwargs,
     ):
-        from ..integrations import replace_with_vptq_linear
+        replace_with_vptq_linear = importlib.import_module("transformers.integrations").replace_with_vptq_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules

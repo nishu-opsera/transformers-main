@@ -54,7 +54,7 @@ class Mxfp4HfQuantizer(HfQuantizer):
         """Lazy import and initialize kernels only when needed"""
         if self.triton_kernels_hub is None:
             try:
-                from ..integrations.hub_kernels import get_kernel
+                get_kernel = importlib.import_module("transformers.integrations.hub_kernels").get_kernel
 
                 self.triton_kernels_hub = get_kernel("kernels-community/gpt-oss-triton-kernels")
             except ImportError:
@@ -158,7 +158,7 @@ class Mxfp4HfQuantizer(HfQuantizer):
                 )
 
     def param_needs_quantization(self, model: "PreTrainedModel", param_name: str, **kwargs) -> bool:
-        from ..integrations import Mxfp4GptOssExperts
+        Mxfp4GptOssExperts = importlib.import_module("transformers.integrations").Mxfp4GptOssExperts
 
         module, tensor_name = get_module_from_name(model, param_name)
         if isinstance(module, Mxfp4GptOssExperts):
@@ -180,7 +180,7 @@ class Mxfp4HfQuantizer(HfQuantizer):
         use_kernels: bool = False,
         **kwargs,
     ):
-        from ..integrations import replace_with_mxfp4_linear
+        replace_with_mxfp4_linear = importlib.import_module("transformers.integrations").replace_with_mxfp4_linear
 
         # if we are using kernels, we can't use the quantized model, since the forward pass is different and needs special handling
         # only CPU kernels can work with pre-quantized models
@@ -234,7 +234,7 @@ class Mxfp4HfQuantizer(HfQuantizer):
         return config
 
     def get_state_dict_and_metadata(self, model):
-        from ..integrations import Mxfp4GptOssExperts
+        Mxfp4GptOssExperts = importlib.import_module("transformers.integrations").Mxfp4GptOssExperts
 
         state_dict = model.state_dict()
         num_local_experts = getattr(model.config, "num_local_experts", 32)
@@ -279,12 +279,13 @@ class Mxfp4HfQuantizer(HfQuantizer):
         return False
 
     def get_quantize_ops(self):
-        from ..integrations.mxfp4 import Mxfp4Quantize
+        Mxfp4Quantize = importlib.import_module("transformers.integrations.mxfp4").Mxfp4Quantize
 
         return Mxfp4Quantize(self)
 
     def get_weight_conversions(self):
-        from ..integrations.mxfp4 import Mxfp4Dequantize, Mxfp4Deserialize
+        Mxfp4Dequantize = importlib.import_module("transformers.integrations.mxfp4").Mxfp4Dequantize
+        Mxfp4Deserialize = importlib.import_module("transformers.integrations.mxfp4").Mxfp4Deserialize
 
         if self.pre_quantized and self.quantization_config.dequantize:
             return [

@@ -62,7 +62,7 @@ class Bnb8BitHfQuantizer(HfQuantizer):
                 f"Using `bitsandbytes` 8-bit quantization requires bitsandbytes: `pip install -U bitsandbytes>={BITSANDBYTES_MIN_VERSION}`"
             )
 
-        from ..integrations import validate_bnb_backend_availability
+        validate_bnb_backend_availability = importlib.import_module("transformers.integrations").validate_bnb_backend_availability
 
         validate_bnb_backend_availability(raise_exception=True)
 
@@ -127,7 +127,7 @@ class Bnb8BitHfQuantizer(HfQuantizer):
         device_map,
         **kwargs,
     ):
-        from ..integrations import replace_with_bnb_linear
+        replace_with_bnb_linear = importlib.import_module("transformers.integrations").replace_with_bnb_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.llm_int8_skip_modules, model._keep_in_fp32_modules
@@ -153,18 +153,18 @@ class Bnb8BitHfQuantizer(HfQuantizer):
         return True
 
     def _dequantize(self, model, dtype=None):
-        from ..integrations import dequantize_and_replace
+        dequantize_and_replace = importlib.import_module("transformers.integrations").dequantize_and_replace
 
         model = dequantize_and_replace(model, quantization_config=self.quantization_config, dtype=dtype)
         return model
 
     def get_quantize_ops(self):
-        from ..integrations.bitsandbytes import Bnb8bitQuantize
+        Bnb8bitQuantize = importlib.import_module("transformers.integrations.bitsandbytes").Bnb8bitQuantize
 
         return Bnb8bitQuantize(self)
 
     def get_weight_conversions(self):
-        from ..integrations.bitsandbytes import Bnb8bitDeserialize
+        Bnb8bitDeserialize = importlib.import_module("transformers.integrations.bitsandbytes").Bnb8bitDeserialize
 
         if self.pre_quantized:
             return [

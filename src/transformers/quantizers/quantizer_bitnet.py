@@ -71,7 +71,7 @@ class BitNetHfQuantizer(HfQuantizer):
         model: "PreTrainedModel",
         **kwargs,
     ):
-        from ..integrations import replace_with_bitnet_linear
+        replace_with_bitnet_linear = importlib.import_module("transformers.integrations").replace_with_bitnet_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules
@@ -109,7 +109,7 @@ class BitNetHfQuantizer(HfQuantizer):
         from .quantizers_utils import get_weight_converter_class
 
         WeightConverter = get_weight_converter_class()
-        from ..integrations.bitnet import BitNetDeserialize
+        BitNetDeserialize = importlib.import_module("transformers.integrations.bitnet").BitNetDeserialize
 
         if (
             self.quantization_config.linear_class == "autobitlinear"

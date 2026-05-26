@@ -17,6 +17,7 @@ and simplicity/ease of use.
 """
 
 import copy
+import importlib
 import inspect
 import os
 import re
@@ -45,11 +46,6 @@ if is_accelerate_available():
     from accelerate import dispatch_model
     from accelerate.utils import get_max_memory as accelerate_max_memory
     from accelerate.utils.modeling import clean_device_map, get_max_layer_size
-
-if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
-    from ..quantizers import HfQuantizer
-
 
 logger = logging.get_logger(__name__)
 
@@ -91,7 +87,9 @@ def get_module_size_with_ties(
 
 
 def check_and_set_device_map(device_map: "torch.device | int | str | dict | None") -> dict | str | None:
-    from ..modeling_utils import get_torch_context_manager_or_global_device
+    get_torch_context_manager_or_global_device = importlib.import_module(
+        "transformers.modeling_utils"
+    ).get_torch_context_manager_or_global_device
 
     # Potentially detect context manager or global device, and use it (only if no device_map was provided)
     if device_map is None and not is_deepspeed_zero3_enabled():

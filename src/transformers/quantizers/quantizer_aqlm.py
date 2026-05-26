@@ -22,7 +22,7 @@ from .base import HfQuantizer
 if TYPE_CHECKING:
     from ..utils.quantization_config import AqlmConfig
 
-from ..integrations import replace_with_aqlm_linear
+replace_with_aqlm_linear = importlib.import_module("transformers.integrations").replace_with_aqlm_linear
 from ..utils import is_accelerate_available, is_aqlm_available, logging
 from ..utils.quantization_config import QuantizationConfigMixin
 

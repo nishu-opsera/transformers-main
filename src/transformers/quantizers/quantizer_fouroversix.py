@@ -69,7 +69,7 @@ class FourOverSixHfQuantizer(HfQuantizer):
     ):
         from fouroversix import QuantizedModule, quantize_model
 
-        from ..integrations.fouroversix import adapt_fouroversix_config
+        adapt_fouroversix_config = importlib.import_module("transformers.integrations.fouroversix").adapt_fouroversix_config
 
         quantize_model(
             model,
@@ -95,7 +95,7 @@ class FourOverSixHfQuantizer(HfQuantizer):
         return self.quantization_config.keep_master_weights
 
     def get_quantize_ops(self):
-        from ..integrations.fouroversix import FourOverSixQuantize
+        FourOverSixQuantize = importlib.import_module("transformers.integrations.fouroversix").FourOverSixQuantize
 
         return FourOverSixQuantize(self)
 

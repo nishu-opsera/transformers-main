@@ -76,7 +76,8 @@ class FineGrainedFP8HfQuantizer(HfQuantizer):
                 )
 
     def param_needs_quantization(self, model: "PreTrainedModel", param_name: str, **kwargs) -> bool:
-        from ..integrations.finegrained_fp8 import FP8Experts, FP8Linear
+        FP8Experts = importlib.import_module("transformers.integrations.finegrained_fp8").FP8Experts
+        FP8Linear = importlib.import_module("transformers.integrations.finegrained_fp8").FP8Linear
 
         module, tensor_name = get_module_from_name(model, param_name)
         if isinstance(module, (FP8Linear, FP8Experts)):
@@ -98,7 +99,7 @@ class FineGrainedFP8HfQuantizer(HfQuantizer):
         model: "PreTrainedModel",
         **kwargs,
     ):
-        from ..integrations.finegrained_fp8 import replace_with_fp8_linear
+        replace_with_fp8_linear = importlib.import_module("transformers.integrations.finegrained_fp8").replace_with_fp8_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules
@@ -146,13 +147,13 @@ class FineGrainedFP8HfQuantizer(HfQuantizer):
         return True
 
     def get_quantize_ops(self):
-        from ..integrations.finegrained_fp8 import Fp8Quantize
+        Fp8Quantize = importlib.import_module("transformers.integrations.finegrained_fp8").Fp8Quantize
 
         return Fp8Quantize(self)
 
     def get_weight_conversions(self):
         WeightConverter = get_weight_converter_class()
-        from ..integrations.finegrained_fp8 import Fp8Dequantize
+        Fp8Dequantize = importlib.import_module("transformers.integrations.finegrained_fp8").Fp8Dequantize
 
         if self.pre_quantized and self.quantization_config.dequantize:
             return [
@@ -190,7 +191,7 @@ class FineGrainedFP8HfQuantizer(HfQuantizer):
 
         WeightConverter = get_weight_converter_class()
         WeightRenaming = get_weight_renaming_class()
-        from ..integrations.finegrained_fp8 import Fp8Dequantize
+        Fp8Dequantize = importlib.import_module("transformers.integrations.finegrained_fp8").Fp8Dequantize
 
         # Some upstream FP8 checkpoints (e.g. DeepSeek-V4-Flash) ship per-block scales
         # under a ``.scale`` suffix instead of HF's canonical ``.weight_scale_inv``.

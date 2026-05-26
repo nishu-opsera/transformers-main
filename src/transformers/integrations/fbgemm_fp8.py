@@ -15,10 +15,14 @@
 import importlib
 from functools import lru_cache
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 def _ConversionOps():
     return importlib.import_module("transformers.core_model_loading").ConversionOps
 
-from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 from ..utils import (
     is_accelerate_available,
     is_fbgemm_gpu_available,
@@ -61,9 +65,11 @@ class FbgemmFp8Quantize(_ConversionOps()):
         target_key, value = tuple(input_dict.items())[0]
         value = value[0]
 
-        from ..integrations import FbgemmFp8Llama4TextExperts
+        FbgemmFp8Llama4TextExperts = importlib.import_module(
+            "transformers.integrations.fbgemm_fp8"
+        ).FbgemmFp8Llama4TextExperts
 
-        module, tensor_name = get_module_from_name(model, target_key)
+        module, tensor_name = _quantizers_utils().get_module_from_name(model, target_key)
 
         if isinstance(module, FbgemmFp8Llama4TextExperts):
             if tensor_name == "gate_up_proj":
@@ -293,7 +299,7 @@ def replace_with_fbgemm_fp8_linear(
     module_kwargs = {} if pre_quantized else {"dtype": None}
 
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
 
         new_module = None

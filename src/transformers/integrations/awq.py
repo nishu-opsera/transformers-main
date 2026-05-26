@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2023 The HuggingFace Team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +14,11 @@
 # limitations under the License.
 "AWQ (Activation aware Weight Quantization) integration file"
 
-from ..quantizers.quantizers_utils import should_convert_module
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 from ..utils import is_torch_available, logging
 
 
@@ -90,7 +95,7 @@ def replace_with_awq_linear(
     )
 
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
         with torch.device("meta"):
             if isinstance(module, nn.Linear):

@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import importlib
 import importlib.metadata
 import os
 import re
@@ -320,7 +321,7 @@ def load_and_register_attn_kernel(
             hub repository.
     """
     from ..masking_utils import ALL_MASK_ATTENTION_FUNCTIONS
-    from ..modeling_utils import ALL_ATTENTION_FUNCTIONS
+    ALL_ATTENTION_FUNCTIONS = importlib.import_module("transformers.modeling_utils").ALL_ATTENTION_FUNCTIONS
 
     actual_attn_name = attn_implementation.split("|")[1] if "|" in attn_implementation else attn_implementation
     if not is_kernel(actual_attn_name):

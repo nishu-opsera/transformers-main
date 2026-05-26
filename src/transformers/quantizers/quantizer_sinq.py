@@ -161,7 +161,7 @@ class SinqHfQuantizer(HfQuantizer):
         Return the ConversionOps used for param-level quantization (Sinq).
         The actual SINQLinear construction is in integrations/sinq.py.
         """
-        from ..integrations.sinq import SinqQuantize
+        SinqQuantize = importlib.import_module("transformers.integrations.sinq").SinqQuantize
 
         return SinqQuantize(self)
 
@@ -179,7 +179,7 @@ class SinqHfQuantizer(HfQuantizer):
         WeightConverter = get_weight_converter_class()
 
         if self.pre_quantized:
-            from ..integrations.sinq import SinqDeserialize
+            SinqDeserialize = importlib.import_module("transformers.integrations.sinq").SinqDeserialize
 
             return [
                 WeightConverter(
@@ -207,7 +207,7 @@ class SinqHfQuantizer(HfQuantizer):
         For SINQ, we replace nn.Linear modules with empty SINQLinear modules here.
         The actual quantization happens later in SinqQuantize.convert() when weights are loaded.
         """
-        from ..integrations.sinq import replace_with_sinq_linear
+        replace_with_sinq_linear = importlib.import_module("transformers.integrations.sinq").replace_with_sinq_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, (self.quantization_config.modules_to_not_convert or []), keep_in_fp32_modules

@@ -96,7 +96,7 @@ class QuantoHfQuantizer(HfQuantizer):
         return super().param_element_size(model, param_name, param)
 
     def _process_model_before_weight_loading(self, model: "PreTrainedModel", **kwargs):
-        from ..integrations import replace_with_quanto_layers
+        replace_with_quanto_layers = importlib.import_module("transformers.integrations").replace_with_quanto_layers
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules
@@ -114,6 +114,6 @@ class QuantoHfQuantizer(HfQuantizer):
         return False
 
     def get_quantize_ops(self):
-        from ..integrations.quanto import QuantoQuantize
+        QuantoQuantize = importlib.import_module("transformers.integrations.quanto").QuantoQuantize
 
         return QuantoQuantize(self)

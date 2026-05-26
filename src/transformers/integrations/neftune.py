@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2024 The HuggingFace Team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +21,6 @@ Paper: https://huggingface.co/papers/2310.05914
 
 import torch
 
-from ..trainer_utils import _is_peft_model
 
 
 def neftune_post_forward_hook(module, input, output):
@@ -75,7 +75,7 @@ def activate_neftune(model, neftune_noise_alpha, accelerator=None):
     else:
         unwrapped_model = model
 
-    if _is_peft_model(unwrapped_model):
+    if importlib.import_module("transformers.trainer_utils")._is_peft_model(unwrapped_model):
         embeddings = unwrapped_model.base_model.model.get_input_embeddings()
     else:
         embeddings = unwrapped_model.get_input_embeddings()
@@ -104,7 +104,7 @@ def deactivate_neftune(model, hook_handle, accelerator=None):
     else:
         unwrapped_model = model
 
-    if _is_peft_model(unwrapped_model):
+    if importlib.import_module("transformers.trainer_utils")._is_peft_model(unwrapped_model):
         embeddings = unwrapped_model.base_model.model.get_input_embeddings()
     else:
         embeddings = unwrapped_model.get_input_embeddings()

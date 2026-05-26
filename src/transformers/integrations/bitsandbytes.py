@@ -1,10 +1,14 @@
 import importlib
 import inspect
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 def _ConversionOps():
     return importlib.import_module("transformers.core_model_loading").ConversionOps
 
-from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 from ..utils import (
     get_available_devices,
     is_accelerate_available,
@@ -48,7 +52,7 @@ class Bnb4bitQuantize(_ConversionOps()):
         value = value[0]
 
         # update param name to get the weights instead of the quantized stats
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
 
         # Support models using `Conv1D` in place of `nn.Linear` (e.g. openai-community/gpt2) by transposing the weight matrix prior to quantization.
         # Since weights are saved in the correct "orientation", we skip transposing when loading.
@@ -84,7 +88,7 @@ class Bnb4bitDeserialize(_ConversionOps()):
 
         key_weight = "weight"
         weight = input_dict.pop(key_weight)
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
         new_value = bnb.nn.Params4bit.from_prequantized(
             data=weight,
             quantized_stats=input_dict,
@@ -110,7 +114,7 @@ class Bnb8bitQuantize(_ConversionOps()):
         value = list(input_dict.values())[0]
         value = value[0] if isinstance(value, list) else value
 
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
 
         # Support models using `Conv1D` in place of `nn.Linear` (e.g. openai-community/gpt2) by transposing the weight matrix prior to quantization.
         # Since weights are saved in the correct "orientation", we skip transposing when loading.
@@ -146,7 +150,7 @@ class Bnb8bitDeserialize(_ConversionOps()):
             if isinstance(value, list):
                 input_dict[key] = value[0]
 
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
 
         key_weight = "weight"
         weight = input_dict[key_weight]
@@ -180,7 +184,7 @@ def replace_with_bnb_linear(
     has_been_replaced = False
     # we need this to correctly materialize the weights during quantization
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
         new_module = None
         with torch.device("meta"):

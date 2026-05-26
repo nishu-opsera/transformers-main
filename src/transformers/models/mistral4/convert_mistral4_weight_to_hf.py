@@ -1,3 +1,4 @@
+import importlib
 # Copyright 2026 Mistral AI and The HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +41,7 @@ from transformers.core_model_loading import (
 from transformers.integrations.finegrained_fp8 import replace_with_fp8_linear
 from transformers.integrations.mistral import convert_tekken_tokenizer
 from transformers.models.mistral4.modeling_mistral4 import Mistral4ForCausalLM
-from transformers.quantizers.auto import AutoQuantizationConfig
+# lazy import below
 
 
 _FP8_DTYPE = torch.float8_e4m3fn
@@ -434,7 +435,7 @@ def convert_config(
     quant = original_config.get("quantization", {})
     if output_fp8 and quant.get("qformat_weight") == "fp8_e4m3":
         assert quant["qscheme_act"] == "TENSOR"
-        quant_kwargs["quantization_config"] = AutoQuantizationConfig.from_dict(
+        quant_kwargs["quantization_config"] = importlib.import_module("transformers.quantizers.auto").AutoQuantizationConfig.from_dict(
             {
                 "activation_scheme": "static",
                 "modules_to_not_convert": ["model.vision_tower", "model.multi_modal_projector", "lm_head"],

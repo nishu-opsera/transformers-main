@@ -13,6 +13,11 @@ import importlib
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 import re
 import types
 
@@ -26,7 +31,6 @@ def _ConversionOps():
     return importlib.import_module("transformers.core_model_loading").ConversionOps
 
 
-from ..quantizers.quantizers_utils import get_module_from_name
 
 
 if is_torchao_available():
@@ -90,7 +94,7 @@ class TorchAoQuantize(_ConversionOps()):
         _, value = tuple(input_dict.items())[0]
         value = value[0] if isinstance(value, list) else value
 
-        module, tensor_name = get_module_from_name(model, full_layer_name)
+        module, tensor_name = _quantizers_utils().get_module_from_name(model, full_layer_name)
 
         module._parameters[tensor_name] = torch.nn.Parameter(value, requires_grad=value.requires_grad)
         # if we are quantizing tied parameters, to avoid tying the quantized weights
@@ -230,7 +234,7 @@ class TorchAoDeserialize(_ConversionOps()):
         assert not leftover_state_dict  # there should be no unprocessed tensors
         new_param = unflattened_state_dict[full_layer_name]
 
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
         # Add repr to the module
         if isinstance(module, torch.nn.Linear):
             module.extra_repr = types.MethodType(_linear_extra_repr, module)

@@ -1,5 +1,10 @@
-from ..quantizers.quantizers_utils import should_convert_module
+import importlib
 from ..utils import is_torch_available, logging
+
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
 
 
 if is_torch_available():
@@ -160,7 +165,7 @@ class BitLinear(nn.Module):
         # Optional RMSNorm (applied on the activations before quantization).
         self.rms_norm = None
         if use_rms_norm:
-            from ..models.llama.modeling_llama import LlamaRMSNorm
+            LlamaRMSNorm = importlib.import_module("transformers.models.llama.modeling_llama").LlamaRMSNorm
 
             self.rms_norm = LlamaRMSNorm(in_features, eps=rms_norm_eps)
 
@@ -271,7 +276,7 @@ class AutoBitLinear(nn.Linear):
         # Optional RMSNorm
         self.rms_norm = None
         if use_rms_norm:
-            from ..models.llama.modeling_llama import LlamaRMSNorm
+            LlamaRMSNorm = importlib.import_module("transformers.models.llama.modeling_llama").LlamaRMSNorm
 
             self.rms_norm = LlamaRMSNorm(in_features, eps=rms_norm_eps)
         if not online_quant:
@@ -329,7 +334,7 @@ def replace_with_bitnet_linear(model, modules_to_not_convert: list[str] | None =
     has_been_replaced = False
     # we need this to correctly materialize the weights during quantization
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
         with torch.device("meta"):
             if isinstance(module, nn.Linear):
@@ -386,12 +391,12 @@ class BitNetDeserialize:
                 input_dict[key] = value[0]
         key_weight = "weight"
         weight = input_dict.pop(key_weight)
-        from ..quantizers.quantizers_utils import get_module_from_name
+        get_module_from_name = importlib.import_module("transformers.quantizers.quantizers_utils").get_module_from_name
 
         needs_unpacking = False
         target_dtype = weight.dtype
         if model is not None and full_layer_name is not None:
-            module, _ = get_module_from_name(model, full_layer_name)
+            module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
             if hasattr(module, "out_features") and hasattr(module, "in_features"):
                 # Packed: shape[0] * VALUES_PER_ITEM == out_features
                 # Unpacked: shape[0] == out_features

@@ -64,7 +64,8 @@ class AwqQuantizer(HfQuantizer):
         return dtype
 
     def _process_model_before_weight_loading(self, model: "PreTrainedModel", **kwargs):
-        from ..integrations import replace_quantization_scales, replace_with_awq_linear
+        replace_quantization_scales = importlib.import_module("transformers.integrations").replace_quantization_scales
+        replace_with_awq_linear = importlib.import_module("transformers.integrations").replace_with_awq_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules, add_default_skips=True

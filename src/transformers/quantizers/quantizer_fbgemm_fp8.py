@@ -93,7 +93,8 @@ class FbgemmFp8HfQuantizer(HfQuantizer):
         return dtype
 
     def param_needs_quantization(self, model: "PreTrainedModel", param_name: str, **kwargs) -> bool:
-        from ..integrations import FbgemmFp8Linear, FbgemmFp8Llama4TextExperts
+        FbgemmFp8Linear = importlib.import_module("transformers.integrations").FbgemmFp8Linear
+        FbgemmFp8Llama4TextExperts = importlib.import_module("transformers.integrations").FbgemmFp8Llama4TextExperts
 
         module, tensor_name = get_module_from_name(model, param_name)
 
@@ -121,7 +122,7 @@ class FbgemmFp8HfQuantizer(HfQuantizer):
         model: "PreTrainedModel",
         **kwargs,
     ):
-        from ..integrations import replace_with_fbgemm_fp8_linear
+        replace_with_fbgemm_fp8_linear = importlib.import_module("transformers.integrations").replace_with_fbgemm_fp8_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules
@@ -140,7 +141,8 @@ class FbgemmFp8HfQuantizer(HfQuantizer):
         Force update the input scale upper bound after weight loading and device dispatch are complete.
         This resolves issues where persistent buffers are zeroed out or overwritten during the loading process.
         """
-        from ..integrations.fbgemm_fp8 import FbgemmFp8Linear, FbgemmFp8Llama4TextExperts
+        FbgemmFp8Linear = importlib.import_module("transformers.integrations.fbgemm_fp8").FbgemmFp8Linear
+        FbgemmFp8Llama4TextExperts = importlib.import_module("transformers.integrations.fbgemm_fp8").FbgemmFp8Llama4TextExperts
 
         for m in model.modules():
             if isinstance(m, (FbgemmFp8Linear, FbgemmFp8Llama4TextExperts)):
@@ -201,6 +203,6 @@ class FbgemmFp8HfQuantizer(HfQuantizer):
         return False
 
     def get_quantize_ops(self):
-        from ..integrations.fbgemm_fp8 import FbgemmFp8Quantize
+        FbgemmFp8Quantize = importlib.import_module("transformers.integrations.fbgemm_fp8").FbgemmFp8Quantize
 
         return FbgemmFp8Quantize(self)

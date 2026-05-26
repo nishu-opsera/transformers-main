@@ -1,7 +1,11 @@
 import importlib
 import torch
 
-from ..quantizers.quantizers_utils import get_module_from_name
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 from ..utils import is_fouroversix_available
 
 
@@ -37,7 +41,7 @@ class FourOverSixQuantize(_ConversionOps()):
         if self.hf_quantizer.quantization_config.keep_master_weights:
             return input_dict
 
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
         module_name = full_layer_name.rsplit(".", 1)[0]
 
         full_parameter_name = list(input_dict.keys())[0]

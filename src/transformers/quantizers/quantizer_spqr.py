@@ -19,7 +19,7 @@ from .base import HfQuantizer
 if TYPE_CHECKING:
     from ..utils.quantization_config import SpQRConfig
 
-from ..integrations import replace_with_spqr_linear
+replace_with_spqr_linear = importlib.import_module("transformers.integrations").replace_with_spqr_linear
 from ..utils import is_accelerate_available, is_spqr_available, is_torch_available, logging
 from ..utils.quantization_config import QuantizationConfigMixin
 

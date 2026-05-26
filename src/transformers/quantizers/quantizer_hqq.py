@@ -14,7 +14,7 @@
 
 from typing import TYPE_CHECKING
 
-from ..integrations import prepare_for_hqq_linear
+prepare_for_hqq_linear = importlib.import_module("transformers.integrations").prepare_for_hqq_linear
 from ..utils import is_hqq_available, is_torch_available, logging
 from .base import HfQuantizer
 from .quantizers_utils import get_module_from_name

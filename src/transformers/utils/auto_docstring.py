@@ -2733,7 +2733,9 @@ def get_model_name(obj):
             model_name_lowercase_from_file = file_name[len(start) : -len(end)]
             break
     if model_name_lowercase_from_file and model_name_lowercase_from_folder != model_name_lowercase_from_file:
-        from transformers.models.auto.configuration_auto import SPECIAL_MODEL_TYPE_TO_MODULE_NAME
+        SPECIAL_MODEL_TYPE_TO_MODULE_NAME = importlib.import_module(
+            "transformers.models.auto.configuration_auto"
+        ).SPECIAL_MODEL_TYPE_TO_MODULE_NAME
 
         if (
             model_name_lowercase_from_file in SPECIAL_MODEL_TYPE_TO_MODULE_NAME

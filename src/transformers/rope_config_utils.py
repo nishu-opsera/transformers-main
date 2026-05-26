@@ -3,15 +3,13 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, TypedDict
+from typing import TypedDict
 
 from .utils import logging
 
 
 logger = logging.get_logger(__name__)
 
-if TYPE_CHECKING:
-    from .configuration_utils import PreTrainedConfig
 
 class RopeParameters(TypedDict):
     """

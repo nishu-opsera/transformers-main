@@ -36,13 +36,23 @@ from typing import TYPE_CHECKING, Any
 
 # Integrations must be imported before ML frameworks:
 # ruff: isort: off
-from .integrations import (
-    get_reporting_integration_callbacks,
-)
-
 # ruff: isort: on
 
+import importlib
 import numpy as np
+
+
+def _integrations():
+    return importlib.import_module("transformers.integrations")
+
+
+def _integrations_deepspeed():
+    return importlib.import_module("transformers.integrations.deepspeed")
+
+
+def get_reporting_integration_callbacks(*args, **kwargs):
+    return _integrations().get_reporting_integration_callbacks(*args, **kwargs)
+
 import safetensors.torch
 import torch
 import torch.distributed as dist
@@ -60,17 +70,6 @@ from .feature_extraction_sequence_utils import SequenceFeatureExtractor
 from .feature_extraction_utils import FeatureExtractionMixin
 from .hyperparameter_search import ALL_HYPERPARAMETER_SEARCH_BACKENDS, default_hp_search_backend
 from .image_processing_utils import BaseImageProcessor
-from .integrations.deepspeed import (
-    deepspeed_init,
-    deepspeed_load_checkpoint,
-    deepspeed_sp_compute_loss,
-    is_deepspeed_available,
-    propagate_args_to_deepspeed,
-)
-from .integrations.liger import apply_liger_kernel
-from .integrations.neftune import activate_neftune, deactivate_neftune
-from .integrations.peft import MIN_PEFT_VERSION
-from .integrations.tpu import save_tpu_checkpoint, tpu_spmd_dataloader, wrap_model_xla_fsdp
 from .modelcard import TrainingSummary
 from .modeling_utils import PreTrainedModel, unwrap_model
 from .models.auto.modeling_auto import (
@@ -226,7 +225,7 @@ if is_accelerate_available():
     )
     from accelerate.utils.memory import clear_device_cache
 
-    if is_deepspeed_available():
+    if _integrations_deepspeed().is_deepspeed_available():
         from accelerate.utils import DeepSpeedSchedulerWrapper
 
 
@@ -830,7 +829,7 @@ class Trainer:
                 )
 
         if self.is_deepspeed_enabled and getattr(self.args, "hf_deepspeed_config", None) is None:
-            propagate_args_to_deepspeed(self.accelerator, self.args)
+            _integrations_deepspeed().propagate_args_to_deepspeed(self.accelerator, self.args)
 
         # `save_only_model` can't be used with DeepSpeed/FSDP along with `load_best_model_at_end`
         if (
@@ -1364,7 +1363,7 @@ class Trainer:
             self.model_wrapped = self.model
 
         if self.args.use_liger_kernel:
-            apply_liger_kernel(self.model, self.args.liger_kernel_config)
+            importlib.import_module("transformers.integrations.liger").apply_liger_kernel(self.model, self.args.liger_kernel_config)
 
         # When fp16/bf16 full eval is enabled, __init__ skips device placement so that
         # evaluation_loop can cast dtype and move in one step. Move the model now for training.
@@ -1383,7 +1382,7 @@ class Trainer:
 
         # Attach NEFTune hooks if necessary
         if self.neftune_noise_alpha is not None:
-            self.neftune_hook_handle = activate_neftune(self.model, self.neftune_noise_alpha, self.accelerator)
+            self.neftune_hook_handle = importlib.import_module("transformers.integrations.neftune").activate_neftune(self.model, self.neftune_noise_alpha, self.accelerator)
 
         # This might change the seed so needs to run first.
         self._hp_search_setup(trial)
@@ -1444,7 +1443,7 @@ class Trainer:
         # Data loader and number of training steps
         train_dataloader = self.get_train_dataloader()
         if self.is_fsdp_xla_v2_enabled:
-            train_dataloader = tpu_spmd_dataloader(train_dataloader)
+            train_dataloader = importlib.import_module("transformers.integrations.tpu").tpu_spmd_dataloader(train_dataloader)
 
         # Setting up training control variables:
         (
@@ -1567,7 +1566,7 @@ class Trainer:
             self._created_lr_scheduler = False
 
         if self.is_deepspeed_enabled:
-            self.optimizer, self.lr_scheduler = deepspeed_init(self, num_training_steps=max_steps)
+            self.optimizer, self.lr_scheduler = _integrations_deepspeed().deepspeed_init(self, num_training_steps=max_steps)
 
         if not delay_optimizer_creation:
             self.create_optimizer()
@@ -1634,7 +1633,7 @@ class Trainer:
         # load checkpoint
         if resume_from_checkpoint is not None:
             if self.is_deepspeed_enabled:
-                deepspeed_load_checkpoint(
+                _integrations_deepspeed().deepspeed_load_checkpoint(
                     self.model_wrapped, resume_from_checkpoint, load_module_strict=not _is_peft_model(self.model)
                 )
             elif is_sagemaker_mp_enabled() or self.is_fsdp_enabled:
@@ -1859,7 +1858,7 @@ class Trainer:
         # After training we make sure to retrieve back the original forward pass method
         # for the embedding layer by removing the forward post hook.
         if self.neftune_noise_alpha is not None:
-            deactivate_neftune(self.model, self.neftune_hook_handle, self.accelerator)
+            importlib.import_module("transformers.integrations.neftune").deactivate_neftune(self.model, self.neftune_hook_handle, self.accelerator)
         self.is_in_train = False
 
         return TrainOutput(self.state.global_step, train_loss, metrics)
@@ -1964,7 +1963,7 @@ class Trainer:
         """
         pc = getattr(self.accelerator, "parallelism_config", None)
         if pc is not None and pc.sp_backend == "deepspeed" and pc.sp_enabled and self.model.training:
-            return deepspeed_sp_compute_loss(self.accelerator, model, inputs, return_outputs, pc)
+            return _integrations_deepspeed().deepspeed_sp_compute_loss(self.accelerator, model, inputs, return_outputs, pc)
 
         if (self.label_smoother is not None or self.compute_loss_func is not None) and "labels" in inputs:
             labels = inputs.pop("labels")
@@ -2430,7 +2429,7 @@ class Trainer:
 
         # Distributed training using PyTorch FSDP
         if self.is_fsdp_xla_enabled:
-            model = wrap_model_xla_fsdp(model, self.args, self.is_fsdp_xla_v2_enabled)
+            model = importlib.import_module("transformers.integrations.tpu").wrap_model_xla_fsdp(model, self.args, self.is_fsdp_xla_v2_enabled)
         elif is_sagemaker_dp_enabled():
             model = nn.parallel.DistributedDataParallel(
                 model, device_ids=[int(os.getenv("SMDATAPARALLEL_LOCAL_RANK"))]
@@ -2455,7 +2454,7 @@ class Trainer:
             # Temporarily unset `self.args.train_batch_size`
             original_bs = self.args.per_device_train_batch_size
             self.args.per_device_train_batch_size = self._train_batch_size // max(1, self.args.n_gpu)
-            propagate_args_to_deepspeed(self.accelerator, self.args, auto_find_batch_size=True)
+            _integrations_deepspeed().propagate_args_to_deepspeed(self.accelerator, self.args, auto_find_batch_size=True)
             self.args.per_device_train_batch_size = original_bs
 
     def _track_num_input_tokens(self, inputs):
@@ -2573,7 +2572,7 @@ class Trainer:
 
         eval_dataloader = self.get_eval_dataloader(eval_dataset)
         if self.is_fsdp_xla_v2_enabled:
-            eval_dataloader = tpu_spmd_dataloader(eval_dataloader)
+            eval_dataloader = importlib.import_module("transformers.integrations.tpu").tpu_spmd_dataloader(eval_dataloader)
 
         start_time = time.time()
 
@@ -2629,7 +2628,7 @@ class Trainer:
 
         # if eval is called w/o train, handle model prep here
         if self.is_deepspeed_enabled and self.deepspeed is None:
-            _, _ = deepspeed_init(self, num_training_steps=0, inference=True)
+            _, _ = _integrations_deepspeed().deepspeed_init(self, num_training_steps=0, inference=True)
 
         model = self._wrap_model(self.model, training=False)
 
@@ -3403,7 +3402,7 @@ class Trainer:
                         "Check some examples here: https://github.com/huggingface/peft/issues/96"
                     )
             else:
-                logger.warning(f"Could not load adapter model, make sure to have PEFT >= {MIN_PEFT_VERSION} installed")
+                logger.warning(f"Could not load adapter model, make sure to have PEFT >= {importlib.import_module("transformers.integrations.peft").MIN_PEFT_VERSION} installed")
         else:
             # We load the sharded checkpoint
             load_result = load_sharded_checkpoint(model, resume_from_checkpoint, strict=is_sagemaker_mp_enabled())
@@ -3420,7 +3419,7 @@ class Trainer:
 
         model = self.model_wrapped if is_sagemaker_mp_enabled() else self.model
         if self.is_deepspeed_enabled:
-            deepspeed_load_checkpoint(
+            _integrations_deepspeed().deepspeed_load_checkpoint(
                 self.model_wrapped,
                 self.state.best_model_checkpoint,
                 load_module_strict=not _is_peft_model(self.model),
@@ -3485,7 +3484,7 @@ class Trainer:
                             has_been_loaded = False
                     else:
                         logger.warning(
-                            f"Could not load adapter model, make sure to have PEFT >= {MIN_PEFT_VERSION} installed"
+                            f"Could not load adapter model, make sure to have PEFT >= {importlib.import_module("transformers.integrations.peft").MIN_PEFT_VERSION} installed"
                         )
                         has_been_loaded = False
                 else:
@@ -3760,7 +3759,7 @@ class Trainer:
             output_dir = self.args.output_dir
 
         if is_torch_xla_available():
-            save_tpu_checkpoint(
+            importlib.import_module("transformers.integrations.tpu").save_tpu_checkpoint(
                 self.model, self.args, self.accelerator, self.processing_class, self.is_fsdp_xla_v1_enabled, output_dir
             )
         elif is_sagemaker_mp_enabled():
@@ -4293,7 +4292,7 @@ class Trainer:
             # Rebuild the deepspeed config to reflect the updated training parameters
             from accelerate.utils import DeepSpeedPlugin
 
-            from transformers.integrations.deepspeed import HfTrainerDeepSpeedConfig
+            HfTrainerDeepSpeedConfig = _integrations_deepspeed().HfTrainerDeepSpeedConfig
 
             self.args.hf_deepspeed_config = HfTrainerDeepSpeedConfig(self.args.deepspeed)
             self.args.hf_deepspeed_config.trainer_config_process(self.args)

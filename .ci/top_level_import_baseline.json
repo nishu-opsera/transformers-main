@@ -366,43 +366,11 @@
     },
     {
       "source": "transformers.integrations",
-      "destination": "transformers.modeling_utils"
-    },
-    {
-      "source": "transformers.integrations",
-      "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.integrations",
       "destination": "transformers.pytorch_utils"
     },
     {
       "source": "transformers.integrations",
-      "destination": "transformers.quantizers"
-    },
-    {
-      "source": "transformers.integrations",
       "destination": "transformers.tokenization_utils_tokenizers"
-    },
-    {
-      "source": "transformers.integrations",
-      "destination": "transformers.trainer"
-    },
-    {
-      "source": "transformers.integrations",
-      "destination": "transformers.trainer_callback"
-    },
-    {
-      "source": "transformers.integrations",
-      "destination": "transformers.trainer_pt_utils"
-    },
-    {
-      "source": "transformers.integrations",
-      "destination": "transformers.trainer_utils"
-    },
-    {
-      "source": "transformers.integrations",
-      "destination": "transformers.training_args"
     },
     {
       "source": "transformers.integrations",
@@ -447,10 +415,6 @@
     {
       "source": "transformers.modeling_attn_mask_utils",
       "destination": "transformers.utils"
-    },
-    {
-      "source": "transformers.modeling_flash_attention_utils",
-      "destination": "transformers.integrations"
     },
     {
       "source": "transformers.modeling_flash_attention_utils",
@@ -682,10 +646,6 @@
     },
     {
       "source": "transformers.models",
-      "destination": "transformers.quantizers"
-    },
-    {
-      "source": "transformers.models",
       "destination": "transformers.rope_config_utils"
     },
     {
@@ -850,19 +810,7 @@
     },
     {
       "source": "transformers.quantizers",
-      "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.quantizers",
-      "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.quantizers",
       "destination": "transformers.utils"
-    },
-    {
-      "source": "transformers.rope_config_utils",
-      "destination": "transformers.configuration_utils"
     },
     {
       "source": "transformers.rope_config_utils",
@@ -986,10 +934,6 @@
     },
     {
       "source": "transformers.trainer",
-      "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.trainer",
       "destination": "transformers.modelcard"
     },
     {
@@ -1042,10 +986,6 @@
     },
     {
       "source": "transformers.trainer_callback",
-      "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.trainer_callback",
       "destination": "transformers.trainer_utils"
     },
     {
@@ -1091,10 +1031,6 @@
     {
       "source": "transformers.trainer_optimizer",
       "destination": "transformers.utils"
-    },
-    {
-      "source": "transformers.trainer_pt_utils",
-      "destination": "transformers.integrations"
     },
     {
       "source": "transformers.trainer_pt_utils",
@@ -1166,10 +1102,6 @@
     },
     {
       "source": "transformers.trainer_utils",
-      "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.trainer_utils",
       "destination": "transformers.processing_utils"
     },
     {
@@ -1183,10 +1115,6 @@
     {
       "source": "transformers.training_args",
       "destination": "transformers.debug_utils"
-    },
-    {
-      "source": "transformers.training_args",
-      "destination": "transformers.integrations"
     },
     {
       "source": "transformers.training_args",
@@ -1215,10 +1143,6 @@
     {
       "source": "transformers.utils",
       "destination": "transformers._typing"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.models"
     },
     {
       "source": "transformers.video_processing_utils",

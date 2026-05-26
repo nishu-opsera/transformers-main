@@ -35,7 +35,11 @@ which computes ``y = x @ dequant(weight).T``, identical to ``nn.Linear``.
 
 import importlib
 
-from ..quantizers.quantizers_utils import should_convert_module
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 from ..utils import is_torch_available, logging
 
 
@@ -169,7 +173,7 @@ def replace_with_metal_linear(
     has_been_replaced = False
 
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
 
         if isinstance(module, nn.Linear):

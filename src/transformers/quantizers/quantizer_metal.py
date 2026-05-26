@@ -79,7 +79,7 @@ class MetalHfQuantizer(HfQuantizer):
         return device_map
 
     def param_needs_quantization(self, model: "PreTrainedModel", param_name: str, **kwargs) -> bool:
-        from ..integrations.metal_quantization import MetalLinear
+        MetalLinear = importlib.import_module("transformers.integrations.metal_quantization").MetalLinear
 
         module, tensor_name = get_module_from_name(model, param_name)
         if isinstance(module, MetalLinear):
@@ -89,7 +89,7 @@ class MetalHfQuantizer(HfQuantizer):
         return False
 
     def _process_model_before_weight_loading(self, model: "PreTrainedModel", **kwargs):
-        from ..integrations.metal_quantization import replace_with_metal_linear
+        replace_with_metal_linear = importlib.import_module("transformers.integrations.metal_quantization").replace_with_metal_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules
@@ -110,13 +110,13 @@ class MetalHfQuantizer(HfQuantizer):
         return False
 
     def get_quantize_ops(self):
-        from ..integrations.metal_quantization import MetalQuantize
+        MetalQuantize = importlib.import_module("transformers.integrations.metal_quantization").MetalQuantize
 
         return MetalQuantize(self)
 
     def get_weight_conversions(self):
         WeightConverter = get_weight_converter_class()
-        from ..integrations.metal_quantization import MetalDequantize
+        MetalDequantize = importlib.import_module("transformers.integrations.metal_quantization").MetalDequantize
 
         if self.pre_quantized and self.quantization_config.dequantize:
             return [

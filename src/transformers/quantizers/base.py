@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import importlib
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
@@ -315,7 +316,7 @@ class SequentialLlama4TextExperts(ModuleList):
     """
 
     def __init__(self, config):
-        from transformers.models.llama4.modeling_llama4 import Llama4TextMLP
+        Llama4TextMLP = importlib.import_module("transformers.models.llama4.modeling_llama4").Llama4TextMLP
 
         super().__init__([Llama4TextMLP(config) for _ in range(config.num_local_experts)])
         self.num_experts = config.num_local_experts

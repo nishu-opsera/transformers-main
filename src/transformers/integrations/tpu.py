@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import functools
+import importlib
 import os
 
 import torch
@@ -61,7 +62,7 @@ def wrap_model_xla_fsdp(model, args, is_fsdp_xla_v2_enabled):
     import torch_xla.core.xla_model as xm
     import torch_xla.distributed.spmd as xs
 
-    from ..trainer_pt_utils import get_module_class_from_name
+    get_module_class_from_name = importlib.import_module("transformers.trainer_pt_utils").get_module_class_from_name
 
     try:
         from torch_xla.distributed.fsdp import XlaFullyShardedDataParallel as FSDP

@@ -15,6 +15,11 @@
 from __future__ import annotations
 import importlib
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 from typing import Any
 
 from transformers.utils import is_torch_available, logging
@@ -22,7 +27,6 @@ from transformers.utils import is_torch_available, logging
 def _ConversionOps():
     return importlib.import_module("transformers.core_model_loading").ConversionOps
 
-from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 
 
 logger = logging.get_logger(__name__)
@@ -62,7 +66,7 @@ def replace_with_sinq_linear(
     for full_name, module in list(model.named_modules()):
         if not isinstance(module, nn.Linear):
             continue
-        if not should_convert_module(full_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(full_name, modules_to_not_convert):
             continue
 
         parent_path, _, child_name = full_name.rpartition(".")
@@ -106,7 +110,7 @@ class SinqQuantize(_ConversionOps()):
         _, values = next(iter(input_dict.items()))
         weight_tensor = values[0] if isinstance(values, list) else values
 
-        module, tensor_name = get_module_from_name(model, full_layer_name)
+        module, tensor_name = _quantizers_utils().get_module_from_name(model, full_layer_name)
 
         module.quantize(weight_tensor)
 
@@ -161,7 +165,7 @@ class SinqDeserialize(_ConversionOps()):
                 v = v[0]
             return {full_layer_name: v}
 
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
 
         state = {
             "W_q": W_q,

@@ -16,6 +16,7 @@ Torch utilities for the Trainer class.
 """
 
 import contextlib
+import importlib
 import copy
 import datetime
 import io
@@ -40,7 +41,6 @@ from torch import nn
 from torch.utils.data import Dataset, IterableDataset, RandomSampler, Sampler
 from torch.utils.data.distributed import DistributedSampler
 
-from .integrations.deepspeed import is_deepspeed_zero3_enabled
 from .tokenization_utils_base import BatchEncoding
 from .trainer_utils import AcceleratorConfig  # noqa: F401 — re-export for backward compatibility
 from .utils import (
@@ -1011,7 +1011,7 @@ def get_model_param_count(model, trainable_only=False):
     """
     Calculate model's total param count. If trainable_only is True then count only those requiring grads.
     """
-    if is_deepspeed_zero3_enabled():
+    if importlib.import_module("transformers.integrations.deepspeed").is_deepspeed_zero3_enabled():
 
         def numel(p):
             return p.ds_numel if hasattr(p, "ds_numel") else p.numel()

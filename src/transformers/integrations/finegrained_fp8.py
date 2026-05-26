@@ -13,6 +13,11 @@
 # limitations under the License.
 from __future__ import annotations
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 import functools
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -27,7 +32,6 @@ from functools import lru_cache
 def _ConversionOps():
     return importlib.import_module("transformers.core_model_loading").ConversionOps
 
-from ..quantizers.quantizers_utils import should_convert_module
 from ..utils import logging
 from ..utils.import_utils import get_cuda_runtime_version, is_kernels_available, resolve_internal_import
 from .hub_kernels import lazy_load_kernel
@@ -825,7 +829,7 @@ def replace_with_fp8_linear(
 
     has_been_replaced = False
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
 
         # we need this to correctly materialize the weights during quantization

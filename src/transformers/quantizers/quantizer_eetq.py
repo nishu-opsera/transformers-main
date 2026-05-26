@@ -70,7 +70,7 @@ class EetqHfQuantizer(HfQuantizer):
         return dtype
 
     def param_needs_quantization(self, model: "PreTrainedModel", param_name: str, **kwargs) -> bool:
-        from ..integrations.eetq import EetqLinear
+        EetqLinear = importlib.import_module("transformers.integrations.eetq").EetqLinear
 
         module, tensor_name = get_module_from_name(model, param_name)
 
@@ -86,7 +86,7 @@ class EetqHfQuantizer(HfQuantizer):
         model: "PreTrainedModel",
         **kwargs,
     ):
-        from ..integrations import replace_with_eetq_linear
+        replace_with_eetq_linear = importlib.import_module("transformers.integrations").replace_with_eetq_linear
 
         self.modules_to_not_convert = self.get_modules_to_not_convert(
             model, self.quantization_config.modules_to_not_convert, model._keep_in_fp32_modules
@@ -104,6 +104,6 @@ class EetqHfQuantizer(HfQuantizer):
         return True
 
     def get_quantize_ops(self):
-        from ..integrations.eetq import EetqQuantize
+        EetqQuantize = importlib.import_module("transformers.integrations.eetq").EetqQuantize
 
         return EetqQuantize(self)

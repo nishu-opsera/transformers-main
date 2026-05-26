@@ -14,6 +14,11 @@ import importlib
 # limitations under the License.
 "FP-Quant integration file"
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 import torch
 
 from ..utils import (
@@ -30,7 +35,6 @@ from transformers.utils.quantization_config import FPQuantConfig
 def _ConversionOps():
     return importlib.import_module("transformers.core_model_loading").ConversionOps
 
-from ..quantizers.quantizers_utils import get_module_from_name
 
 
 class FpQuantQuantize(_ConversionOps()):
@@ -48,7 +52,7 @@ class FpQuantQuantize(_ConversionOps()):
         value = value[0]
         # Loading master weights or an unquantized checkpoint
         weight = torch.nn.Parameter(value)
-        module, _ = get_module_from_name(model, target_key)
+        module, _ = _quantizers_utils().get_module_from_name(model, target_key)
         module.weight = weight
 
         # Let pre-forward handle the quantization and set None where necessary
@@ -85,7 +89,7 @@ class FpQuantDeserialize(_ConversionOps()):
     ) -> dict[str, torch.Tensor]:
         target_key, value = tuple(input_dict.items())[0]
         value = value[0] if isinstance(value, list) else value
-        module, _ = get_module_from_name(model, target_key)
+        module, _ = _quantizers_utils().get_module_from_name(model, target_key)
         # The module holds either:
         #  * `weight` when `store_master_weights=True`
         #  * `qweight` and `scales` when `store_master_weights=False` and `pseudoquantization=False`

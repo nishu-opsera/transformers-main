@@ -83,7 +83,7 @@ class QuarkHfQuantizer(HfQuantizer):
         from .quantizers_utils import get_weight_converter_class
 
         WeightConverter = get_weight_converter_class()
-        from ..integrations.quark import QuarkDeserialize
+        QuarkDeserialize = importlib.import_module("transformers.integrations.quark").QuarkDeserialize
 
         # In Quark, quantization is managed through a QParamsLinear module, which holds
         # separate quantizers for the weights, inputs, and biases (e.g. weight_quantizer

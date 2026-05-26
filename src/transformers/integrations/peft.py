@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import copy
+import importlib
 import inspect
 import json
 import os
@@ -62,10 +63,6 @@ MIN_PEFT_VERSION = "0.18.2"
 
 
 logger = logging.get_logger(__name__)
-
-
-if TYPE_CHECKING:
-    from ..modeling_utils import LoadStateDictConfig, LoadStateDictInfo
 
 
 # TODO: remove once PEFT < 0.19 no longer supported
@@ -508,7 +505,10 @@ class PeftAdapterMixin:
         from peft import PeftType
         from peft.utils.save_and_load import _maybe_shard_state_dict_for_tp
 
-        from ..modeling_utils import LoadStateDictConfig, _get_resolved_checkpoint_files, load_state_dict
+        _modeling_utils = importlib.import_module("transformers.modeling_utils")
+        LoadStateDictConfig = _modeling_utils.LoadStateDictConfig
+        _get_resolved_checkpoint_files = _modeling_utils._get_resolved_checkpoint_files
+        load_state_dict = _modeling_utils.load_state_dict
 
         if local_files_only:
             kwargs["local_files_only"] = True

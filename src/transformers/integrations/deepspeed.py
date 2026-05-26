@@ -16,6 +16,7 @@ Integration with Deepspeed
 """
 
 import copy
+import importlib
 import importlib.metadata
 import importlib.util
 import weakref
@@ -301,7 +302,7 @@ def initialize_weights_zero3(model):
     import torch
 
     from ..initialization import guard_torch_init_functions
-    from ..modeling_utils import PreTrainedModel
+    PreTrainedModel = importlib.import_module("transformers.modeling_utils").PreTrainedModel
 
     is_remote_code = model.is_remote_code()
 

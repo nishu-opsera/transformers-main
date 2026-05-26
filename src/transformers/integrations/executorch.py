@@ -10,6 +10,8 @@
 # an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
 # specific language governing permissions and limitations under the License.
 
+from __future__ import annotations
+
 import logging
 
 import torch
@@ -24,7 +26,6 @@ from ..cache_utils import (
     StaticSlidingWindowLayer,
 )
 from ..generation.configuration_utils import GenerationConfig
-from ..modeling_utils import PreTrainedModel
 from ..pytorch_utils import (
     is_torch_greater_or_equal,
     is_torch_greater_or_equal_than_2_6,

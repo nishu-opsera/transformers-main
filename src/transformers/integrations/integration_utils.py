@@ -93,10 +93,23 @@ if TYPE_CHECKING and _has_neptune:
         except importlib.metadata.PackageNotFoundError:
             _has_neptune = False
 
+import importlib
+
 from .. import modelcard  # noqa: E402
-from ..trainer_callback import ProgressCallback, TrainerCallback  # noqa: E402
-from ..trainer_utils import PREFIX_CHECKPOINT_DIR, BestRun, IntervalStrategy  # noqa: E402
-from ..training_args import ParallelMode  # noqa: E402
+
+
+def _trainer_callback_module():
+    return importlib.import_module("transformers.trainer_callback")
+
+
+def _trainer_utils_module():
+    return importlib.import_module("transformers.trainer_utils")
+
+
+def _training_args_module():
+    return importlib.import_module("transformers.training_args")
+
+
 from ..utils import ENV_VARS_TRUE_VALUES, is_torch_xla_available  # noqa: E402
 
 
@@ -242,12 +255,12 @@ def run_hp_search_optuna(trainer, n_trials: int, direction: str, **kwargs) -> Be
             checkpoint = None
             if checkpoint_dir:
                 for subdir in os.listdir(checkpoint_dir):
-                    if subdir.startswith(PREFIX_CHECKPOINT_DIR):
+                    if subdir.startswith(_trainer_utils_module().PREFIX_CHECKPOINT_DIR):
                         checkpoint = os.path.join(checkpoint_dir, subdir)
             trainer.objective = None
             if trainer.args.world_size > 1:
-                if trainer.args.parallel_mode != ParallelMode.DISTRIBUTED:
-                    raise RuntimeError("only support DDP optuna HPO for ParallelMode.DISTRIBUTED currently.")
+                if trainer.args.parallel_mode != _training_args_module().ParallelMode.DISTRIBUTED:
+                    raise RuntimeError("only support DDP optuna HPO for _training_args_module().ParallelMode.DISTRIBUTED currently.")
                 trainer.hp_space(trial)
                 fixed_trial = optuna.trial.FixedTrial(trial.params, trial.number)
                 trial_main_rank_list = [fixed_trial]
@@ -278,16 +291,16 @@ def run_hp_search_optuna(trainer, n_trials: int, direction: str, **kwargs) -> Be
         )
         if not study._is_multi_objective():
             best_trial = study.best_trial
-            return BestRun(str(best_trial.number), best_trial.value, best_trial.params)
+            return _trainer_utils_module().BestRun(str(best_trial.number), best_trial.value, best_trial.params)
         else:
             best_trials = study.best_trials
-            return [BestRun(str(best.number), best.values, best.params) for best in best_trials]
+            return [_trainer_utils_module().BestRun(str(best.number), best.values, best.params) for best in best_trials]
     else:
         for i in range(n_trials):
             trainer.objective = None
             trial_main_rank_list = [None]
-            if trainer.args.parallel_mode != ParallelMode.DISTRIBUTED:
-                raise RuntimeError("only support DDP optuna HPO for ParallelMode.DISTRIBUTED currently.")
+            if trainer.args.parallel_mode != _training_args_module().ParallelMode.DISTRIBUTED:
+                raise RuntimeError("only support DDP optuna HPO for _training_args_module().ParallelMode.DISTRIBUTED currently.")
             torch.distributed.broadcast_object_list(trial_main_rank_list, src=0)
             trainer.train(resume_from_checkpoint=None, trial=trial_main_rank_list[0])
             # If there hasn't been any evaluation during the training loop.
@@ -313,7 +326,7 @@ def run_hp_search_ray(trainer, n_trials: int, direction: str, **kwargs) -> BestR
             from transformers.utils.notebook import NotebookProgressCallback
 
             if local_trainer.pop_callback(NotebookProgressCallback):
-                local_trainer.add_callback(ProgressCallback)
+                local_trainer.add_callback(_trainer_callback_module().ProgressCallback)
         except ModuleNotFoundError:
             pass
 
@@ -329,7 +342,7 @@ def run_hp_search_ray(trainer, n_trials: int, direction: str, **kwargs) -> BestR
             local_trainer.objective = "objective"
 
             with checkpoint.as_directory() as checkpoint_dir:
-                checkpoint_path = next(Path(checkpoint_dir).glob(f"{PREFIX_CHECKPOINT_DIR}*")).as_posix()
+                checkpoint_path = next(Path(checkpoint_dir).glob(f"{_trainer_utils_module().PREFIX_CHECKPOINT_DIR}*")).as_posix()
                 local_trainer.train(resume_from_checkpoint=checkpoint_path, trial=trial)
         else:
             local_trainer.train(trial=trial)
@@ -347,7 +360,7 @@ def run_hp_search_ray(trainer, n_trials: int, direction: str, **kwargs) -> BestR
                 ray.tune.report(metrics, checkpoint=checkpoint)
 
     if not trainer._memory_tracker.skip_memory_metrics:
-        from ..trainer_utils import TrainerMemoryTracker
+        TrainerMemoryTracker = importlib.import_module("transformers.trainer_utils").TrainerMemoryTracker
 
         logger.warning(
             "Memory tracking for your Trainer is currently "
@@ -389,7 +402,7 @@ def run_hp_search_ray(trainer, n_trials: int, direction: str, **kwargs) -> BestR
         # Check for `do_eval` and `eval_during_training` for schedulers that require intermediate reporting.
         if isinstance(
             kwargs["scheduler"], (ASHAScheduler, MedianStoppingRule, HyperBandForBOHB, PopulationBasedTraining)
-        ) and (not trainer.args.do_eval or trainer.args.eval_strategy == IntervalStrategy.NO):
+        ) and (not trainer.args.do_eval or trainer.args.eval_strategy == _trainer_utils_module().IntervalStrategy.NO):
             raise RuntimeError(
                 "You are using {cls} as a scheduler but you haven't enabled evaluation during training. "
                 "This means your trials will not report intermediate results to Ray Tune, and "
@@ -435,7 +448,7 @@ def run_hp_search_ray(trainer, n_trials: int, direction: str, **kwargs) -> BestR
     )
     ray_scope = os.getenv("RAY_SCOPE", "last")
     best_trial = analysis.get_best_trial(metric="objective", mode=direction[:3], scope=ray_scope)
-    best_run = BestRun(best_trial.trial_id, best_trial.last_result["objective"], best_trial.config, analysis)
+    best_run = _trainer_utils_module().BestRun(best_trial.trial_id, best_trial.last_result["objective"], best_trial.config, analysis)
     if _tb_writer is not None:
         trainer.add_callback(_tb_writer)
     return best_run
@@ -513,7 +526,7 @@ def run_hp_search_wandb(trainer, n_trials: int, direction: str, **kwargs) -> Bes
     logger.info(f"wandb sweep id - {sweep_id}")
     wandb.agent(sweep_id, function=_objective, count=n_trials)
 
-    return BestRun(best_trial["run_id"], best_trial["objective"], best_trial["hyperparameters"], sweep_id)
+    return _trainer_utils_module().BestRun(best_trial["run_id"], best_trial["objective"], best_trial["hyperparameters"], sweep_id)
 
 
 def get_available_reporting_integrations():
@@ -574,7 +587,7 @@ def default_logdir() -> str:
     return os.path.join("runs", current_time + "_" + socket.gethostname())
 
 
-class TensorBoardCallback(TrainerCallback):
+class TensorBoardCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that sends the logs to [TensorBoard](https://www.tensorflow.org/tensorboard).
 
@@ -692,7 +705,7 @@ class WandbLogModel(str, Enum):
         return WandbLogModel.FALSE
 
 
-class WandbCallback(TrainerCallback):
+class WandbCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that logs metrics, media, model checkpoints to [Weight and Biases](https://www.wandb.com/).
     """
@@ -838,7 +851,7 @@ class WandbCallback(TrainerCallback):
         if self._wandb is None:
             return
         if self._log_model.is_enabled and self._initialized and state.is_world_process_zero:
-            from ..trainer import Trainer
+            Trainer = importlib.import_module("transformers.trainer").Trainer
 
             args_for_fake = copy.deepcopy(args)
             args_for_fake.deepspeed = None
@@ -932,7 +945,7 @@ class WandbCallback(TrainerCallback):
             self._wandb.log(metrics)
 
 
-class TrackioCallback(TrainerCallback):
+class TrackioCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that logs metrics to Trackio.
     """
@@ -1127,7 +1140,7 @@ class TrackioCallback(TrainerCallback):
         self._point_model_card_at_space(model)
 
 
-class CometCallback(TrainerCallback):
+class CometCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that sends the logs to [Comet ML](https://www.comet.com/site/).
     """
@@ -1257,7 +1270,7 @@ class CometCallback(TrainerCallback):
             )
 
 
-class AzureMLCallback(TrainerCallback):
+class AzureMLCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that sends the logs to [AzureML](https://pypi.org/project/azureml-sdk/).
     """
@@ -1280,7 +1293,7 @@ class AzureMLCallback(TrainerCallback):
                     self.azureml_run.log(k, v, description=k)
 
 
-class MLflowCallback(TrainerCallback):
+class MLflowCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that sends the logs to [MLflow](https://www.mlflow.org/). Can be disabled by setting
     environment variable `DISABLE_MLFLOW_INTEGRATION = TRUE`.
@@ -1521,7 +1534,7 @@ class NeptuneMissingConfiguration(Exception):
         )
 
 
-class NeptuneCallback(TrainerCallback):
+class NeptuneCallback(_trainer_callback_module().TrainerCallback):
     """TrainerCallback that sends the logs to [Neptune](https://app.neptune.ai).
 
     > [!WARNING]
@@ -1803,7 +1816,7 @@ class NeptuneCallback(TrainerCallback):
                         self._metadata_namespace[name].log(value, step=state.global_step)
 
 
-class CodeCarbonCallback(TrainerCallback):
+class CodeCarbonCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that tracks the CO2 emission of training.
     """
@@ -1837,7 +1850,7 @@ class CodeCarbonCallback(TrainerCallback):
             self.tracker.stop()
 
 
-class ClearMLCallback(TrainerCallback):
+class ClearMLCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that sends the logs to [ClearML](https://clear.ml/).
 
@@ -2088,7 +2101,7 @@ class ClearMLCallback(TrainerCallback):
         self._clearml_task._arguments.copy_from_dict(flat_dict, prefix=prefix)
 
 
-class FlyteCallback(TrainerCallback):
+class FlyteCallback(_trainer_callback_module().TrainerCallback):
     """A [`TrainerCallback`] that sends the logs to [Flyte](https://flyte.org/).
     NOTE: This callback only works within a Flyte task.
 
@@ -2151,7 +2164,7 @@ class FlyteCallback(TrainerCallback):
             Deck("Log History", TableRenderer().to_html(log_history_df))
 
 
-class DVCLiveCallback(TrainerCallback):
+class DVCLiveCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that sends the logs to [DVCLive](https://www.dvc.org/doc/dvclive).
 
@@ -2240,7 +2253,7 @@ class DVCLiveCallback(TrainerCallback):
 
     def on_train_end(self, args, state, control, **kwargs):
         if self._initialized and state.is_world_process_zero:
-            from transformers.trainer import Trainer
+            Trainer = importlib.import_module("transformers.trainer").Trainer
 
             if self._log_model is True:
                 fake_trainer = Trainer(
@@ -2256,7 +2269,7 @@ class DVCLiveCallback(TrainerCallback):
             self.live.end()
 
 
-class SwanLabCallback(TrainerCallback):
+class SwanLabCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that logs metrics, media, model checkpoints to [SwanLab](https://swanlab.cn/).
     """
@@ -2430,7 +2443,7 @@ class SwanLabCallback(TrainerCallback):
             self._swanlab.log(metrics)
 
 
-class KubeflowCallback(TrainerCallback):
+class KubeflowCallback(_trainer_callback_module().TrainerCallback):
     """
     A [`TrainerCallback`] that reports training progress to [Kubeflow Trainer](https://github.com/kubeflow/trainer).
 

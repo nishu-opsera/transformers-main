@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import contextlib
+import importlib
 import json
 import math
 import os
@@ -1532,7 +1533,9 @@ class TrainingArguments:
             self.greater_is_better = not self.metric_for_best_model.endswith("loss")
 
         if self.report_to == "all" or self.report_to == ["all"]:
-            from .integrations import get_available_reporting_integrations
+            get_available_reporting_integrations = importlib.import_module(
+                "transformers.integrations"
+            ).get_available_reporting_integrations
 
             self.report_to = get_available_reporting_integrations()
         elif self.report_to == "none" or self.report_to == ["none"]:
@@ -1541,7 +1544,7 @@ class TrainingArguments:
             self.report_to = [self.report_to]
 
         # Auto-enable Kubeflow integration when running inside a Kubeflow TrainJob
-        from .integrations import is_kubeflow_available
+        is_kubeflow_available = importlib.import_module("transformers.integrations").is_kubeflow_available
 
         if is_kubeflow_available() and "kubeflow" not in self.report_to:
             self.report_to = list(self.report_to) + ["kubeflow"]
@@ -1634,7 +1637,9 @@ class TrainingArguments:
         # ── 12. DeepSpeed (must be last) ──
         self.deepspeed_plugin = None
         if self.deepspeed:
-            from transformers.integrations.deepspeed import HfTrainerDeepSpeedConfig
+            HfTrainerDeepSpeedConfig = importlib.import_module(
+                "transformers.integrations.deepspeed"
+            ).HfTrainerDeepSpeedConfig
 
             # Leave self.deepspeed unmodified; users may rely on the original value
             self.hf_deepspeed_config = HfTrainerDeepSpeedConfig(self.deepspeed)

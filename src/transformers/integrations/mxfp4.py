@@ -15,6 +15,11 @@
 import importlib
 from contextlib import contextmanager
 
+def _quantizers_utils():
+    return importlib.import_module("transformers.quantizers.quantizers_utils")
+
+
+
 from ..utils import is_torch_available, logging
 
 
@@ -35,7 +40,6 @@ def _IdentityOp():
     return _core_model_loading()._IdentityOp
 
 
-from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 
 
 logger = logging.get_logger(__name__)
@@ -97,7 +101,7 @@ class Mxfp4Quantize(_ConversionOps()):
         _, value = tuple(input_dict.items())[0]
         value = value[0] if isinstance(value, list) else value
 
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
 
         with torch.device(value.device):
             if isinstance(module, Mxfp4GptOssExperts):
@@ -191,7 +195,7 @@ class Mxfp4Deserialize(_ConversionOps()):
                 param_data[f"{proj}_scales"] = input_dict[f"{proj}_scales"]
 
         # Eagerly set tensors on the module and perform swizzle
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
         swizzle_mxfp4_convertops(
             param_data[f"{proj}_blocks"],
             param_data[f"{proj}_scales"],
@@ -230,7 +234,7 @@ class Mxfp4ReverseDeserialize(_ConversionOps()):
         proj = "gate_up_proj" if "gate_up_proj" in full_layer_name else "down_proj"
 
         name = full_layer_name.rsplit("_", 1)[0]
-        module, _ = get_module_from_name(model, full_layer_name)
+        module, _ = _quantizers_utils().get_module_from_name(model, full_layer_name)
         state_dict = {}
         if isinstance(module, Mxfp4GptOssExperts):
             if "bias" in full_layer_name:
@@ -687,7 +691,7 @@ def replace_with_mxfp4_linear(model, quantization_config=None, modules_to_not_co
 
     has_been_replaced = False
     for module_name, module in model.named_modules():
-        if not should_convert_module(module_name, modules_to_not_convert):
+        if not _quantizers_utils().should_convert_module(module_name, modules_to_not_convert):
             continue
         if module.__class__.__name__ == "GptOssExperts" and not quantization_config.dequantize:
             with torch.device("meta"):

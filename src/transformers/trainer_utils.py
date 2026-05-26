@@ -16,6 +16,7 @@ PyTorch-independent utilities for the Trainer class.
 """
 
 import contextlib
+import importlib
 import copy
 import functools
 import gc
@@ -453,7 +454,7 @@ def default_compute_objective(metrics: dict[str, float]) -> float:
 
 
 def default_hp_space_optuna(trial) -> dict[str, float]:
-    from .integrations import is_optuna_available
+    is_optuna_available = importlib.import_module("transformers.integrations").is_optuna_available
 
     assert is_optuna_available(), "This function needs Optuna installed: `pip install optuna`"
     return {
@@ -465,7 +466,7 @@ def default_hp_space_optuna(trial) -> dict[str, float]:
 
 
 def default_hp_space_ray(trial) -> dict[str, Any]:
-    from .integrations import is_ray_tune_available
+    is_ray_tune_available = importlib.import_module("transformers.integrations").is_ray_tune_available
 
     assert is_ray_tune_available(), "This function needs ray installed: `pip install ray[tune]`"
     from ray import tune
@@ -479,7 +480,7 @@ def default_hp_space_ray(trial) -> dict[str, Any]:
 
 
 def default_hp_space_wandb(trial) -> dict[str, Any]:
-    from .integrations import is_wandb_available
+    is_wandb_available = importlib.import_module("transformers.integrations").is_wandb_available
 
     if not is_wandb_available():
         raise ImportError("This function needs wandb installed: `pip install wandb`")
