@@ -1,0 +1,26 @@
+name: downstream_compat
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  downstream_compat:
+    name: downstream_compat
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install transformers and test dependencies
+        run: |
+          pip install -e ".[quality]"
+          pip install -r tests/downstream_compat/requirements.txt
+      - name: Run downstream compatibility smoke tests
+        run: make check-downstream-compat

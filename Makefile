@@ -1,7 +1,7 @@
 # make sure to test the local checkout in scripts and not the pre-installed one (don't use quotes!)
 export PYTHONPATH = src
 
-.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations check-modular-conversion benchmark-import-time check-repo fix-repo test test-examples benchmark codex claude clean-ai
+.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations check-modular-conversion benchmark-import-time check-downstream-compat check-repo fix-repo test test-examples benchmark codex claude clean-ai
 
 
 # Checker lists. The two CI jobs (CircleCI runs `make check-code-quality` and
@@ -68,6 +68,10 @@ check-modular-conversion:
 # Import wall-clock benchmark (WO-004): warns on >10% regression vs baseline.
 benchmark-import-time:
 	@PYTHONPATH=src python utils/benchmark_import_time.py
+
+# Downstream import/API smoke tests (WO-005).
+check-downstream-compat:
+	@PYTHONPATH=src python -m pytest tests/downstream_compat/ -q --tb=short --noconftest
 
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:

@@ -252,6 +252,20 @@ jobs:
                 path: .ci/import_time_report.json
                 destination: import-time-report
 
+    check_downstream_compat:
+        working_directory: ~/transformers
+        docker:
+            - image: huggingface/transformers-quality
+        resource_class: medium
+        environment:
+            TRANSFORMERS_IS_CI: yes
+        parallelism: 1
+        steps:
+            - checkout
+            - run: uv pip install -e ".[quality]"
+            - run: uv pip install -r tests/downstream_compat/requirements.txt
+            - run: make check-downstream-compat
+
 
 workflows:
     version: 2
@@ -268,6 +282,7 @@ workflows:
             - check_layer_violations
             - check_modular_conversion
             - benchmark_import_time
+            - check_downstream_compat
             - fetch_tests
 
     setup_and_quality_2:
@@ -282,6 +297,7 @@ workflows:
             - check_layer_violations
             - check_modular_conversion
             - benchmark_import_time
+            - check_downstream_compat
             - fetch_tests:
                 # [reference] https://circleci.com/docs/contexts/
                 context:

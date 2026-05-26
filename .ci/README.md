@@ -55,3 +55,13 @@ python utils/benchmark_import_time.py --write-baseline  # after reviewed change
 ```
 
 Warns (non-blocking) when mean import time exceeds baseline by more than 10%.
+
+## Downstream compatibility (WO-005)
+
+Smoke tests in `tests/downstream_compat/` cover 15+ import patterns (Auto classes, pipelines, Trainer, submodules).
+
+```bash
+make check-downstream-compat
+```
+
+GitHub Actions workflow `downstream_compat.yml` runs weekly (Mondays) and on `workflow_dispatch`.

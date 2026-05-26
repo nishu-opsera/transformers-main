@@ -1,0 +1,5 @@
+# Optional packages referenced by common downstream integration patterns.
+# Core smoke tests only require transformers installed in editable mode.
+accelerate>=1.1.0
+datasets>=2.15.0
+safetensors>=0.4.3

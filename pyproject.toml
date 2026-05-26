@@ -83,6 +83,11 @@ markers = [
     "generate: marks tests that use the GenerationTesterMixin",
     "is_training_test: marks tests that use the TrainingTesterMixin (deselect with '-m \"not is_training_test\"')",
     "is_tensor_parallel_test: marks tests that use the TensorParallelTesterMixin (deselect with '-m \"not is_tensor_parallel_test\"')",
+    "star_import: downstream multi-symbol import patterns (WO-005)",
+    "auto_classes: AutoModel / AutoTokenizer patterns (WO-005)",
+    "pipeline_api: pipeline() factory pattern (WO-005)",
+    "trainer_api: Trainer import pattern (WO-005)",
+    "submodule_access: explicit submodule imports (WO-005)",
 ]
 log_cli = 1
 log_cli_level = "WARNING"
