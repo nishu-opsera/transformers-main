@@ -70,5 +70,6 @@ can safely import domain facades.
 ## References
 
 - `docs/architecture/circular_dependencies.md` (WO-006)
+- `docs/architecture/rollback_procedures.md` (WO-028 — revert runbook for WO-007/008/010/011)
 - `src/transformers/protocols.py` (WO-007 shared contracts)
 - Forge project: huggingface-transformers (`339f33f2-874e-41b0-ad64-0ed6f34a345a`)
