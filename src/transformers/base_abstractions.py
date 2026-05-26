@@ -17,10 +17,10 @@ from __future__ import annotations
 
 from typing import Any
 
-from .protocols import ModelWithConfigProtocol, PreTrainedConfigProtocol
+from .protocols import ConfigProtocol, ModelWithConfigProtocol
 
 
-def model_type_from_config(config: PreTrainedConfigProtocol) -> str:
+def model_type_from_config(config: ConfigProtocol) -> str:
     """Return the model type string from any config implementing the shared protocol."""
     return config.model_type
 
@@ -33,6 +33,6 @@ def assert_model_config_pair(model: ModelWithConfigProtocol) -> tuple[str, str]:
     return model_type, model_type
 
 
-def config_dict_for_save(config: PreTrainedConfigProtocol) -> dict[str, Any]:
+def config_dict_for_save(config: ConfigProtocol) -> dict[str, Any]:
     """Serialize config through the protocol surface (no modeling imports)."""
     return config.to_dict()

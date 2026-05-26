@@ -85,6 +85,10 @@ generate-domain-registry:
 test-domain-registries:
 	@python -m pytest tests/repo_utils/test_domain_registries.py tests/repo_utils/test_domain_registry.py -q --noconftest
 
+test-protocols:
+	@PYTHONPATH=src python -m pytest tests/repo_utils/test_protocols.py -q --noconftest
+	@PYTHONPATH=src python utils/check_protocol_typing.py
+
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:
 	@python utils/checkers.py $(ALL_CHECKERS) --keep-going
