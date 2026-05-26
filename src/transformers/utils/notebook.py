@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import importlib
 import os
 import re
 import time
@@ -19,8 +20,9 @@ from typing import Optional, TypeVar
 
 import IPython.display as disp
 
-from ..trainer_callback import TrainerCallback
-from ..trainer_utils import IntervalStrategy, has_length
+TrainerCallback = importlib.import_module("transformers.trainer_callback").TrainerCallback
+IntervalStrategy = importlib.import_module("transformers.trainer_utils").IntervalStrategy
+has_length = importlib.import_module("transformers.trainer_utils").has_length
 
 
 _T = TypeVar("_T")

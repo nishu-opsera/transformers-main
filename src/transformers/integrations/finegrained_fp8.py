@@ -21,7 +21,9 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
-from ..activations import ACT2FN
+import importlib
+from functools import lru_cache
+
 from ..core_model_loading import ConversionOps
 from ..quantizers.quantizers_utils import should_convert_module
 from ..utils import logging
@@ -31,6 +33,11 @@ from .moe import ExpertsInterface, use_experts_implementation
 
 
 logger = logging.get_logger(__name__)
+
+
+@lru_cache
+def _get_act2fn():
+    return importlib.import_module("transformers.activations").ACT2FN
 
 
 _FP8_DTYPE = torch.float8_e4m3fn
@@ -671,7 +678,7 @@ class FP8Experts(nn.Module):
         self.activation_scheme = activation_scheme
         self.num_experts = _first_attr(config, "num_local_experts", "num_experts")
         self.intermediate_dim = _first_attr(config, "moe_intermediate_size", "intermediate_size")
-        self.act_fn = ACT2FN[_first_attr(config, "hidden_activation", "hidden_act")]
+        self.act_fn = _get_act2fn()[_first_attr(config, "hidden_activation", "hidden_act")]
 
         if self.has_gate:
             gu_proj_out, gu_proj_in = 2 * self.intermediate_dim, self.hidden_dim

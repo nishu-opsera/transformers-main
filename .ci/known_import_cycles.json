@@ -2,18 +2,6 @@
   "two_module_cycles": [
     {
       "modules": [
-        "transformers.activations",
-        "transformers.integrations"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.activations",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
         "transformers.backbone_utils",
         "transformers.models"
       ]
@@ -104,12 +92,6 @@
     },
     {
       "modules": [
-        "transformers.image_utils",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
         "transformers.initialization",
         "transformers.modeling_utils"
       ]
@@ -182,12 +164,6 @@
     },
     {
       "modules": [
-        "transformers.model_debugging_utils",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
         "transformers.modeling_layers",
         "transformers.models"
       ]
@@ -239,31 +215,7 @@
         "transformers.models",
         "transformers.video_processing_utils"
       ]
-    },
-    {
-      "modules": [
-        "transformers.processing_utils",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.tokenization_utils_base",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.trainer_callback",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.trainer_utils",
-        "transformers.utils"
-      ]
     }
   ],
-  "count": 44
+  "count": 36
 }

@@ -14,10 +14,6 @@
     },
     {
       "source": "transformers.activations",
-      "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.activations",
       "destination": "transformers.utils"
     },
     {
@@ -375,10 +371,6 @@
     {
       "source": "transformers.integrations",
       "destination": "transformers._typing"
-    },
-    {
-      "source": "transformers.integrations",
-      "destination": "transformers.activations"
     },
     {
       "source": "transformers.integrations",
@@ -1302,10 +1294,6 @@
     },
     {
       "source": "transformers.utils",
-      "destination": "transformers.activations"
-    },
-    {
-      "source": "transformers.utils",
       "destination": "transformers.backbone_utils"
     },
     {
@@ -1314,15 +1302,7 @@
     },
     {
       "source": "transformers.utils",
-      "destination": "transformers.image_utils"
-    },
-    {
-      "source": "transformers.utils",
       "destination": "transformers.masking_utils"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.model_debugging_utils"
     },
     {
       "source": "transformers.utils",
@@ -1331,22 +1311,6 @@
     {
       "source": "transformers.utils",
       "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.processing_utils"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.tokenization_utils_base"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.trainer_callback"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.trainer_utils"
     },
     {
       "source": "transformers.video_processing_utils",

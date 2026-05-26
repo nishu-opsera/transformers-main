@@ -16,7 +16,6 @@ import io
 import httpx
 from PIL import Image
 
-from ..masking_utils import create_causal_mask
 from ..models.auto.auto_factory import _get_model_class
 from ..models.auto.configuration_auto import AutoConfig
 from ..models.auto.modeling_auto import MODEL_FOR_PRETRAINING_MAPPING, MODEL_MAPPING
@@ -213,6 +212,8 @@ class AttentionMaskVisualizer:
 
         batch_size, seq_length = attention_mask.shape
         inputs_embeds = torch.zeros((batch_size, seq_length, model.config.hidden_size), dtype=self.model.dtype)
+
+        from ..masking_utils import create_causal_mask
 
         causal_mask = create_causal_mask(
             config=model.config,

@@ -13,18 +13,24 @@
 # limitations under the License.
 
 import functools
+import importlib
 import math
 from collections import OrderedDict
 
 import torch
 from torch import Tensor, nn
 
-from .integrations.hub_kernels import use_kernel_forward_from_hub
 from .utils import logging
 from .utils.import_utils import is_torchdynamo_compiling
 
 
 logger = logging.get_logger(__name__)
+
+
+def use_kernel_forward_from_hub(layer_name: str):
+    """Lazy hub-kernel decorator to avoid a static activations -> integrations import edge."""
+    hub_kernels = importlib.import_module("transformers.integrations.hub_kernels")
+    return hub_kernels.use_kernel_forward_from_hub(layer_name)
 
 
 @use_kernel_forward_from_hub("GeluTanh")

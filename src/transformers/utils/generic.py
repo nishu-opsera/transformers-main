@@ -1022,7 +1022,11 @@ def merge_with_config_defaults(func):
         # Call the original forward with the updated kwargs/config
         try:
             if kwargs.get("debug_io", False):
-                from ..model_debugging_utils import model_addition_debugger_context
+                import importlib
+
+                model_addition_debugger_context = importlib.import_module(
+                    "transformers.model_debugging_utils"
+                ).model_addition_debugger_context
 
                 with model_addition_debugger_context(
                     self, kwargs.get("debug_io_dir", "model_debug"), kwargs.get("prune_layers")

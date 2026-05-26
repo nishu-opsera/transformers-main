@@ -1,23 +1,32 @@
+import importlib
 from collections.abc import Callable, Sequence
-from functools import partial
+from functools import lru_cache, partial
 from typing import Any, Union, cast
 
 from huggingface_hub.dataclasses import as_validated_field
 
-from ..tokenization_utils_base import PaddingStrategy, TruncationStrategy
 from .generic import TensorType
 from .import_utils import is_torch_available, is_vision_available
 
 
-if is_vision_available():
-    from ..image_utils import PILImageResampling
-
 if is_torch_available():
     import torch
 
-    from ..activations import ACT2FN
-else:
-    ACT2FN = {}
+
+@lru_cache
+def _get_act2fn():
+    if is_torch_available():
+        return importlib.import_module("transformers.activations").ACT2FN
+    return {}
+
+
+def _get_pil_image_resampling():
+    return importlib.import_module("transformers.image_utils").PILImageResampling
+
+
+@lru_cache
+def _get_tokenization_utils_base():
+    return importlib.import_module("transformers.tokenization_utils_base")
 
 
 def positive_any_number(value: int | float | None = None):
@@ -30,8 +39,9 @@ def positive_int(value: int | None = None):
         raise ValueError(f"Value must be a positive integer, got {value}")
 
 
-def padding_validator(value: bool | str | PaddingStrategy | None = None):
+def padding_validator(value: bool | str | Any | None = None):
     possible_names = ["longest", "max_length", "do_not_pad"]
+    PaddingStrategy = _get_tokenization_utils_base().PaddingStrategy
     if value is None:
         pass
     elif not isinstance(value, (bool, str, PaddingStrategy)):
@@ -40,8 +50,9 @@ def padding_validator(value: bool | str | PaddingStrategy | None = None):
         raise ValueError(f"If padding is a string, the value must be one of {possible_names}")
 
 
-def truncation_validator(value: bool | str | TruncationStrategy | None = None):
+def truncation_validator(value: bool | str | Any | None = None):
     possible_names = ["only_first", "only_second", "longest_first", "do_not_truncate"]
+    TruncationStrategy = _get_tokenization_utils_base().TruncationStrategy
     if value is None:
         pass
     elif not isinstance(value, (bool, str, TruncationStrategy)):
@@ -81,15 +92,17 @@ def device_validator(value: str | int | None = None):
         )
 
 
-def resampling_validator(value: Union[int, "PILImageResampling"] | None = None):
+def resampling_validator(value: Union[int, Any] | None = None):
     if value is None:
         pass
     elif isinstance(value, int) and value not in list(range(6)):
         raise ValueError(
             f"The resampling should be one of {list(range(6))} when provided as integer, but got resampling={value}"
         )
-    elif is_vision_available() and not isinstance(value, (PILImageResampling, int)):
-        raise ValueError(f"The resampling should an integer or `PIL.Image.Resampling`, but got resampling={value}")
+    elif is_vision_available():
+        pil_image_resampling = _get_pil_image_resampling()
+        if not isinstance(value, (pil_image_resampling, int)):
+            raise ValueError(f"The resampling should an integer or `PIL.Image.Resampling`, but got resampling={value}")
 
 
 def video_metadata_validator(value: Any = None):
@@ -208,10 +221,11 @@ def is_divisible_by(divisor: int | float):
 def activation_fn_key(value: str):
     """Ensures that `value` is a string corresponding to an activation function."""
     # TODO (joao): in python 3.11+, we can build a Literal type from the keys of ACT2FN
-    if len(ACT2FN) > 0:  # don't validate if we can't import ACT2FN
-        if value not in ACT2FN:
+    act2fn = _get_act2fn()
+    if len(act2fn) > 0:  # don't validate if we can't import ACT2FN
+        if value not in act2fn:
             raise ValueError(
-                f"Value must be one of {list(ACT2FN.keys())}, got {value}. "
+                f"Value must be one of {list(act2fn.keys())}, got {value}. "
                 "Make sure to use a string that corresponds to an activation function."
             )
 

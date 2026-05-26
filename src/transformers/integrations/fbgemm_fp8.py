@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import importlib
 from functools import lru_cache
 
-from ..activations import ACT2FN
 from ..core_model_loading import ConversionOps
 from ..quantizers.quantizers_utils import get_module_from_name, should_convert_module
 from ..utils import (
@@ -37,6 +37,11 @@ _is_torch_xpu_available = is_torch_xpu_available()
 
 if is_fbgemm_gpu_available() and not _is_torch_xpu_available:
     import fbgemm_gpu.experimental.gen_ai  # noqa: F401
+
+
+@lru_cache
+def _get_act2fn():
+    return importlib.import_module("transformers.activations").ACT2FN
 
 logger = logging.get_logger(__name__)
 
@@ -152,7 +157,7 @@ class FbgemmFp8Llama4TextExperts(nn.Module):
         self.intermediate_size = config.intermediate_size
         self.hidden_size = config.hidden_size
         self.expert_dim = self.intermediate_size
-        self.act_fn = ACT2FN[config.hidden_act]
+        self.act_fn = _get_act2fn()[config.hidden_act]
         # Register FP8 buffers for gate_up_proj
         self.gate_up_proj = torch.nn.Parameter(
             torch.zeros((self.num_experts, self.hidden_size, 2 * self.expert_dim), dtype=torch.float8_e4m3fn)

@@ -3506,13 +3506,14 @@ def _get_base_kwargs_class(cls):
             if base_name is not None:
                 global _BASIC_KWARGS_CLASSES
                 if _BASIC_KWARGS_CLASSES is None:
-                    from transformers.processing_utils import (
-                        AudioKwargs,
-                        ImagesKwargs,
-                        ProcessingKwargs,
-                        TextKwargs,
-                        VideosKwargs,
-                    )
+                    import importlib
+
+                    processing_utils = importlib.import_module("transformers.processing_utils")
+                    AudioKwargs = processing_utils.AudioKwargs
+                    ImagesKwargs = processing_utils.ImagesKwargs
+                    ProcessingKwargs = processing_utils.ProcessingKwargs
+                    TextKwargs = processing_utils.TextKwargs
+                    VideosKwargs = processing_utils.VideosKwargs
 
                     _BASIC_KWARGS_CLASSES = {
                         "ImagesKwargs": ImagesKwargs,
