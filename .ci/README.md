@@ -41,3 +41,17 @@ python utils/modular_model_converter.py --check
 ```
 
 On drift, CI prints the modular source path, generated file path, and a unified diff.
+
+## Import time benchmark (WO-004)
+
+| File | Purpose |
+|------|---------|
+| `import_time_baseline.json` | Baseline mean/median/p95 per import scenario (5 samples). |
+| `import_time_report.json` | Latest CI run output (also stored as a CI artifact). |
+
+```bash
+make benchmark-import-time
+python utils/benchmark_import_time.py --write-baseline  # after reviewed change
+```
+
+Warns (non-blocking) when mean import time exceeds baseline by more than 10%.

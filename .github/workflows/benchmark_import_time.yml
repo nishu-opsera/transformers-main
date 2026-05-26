@@ -1,0 +1,30 @@
+name: benchmark_import_time
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark_import_time:
+    name: benchmark_import_time
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package with quality extras
+        run: pip install -e ".[quality]"
+      - name: Run import time benchmark
+        run: make benchmark-import-time
+      - name: Upload import time report
+        uses: actions/upload-artifact@v4
+        with:
+          name: import-time-report
+          path: .ci/import_time_report.json
+          if-no-files-found: error

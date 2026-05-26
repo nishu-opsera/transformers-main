@@ -236,6 +236,22 @@ jobs:
             - run: uv pip install -e ".[quality]"
             - run: make check-modular-conversion
 
+    benchmark_import_time:
+        working_directory: ~/transformers
+        docker:
+            - image: huggingface/transformers-quality
+        resource_class: medium
+        environment:
+            TRANSFORMERS_IS_CI: yes
+        parallelism: 1
+        steps:
+            - checkout
+            - run: uv pip install -e ".[quality]"
+            - run: make benchmark-import-time
+            - store_artifacts:
+                path: .ci/import_time_report.json
+                destination: import-time-report
+
 
 workflows:
     version: 2
@@ -251,6 +267,7 @@ workflows:
             - check_import_linter
             - check_layer_violations
             - check_modular_conversion
+            - benchmark_import_time
             - fetch_tests
 
     setup_and_quality_2:
@@ -264,6 +281,7 @@ workflows:
             - check_import_linter
             - check_layer_violations
             - check_modular_conversion
+            - benchmark_import_time
             - fetch_tests:
                 # [reference] https://circleci.com/docs/contexts/
                 context:

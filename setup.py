@@ -194,8 +194,8 @@ extras["quality"] = deps_list(
     "ty",
     "tomli",
     "transformers-mlinter",
-    "import-linter>=2.0",
-    "grimp>=3.0",
+    "import-linter",
+    "grimp",
 )
 extras["docs"] = deps_list("hf-doc-builder")
 extras["kernels"] = deps_list("kernels")
