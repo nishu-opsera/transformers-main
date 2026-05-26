@@ -89,6 +89,12 @@ test-protocols:
 	@PYTHONPATH=src python -m pytest tests/repo_utils/test_protocols.py -q --noconftest
 	@PYTHONPATH=src python utils/check_protocol_typing.py
 
+catalog-copied-from:
+	@python utils/catalog_copied_from.py
+
+check-copied-from-catalog:
+	@python utils/catalog_copied_from.py --check
+
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:
 	@python utils/checkers.py $(ALL_CHECKERS) --keep-going
