@@ -29,6 +29,10 @@
       "destination": "transformers.utils"
     },
     {
+      "source": "transformers.base_abstractions",
+      "destination": "transformers.protocols"
+    },
+    {
       "source": "transformers.cache_utils",
       "destination": "transformers.configuration_utils"
     },
@@ -1355,10 +1359,6 @@
     {
       "source": "transformers.utils",
       "destination": "transformers.trainer_utils"
-    },
-    {
-      "source": "transformers.utils",
-      "destination": "transformers.video_utils"
     },
     {
       "source": "transformers.video_processing_utils",

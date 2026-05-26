@@ -287,13 +287,7 @@
         "transformers.trainer_utils",
         "transformers.utils"
       ]
-    },
-    {
-      "modules": [
-        "transformers.utils",
-        "transformers.video_utils"
-      ]
     }
   ],
-  "count": 49
+  "count": 48
 }

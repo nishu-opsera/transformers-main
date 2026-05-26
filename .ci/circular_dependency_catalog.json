@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-26T20:38:20.480355+00:00",
+  "generated_at": "2026-05-26T20:41:11.973979+00:00",
   "tools": {
     "grimp": "3.14",
     "commands": [
@@ -9,8 +9,8 @@
   },
   "cross_reference": {
     "known_import_cycles_json": ".ci/known_import_cycles.json",
-    "two_module_cycle_count": 49,
-    "catalogued_cycles": 49
+    "two_module_cycle_count": 48,
+    "catalogued_cycles": 48
   },
   "strongly_connected_components": [
     {
@@ -79,7 +79,7 @@
     }
   ],
   "severity_summary": {
-    "critical": 13,
+    "critical": 12,
     "high": 33,
     "medium": 3
   },
@@ -128,8 +128,8 @@
         "reverse": [
           "transformers.utils",
           "transformers",
-          "transformers.integrations",
-          "transformers.integrations.fbgemm_fp8",
+          "transformers.processing_utils",
+          "transformers.utils.type_validators",
           "transformers.activations"
         ]
       },
@@ -190,7 +190,7 @@
         ],
         "reverse": [
           "transformers.utils",
-          "transformers.utils.import_utils",
+          "transformers",
           "transformers.convert_slow_tokenizer"
         ]
       },
@@ -398,7 +398,7 @@
       "import_chains": {
         "forward": [
           "transformers.trainer_callback",
-          "transformers.trainer_utils",
+          "transformers.integrations",
           "transformers.utils"
         ],
         "reverse": [
@@ -453,51 +453,20 @@
     },
     {
       "modules": [
-        "transformers.utils",
-        "transformers.video_utils"
-      ],
-      "import_chains": {
-        "forward": [
-          "transformers.utils",
-          "transformers",
-          "transformers.video_processing_utils",
-          "transformers.video_utils"
-        ],
-        "reverse": [
-          "transformers.video_utils",
-          "transformers.utils"
-        ]
-      },
-      "top_level_edges": [
-        [
-          "transformers.utils",
-          "transformers.video_utils"
-        ],
-        [
-          "transformers.video_utils",
-          "transformers.utils"
-        ]
-      ],
-      "affected_top_level_importers": 63,
-      "severity": "critical",
-      "resolution_strategy": "interface_or_lazy_import"
-    },
-    {
-      "modules": [
         "transformers.integrations",
         "transformers.models"
       ],
       "import_chains": {
         "forward": [
           "transformers.integrations",
-          "transformers.integrations.integration_utils",
+          "transformers.utils",
           "transformers",
           "transformers.models"
         ],
         "reverse": [
           "transformers.models",
-          "transformers.models.timesfm",
-          "transformers.models.timesfm.modeling_timesfm",
+          "transformers.models.ernie4_5_moe",
+          "transformers.models.ernie4_5_moe.modeling_ernie4_5_moe",
           "transformers.integrations"
         ]
       },
@@ -529,8 +498,8 @@
         ],
         "reverse": [
           "transformers.models",
-          "transformers.models.mobilevitv2",
-          "transformers.models.mobilevitv2.modeling_mobilevitv2",
+          "transformers.models.chmv2",
+          "transformers.models.chmv2.modeling_chmv2",
           "transformers.modeling_utils"
         ]
       },
@@ -556,8 +525,8 @@
       "import_chains": {
         "forward": [
           "transformers.models",
-          "transformers.models.sam3_video",
-          "transformers.models.sam3_video.processing_sam3_video",
+          "transformers.models.kosmos2_5",
+          "transformers.models.kosmos2_5.processing_kosmos2_5",
           "transformers.tokenization_utils_base"
         ],
         "reverse": [
@@ -623,8 +592,8 @@
         ],
         "reverse": [
           "transformers.models",
-          "transformers.models.mobilevitv2",
-          "transformers.models.mobilevitv2.configuration_mobilevitv2",
+          "transformers.models.chmv2",
+          "transformers.models.chmv2.configuration_chmv2",
           "transformers.configuration_utils"
         ]
       },
@@ -650,7 +619,7 @@
       "import_chains": {
         "forward": [
           "transformers.integrations",
-          "transformers.integrations.integration_utils",
+          "transformers.integrations.neftune",
           "transformers.trainer_utils"
         ],
         "reverse": [
@@ -680,8 +649,8 @@
       "import_chains": {
         "forward": [
           "transformers.models",
-          "transformers.models.timesfm",
-          "transformers.models.timesfm.modeling_timesfm",
+          "transformers.models.chmv2",
+          "transformers.models.chmv2.image_processing_chmv2",
           "transformers.processing_utils"
         ],
         "reverse": [
@@ -745,14 +714,14 @@
       "import_chains": {
         "forward": [
           "transformers.generation",
-          "transformers.generation.candidate_generator",
-          "transformers.modeling_utils",
+          "transformers.utils",
+          "transformers",
           "transformers.integrations"
         ],
         "reverse": [
           "transformers.integrations",
-          "transformers.integrations.peft",
-          "transformers.modeling_utils",
+          "transformers.utils",
+          "transformers",
           "transformers.generation"
         ]
       },
@@ -813,7 +782,7 @@
         ],
         "reverse": [
           "transformers.integrations",
-          "transformers.integrations.metal_quantization",
+          "transformers.integrations.eetq",
           "transformers.core_model_loading"
         ]
       },
@@ -845,8 +814,8 @@
         ],
         "reverse": [
           "transformers.models",
-          "transformers.models.pp_ocrv5_server_det",
-          "transformers.models.pp_ocrv5_server_det.image_processing_pp_ocrv5_server_det",
+          "transformers.models.pp_chart2table",
+          "transformers.models.pp_chart2table.processing_pp_chart2table",
           "transformers.feature_extraction_utils"
         ]
       },
@@ -878,8 +847,8 @@
         ],
         "reverse": [
           "transformers.models",
-          "transformers.models.dpt",
-          "transformers.models.dpt.image_processing_dpt",
+          "transformers.models.chmv2",
+          "transformers.models.chmv2.image_processing_chmv2",
           "transformers.image_processing_base"
         ]
       },
@@ -905,7 +874,7 @@
       "import_chains": {
         "forward": [
           "transformers.integrations",
-          "transformers.integrations.integration_utils",
+          "transformers.utils",
           "transformers",
           "transformers.tokenization_utils_tokenizers"
         ],
@@ -967,7 +936,7 @@
       "import_chains": {
         "forward": [
           "transformers.integrations",
-          "transformers.integrations.integration_utils",
+          "transformers.utils",
           "transformers",
           "transformers.trainer_pt_utils"
         ],
@@ -999,8 +968,8 @@
       "import_chains": {
         "forward": [
           "transformers.models",
-          "transformers.models.git",
-          "transformers.models.git.modeling_git",
+          "transformers.models.bitnet",
+          "transformers.models.bitnet.modeling_bitnet",
           "transformers.modeling_utils",
           "transformers.quantizers"
         ],
@@ -1040,7 +1009,7 @@
         ],
         "reverse": [
           "transformers.integrations",
-          "transformers.integrations.fbgemm_fp8",
+          "transformers.integrations.finegrained_fp8",
           "transformers.activations"
         ]
       },
@@ -1066,14 +1035,14 @@
       "import_chains": {
         "forward": [
           "transformers.integrations",
-          "transformers.integrations.peft",
-          "transformers.conversion_mapping",
+          "transformers.integrations.sinq",
+          "transformers.core_model_loading",
           "transformers.quantizers"
         ],
         "reverse": [
           "transformers.quantizers",
           "transformers.quantizers.base",
-          "transformers.modeling_utils",
+          "transformers.models.llama4.modeling_llama4",
           "transformers.integrations"
         ]
       },
@@ -1104,8 +1073,8 @@
         ],
         "reverse": [
           "transformers.models",
-          "transformers.models.dinov2_with_registers",
-          "transformers.models.dinov2_with_registers.configuration_dinov2_with_registers",
+          "transformers.models.chmv2",
+          "transformers.models.chmv2.configuration_chmv2",
           "transformers.backbone_utils"
         ]
       },
@@ -1131,7 +1100,7 @@
       "import_chains": {
         "forward": [
           "transformers.generation",
-          "transformers.generation.utils",
+          "transformers.generation.watermarking",
           "transformers.modeling_utils"
         ],
         "reverse": [
@@ -1161,13 +1130,13 @@
       "import_chains": {
         "forward": [
           "transformers.integrations",
-          "transformers.integrations.peft",
+          "transformers.integrations.liger",
           "transformers.modeling_utils",
           "transformers.modeling_flash_attention_utils"
         ],
         "reverse": [
           "transformers.modeling_flash_attention_utils",
-          "transformers.integrations.hub_kernels",
+          "transformers.utils",
           "transformers",
           "transformers.integrations"
         ]
@@ -1230,8 +1199,8 @@
         ],
         "reverse": [
           "transformers.models",
-          "transformers.models.mobilevitv2",
-          "transformers.models.mobilevitv2.modeling_mobilevitv2",
+          "transformers.models.stablelm",
+          "transformers.models.stablelm.modeling_stablelm",
           "transformers.modeling_layers"
         ]
       },
@@ -1257,8 +1226,8 @@
       "import_chains": {
         "forward": [
           "transformers.models",
-          "transformers.models.qwen3_vl",
-          "transformers.models.qwen3_vl.video_processing_qwen3_vl",
+          "transformers.models.internvl",
+          "transformers.models.internvl.video_processing_internvl",
           "transformers.video_processing_utils"
         ],
         "reverse": [
@@ -1441,7 +1410,7 @@
         ],
         "reverse": [
           "transformers.generation",
-          "transformers.generation.configuration_utils",
+          "transformers.generation.watermarking",
           "transformers.configuration_utils"
         ]
       },
