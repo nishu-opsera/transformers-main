@@ -22,7 +22,6 @@ if is_torch_available():
     import torch
 
 if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
     from ..utils.quantization_config import MetalConfig
 
 logger = logging.get_logger(__name__)

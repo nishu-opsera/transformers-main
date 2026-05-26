@@ -24,9 +24,6 @@ from .quantizers_utils import get_module_from_name, get_weight_converter_class
 if is_torch_available():
     import torch
 
-if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
-
 logger = logging.get_logger(__name__)
 
 

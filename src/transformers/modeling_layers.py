@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 from functools import partial
+import importlib
 
 import torch
 import torch.nn as nn
@@ -23,7 +24,6 @@ from .modeling_outputs import (
     SequenceClassifierOutputWithPast,
     TokenClassifierOutput,
 )
-from .models.auto import AutoModel
 from .processing_utils import Unpack
 from .utils import TransformersKwargs, auto_docstring, can_return_tuple, logging
 
@@ -101,7 +101,8 @@ class GenericForSequenceClassification:
         super().__init__(config)
         self.num_labels = config.num_labels
         # Similar to `self.model = AutoModel.from_config(config)` but allows to change the base model name if needed in the child class
-        setattr(self, self.base_model_prefix, AutoModel.from_config(config))
+        auto_model = importlib.import_module("transformers.models.auto.modeling_auto").AutoModel
+        setattr(self, self.base_model_prefix, auto_model.from_config(config))
         self.score = nn.Linear(config.get_text_config().hidden_size, self.num_labels, bias=False)
 
         # Initialize weights and apply final processing
@@ -175,7 +176,8 @@ class GenericForQuestionAnswering:
     def __init__(self, config):
         super().__init__(config)
         # Similar to `self.model = AutoModel.from_config(config)` but allows to change the base model name if needed in the child class
-        setattr(self, self.base_model_prefix, AutoModel.from_config(config))
+        auto_model = importlib.import_module("transformers.models.auto.modeling_auto").AutoModel
+        setattr(self, self.base_model_prefix, auto_model.from_config(config))
         self.qa_outputs = nn.Linear(config.hidden_size, 2)
 
         # Initialize weights and apply final processing
@@ -237,7 +239,8 @@ class GenericForTokenClassification:
         super().__init__(config)
         self.num_labels = config.num_labels
         # Similar to `self.model = AutoModel.from_config(config)` but allows to change the base model name if needed in the child class
-        setattr(self, self.base_model_prefix, AutoModel.from_config(config))
+        auto_model = importlib.import_module("transformers.models.auto.modeling_auto").AutoModel
+        setattr(self, self.base_model_prefix, auto_model.from_config(config))
         if getattr(config, "classifier_dropout", None) is not None:
             classifier_dropout = config.classifier_dropout
         elif getattr(config, "hidden_dropout", None) is not None:

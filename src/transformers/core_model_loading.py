@@ -15,6 +15,7 @@
 
 from __future__ import annotations
 
+import importlib
 import math
 import os
 import re
@@ -31,7 +32,6 @@ from typing import TYPE_CHECKING, Any
 import torch
 
 from .distributed.sharding_utils import DtensorShardOperation, _dtensor_from_local_like
-from .integrations.accelerate import get_device, offload_weight
 from .utils import is_env_variable_true
 from .utils.loading_report import LoadStateDictInfo
 from .utils.logging import get_logger, tqdm
@@ -41,10 +41,19 @@ _torch_distributed_available = torch.distributed.is_available()
 if _torch_distributed_available:
     from torch.distributed.tensor import DTensor
 
-if TYPE_CHECKING:
-    from .modeling_utils import LoadStateDictConfig, PreTrainedModel
-
 logger = get_logger(__name__)
+
+
+def _accelerate():
+    return importlib.import_module("transformers.integrations.accelerate")
+
+
+def get_device(*args, **kwargs):
+    return _accelerate().get_device(*args, **kwargs)
+
+
+def offload_weight(*args, **kwargs):
+    return _accelerate().offload_weight(*args, **kwargs)
 
 
 def build_glob_alternation(

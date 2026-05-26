@@ -2,54 +2,6 @@
   "two_module_cycles": [
     {
       "modules": [
-        "transformers.backbone_utils",
-        "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.configuration_utils",
-        "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.core_model_loading",
-        "transformers.integrations"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.core_model_loading",
-        "transformers.modeling_utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.feature_extraction_utils",
-        "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.generation",
-        "transformers.integrations"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.generation",
-        "transformers.modeling_utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.image_processing_base",
-        "transformers.models"
-      ]
-    },
-    {
-      "modules": [
         "transformers.integrations",
         "transformers.modeling_flash_attention_utils"
       ]
@@ -110,36 +62,6 @@
     },
     {
       "modules": [
-        "transformers.modeling_layers",
-        "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.modeling_utils",
-        "transformers.models"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.modeling_utils",
-        "transformers.quantizers"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.modeling_utils",
-        "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.models",
-        "transformers.processing_utils"
-      ]
-    },
-    {
-      "modules": [
         "transformers.models",
         "transformers.quantizers"
       ]
@@ -147,21 +69,9 @@
     {
       "modules": [
         "transformers.models",
-        "transformers.tokenization_utils_base"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.models",
         "transformers.utils"
-      ]
-    },
-    {
-      "modules": [
-        "transformers.models",
-        "transformers.video_processing_utils"
       ]
     }
   ],
-  "count": 27
+  "count": 12
 }

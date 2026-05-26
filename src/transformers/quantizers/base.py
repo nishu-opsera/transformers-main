@@ -22,8 +22,6 @@ from .quantizers_utils import get_module_from_name
 if TYPE_CHECKING:
     from torch.nn import ModuleList
 
-    from ..modeling_utils import PreTrainedModel
-
 if is_torch_available():
     import torch
 
@@ -63,7 +61,9 @@ def get_keys_to_not_convert(model) -> list:
 
 
 def _assign_is_quantized(model):
-    from ..modeling_utils import PreTrainedModel
+    import importlib
+
+    PreTrainedModel = importlib.import_module("transformers.modeling_utils").PreTrainedModel
 
     for module in model.modules():
         if isinstance(module, PreTrainedModel):

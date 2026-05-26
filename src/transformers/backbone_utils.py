@@ -16,6 +16,7 @@
 
 import enum
 import functools
+import importlib
 import inspect
 
 from huggingface_hub import repo_exists
@@ -316,7 +317,7 @@ def consolidate_backbone_kwargs_to_config(
     # Lazy import to avoid circular import issues. Can be imported properly
     # after deleting ref to `BackboneMixin` in `utils/backbone_utils.py`
     from .configuration_utils import PreTrainedConfig
-    from .models.auto import CONFIG_MAPPING
+    CONFIG_MAPPING = importlib.import_module("transformers.models.auto").configuration_auto.CONFIG_MAPPING
 
     use_timm_backbone = kwargs.pop("use_timm_backbone", True)
     backbone_kwargs = kwargs.pop("backbone_kwargs", {})

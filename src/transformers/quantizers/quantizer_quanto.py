@@ -17,9 +17,6 @@ from .base import HfQuantizer
 from .quantizers_utils import get_module_from_name
 
 
-if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
-
 from ..utils import (
     is_accelerate_available,
     is_optimum_quanto_available,

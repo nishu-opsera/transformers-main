@@ -26,10 +26,6 @@
     },
     {
       "source": "transformers.backbone_utils",
-      "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.backbone_utils",
       "destination": "transformers.utils"
     },
     {
@@ -74,10 +70,6 @@
     },
     {
       "source": "transformers.configuration_utils",
-      "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.configuration_utils",
       "destination": "transformers.utils"
     },
     {
@@ -111,14 +103,6 @@
     {
       "source": "transformers.core_model_loading",
       "destination": "transformers.distributed"
-    },
-    {
-      "source": "transformers.core_model_loading",
-      "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.core_model_loading",
-      "destination": "transformers.modeling_utils"
     },
     {
       "source": "transformers.core_model_loading",
@@ -178,10 +162,6 @@
     },
     {
       "source": "transformers.feature_extraction_utils",
-      "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.feature_extraction_utils",
       "destination": "transformers.utils"
     },
     {
@@ -226,19 +206,11 @@
     },
     {
       "source": "transformers.generation",
-      "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.generation",
       "destination": "transformers.masking_utils"
     },
     {
       "source": "transformers.generation",
       "destination": "transformers.modeling_flash_attention_utils"
-    },
-    {
-      "source": "transformers.generation",
-      "destination": "transformers.modeling_utils"
     },
     {
       "source": "transformers.generation",
@@ -303,10 +275,6 @@
     {
       "source": "transformers.image_processing_base",
       "destination": "transformers.image_utils"
-    },
-    {
-      "source": "transformers.image_processing_base",
-      "destination": "transformers.models"
     },
     {
       "source": "transformers.image_processing_base",
@@ -506,10 +474,6 @@
     },
     {
       "source": "transformers.modeling_layers",
-      "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.modeling_layers",
       "destination": "transformers.processing_utils"
     },
     {
@@ -554,10 +518,6 @@
     },
     {
       "source": "transformers.modeling_utils",
-      "destination": "transformers.generation"
-    },
-    {
-      "source": "transformers.modeling_utils",
       "destination": "transformers.initialization"
     },
     {
@@ -579,10 +539,6 @@
     {
       "source": "transformers.modeling_utils",
       "destination": "transformers.modeling_rope_utils"
-    },
-    {
-      "source": "transformers.modeling_utils",
-      "destination": "transformers.models"
     },
     {
       "source": "transformers.modeling_utils",
@@ -866,10 +822,6 @@
     },
     {
       "source": "transformers.processing_utils",
-      "destination": "transformers.models"
-    },
-    {
-      "source": "transformers.processing_utils",
       "destination": "transformers.tokenization_utils_base"
     },
     {
@@ -891,10 +843,6 @@
     {
       "source": "transformers.quantizers",
       "destination": "transformers.integrations"
-    },
-    {
-      "source": "transformers.quantizers",
-      "destination": "transformers.modeling_utils"
     },
     {
       "source": "transformers.quantizers",
@@ -951,10 +899,6 @@
     {
       "source": "transformers.tokenization_utils_base",
       "destination": "transformers.dynamic_module_utils"
-    },
-    {
-      "source": "transformers.tokenization_utils_base",
-      "destination": "transformers.models"
     },
     {
       "source": "transformers.tokenization_utils_base",
@@ -1262,10 +1206,6 @@
     },
     {
       "source": "transformers.utils",
-      "destination": "transformers.modeling_utils"
-    },
-    {
-      "source": "transformers.utils",
       "destination": "transformers.models"
     },
     {
@@ -1283,10 +1223,6 @@
     {
       "source": "transformers.video_processing_utils",
       "destination": "transformers.image_utils"
-    },
-    {
-      "source": "transformers.video_processing_utils",
-      "destination": "transformers.models"
     },
     {
       "source": "transformers.video_processing_utils",

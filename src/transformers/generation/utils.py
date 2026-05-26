@@ -14,6 +14,7 @@
 # limitations under the License.
 import copy
 import functools
+import importlib
 import inspect
 import os
 import warnings
@@ -40,7 +41,6 @@ from ..dynamic_module_utils import (
     get_class_in_module,
     resolve_trust_remote_code,
 )
-from ..integrations.deepspeed import is_deepspeed_zero3_enabled
 from ..masking_utils import create_masks_for_generate
 from ..tokenization_python import ExtensionsTrie
 from ..utils import (
@@ -112,7 +112,6 @@ from .stopping_criteria import (
 
 if TYPE_CHECKING:
     from .._typing import GenerativePreTrainedModel
-    from ..modeling_utils import PreTrainedModel
     from ..tokenization_utils_base import PreTrainedTokenizerBase
     from .streamers import BaseStreamer
 
@@ -2154,7 +2153,11 @@ class GenerationMixin(ContinuousMixin):
         }
         world_size = dist.get_world_size() if dist.is_available() and dist.is_initialized() else 1
         generation_mode_kwargs["synced_gpus"] = (
-            (is_deepspeed_zero3_enabled() or is_fsdp_managed_module(self)) and world_size > 1
+            (
+                importlib.import_module("transformers.integrations.deepspeed").is_deepspeed_zero3_enabled()
+                or is_fsdp_managed_module(self)
+            )
+            and world_size > 1
             if synced_gpus is None
             else synced_gpus
         )

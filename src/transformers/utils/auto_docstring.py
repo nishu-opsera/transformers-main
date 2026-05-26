@@ -13,6 +13,7 @@
 # limitations under the License.
 from __future__ import annotations
 
+import importlib
 import inspect
 import os
 from collections.abc import Mapping
@@ -2805,7 +2806,7 @@ def get_placeholders_dict(placeholders: set[str], model_name: str) -> Mapping[st
     Get the dictionary of placeholders for the given model name.
     """
     # import here to avoid circular import
-    from transformers.models import auto as auto_module
+    auto_module = importlib.import_module("transformers.models.auto")
 
     placeholders_dict = {}
     for placeholder in placeholders:
@@ -2920,7 +2921,7 @@ def _get_model_info(func, parent_class):
         parent_class (`class`): Optional parent class of the function
     """
     # import here to avoid circular import
-    from transformers.models import auto as auto_module
+    auto_module = importlib.import_module("transformers.models.auto")
 
     # Get model name from either parent class or function
     if parent_class is not None:
@@ -4018,7 +4019,7 @@ def _process_example_section(
         indent_level (`int`): Indentation level
     """
     # Import here to avoid circular import
-    from transformers.models import auto as auto_module
+    auto_module = importlib.import_module("transformers.models.auto")
 
     example_docstring = ""
 
@@ -4177,7 +4178,7 @@ def auto_class_docstring(cls, custom_intro=None, custom_args=None, checkpoint=No
     Wrapper that automatically generates a docstring for classes based on their attributes and methods.
     """
     # import here to avoid circular import
-    from transformers.models import auto as auto_module
+    auto_module = importlib.import_module("transformers.models.auto")
 
     is_dataclass = False
     is_processor = False

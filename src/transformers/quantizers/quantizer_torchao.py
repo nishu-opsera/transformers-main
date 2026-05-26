@@ -19,7 +19,6 @@ from .quantizers_utils import get_module_from_name, get_weight_converter_class, 
 
 
 if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
     from ..utils.quantization_config import TorchAoConfig
 
 from safetensors import safe_open

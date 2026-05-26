@@ -17,7 +17,6 @@ from .base import HfQuantizer
 
 
 if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
     from ..utils.quantization_config import Mxfp4Config
 
 from ..utils import (

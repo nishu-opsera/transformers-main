@@ -20,7 +20,6 @@ from .base import HfQuantizer
 
 
 if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
     from ..utils.quantization_config import AqlmConfig
 
 from ..integrations import replace_with_aqlm_linear

@@ -11,17 +11,26 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import importlib
 import io
 
 import httpx
 from PIL import Image
 
-from ..models.auto.auto_factory import _get_model_class
-from ..models.auto.configuration_auto import AutoConfig
-from ..models.auto.modeling_auto import MODEL_FOR_PRETRAINING_MAPPING, MODEL_MAPPING
-from ..models.auto.processing_auto import PROCESSOR_MAPPING_NAMES, AutoProcessor
-from ..models.auto.tokenization_auto import AutoTokenizer
 from .import_utils import is_torch_available
+
+
+def _auto_modules():
+    auto = importlib.import_module("transformers.models.auto")
+    return {
+        "AutoConfig": auto.configuration_auto.AutoConfig,
+        "_get_model_class": auto.auto_factory._get_model_class,
+        "MODEL_FOR_PRETRAINING_MAPPING": auto.modeling_auto.MODEL_FOR_PRETRAINING_MAPPING,
+        "MODEL_MAPPING": auto.modeling_auto.MODEL_MAPPING,
+        "PROCESSOR_MAPPING_NAMES": auto.processing_auto.PROCESSOR_MAPPING_NAMES,
+        "AutoProcessor": auto.processing_auto.AutoProcessor,
+        "AutoTokenizer": auto.tokenization_auto.AutoTokenizer,
+    }
 
 
 if is_torch_available():
@@ -146,6 +155,12 @@ def generate_attention_matrix_from_mask(
 
 class AttentionMaskVisualizer:
     def __init__(self, model_name: str):
+        auto = _auto_modules()
+        AutoConfig = auto["AutoConfig"]
+        _get_model_class = auto["_get_model_class"]
+        MODEL_FOR_PRETRAINING_MAPPING = auto["MODEL_FOR_PRETRAINING_MAPPING"]
+        MODEL_MAPPING = auto["MODEL_MAPPING"]
+
         config = AutoConfig.from_pretrained(model_name)
         self.image_token = "<img>"
         if hasattr(config.get_text_config(), "sliding_window"):
@@ -174,6 +189,11 @@ class AttentionMaskVisualizer:
         self.visualize_attention_mask(input_sentence, suffix=suffix)
 
     def visualize_attention_mask(self, input_sentence: str, suffix=""):
+        auto = _auto_modules()
+        PROCESSOR_MAPPING_NAMES = auto["PROCESSOR_MAPPING_NAMES"]
+        AutoProcessor = auto["AutoProcessor"]
+        AutoTokenizer = auto["AutoTokenizer"]
+
         model = self.model
         kwargs = {}
         image_seq_length = None

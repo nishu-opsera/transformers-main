@@ -22,6 +22,7 @@ import threading
 from contextvars import ContextVar
 from dataclasses import dataclass
 from functools import wraps
+import importlib
 from typing import TYPE_CHECKING
 
 from .import_utils import is_torchdynamo_compiling, requires
@@ -29,8 +30,6 @@ from .import_utils import is_torchdynamo_compiling, requires
 
 if TYPE_CHECKING:
     from torch import nn
-
-    from ..modeling_utils import PreTrainedModel
 
 
 _CAN_RECORD_REGISTRY = {}
@@ -129,7 +128,7 @@ def recursively_install_hooks(
     we reach a submodel in the graph, its children should use this submodel's `capture_tasks`, but other parts of the graph
     should not.
     """
-    from ..modeling_utils import PreTrainedModel
+    PreTrainedModel = importlib.import_module("transformers.modeling_utils").PreTrainedModel
 
     # First dispatch to children if needed
     for name, module in parent_module.named_children():

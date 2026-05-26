@@ -12,9 +12,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import importlib
 import warnings
-
-from ..models.auto.configuration_auto import AutoConfig
 from ..utils import logging
 from ..utils.quantization_config import (
     AqlmConfig,
@@ -163,6 +162,7 @@ class AutoQuantizationConfig:
 
     @classmethod
     def from_pretrained(cls, pretrained_model_name_or_path, **kwargs):
+        AutoConfig = importlib.import_module("transformers.models.auto.configuration_auto").AutoConfig
         model_config = AutoConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
         if getattr(model_config, "quantization_config", None) is None:
             raise ValueError(

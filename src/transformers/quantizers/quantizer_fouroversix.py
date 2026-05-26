@@ -6,7 +6,6 @@ from .quantizers_utils import get_module_from_name
 
 
 if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
     from ..utils.quantization_config import FourOverSixConfig
 
 from ..utils import (

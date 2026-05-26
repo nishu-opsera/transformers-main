@@ -31,7 +31,6 @@ if is_sklearn_available():
     from sklearn.metrics import roc_curve
 
 if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
     from ..tokenization_utils_base import PreTrainedTokenizerBase
     from .configuration_utils import GenerationConfig
 

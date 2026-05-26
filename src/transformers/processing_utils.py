@@ -17,6 +17,7 @@ Processing saving/loading class for common processors.
 
 import bisect
 import copy
+import importlib
 import functools
 import inspect
 import json
@@ -1726,7 +1727,7 @@ class ProcessorMixin(PushToHubMixin):
         if not isinstance(auto_class, str):
             auto_class = auto_class.__name__
 
-        import transformers.models.auto as auto_module
+        auto_module = importlib.import_module("transformers.models.auto")
 
         if not hasattr(auto_module, auto_class):
             raise ValueError(f"{auto_class} is not a valid auto class.")

@@ -1,6 +1,7 @@
+from __future__ import annotations
+
 import torch
 
-from ..generation.continuous_batching import PagedAttentionCache
 from ..modeling_flash_attention_utils import lazy_import_paged_flash_attention
 
 

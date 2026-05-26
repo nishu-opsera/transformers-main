@@ -39,7 +39,6 @@ if TYPE_CHECKING:
     import torch
 
     from ..configuration_utils import PreTrainedConfig
-    from ..modeling_utils import PreTrainedModel
 
 
 logger = logging.get_logger(__name__)

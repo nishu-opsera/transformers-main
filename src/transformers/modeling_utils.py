@@ -67,7 +67,6 @@ from .distributed.utils import (
     save_model_checkpoint_distributed,
 )
 from .dynamic_module_utils import custom_object_save
-from .generation import CompileConfig, GenerationConfig
 from .integrations import PeftAdapterMixin, deepspeed_config, hub_kernels, is_deepspeed_zero3_enabled
 from .integrations.accelerate import (
     _get_device_map,
@@ -158,6 +157,17 @@ else:
 
 
 logger = logging.get_logger(__name__)
+
+
+@functools.lru_cache
+def _generation_config_cls():
+    return importlib.import_module("transformers.generation.configuration_utils").GenerationConfig
+
+
+@functools.lru_cache
+def _compile_config_cls():
+    return importlib.import_module("transformers.generation.configuration_utils").CompileConfig
+
 
 XLA_USE_BF16 = os.environ.get("XLA_USE_BF16", "0").upper()
 XLA_DOWNCAST_BF16 = os.environ.get("XLA_DOWNCAST_BF16", "0").upper()
@@ -1368,7 +1378,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
             self.config._experts_implementation
         )
         if self.can_generate():
-            self.generation_config = GenerationConfig.from_model_config(config)
+            self.generation_config = _generation_config_cls().from_model_config(config)
 
         # for initialization of the loss
         loss_type = self.__class__.__name__
@@ -4598,7 +4608,7 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
         if not isinstance(auto_class, str):
             auto_class = auto_class.__name__
 
-        import transformers.models.auto as auto_module
+        auto_module = importlib.import_module("transformers.models.auto")
 
         if not hasattr(auto_module, auto_class):
             raise ValueError(f"{auto_class} is not a valid auto class.")
@@ -4761,8 +4771,8 @@ class PreTrainedModel(nn.Module, EmbeddingAccessMixin, ModuleUtilsMixin, PushToH
         `device.type == "tpu"` through it with static shapes to match the
         common StaticCache + fixed-prefill usage."""
         if self.device.type == "tpu":
-            return CompileConfig(backend="tpu", dynamic=False, mode="default")
-        return CompileConfig()
+            return _compile_config_cls()(backend="tpu", dynamic=False, mode="default")
+        return _compile_config_cls()()
 
     def get_compiled_call(self, compile_config: CompileConfig | None) -> Callable:
         """Return a `torch.compile`'d version of `self.__call__`. This is useful to dynamically choose between

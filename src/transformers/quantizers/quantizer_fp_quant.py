@@ -18,7 +18,6 @@ from .quantizers_utils import get_module_from_name, get_weight_converter_class
 
 
 if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
     from ..utils.quantization_config import FPQuantConfig
 
 from ..utils import is_fp_quant_available, is_qutlass_available, is_torch_available, is_torch_xpu_available, logging

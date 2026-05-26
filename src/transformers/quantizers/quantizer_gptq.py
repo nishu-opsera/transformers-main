@@ -19,9 +19,6 @@ from packaging import version
 from .base import HfQuantizer
 
 
-if TYPE_CHECKING:
-    from ..modeling_utils import PreTrainedModel
-
 from ..utils import is_gptqmodel_available, is_optimum_available, is_torch_available, logging
 from ..utils.quantization_config import GPTQConfig, QuantizationConfigMixin
 
