@@ -1,0 +1,7 @@
+diff --git a/src/transformers/models/example/modeling_example.py b/src/transformers/models/example/modeling_example.py
+index 1111111..2222222 100644
+--- a/src/transformers/models/example/modeling_example.py
++++ b/src/transformers/models/example/modeling_example.py
+@@ -10,1 +10,1 @@
+-    hidden_size = 768
++    hidden_size = 1024

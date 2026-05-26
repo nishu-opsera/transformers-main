@@ -1,0 +1,29 @@
+name: check_copied_from_regression
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check_copied_from_regression:
+    name: check_copied_from_regression
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch base branch for diff
+        run: git fetch origin main:origin/main || true
+      - name: Warn on new Copied-from annotations (WO-016)
+        run: make check-copied-from-regression
+        env:
+          COPIED_FROM_BASE_REF: origin/main
+          COPIED_FROM_BLOCK_NEW: "0"

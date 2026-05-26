@@ -171,6 +171,12 @@ If you are willing to contribute the model yourself, let us know so we can help 
 
 We have a technical guide for [how to add a model to 🤗 Transformers](https://huggingface.co/docs/transformers/modular_transformers).
 
+**Modular files are the canonical paradigm for new models.** Do not add new `# Copied from`
+annotations — CI emits a warning when a pull request introduces them (see
+`make check-copied-from-regression`). Use a `modular_<model_name>.py` source file and
+`python utils/modular_model_converter.py` instead. Set `COPIED_FROM_BLOCK_NEW=1` locally
+to match future blocking enforcement.
+
 ### Vision-Language Model Contribution Checklist
 
 If you're contributing a **vision-language model** (or any multimodal model that processes images/videos), please follow this checklist. Maintainers will use this to review your PR, and completing these steps will significantly increase the likelihood of your PR being merged quickly.

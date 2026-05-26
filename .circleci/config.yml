@@ -236,6 +236,19 @@ jobs:
             - run: uv pip install -e ".[quality]"
             - run: make check-modular-conversion
 
+    check_copied_from_regression:
+        working_directory: ~/transformers
+        docker:
+            - image: huggingface/transformers-quality
+        resource_class: medium
+        environment:
+            TRANSFORMERS_IS_CI: yes
+        parallelism: 1
+        steps:
+            - checkout
+            - run: uv pip install -e ".[quality]"
+            - run: make check-copied-from-regression
+
     benchmark_import_time:
         working_directory: ~/transformers
         docker:

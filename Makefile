@@ -95,6 +95,10 @@ catalog-copied-from:
 check-copied-from-catalog:
 	@python utils/catalog_copied_from.py --check
 
+# Warn on new '# Copied from' lines in PR diffs (WO-016). Set COPIED_FROM_BLOCK_NEW=1 to fail.
+check-copied-from-regression:
+	@python utils/check_copied_from_regression.py
+
 # Runs typing and formatting checks + repository consistency check (ignores errors)
 check-repo:
 	@python utils/checkers.py $(ALL_CHECKERS) --keep-going
