@@ -1,0 +1,341 @@
+{
+  "version": 1,
+  "top_n": 50,
+  "entries": [
+    {
+      "file_path": "src/transformers/models/seamless_m4t_v2/modeling_seamless_m4t_v2.py",
+      "annotations_before": 58,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/mt5/modeling_mt5.py",
+      "annotations_before": 31,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/owlv2/modeling_owlv2.py",
+      "annotations_before": 30,
+      "modular_file": "src/transformers/models/owlv2/modular_owlv2.py",
+      "status": "modular_source"
+    },
+    {
+      "file_path": "src/transformers/models/roc_bert/modeling_roc_bert.py",
+      "annotations_before": 28,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/xmod/modeling_xmod.py",
+      "annotations_before": 22,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/flaubert/modeling_flaubert.py",
+      "annotations_before": 20,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/umt5/modeling_umt5.py",
+      "annotations_before": 20,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/idefics3/modeling_idefics3.py",
+      "annotations_before": 18,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/markuplm/modeling_markuplm.py",
+      "annotations_before": 18,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/roberta_prelayernorm/modeling_roberta_prelayernorm.py",
+      "annotations_before": 17,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/bridgetower/modeling_bridgetower.py",
+      "annotations_before": 15,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/seamless_m4t/modeling_seamless_m4t.py",
+      "annotations_before": 15,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/deberta_v2/modeling_deberta_v2.py",
+      "annotations_before": 13,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/sew_d/modeling_sew_d.py",
+      "annotations_before": 13,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/speecht5/modeling_speecht5.py",
+      "annotations_before": 13,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/clap/modeling_clap.py",
+      "annotations_before": 12,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/electra/modeling_electra.py",
+      "annotations_before": 12,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/instructblip/modeling_instructblip.py",
+      "annotations_before": 12,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/kosmos2_5/modeling_kosmos2_5.py",
+      "annotations_before": 12,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/layoutlm/modeling_layoutlm.py",
+      "annotations_before": 12,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/mimi/modeling_mimi.py",
+      "annotations_before": 12,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/patchtsmixer/modeling_patchtsmixer.py",
+      "annotations_before": 12,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/align/modeling_align.py",
+      "annotations_before": 11,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+      "annotations_before": 11,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/longt5/modeling_longt5.py",
+      "annotations_before": 11,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/musicgen_melody/modeling_musicgen_melody.py",
+      "annotations_before": 11,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/owlvit/modeling_owlvit.py",
+      "annotations_before": 11,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/bert_generation/modeling_bert_generation.py",
+      "annotations_before": 10,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/oneformer/modeling_oneformer.py",
+      "annotations_before": 10,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/pop2piano/modeling_pop2piano.py",
+      "annotations_before": 10,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/tapas/modeling_tapas.py",
+      "annotations_before": 10,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/autoformer/modeling_autoformer.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/big_bird/modeling_big_bird.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/blip_2/modeling_blip_2.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/idefics2/modeling_idefics2.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/lilt/modeling_lilt.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/mbart/modeling_mbart.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/megatron_bert/modeling_megatron_bert.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/stablelm/modeling_stablelm.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/udop/modeling_udop.py",
+      "annotations_before": 9,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/blenderbot/modeling_blenderbot.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/blenderbot_small/modeling_blenderbot_small.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/chameleon/modeling_chameleon.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/donut/modeling_donut_swin.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/git/modeling_git.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/kosmos2/modeling_kosmos2.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/mllama/modeling_mllama.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/moshi/modeling_moshi.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    },
+    {
+      "file_path": "src/transformers/models/mra/modeling_mra.py",
+      "annotations_before": 8,
+      "modular_file": null,
+      "status": "pending_modular"
+    }
+  ],
+  "wave1_migrated_files": [
+    "src/transformers/models/bit/modeling_bit.py",
+    "src/transformers/models/clap/modeling_clap.py",
+    "src/transformers/models/convnext/modeling_convnext.py",
+    "src/transformers/models/convnextv2/modeling_convnextv2.py",
+    "src/transformers/models/cvt/modeling_cvt.py",
+    "src/transformers/models/data2vec/modeling_data2vec_vision.py",
+    "src/transformers/models/dinat/modeling_dinat.py",
+    "src/transformers/models/dinov2/modeling_dinov2.py",
+    "src/transformers/models/dinov3_convnext/modeling_dinov3_convnext.py",
+    "src/transformers/models/donut/modeling_donut_swin.py",
+    "src/transformers/models/focalnet/modeling_focalnet.py",
+    "src/transformers/models/glpn/modeling_glpn.py",
+    "src/transformers/models/grounding_dino/modeling_grounding_dino.py",
+    "src/transformers/models/hiera/modeling_hiera.py",
+    "src/transformers/models/maskformer/modeling_maskformer_swin.py",
+    "src/transformers/models/mgp_str/modeling_mgp_str.py",
+    "src/transformers/models/poolformer/modeling_poolformer.py",
+    "src/transformers/models/pvt/modeling_pvt.py",
+    "src/transformers/models/pvt_v2/modeling_pvt_v2.py",
+    "src/transformers/models/seggpt/modeling_seggpt.py",
+    "src/transformers/models/swiftformer/modeling_swiftformer.py",
+    "src/transformers/models/swin2sr/modeling_swin2sr.py",
+    "src/transformers/models/swinv2/modeling_swinv2.py",
+    "src/transformers/models/timesformer/modeling_timesformer.py",
+    "src/transformers/models/vitdet/modeling_vitdet.py",
+    "src/transformers/models/vjepa2/modeling_vjepa2.py"
+  ],
+  "summary": {
+    "files_tracked": 50,
+    "wave1_migrated_count": 26,
+    "annotations_in_top_n": 672,
+    "modular_source_count": 1,
+    "target_annotation_reduction": 150
+  }
+}

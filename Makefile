@@ -1,7 +1,7 @@
 # make sure to test the local checkout in scripts and not the pre-installed one (don't use quotes!)
 export PYTHONPATH = src
 
-.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations report-layer-violations check-modular-conversion benchmark-import-time check-downstream-compat catalog-circular-dependencies check-repo fix-repo test test-examples benchmark codex claude clean-ai
+.PHONY: style typing check-code-quality check-repository-consistency check-import-linter check-layer-violations report-layer-violations check-modular-conversion track-modular-migration benchmark-import-time check-downstream-compat test-canary-downstream run-modernization-validation catalog-circular-dependencies check-repo fix-repo test test-examples benchmark codex claude clean-ai
 
 
 # Checker lists. The two CI jobs (CircleCI runs `make check-code-quality` and
@@ -64,6 +64,18 @@ check-layer-violations:
 # WO-014: regenerate modular backlog + priority tiers (non-blocking).
 report-layer-violations:
 	@PYTHONPATH=src python utils/check_layer_violations.py --write-tracking
+
+# WO-017: refresh top-50 modular migration progress JSON + doc.
+track-modular-migration:
+	@python utils/track_modular_migration.py --write
+
+# WO-029: run modernization validation suite and write report.
+run-modernization-validation:
+	@PYTHONPATH=src python utils/run_modernization_validation.py --write
+
+# WO-030: canary downstream import smoke tests.
+test-canary-downstream:
+	@PYTHONPATH=src python -m pytest tests/canary_downstream/ -q --tb=short --noconftest
 
 # Modular source vs generated file consistency (WO-003).
 check-modular-conversion:

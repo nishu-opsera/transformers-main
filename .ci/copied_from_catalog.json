@@ -3,7 +3,7 @@
   "entries": [
     {
       "file_path": "src/transformers/configuration_utils.py",
-      "line_number": 79,
+      "line_number": 84,
       "source_reference": "huggingface_hub.dataclasses.strict when `accept_kwargs=True`",
       "target_name": "wrap_init_to_accept_kwargs",
       "annotation_type": "function",
@@ -12,7 +12,7 @@
     },
     {
       "file_path": "src/transformers/integrations/bitsandbytes.py",
-      "line_number": 234,
+      "line_number": 241,
       "source_reference": "PEFT: https://github.com/huggingface/peft/blob/47b3712898539569c02ec5b3ed4a6c36811331a1/src/peft/utils/integrations.py#L41",
       "target_name": "dequantize_bnb_weight",
       "annotation_type": "function",
@@ -21,7 +21,7 @@
     },
     {
       "file_path": "src/transformers/integrations/mxfp4.py",
-      "line_number": 252,
+      "line_number": 270,
       "source_reference": "GPT_OSS repo and vllm",
       "target_name": "quantize_to_mxfp4",
       "annotation_type": "function",
@@ -402,7 +402,7 @@
       "line_number": 73,
       "source_reference": "transformers.models.bert.modeling_bert.BertEmbeddings.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -537,7 +537,7 @@
       "line_number": 1975,
       "source_reference": "transformers.models.bart.modeling_bart.BartForConditionalGeneration.__init__ with Bart->BigBirdPegasus, BART->BIGBIRD_PEGASUS",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -546,7 +546,7 @@
       "line_number": 1985,
       "source_reference": "transformers.models.bart.modeling_bart.BartForConditionalGeneration.resize_token_embeddings with Bart->BigBirdPegasus, BART->BIGBIRD_PEGASUS",
       "target_name": "resize_token_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -579,16 +579,7 @@
     },
     {
       "file_path": "src/transformers/models/bit/modeling_bit.py",
-      "line_number": 276,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->BitDropPath",
-      "target_name": "BitDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/bit/modeling_bit.py",
-      "line_number": 629,
+      "line_number": 608,
       "source_reference": "the `reset_parameters` method of `class Linear(Module)` in `torch`.",
       "target_name": null,
       "annotation_type": "unknown",
@@ -1182,25 +1173,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 478,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->ClapDropPath",
-      "target_name": "ClapDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 682,
-      "source_reference": "transformers.models.swin.modeling_swin.SwinPatchMerging with Swin->ClapAudio",
-      "target_name": "ClapAudioPatchMerging",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 926,
+      "line_number": 685,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaEmbeddings with Roberta->ClapText, persistent=False->persistent=True",
       "target_name": "ClapTextEmbeddings",
       "annotation_type": "class",
@@ -1209,7 +1182,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1033,
+      "line_number": 792,
       "source_reference": "transformers.models.align.modeling_align.eager_attention_forward",
       "target_name": "eager_attention_forward",
       "annotation_type": "function",
@@ -1218,7 +1191,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1056,
+      "line_number": 815,
       "source_reference": "transformers.models.align.modeling_align.AlignTextSelfAttention with Align->Clap",
       "target_name": "ClapTextSelfAttention",
       "annotation_type": "class",
@@ -1227,7 +1200,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1111,
+      "line_number": 870,
       "source_reference": "transformers.models.bert.modeling_bert.BertSelfOutput",
       "target_name": "ClapTextSelfOutput",
       "annotation_type": "class",
@@ -1236,7 +1209,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1126,
+      "line_number": 885,
       "source_reference": "transformers.models.align.modeling_align.AlignTextAttention with Align->Clap",
       "target_name": "ClapTextAttention",
       "annotation_type": "class",
@@ -1245,7 +1218,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1149,
+      "line_number": 908,
       "source_reference": "transformers.models.bert.modeling_bert.BertIntermediate",
       "target_name": "ClapTextIntermediate",
       "annotation_type": "class",
@@ -1254,7 +1227,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1165,
+      "line_number": 924,
       "source_reference": "transformers.models.bert.modeling_bert.BertOutput",
       "target_name": "ClapTextOutput",
       "annotation_type": "class",
@@ -1263,7 +1236,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1180,
+      "line_number": 939,
       "source_reference": "transformers.models.align.modeling_align.AlignTextLayer with Align->Clap",
       "target_name": "ClapTextLayer",
       "annotation_type": "class",
@@ -1272,7 +1245,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1214,
+      "line_number": 973,
       "source_reference": "transformers.models.align.modeling_align.AlignTextEncoder with Align->Clap",
       "target_name": "ClapTextEncoder",
       "annotation_type": "class",
@@ -1281,7 +1254,7 @@
     },
     {
       "file_path": "src/transformers/models/clap/modeling_clap.py",
-      "line_number": 1240,
+      "line_number": 999,
       "source_reference": "transformers.models.bert.modeling_bert.BertPooler",
       "target_name": "ClapTextPooler",
       "annotation_type": "class",
@@ -1397,15 +1370,6 @@
       "migration_complexity": "simple"
     },
     {
-      "file_path": "src/transformers/models/convnext/modeling_convnext.py",
-      "line_number": 89,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->ConvNextDropPath",
-      "target_name": "ConvNextDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
       "file_path": "src/transformers/models/convnextv2/modeling_convnextv2.py",
       "line_number": 56,
       "source_reference": "transformers.models.convnext.modeling_convnext.ConvNextLayerNorm with ConvNext->ConvNextV2",
@@ -1425,16 +1389,7 @@
     },
     {
       "file_path": "src/transformers/models/convnextv2/modeling_convnextv2.py",
-      "line_number": 108,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->ConvNextV2DropPath",
-      "target_name": "ConvNextV2DropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/convnextv2/modeling_convnextv2.py",
-      "line_number": 176,
+      "line_number": 155,
       "source_reference": "transformers.models.convnext.modeling_convnext.ConvNextStage with ConvNeXT->ConvNeXTV2, ConvNext->ConvNextV2",
       "target_name": "ConvNextV2Stage",
       "annotation_type": "class",
@@ -1443,7 +1398,7 @@
     },
     {
       "file_path": "src/transformers/models/convnextv2/modeling_convnextv2.py",
-      "line_number": 230,
+      "line_number": 209,
       "source_reference": "transformers.models.convnext.modeling_convnext.ConvNextEncoder with CONVNEXT->CONVNEXTV2, ConvNext->ConvNextV2",
       "target_name": "ConvNextV2Encoder",
       "annotation_type": "class",
@@ -1452,7 +1407,7 @@
     },
     {
       "file_path": "src/transformers/models/convnextv2/modeling_convnextv2.py",
-      "line_number": 272,
+      "line_number": 251,
       "source_reference": "transformers.models.convnext.modeling_convnext.ConvNextModel with CONVNEXT->CONVNEXTV2, ConvNext->ConvNextV2",
       "target_name": "ConvNextV2Model",
       "annotation_type": "class",
@@ -1461,7 +1416,7 @@
     },
     {
       "file_path": "src/transformers/models/convnextv2/modeling_convnextv2.py",
-      "line_number": 315,
+      "line_number": 294,
       "source_reference": "transformers.models.convnext.modeling_convnext.ConvNextForImageClassification with CONVNEXT->CONVNEXTV2,ConvNext->ConvNextV2,convnext->convnextv2",
       "target_name": "ConvNextV2ForImageClassification",
       "annotation_type": "class",
@@ -1470,7 +1425,7 @@
     },
     {
       "file_path": "src/transformers/models/convnextv2/modeling_convnextv2.py",
-      "line_number": 365,
+      "line_number": 344,
       "source_reference": "transformers.models.convnext.modeling_convnext.ConvNextBackbone with CONVNEXT->CONVNEXTV2,ConvNext->ConvNextV2,facebook/convnext-tiny-224->facebook/convnextv2-tiny-1k-224",
       "target_name": "ConvNextV2Backbone",
       "annotation_type": "class",
@@ -1491,15 +1446,6 @@
       "line_number": 505,
       "source_reference": "transformers.models.bert.modeling_bert.BertOutput with Bert->CPMAnt",
       "target_name": "CpmAntOutput",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/cvt/modeling_cvt.py",
-      "line_number": 296,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->CvtDropPath",
-      "target_name": "CvtDropPath",
       "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
@@ -1614,16 +1560,7 @@
     },
     {
       "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
-      "line_number": 403,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->Data2VecVisionDropPath",
-      "target_name": "Data2VecVisionDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
-      "line_number": 755,
+      "line_number": 510,
       "source_reference": "transformers.models.beit.modeling_beit.BeitPooler with Beit->Data2VecVision",
       "target_name": "Data2VecVisionPooler",
       "annotation_type": "class",
@@ -1632,7 +1569,7 @@
     },
     {
       "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
-      "line_number": 834,
+      "line_number": 589,
       "source_reference": "transformers.models.beit.modeling_beit.BeitConvLayer with Beit->Data2VecVision",
       "target_name": "Data2VecVisionConvLayer",
       "annotation_type": "class",
@@ -1641,7 +1578,7 @@
     },
     {
       "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
-      "line_number": 869,
+      "line_number": 624,
       "source_reference": "transformers.models.beit.modeling_beit.BeitPyramidPoolingBlock with Beit->Data2VecVision",
       "target_name": "Data2VecVisionPyramidPoolingBlock",
       "annotation_type": "class",
@@ -1650,7 +1587,7 @@
     },
     {
       "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
-      "line_number": 883,
+      "line_number": 638,
       "source_reference": "transformers.models.beit.modeling_beit.BeitPyramidPoolingModule with Beit->Data2VecVision",
       "target_name": "Data2VecVisionPyramidPoolingModule",
       "annotation_type": "class",
@@ -1659,7 +1596,7 @@
     },
     {
       "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
-      "line_number": 914,
+      "line_number": 669,
       "source_reference": "transformers.models.beit.modeling_beit.BeitUperHead with Beit->Data2VecVision",
       "target_name": "Data2VecVisionUperHead",
       "annotation_type": "class",
@@ -1668,7 +1605,7 @@
     },
     {
       "file_path": "src/transformers/models/data2vec/modeling_data2vec_vision.py",
-      "line_number": 996,
+      "line_number": 751,
       "source_reference": "transformers.models.beit.modeling_beit.BeitFCNHead with Beit->Data2VecVision",
       "target_name": "Data2VecVisionFCNHead",
       "annotation_type": "class",
@@ -1806,7 +1743,7 @@
       "line_number": 1196,
       "source_reference": "transformers.models.deberta.modeling_deberta.DebertaForQuestionAnswering.forward with Deberta->DebertaV2",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -1851,7 +1788,7 @@
       "line_number": 45,
       "source_reference": "transformers.models.dpt.modeling_dpt.DPTReassembleLayer.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -1860,7 +1797,7 @@
       "line_number": 178,
       "source_reference": "transformers.models.dpt.modeling_dpt.DPTFeatureFusionStage.__init__ with DPT->DepthAnything",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -1901,38 +1838,11 @@
       "migration_complexity": "simple"
     },
     {
-      "file_path": "src/transformers/models/dinat/modeling_dinat.py",
-      "line_number": 319,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->DinatDropPath",
-      "target_name": "DinatDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
       "file_path": "src/transformers/models/dinov2/modeling_dinov2.py",
       "line_number": 152,
       "source_reference": "transformers.models.bert.modeling_bert.eager_attention_forward",
       "target_name": "eager_attention_forward",
       "annotation_type": "function",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/dinov2/modeling_dinov2.py",
-      "line_number": 317,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->Dinov2DropPath",
-      "target_name": "Dinov2DropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/dinov3_convnext/modeling_dinov3_convnext.py",
-      "line_number": 61,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->Dinov3ConvnextDropPath",
-      "target_name": "Dinov3ConvnextDropPath",
-      "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -2013,15 +1923,6 @@
       "line_number": 274,
       "source_reference": "transformers.models.swin.modeling_swin.SwinPatchMerging with Swin->DonutSwin",
       "target_name": "DonutSwinPatchMerging",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/donut/modeling_donut_swin.py",
-      "line_number": 471,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->DonutDropPath",
-      "target_name": "DonutDropPath",
       "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
@@ -2721,19 +2622,10 @@
     },
     {
       "file_path": "src/transformers/models/focalnet/modeling_focalnet.py",
-      "line_number": 335,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->FocalNetDropPath",
-      "target_name": "FocalNetDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/focalnet/modeling_focalnet.py",
-      "line_number": 790,
+      "line_number": 769,
       "source_reference": "transformers.models.swin.modeling_swin.SwinForImageClassification.__init__ with Swin->FocalNet, swin->focalnet",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -2837,15 +2729,6 @@
       "migration_complexity": "simple"
     },
     {
-      "file_path": "src/transformers/models/glpn/modeling_glpn.py",
-      "line_number": 210,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->GlpnDropPath",
-      "target_name": "GlpnDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
       "file_path": "src/transformers/models/gpt2/modeling_gpt2.py",
       "line_number": 312,
       "source_reference": "transformers.models.xlm.modeling_xlm.XLMSequenceSummary with XLM->GPT2",
@@ -2859,7 +2742,7 @@
       "line_number": 253,
       "source_reference": "transformers.models.gpt2.modeling_gpt2.GPT2MLP.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -2928,16 +2811,7 @@
     },
     {
       "file_path": "src/transformers/models/grounding_dino/modeling_grounding_dino.py",
-      "line_number": 863,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->GroundingDinoDropPath",
-      "target_name": "GroundingDinoDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/grounding_dino/modeling_grounding_dino.py",
-      "line_number": 2296,
+      "line_number": 2275,
       "source_reference": "transformers.models.detr.modeling_detr.DetrMLPPredictionHead",
       "target_name": "GroundingDinoMLPPredictionHead",
       "annotation_type": "class",
@@ -2967,15 +2841,6 @@
       "line_number": 681,
       "source_reference": "transformers.models.altclip.modeling_altclip.AltCLIPEncoderLayer with AltCLIP->GroupViT",
       "target_name": "GroupViTEncoderLayer",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/hiera/modeling_hiera.py",
-      "line_number": 411,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->HieraDropPath",
-      "target_name": "HieraDropPath",
       "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
@@ -3075,7 +2940,7 @@
       "line_number": 212,
       "source_reference": "transformers.models.clip.modeling_clip.CLIPAttention.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3102,7 +2967,7 @@
       "line_number": 346,
       "source_reference": "transformers.models.siglip.modeling_siglip.SiglipEncoderLayer.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3165,7 +3030,7 @@
       "line_number": 208,
       "source_reference": "transformers.models.clip.modeling_clip.CLIPAttention.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3192,7 +3057,7 @@
       "line_number": 303,
       "source_reference": "transformers.models.siglip.modeling_siglip.SiglipEncoderLayer.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3228,7 +3093,7 @@
       "line_number": 458,
       "source_reference": "transformers.models.idefics2.modeling_idefics2.Idefics2VisionTransformer.get_input_embeddings",
       "target_name": "get_input_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3246,7 +3111,7 @@
       "line_number": 531,
       "source_reference": "transformers.models.idefics2.modeling_idefics2.Idefics2Model.get_input_embeddings",
       "target_name": "get_input_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3264,7 +3129,7 @@
       "line_number": 716,
       "source_reference": "transformers.models.idefics2.modeling_idefics2.Idefics2ForConditionalGeneration.__init__ with Idefics2->Idefics3",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3273,7 +3138,7 @@
       "line_number": 728,
       "source_reference": "transformers.models.idefics2.modeling_idefics2.Idefics2ForConditionalGeneration.get_input_embeddings",
       "target_name": "get_input_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3282,7 +3147,7 @@
       "line_number": 732,
       "source_reference": "transformers.models.idefics2.modeling_idefics2.Idefics2ForConditionalGeneration.set_input_embeddings",
       "target_name": "set_input_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3435,7 +3300,7 @@
       "line_number": 571,
       "source_reference": "transformers.models.m2m_100.modeling_m2m_100.M2M100SinusoidalPositionalEmbedding.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3444,7 +3309,7 @@
       "line_number": 580,
       "source_reference": "transformers.models.m2m_100.modeling_m2m_100.M2M100SinusoidalPositionalEmbedding.make_weights",
       "target_name": "make_weights",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3543,7 +3408,7 @@
       "line_number": 643,
       "source_reference": "transformers.models.m2m_100.modeling_m2m_100.M2M100SinusoidalPositionalEmbedding.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3552,7 +3417,7 @@
       "line_number": 652,
       "source_reference": "transformers.models.m2m_100.modeling_m2m_100.M2M100SinusoidalPositionalEmbedding.make_weights",
       "target_name": "make_weights",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3597,7 +3462,7 @@
       "line_number": 1069,
       "source_reference": "transformers.models.pix2struct.modeling_pix2struct.Pix2StructVisionModel.__init__ with Pix2Struct->Kosmos2_5",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3606,7 +3471,7 @@
       "line_number": 1082,
       "source_reference": "transformers.models.pix2struct.modeling_pix2struct.Pix2StructVisionModel.get_input_embeddings",
       "target_name": "get_input_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3858,7 +3723,7 @@
       "line_number": 649,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForSequenceClassification.__init__ with Roberta->Lilt, roberta->lilt",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3867,7 +3732,7 @@
       "line_number": 762,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForTokenClassification.__init__ with Roberta->Lilt, roberta->lilt",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -3885,7 +3750,7 @@
       "line_number": 883,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForQuestionAnswering.__init__ with Roberta->Lilt, roberta->lilt",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4047,7 +3912,7 @@
       "line_number": 1128,
       "source_reference": "transformers.models.t5.modeling_t5.T5PreTrainedModel.dummy_inputs",
       "target_name": "dummy_inputs",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4389,7 +4254,7 @@
       "line_number": 500,
       "source_reference": "transformers.models.clap.modeling_clap.ClapTextModel.__init__ with ClapText->MarkupLM",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4398,7 +4263,7 @@
       "line_number": 606,
       "source_reference": "transformers.models.bert.modeling_bert.BertForQuestionAnswering.__init__ with bert->markuplm, Bert->MarkupLM",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4407,7 +4272,7 @@
       "line_number": 712,
       "source_reference": "transformers.models.bert.modeling_bert.BertForTokenClassification.__init__ with bert->markuplm, Bert->MarkupLM",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4416,7 +4281,7 @@
       "line_number": 807,
       "source_reference": "transformers.models.bert.modeling_bert.BertForSequenceClassification.__init__ with bert->markuplm, Bert->MarkupLM",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4547,15 +4412,6 @@
       "migration_complexity": "simple"
     },
     {
-      "file_path": "src/transformers/models/maskformer/modeling_maskformer_swin.py",
-      "line_number": 422,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->MaskFormerDropPath",
-      "target_name": "MaskFormerDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
       "file_path": "src/transformers/models/maskformer/modular_maskformer.py",
       "line_number": 1126,
       "source_reference": "DETR",
@@ -4614,7 +4470,7 @@
       "line_number": 1064,
       "source_reference": "transformers.models.bart.modeling_bart.BartForSequenceClassification.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4623,7 +4479,7 @@
       "line_number": 1189,
       "source_reference": "transformers.models.bart.modeling_bart.BartForQuestionAnswering.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -4727,15 +4583,6 @@
       "migration_complexity": "simple"
     },
     {
-      "file_path": "src/transformers/models/mgp_str/modeling_mgp_str.py",
-      "line_number": 156,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->MgpStrDropPath",
-      "target_name": "MgpStrDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
       "file_path": "src/transformers/models/mimi/modeling_mimi.py",
       "line_number": 272,
       "source_reference": "transformers.models.encodec.modeling_encodec.EncodecConv1d._get_extra_padding_for_conv1d",
@@ -4785,7 +4632,7 @@
       "line_number": 622,
       "source_reference": "transformers.models.clip.modeling_clip.CLIPMLP.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5100,7 +4947,7 @@
       "line_number": 1112,
       "source_reference": "transformers.models.gemma.modeling_gemma.GemmaForCausalLM.__init__ with Gemma->Moshi",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5406,7 +5253,7 @@
       "line_number": 1275,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForSequenceClassification.__init__ with T5->MT5",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5415,7 +5262,7 @@
       "line_number": 1285,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForSequenceClassification.forward with T5->MT5, t5->mt5",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5433,7 +5280,7 @@
       "line_number": 1420,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForTokenClassification.__init__ with T5->MT5",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5442,7 +5289,7 @@
       "line_number": 1433,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForTokenClassification.forward with T5->MT5",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5451,7 +5298,7 @@
       "line_number": 1499,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForQuestionAnswering.__init__ with T5->MT5",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5604,7 +5451,7 @@
       "line_number": 33,
       "source_reference": "transformers.models.musicgen.processing_musicgen.MusicgenProcessor.get_decoder_prompt_ids",
       "target_name": "get_decoder_prompt_ids",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -5613,7 +5460,7 @@
       "line_number": 43,
       "source_reference": "transformers.models.musicgen.processing_musicgen.MusicgenProcessor.batch_decode with padding_mask->attention_mask",
       "target_name": "batch_decode",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -6297,7 +6144,7 @@
       "line_number": 67,
       "source_reference": "transformers.models.owlvit.processing_owlvit.OwlViTProcessor.__call__ with OwlViT->Owlv2",
       "target_name": "__call__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -6765,7 +6612,7 @@
       "line_number": 468,
       "source_reference": "transformers.models.llama.modeling_llama.LlamaForCausalLM.__init__ with LLAMA->PERSIMMON,Llama->Persimmon",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -6783,7 +6630,7 @@
       "line_number": 363,
       "source_reference": "transformers.models.phi3.modeling_phi3.Phi3ForCausalLM.prepare_inputs_for_generation",
       "target_name": "prepare_inputs_for_generation",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -6819,7 +6666,7 @@
       "line_number": 568,
       "source_reference": "transformers.models.t5.modeling_t5.T5LayerFF.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -6905,15 +6752,6 @@
       "migration_complexity": "simple"
     },
     {
-      "file_path": "src/transformers/models/poolformer/modeling_poolformer.py",
-      "line_number": 70,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->PoolFormerDropPath",
-      "target_name": "PoolFormerDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
       "file_path": "src/transformers/models/pop2piano/modeling_pop2piano.py",
       "line_number": 40,
       "source_reference": "transformers.models.t5.modeling_t5.T5LayerNorm with T5->Pop2Piano",
@@ -6990,7 +6828,7 @@
       "line_number": 565,
       "source_reference": "transformers.models.t5.modeling_t5.T5Stack.__init__ with T5->Pop2Piano,t5->pop2piano",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7000,24 +6838,6 @@
       "source_reference": "transformers.models.t5.modeling_t5.T5Stack.set_input_embeddings",
       "target_name": "set_input_embeddings",
       "annotation_type": "function",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/pvt/modeling_pvt.py",
-      "line_number": 249,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->PvtDropPath",
-      "target_name": "PvtDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/pvt_v2/modeling_pvt_v2.py",
-      "line_number": 205,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->PvtV2DropPath",
-      "target_name": "PvtV2DropPath",
-      "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7035,7 +6855,7 @@
       "line_number": 104,
       "source_reference": "transformers.models.whisper.modeling_whisper.WhisperAttention.__init__ with Whisper->Qwen2Audio",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7224,7 +7044,7 @@
       "line_number": 292,
       "source_reference": "transformers.models.bert.modeling_bert.BertLayer.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7359,7 +7179,7 @@
       "line_number": 835,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForMaskedLM.__init__ with ROBERTA->ROBERTA_PRELAYERNORM,Roberta->RobertaPreLayerNorm,roberta->roberta_prelayernorm",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7386,7 +7206,7 @@
       "line_number": 959,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForSequenceClassification.forward with roberta->roberta_prelayernorm",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7404,7 +7224,7 @@
       "line_number": 1146,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForTokenClassification.forward with roberta->roberta_prelayernorm",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7422,7 +7242,7 @@
       "line_number": 1237,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForQuestionAnswering.forward with roberta->roberta_prelayernorm",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7548,7 +7368,7 @@
       "line_number": 645,
       "source_reference": "transformers.models.bert.modeling_bert.BertModel.get_input_embeddings",
       "target_name": "get_input_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7575,7 +7395,7 @@
       "line_number": 803,
       "source_reference": "transformers.models.bert.modeling_bert.BertForPreTraining.get_output_embeddings",
       "target_name": "get_output_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7584,7 +7404,7 @@
       "line_number": 807,
       "source_reference": "transformers.models.bert.modeling_bert.BertForPreTraining.set_output_embeddings",
       "target_name": "set_output_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7593,7 +7413,7 @@
       "line_number": 990,
       "source_reference": "transformers.models.bert.modeling_bert.BertForMaskedLM.__init__ with Bert->RoCBert,bert->roc_bert",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7620,7 +7440,7 @@
       "line_number": 1113,
       "source_reference": "transformers.models.bert.modeling_bert.BertLMHeadModel.__init__ with BertLMHeadModel->RoCBertForCausalLM,Bert->RoCBert,bert->roc_bert",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7629,7 +7449,7 @@
       "line_number": 1126,
       "source_reference": "transformers.models.bert.modeling_bert.BertLMHeadModel.get_output_embeddings",
       "target_name": "get_output_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7647,7 +7467,7 @@
       "line_number": 1260,
       "source_reference": "transformers.models.bert.modeling_bert.BertForSequenceClassification.__init__ with Bert->RoCBert,bert->roc_bert",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7656,7 +7476,7 @@
       "line_number": 1360,
       "source_reference": "transformers.models.bert.modeling_bert.BertForMultipleChoice.__init__ with Bert->RoCBert,bert->roc_bert",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7665,7 +7485,7 @@
       "line_number": 1483,
       "source_reference": "transformers.models.bert.modeling_bert.BertForTokenClassification.__init__ with Bert->RoCBert,bert->roc_bert",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7674,7 +7494,7 @@
       "line_number": 1562,
       "source_reference": "transformers.models.bert.modeling_bert.BertForQuestionAnswering.__init__ with Bert->RoCBert,bert->roc_bert",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7872,7 +7692,7 @@
       "line_number": 597,
       "source_reference": "transformers.models.wav2vec2_conformer.modeling_wav2vec2_conformer.Wav2Vec2ConformerEncoderLayer.__init__ with Wav2Vec2->SeamlessM4T, attention_dropout->speech_encoder_dropout, torch.nn->nn",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7908,7 +7728,7 @@
       "line_number": 990,
       "source_reference": "transformers.models.bart.modeling_bart.BartAttention.__init__ with Bart->SeamlessM4T",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7962,7 +7782,7 @@
       "line_number": 249,
       "source_reference": "transformers.models.seamless_m4t.modeling_seamless_m4t.SeamlessM4TConformerFeatureProjection.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -7980,7 +7800,7 @@
       "line_number": 447,
       "source_reference": "transformers.models.wav2vec2_conformer.modeling_wav2vec2_conformer.Wav2Vec2ConformerEncoderLayer.__init__ with Wav2Vec2->SeamlessM4Tv2, attention_dropout->speech_encoder_dropout, torch.nn->nn",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8034,7 +7854,7 @@
       "line_number": 865,
       "source_reference": "transformers.models.bart.modeling_bart.BartAttention.__init__ with Bart->SeamlessM4Tv2",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8106,7 +7926,7 @@
       "line_number": 2110,
       "source_reference": "transformers.models.seamless_m4t.modeling_seamless_m4t.SeamlessM4TTextToUnitModel.__init__ with SeamlessM4T->SeamlessM4Tv2, Decoder->TextToUnitDecoder",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8115,7 +7935,7 @@
       "line_number": 2202,
       "source_reference": "transformers.models.seamless_m4t.modeling_seamless_m4t.SeamlessM4TTextToUnitForConditionalGeneration.__init__ with SeamlessM4T->SeamlessM4Tv2",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8232,7 +8052,7 @@
       "line_number": 2915,
       "source_reference": "transformers.models.seamless_m4t.modeling_seamless_m4t.SeamlessM4TForSpeechToText.__init__ with SeamlessM4T->SeamlessM4Tv2",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8295,7 +8115,7 @@
       "line_number": 3180,
       "source_reference": "transformers.models.seamless_m4t.modeling_seamless_m4t.SeamlessM4TForTextToSpeech.__init__ with SeamlessM4T->SeamlessM4Tv2",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8349,7 +8169,7 @@
       "line_number": 3531,
       "source_reference": "transformers.models.seamless_m4t.modeling_seamless_m4t.SeamlessM4TForSpeechToSpeech.__init__ with SeamlessM4T->SeamlessM4Tv2",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8403,7 +8223,7 @@
       "line_number": 3891,
       "source_reference": "transformers.models.seamless_m4t.modeling_seamless_m4t.SeamlessM4TModel.__init__ with SeamlessM4T->SeamlessM4Tv2",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -8472,16 +8292,7 @@
     },
     {
       "file_path": "src/transformers/models/seggpt/modeling_seggpt.py",
-      "line_number": 366,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->SegGptDropPath",
-      "target_name": "SegGptDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/seggpt/modeling_seggpt.py",
-      "line_number": 498,
+      "line_number": 477,
       "source_reference": "transformers.models.convnext.modeling_convnext.ConvNextLayerNorm with ConvNext->SegGpt",
       "target_name": "SegGptLayerNorm",
       "annotation_type": "class",
@@ -9015,16 +8826,7 @@
       "line_number": 498,
       "source_reference": "transformers.models.llama.modeling_llama.LlamaForCausalLM.__init__ with LLAMA->STABLELM,Llama->StableLm",
       "target_name": "__init__",
-      "annotation_type": "function",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/swiftformer/modeling_swiftformer.py",
-      "line_number": 225,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->SwiftFormerDropPath",
-      "target_name": "SwiftFormerDropPath",
-      "annotation_type": "class",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -9069,24 +8871,6 @@
       "line_number": 348,
       "source_reference": "transformers.models.swinv2.modeling_swinv2.Swinv2Attention with Swinv2->Swin2SR",
       "target_name": "Swin2SRAttention",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/swin2sr/modeling_swin2sr.py",
-      "line_number": 404,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->Swin2SRDropPath",
-      "target_name": "Swin2SRDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/swin2sr/modeling_swin2sr.py",
-      "line_number": 429,
-      "source_reference": "transformers.models.swinv2.modeling_swinv2.Swinv2Layer with Swinv2->Swin2SR",
-      "target_name": "Swin2SRLayer",
       "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
@@ -9159,15 +8943,6 @@
       "line_number": 262,
       "source_reference": "transformers.models.swin.modeling_swin.SwinPatchEmbeddings with Swin->Swinv2",
       "target_name": "Swinv2PatchEmbeddings",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/swinv2/modeling_swinv2.py",
-      "line_number": 564,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->Swinv2DropPath",
-      "target_name": "Swinv2DropPath",
       "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
@@ -9249,7 +9024,7 @@
       "line_number": 254,
       "source_reference": "transformers.models.rembert.modeling_rembert.RemBertAttention.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -9276,7 +9051,7 @@
       "line_number": 322,
       "source_reference": "transformers.models.rembert.modeling_rembert.RemBertLayer.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -9366,15 +9141,6 @@
       "line_number": 472,
       "source_reference": "transformers.models.bart.modeling_bart.BartDecoderLayer with Bart->TimeSeriesTransformer, with BART->TIME_SERIES_TRANSFORMER",
       "target_name": "TimeSeriesTransformerDecoderLayer",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/timesformer/modeling_timesformer.py",
-      "line_number": 252,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->TimesformerDropPath",
-      "target_name": "TimesformerDropPath",
       "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
@@ -9627,7 +9393,7 @@
       "line_number": 1224,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForSequenceClassification.__init__ with T5->UMT5",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -9645,7 +9411,7 @@
       "line_number": 1370,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForTokenClassification.__init__ with T5->UMT5",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -9654,7 +9420,7 @@
       "line_number": 1383,
       "source_reference": "transformers.models.t5.modeling_t5.T5ForTokenClassification.forward with T5->UMT5, t5->umt5",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -9803,15 +9569,6 @@
       "migration_complexity": "simple"
     },
     {
-      "file_path": "src/transformers/models/vitdet/modeling_vitdet.py",
-      "line_number": 406,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->VitDetDropPath",
-      "target_name": "VitDetDropPath",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
       "file_path": "src/transformers/models/vitpose_backbone/modeling_vitpose_backbone.py",
       "line_number": 99,
       "source_reference": "transformers.models.bert.modeling_bert.eager_attention_forward",
@@ -9825,15 +9582,6 @@
       "line_number": 403,
       "source_reference": "transformers.models.speecht5.modeling_speecht5.HifiGanResidualBlock",
       "target_name": "HifiGanResidualBlock",
-      "annotation_type": "class",
-      "has_modifications": false,
-      "migration_complexity": "simple"
-    },
-    {
-      "file_path": "src/transformers/models/vjepa2/modeling_vjepa2.py",
-      "line_number": 348,
-      "source_reference": "transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->VJEPA2DropPath",
-      "target_name": "VJEPA2DropPath",
       "annotation_type": "class",
       "has_modifications": false,
       "migration_complexity": "simple"
@@ -10032,7 +9780,7 @@
       "line_number": 227,
       "source_reference": "transformers.models.encodec.modeling_encodec.EncodecEuclideanCodebook.quantize",
       "target_name": "quantize",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10041,7 +9789,7 @@
       "line_number": 256,
       "source_reference": "transformers.models.encodec.modeling_encodec.EncodecVectorQuantization.encode",
       "target_name": "encode",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10050,7 +9798,7 @@
       "line_number": 262,
       "source_reference": "transformers.models.encodec.modeling_encodec.EncodecVectorQuantization.decode",
       "target_name": "decode",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10149,7 +9897,7 @@
       "line_number": 332,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaSelfOutput.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10176,7 +9924,7 @@
       "line_number": 685,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaModel.get_input_embeddings",
       "target_name": "get_input_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10203,7 +9951,7 @@
       "line_number": 822,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForCausalLM.__init__ with Roberta->Xmod",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10212,7 +9960,7 @@
       "line_number": 835,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForCausalLM.get_output_embeddings",
       "target_name": "get_output_embeddings",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10230,7 +9978,7 @@
       "line_number": 931,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForMaskedLM.__init__ with Roberta->Xmod",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10266,7 +10014,7 @@
       "line_number": 1037,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForSequenceClassification.__init__ with Roberta->Xmod",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10275,7 +10023,7 @@
       "line_number": 1117,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForMultipleChoice.__init__ with Roberta->Xmod",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10284,7 +10032,7 @@
       "line_number": 1218,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForTokenClassification.__init__ with Roberta->Xmod",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10302,7 +10050,7 @@
       "line_number": 1307,
       "source_reference": "transformers.models.roberta.modeling_roberta.RobertaForQuestionAnswering.__init__ with Roberta->Xmod",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10419,7 +10167,7 @@
       "line_number": 145,
       "source_reference": "transformers.models.dpt.modeling_dpt.DPTReassembleLayer.forward with DPT->ZoeDepth",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10455,7 +10203,7 @@
       "line_number": 290,
       "source_reference": "transformers.models.dpt.modeling_dpt.DPTNeck.__init__ with DPT->ZoeDepth",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10563,7 +10311,7 @@
       "line_number": 103,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.setUp with CLIP->Chameleon",
       "target_name": "setUp",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -10572,7 +10320,7 @@
       "line_number": 109,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.image_processor_dict",
       "target_name": "image_processor_dict",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -10608,7 +10356,7 @@
       "line_number": 116,
       "source_reference": "tests.models.whisper.test_feature_extraction_whisper.WhisperFeatureExtractionTest.setUp with Whisper->Clap",
       "target_name": "setUp",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -10653,7 +10401,7 @@
       "line_number": 125,
       "source_reference": "transformers.tests.models.whisper.test_feature_extraction_whisper.WhisperFeatureExtractionTest.test_feat_extract_from_and_save_pretrained",
       "target_name": "test_feat_extract_from_and_save_pretrained",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10680,7 +10428,7 @@
       "line_number": 38,
       "source_reference": "transformers.tests.models.whisper.test_processing_whisper.WhisperProcessorTest.get_tokenizer with Whisper->Clvp",
       "target_name": "get_tokenizer",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10689,7 +10437,7 @@
       "line_number": 42,
       "source_reference": "transformers.tests.models.whisper.test_processing_whisper.WhisperProcessorTest.get_feature_extractor with Whisper->Clvp",
       "target_name": "get_feature_extractor",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10698,7 +10446,7 @@
       "line_number": 46,
       "source_reference": "transformers.tests.models.whisper.test_processing_whisper.WhisperProcessorTest.test_save_load_pretrained_default with Whisper->Clvp",
       "target_name": "test_save_load_pretrained_default",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -10968,7 +10716,7 @@
       "line_number": 40,
       "source_reference": "tests.models.dpt.test_modeling_dpt_auto_backbone.DPTModelTester.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11022,7 +10770,7 @@
       "line_number": 53,
       "source_reference": "tests.models.dac.test_feature_extraction_dac.DacFeatureExtractionTester.__init__",
       "target_name": "__init__",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11049,7 +10797,7 @@
       "line_number": 111,
       "source_reference": "tests.models.dac.test_feature_extraction_dac.DacFeatureExtractionTest.test_call",
       "target_name": "test_call",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11184,7 +10932,7 @@
       "line_number": 33,
       "source_reference": "transformers.tests.models.xlm.test_tokenization_xlm.XLMTokenizationTest.test_full_tokenizer",
       "target_name": "test_full_tokenizer",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -11211,7 +10959,7 @@
       "line_number": 110,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.image_processor_dict",
       "target_name": "image_processor_dict",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11274,7 +11022,7 @@
       "line_number": 163,
       "source_reference": "tests.models.deformable_detr.test_image_processing_deformable_detr.DeformableDetrImageProcessingTest.test_image_processor_properties with DeformableDetr->GroundingDino",
       "target_name": "test_image_processor_properties",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11400,7 +11148,7 @@
       "line_number": 94,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.image_processor_dict",
       "target_name": "image_processor_dict",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11463,7 +11211,7 @@
       "line_number": 102,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.setUp with CLIP->LlavaNext",
       "target_name": "setUp",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11472,7 +11220,7 @@
       "line_number": 108,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.image_processor_dict",
       "target_name": "image_processor_dict",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11535,7 +11283,7 @@
       "line_number": 99,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.image_processor_dict",
       "target_name": "image_processor_dict",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11832,7 +11580,7 @@
       "line_number": 128,
       "source_reference": "tests.models.seamless_m4t.test_feature_extraction_seamless_m4t.SeamlessM4TFeatureExtractionTest.test_feat_extract_from_and_save_pretrained",
       "target_name": "test_feat_extract_from_and_save_pretrained",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11841,7 +11589,7 @@
       "line_number": 141,
       "source_reference": "tests.models.seamless_m4t.test_feature_extraction_seamless_m4t.SeamlessM4TFeatureExtractionTest.test_feat_extract_to_json_file",
       "target_name": "test_feat_extract_to_json_file",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -11859,7 +11607,7 @@
       "line_number": 194,
       "source_reference": "tests.models.musicgen.test_modeling_musicgen.MusicgenDecoderTest._prepare_for_class",
       "target_name": "_prepare_for_class",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12021,7 +11769,7 @@
       "line_number": 182,
       "source_reference": "tests.models.llava.test_modeling_llava.LlavaForConditionalGenerationModelTest.test_mismatching_num_image_tokens",
       "target_name": "test_mismatching_num_image_tokens",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12048,7 +11796,7 @@
       "line_number": 109,
       "source_reference": "tests.models.clip.test_image_processing_clip.CLIPImageProcessingTest.image_processor_dict",
       "target_name": "image_processor_dict",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12336,7 +12084,7 @@
       "line_number": 349,
       "source_reference": "tests.models.clip.test_modeling_clip.CLIPTextModelTest.setUp with CLIP->Siglip",
       "target_name": "setUp",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12345,7 +12093,7 @@
       "line_number": 354,
       "source_reference": "tests.models.clip.test_modeling_clip.CLIPTextModelTest.test_config",
       "target_name": "test_config",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12354,7 +12102,7 @@
       "line_number": 358,
       "source_reference": "tests.models.clip.test_modeling_clip.CLIPTextModelTest.test_model",
       "target_name": "test_model",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12372,7 +12120,7 @@
       "line_number": 404,
       "source_reference": "tests.models.clip.test_modeling_clip.CLIPModelTester.prepare_config_and_inputs",
       "target_name": "prepare_config_and_inputs",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12525,7 +12273,7 @@
       "line_number": 157,
       "source_reference": "tests.models.whisper.test_feature_extraction_whisper.WhisperFeatureExtractionTest.test_feat_extract_from_and_save_pretrained",
       "target_name": "test_feat_extract_from_and_save_pretrained",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "medium"
     },
@@ -12702,10 +12450,10 @@
     },
     {
       "file_path": "tests/repo_utils/test_catalog_copied_from.py",
-      "line_number": 40,
+      "line_number": 41,
       "source_reference": "transformers.models.bert.modeling_bert.BertLayer with changes",
       "target_name": "bar",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": true,
       "migration_complexity": "complex"
     },
@@ -12741,7 +12489,7 @@
       "line_number": 103,
       "source_reference": "transformers.models.dummy_gpt2.modeling_dummy_gpt2.GPT2DummyModel.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -12759,7 +12507,7 @@
       "line_number": 130,
       "source_reference": "transformers.models.dummy_gpt2.modeling_dummy_gpt2.GPT2DummyModel.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -12768,7 +12516,7 @@
       "line_number": 152,
       "source_reference": "transformers.models.dummy_gpt2.modeling_dummy_gpt2.GPT2DummyModel.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -12786,7 +12534,7 @@
       "line_number": 185,
       "source_reference": "transformers.models.dummy_gpt2.modeling_dummy_gpt2.GPT2DummyModel.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -12804,7 +12552,7 @@
       "line_number": 214,
       "source_reference": "transformers.models.dummy_gpt2.modeling_dummy_gpt2.GPT2DummyModel.forward",
       "target_name": "forward",
-      "annotation_type": "function",
+      "annotation_type": "method",
       "has_modifications": false,
       "migration_complexity": "simple"
     },
@@ -12873,18 +12621,19 @@
     }
   ],
   "summary": {
-    "total_annotations": 1430,
-    "total_files": 309,
-    "files_scanned": 4408,
+    "total_annotations": 1402,
+    "total_files": 296,
+    "files_scanned": 4428,
     "annotation_types": {
-      "function": 712,
-      "class": 702,
+      "function": 585,
+      "class": 674,
+      "method": 127,
       "unknown": 16
     },
     "migration_complexity": {
       "medium": 217,
       "complex": 9,
-      "simple": 1204
+      "simple": 1176
     },
     "priority_migration_files": [
       "src/transformers/configuration_utils.py",
@@ -12914,10 +12663,8 @@
       "src/transformers/models/clvp/modeling_clvp.py",
       "src/transformers/models/codegen/modeling_codegen.py",
       "src/transformers/models/convbert/modeling_convbert.py",
-      "src/transformers/models/convnext/modeling_convnext.py",
       "src/transformers/models/convnextv2/modeling_convnextv2.py",
       "src/transformers/models/cpmant/modeling_cpmant.py",
-      "src/transformers/models/cvt/modeling_cvt.py",
       "src/transformers/models/dab_detr/convert_dab_detr_original_pytorch_checkpoint_to_pytorch.py",
       "src/transformers/models/dab_detr/modeling_dab_detr.py",
       "src/transformers/models/dac/modeling_dac.py",
@@ -12931,12 +12678,14 @@
       "src/transformers/models/detr/image_processing_detr.py",
       "src/transformers/models/detr/modeling_detr.py",
       "src/transformers/models/dia/processing_dia.py",
-      "src/transformers/models/dinat/modeling_dinat.py",
       "src/transformers/models/dinov2/modeling_dinov2.py",
-      "src/transformers/models/dinov3_convnext/modeling_dinov3_convnext.py",
       "src/transformers/models/distilbert/modeling_distilbert.py",
       "src/transformers/models/donut/modeling_donut_swin.py",
-      "src/transformers/models/dpt/modeling_dpt.py"
+      "src/transformers/models/dpt/modeling_dpt.py",
+      "src/transformers/models/efficientloftr/modeling_efficientloftr.py",
+      "src/transformers/models/electra/modeling_electra.py",
+      "src/transformers/models/esm/modeling_esm.py",
+      "src/transformers/models/falcon/modeling_falcon.py"
     ]
   }
 }

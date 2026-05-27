@@ -207,73 +207,8 @@ class GLPNMixFFN(nn.Module):
         return hidden_states
 
 
-# Copied from transformers.models.swin.modular_swin.SwinDropPath with SwinDropPath->GlpnDropPath
-class GlpnDropPath(nn.Module):
-    """Stochastic depth (DropPath) per sample, for residual blocks.
+from transformers.models.swin.modular_swin import SwinDropPath as GlpnDropPath
 
-    Identity when ``drop_prob`` is 0 or outside training. See `Deep Networks with Stochastic Depth
-    <https://arxiv.org/abs/1603.09382>`_.
-    """
-
-    def __init__(self, drop_prob: float = 0.0) -> None:
-        super().__init__()
-        self.drop_prob = drop_prob
-
-    def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
-        if self.drop_prob == 0.0 or not self.training:
-            return hidden_states
-        keep_prob = 1 - self.drop_prob
-        shape = (hidden_states.shape[0],) + (1,) * (hidden_states.ndim - 1)
-        random_tensor = torch.rand(shape, dtype=hidden_states.dtype, device=hidden_states.device)
-        random_tensor = torch.floor(random_tensor + keep_prob)
-        return hidden_states.div(keep_prob) * random_tensor
-
-    def extra_repr(self) -> str:
-        return f"p={self.drop_prob}"
-
-
-# Todo - Refactor as part of vision refactor. Copied from transformers.models.segformer.modeling_segformer.SegformerLayer with Segformer->GLPN
-class GLPNLayer(nn.Module):
-    """This corresponds to the Block class in the original implementation."""
-
-    def __init__(self, config, hidden_size, num_attention_heads, drop_path, sequence_reduction_ratio, mlp_ratio):
-        super().__init__()
-        self.layer_norm_1 = nn.LayerNorm(hidden_size)
-        self.attention = GLPNAttention(
-            config,
-            hidden_size=hidden_size,
-            num_attention_heads=num_attention_heads,
-            sequence_reduction_ratio=sequence_reduction_ratio,
-        )
-        self.drop_path = GlpnDropPath(drop_path) if drop_path > 0.0 else nn.Identity()
-        self.layer_norm_2 = nn.LayerNorm(hidden_size)
-        mlp_hidden_size = int(hidden_size * mlp_ratio)
-        self.mlp = GLPNMixFFN(config, in_features=hidden_size, hidden_features=mlp_hidden_size)
-
-    def forward(self, hidden_states, height, width, output_attentions=False):
-        self_attention_outputs = self.attention(
-            self.layer_norm_1(hidden_states),  # in GLPN, layernorm is applied before self-attention
-            height,
-            width,
-            output_attentions=output_attentions,
-        )
-
-        attention_output = self_attention_outputs[0]
-        outputs = self_attention_outputs[1:]  # add self attentions if we output attention weights
-
-        # first residual connection (with stochastic depth)
-        attention_output = self.drop_path(attention_output)
-        hidden_states = attention_output + hidden_states
-
-        mlp_output = self.mlp(self.layer_norm_2(hidden_states), height, width)
-
-        # second residual connection (with stochastic depth)
-        mlp_output = self.drop_path(mlp_output)
-        layer_output = mlp_output + hidden_states
-
-        outputs = (layer_output,) + outputs
-
-        return outputs
 
 
 class GLPNEncoder(nn.Module):
