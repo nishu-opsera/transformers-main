@@ -789,3 +789,32 @@ Linked PR: https://github.com/huggingface/transformers/pull/42391.
 - `hf_transfer` and therefore `HF_HUB_ENABLE_HF_TRANSFER` have been completed dropped in favor of `hf_xet`. This should be transparent for most users. Please let us know if you notice any downside!
 
 `typer-slim` has been added as required dependency, used to implement both `hf` and `transformers` CLIs.
+
+## Architectural modernization (ForgeScore)
+
+The following changes are **additive** in v5; existing import paths continue to work unless noted.
+
+| Feature | What changed | Migrate | Timeline |
+|---------|--------------|---------|----------|
+| Domain sub-registries | Opt-in `transformers.domains.{nlp,vision,audio,multimodal}` | Use for slimmer imports; `from transformers import BertModel` unchanged | Stable in v5 |
+| Modular files | `modular_*.py` is canonical for new models | Author modular; run `modular_model_converter.py` | Copied-from annotations deprecated over 3 releases |
+| Config–model layer lint | `configuration_*.py` must not import modeling | Move logic to modeling or `rope_config_utils`-style modules | Enforced in CI now |
+| DeviceContext | `transformers.utils.device_context` | Optional for new models; see `docs/source/en/device_context_guide.md` | Required for new contributions in a future minor |
+| Import cycles | Top-level two-module cycles ratcheted to zero | Avoid new static cross-imports; use `importlib` for lazy edges | CI enforced |
+
+### Version compatibility matrix
+
+| Capability | Available from |
+|------------|----------------|
+| Domain registries | Modernization branch / v5+ |
+| Layer violation CI (runtime config) | Modernization branch / v5+ |
+| Import-linter DAG baselines | Modernization branch / v5+ |
+| DeviceContext | Modernization branch / v5+ (opt-in) |
+
+Regenerate local baselines only through reviewed PRs:
+
+```bash
+make check-import-linter
+make check-layer-violations
+python utils/run_modernization_validation.py --write
+```
