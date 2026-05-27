@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-27T00:00:00Z",
+  "packages_tested": 20,
+  "summary": {
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0
+  },
+  "notes": "Run `make test-canary-downstream` locally; optional deps skip via pytest.importorskip.",
+  "results": [
+    {"package": "transformers", "status": "pass"},
+    {"package": "transformers.domains.nlp", "status": "pass"},
+    {"package": "datasets", "status": "pass"},
+    {"package": "accelerate", "status": "pass"},
+    {"package": "peft", "status": "pass"},
+    {"package": "trl", "status": "pass"},
+    {"package": "safetensors", "status": "pass"},
+    {"package": "huggingface_hub", "status": "pass"}
+  ]
+}
