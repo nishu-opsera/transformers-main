@@ -159,6 +159,26 @@ If your issue is well written we're already 80% of the way there by the time you
 
 We have added [templates](https://github.com/huggingface/transformers/tree/main/templates) to help you get started with your issue.
 
+## Modernization contribution standards (Forge)
+
+- **Modular files** (`modular_<model>.py`) are the canonical code-generation paradigm for **new** models.
+- **Layer boundaries:** configuration code must not import modeling symbols (`make check-layer-violations`).
+- **Import graph:** do not introduce new top-level import cycles (`make check-import-linter`).
+- **Device placement:** new models should use [`DeviceContext`](docs/source/en/device_context_guide.md) at forward boundaries (see [ADR 002](docs/architecture/adr/002-device-context.md)).
+- **Onboarding:** read [developer_onboarding.md](docs/source/en/developer_onboarding.md) and [ADRs](docs/architecture/adr/README.md).
+
+### Pre-PR checklist
+
+```bash
+make style
+make fix-repo
+make typing
+make check-import-linter
+make check-layer-violations
+make check-modular-conversion   # if you touched modular_*.py
+pytest tests/...               # relevant model tests
+```
+
 ## Do you want to implement a new model?
 
 New models are constantly released and if you want to implement a new model, please provide the following information:
