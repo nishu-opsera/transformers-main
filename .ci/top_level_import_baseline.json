@@ -374,6 +374,10 @@
     },
     {
       "source": "transformers.integrations",
+      "destination": "transformers.trainer_utils"
+    },
+    {
+      "source": "transformers.integrations",
       "destination": "transformers.utils"
     },
     {
