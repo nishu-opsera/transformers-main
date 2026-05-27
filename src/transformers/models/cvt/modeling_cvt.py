@@ -293,7 +293,7 @@ class CvtOutput(nn.Module):
         return hidden_state
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as CvtDropPath
+from ..swin.modular_swin import SwinDropPath as CvtDropPath
 
 
 

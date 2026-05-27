@@ -401,7 +401,7 @@ class Swin2SROutput(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as Swin2SRDropPath
+from ..swin.modular_swin import SwinDropPath as Swin2SRDropPath
 
 
 

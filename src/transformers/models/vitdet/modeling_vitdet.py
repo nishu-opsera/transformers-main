@@ -403,7 +403,7 @@ def window_unpartition(windows, window_size, pad_height_width, height_width):
     return hidden_state
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as VitDetDropPath
+from ..swin.modular_swin import SwinDropPath as VitDetDropPath
 
 
 

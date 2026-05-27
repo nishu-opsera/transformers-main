@@ -860,7 +860,7 @@ class GroundingDinoBiMultiHeadAttention(nn.Module):
         return (vision_attn_output, vision_attn_weights), (text_attn_output, text_attn_weights)
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as GroundingDinoDropPath
+from ..swin.modular_swin import SwinDropPath as GroundingDinoDropPath
 
 
 

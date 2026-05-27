@@ -86,7 +86,7 @@ class ConvNextEmbeddings(nn.Module):
         return embeddings
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as ConvNextDropPath
+from ..swin.modular_swin import SwinDropPath as ConvNextDropPath
 
 
 

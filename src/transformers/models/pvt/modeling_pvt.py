@@ -246,7 +246,7 @@ class PvtFFN(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as PvtDropPath
+from ..swin.modular_swin import SwinDropPath as PvtDropPath
 
 
 

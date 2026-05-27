@@ -22,7 +22,7 @@ from torch import nn
 from ...modeling_layers import (
     GenericForSequenceClassification,
 )
-from ...modeling_rope_utils import ROPE_INIT_FUNCTIONS
+from ...rope_config_utils import ROPE_INIT_FUNCTIONS
 from ...utils.generic import maybe_autocast
 from ...utils.output_capturing import OutputRecorder
 from ..llama.modeling_llama import LlamaAttention

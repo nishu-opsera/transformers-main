@@ -316,7 +316,7 @@ class DinatOutput(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as DinatDropPath
+from ..swin.modular_swin import SwinDropPath as DinatDropPath
 
 
 

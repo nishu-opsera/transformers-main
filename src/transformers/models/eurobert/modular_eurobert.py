@@ -20,7 +20,7 @@ from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
 from ...configuration_utils import strict
 from ...masking_utils import create_bidirectional_mask
 from ...modeling_outputs import BaseModelOutput, MaskedLMOutput, SequenceClassifierOutput, TokenClassifierOutput
-from ...modeling_rope_utils import RopeParameters
+from ...rope_config_utils import RopeParameters
 from ...processing_utils import Unpack
 from ...utils import auto_docstring
 from ...utils.generic import TransformersKwargs, can_return_tuple

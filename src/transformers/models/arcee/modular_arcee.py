@@ -17,7 +17,7 @@ from huggingface_hub.dataclasses import strict
 
 from transformers.utils import auto_docstring, logging
 
-from ...modeling_rope_utils import RopeParameters
+from ...rope_config_utils import RopeParameters
 from ..llama.configuration_llama import LlamaConfig
 from ..llama.modeling_llama import (
     LlamaForCausalLM,

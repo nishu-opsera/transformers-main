@@ -408,7 +408,7 @@ class HieraMlp(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as HieraDropPath
+from ..swin.modular_swin import SwinDropPath as HieraDropPath
 
 
 

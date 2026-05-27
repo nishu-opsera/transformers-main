@@ -24,7 +24,7 @@ from ...modeling_outputs import (
     BaseModelOutputWithPooling,
     MaskedLMOutput,
 )
-from ...modeling_rope_utils import RopeParameters
+from ...rope_config_utils import RopeParameters
 from ...modeling_utils import PreTrainedModel
 from ...processing_utils import Unpack
 from ...utils import TransformersKwargs, auto_docstring

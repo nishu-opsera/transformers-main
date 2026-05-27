@@ -153,7 +153,7 @@ class MgpstrAttention(nn.Module):
         return (context_layer, attention_probs)
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as MgpStrDropPath
+from ..swin.modular_swin import SwinDropPath as MgpStrDropPath
 
 
 

@@ -16,7 +16,7 @@
 import torch
 from torch import nn
 
-from ...modeling_rope_utils import dynamic_rope_update
+from ...rope_config_utils import dynamic_rope_update
 from ...utils import auto_docstring, can_return_tuple
 from ...utils.generic import maybe_autocast
 from ..glm.modeling_glm import rotate_half

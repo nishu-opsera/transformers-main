@@ -273,7 +273,7 @@ class BitEmbeddings(nn.Module):
         return embedding
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as BitDropPath
+from ..swin.modular_swin import SwinDropPath as BitDropPath
 
 
 

@@ -370,7 +370,7 @@ def main(argv: list[str] | None = None) -> int:
             print_drift_summary(drift_reports)
         diff_models = set(file_path.split("/")[-2] for file_path in non_matching_files)  # noqa
         models_str = "\n - " + "\n - ".join(sorted(diff_models))
-        console.print(f"[bold red]Models with drift:[/bold red]{models_str}", file=sys.stderr)
+        print(f"Models with drift:{models_str}", file=sys.stderr)
         return 1
 
     return 0

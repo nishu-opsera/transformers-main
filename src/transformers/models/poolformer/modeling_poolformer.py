@@ -67,7 +67,7 @@ class PoolFormerPooling(nn.Module):
         return self.pool(hidden_states) - hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as PoolFormerDropPath
+from ..swin.modular_swin import SwinDropPath as PoolFormerDropPath
 
 
 

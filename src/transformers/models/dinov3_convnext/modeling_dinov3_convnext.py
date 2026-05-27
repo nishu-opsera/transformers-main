@@ -58,7 +58,7 @@ class DINOv3ConvNextLayerNorm(nn.LayerNorm):
         return features
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as Dinov3ConvnextDropPath
+from ..swin.modular_swin import SwinDropPath as Dinov3ConvnextDropPath
 
 
 

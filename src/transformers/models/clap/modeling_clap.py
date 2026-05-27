@@ -475,7 +475,7 @@ class ClapAudioOutput(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as ClapDropPath
+from ..swin.modular_swin import SwinDropPath as ClapDropPath
 
 
 

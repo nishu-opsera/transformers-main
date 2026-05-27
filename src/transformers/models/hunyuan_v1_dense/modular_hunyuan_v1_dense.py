@@ -24,7 +24,7 @@ from transformers.utils import (
 )
 
 from ... import initialization as init
-from ...modeling_rope_utils import ROPE_INIT_FUNCTIONS
+from ...rope_config_utils import ROPE_INIT_FUNCTIONS
 from ...modeling_utils import ALL_ATTENTION_FUNCTIONS, PreTrainedModel
 from ...processing_utils import Unpack
 from ...utils import TransformersKwargs

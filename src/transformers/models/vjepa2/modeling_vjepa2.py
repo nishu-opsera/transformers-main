@@ -345,7 +345,7 @@ class VJEPA2MLP(nn.Module):
         return hidden_state
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as VJEPA2DropPath
+from ..swin.modular_swin import SwinDropPath as VJEPA2DropPath
 
 
 

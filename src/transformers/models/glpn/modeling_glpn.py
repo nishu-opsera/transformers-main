@@ -207,7 +207,7 @@ class GLPNMixFFN(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as GlpnDropPath
+from ..swin.modular_swin import SwinDropPath as GlpnDropPath
 
 
 

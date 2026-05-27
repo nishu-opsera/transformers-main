@@ -202,7 +202,7 @@ class PvtV2ConvFeedForwardNetwork(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as PvtV2DropPath
+from ..swin.modular_swin import SwinDropPath as PvtV2DropPath
 
 
 

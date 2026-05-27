@@ -222,7 +222,7 @@ class SwiftFormerLocalRepresentation(nn.Module):
         return x
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as SwiftFormerDropPath
+from ..swin.modular_swin import SwinDropPath as SwiftFormerDropPath
 
 
 

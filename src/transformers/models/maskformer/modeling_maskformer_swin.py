@@ -419,7 +419,7 @@ class MaskFormerSwinOutput(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as MaskFormerDropPath
+from ..swin.modular_swin import SwinDropPath as MaskFormerDropPath
 
 
 

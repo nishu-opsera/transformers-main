@@ -332,7 +332,7 @@ class FocalNetMlp(nn.Module):
         return hidden_state
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as FocalNetDropPath
+from ..swin.modular_swin import SwinDropPath as FocalNetDropPath
 
 
 

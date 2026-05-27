@@ -363,7 +363,7 @@ class SegGptMlp(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as SegGptDropPath
+from ..swin.modular_swin import SwinDropPath as SegGptDropPath
 
 
 

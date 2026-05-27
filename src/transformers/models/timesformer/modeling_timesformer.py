@@ -249,7 +249,7 @@ class TimesformerOutput(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as TimesformerDropPath
+from ..swin.modular_swin import SwinDropPath as TimesformerDropPath
 
 
 

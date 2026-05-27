@@ -468,7 +468,7 @@ class DonutSwinOutput(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as DonutDropPath
+from ..swin.modular_swin import SwinDropPath as DonutDropPath
 
 
 

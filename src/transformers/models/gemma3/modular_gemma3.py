@@ -25,7 +25,7 @@ from ...configuration_utils import PreTrainedConfig
 from ...masking_utils import create_causal_mask, create_masks_for_generate, create_sliding_window_causal_mask
 from ...modeling_layers import GenericForSequenceClassification, GradientCheckpointingLayer
 from ...modeling_outputs import BaseModelOutputWithPast, BaseModelOutputWithPooling, SequenceClassifierOutputWithPast
-from ...modeling_rope_utils import (
+from ...rope_config_utils import (
     ROPE_INIT_FUNCTIONS,
     dynamic_rope_update,
 )

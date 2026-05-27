@@ -400,7 +400,7 @@ class Data2VecVisionOutput(nn.Module):
         return hidden_states
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as Data2VecVisionDropPath
+from ..swin.modular_swin import SwinDropPath as Data2VecVisionDropPath
 
 
 

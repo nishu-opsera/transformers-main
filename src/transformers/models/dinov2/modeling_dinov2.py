@@ -314,7 +314,7 @@ class Dinov2SwiGLUFFN(nn.Module):
         return self.weights_out(hidden)
 
 
-from transformers.models.swin.modular_swin import SwinDropPath as Dinov2DropPath
+from ..swin.modular_swin import SwinDropPath as Dinov2DropPath
 
 
 

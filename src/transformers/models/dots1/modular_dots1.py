@@ -15,7 +15,7 @@ from huggingface_hub.dataclasses import strict
 
 from ...configuration_utils import PreTrainedConfig
 from ...modeling_outputs import CausalLMOutputWithPast
-from ...modeling_rope_utils import RopeParameters
+from ...rope_config_utils import RopeParameters
 from ...processing_utils import Unpack
 from ...utils import auto_docstring, logging
 from ..deepseek_v3.modeling_deepseek_v3 import (
